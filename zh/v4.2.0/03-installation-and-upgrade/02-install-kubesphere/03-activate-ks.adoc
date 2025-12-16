@@ -1,0 +1,38 @@
+---
+title: "激活 KubeSphere 社区版"
+keywords: "激活，KubeSphere, Kubernetes，KubeSphere"
+description: "介绍如何激活 KubeSphere 和扩展组件。"
+weight: 03
+---
+
+登录 KubeSphere Web 控制台后，您需要导入许可证（license），激活 KubeSphere 和扩展组件，以体验所有功能。
+
+== 操作步骤
+
+. 登录 KubeSphere Web 控制台，点击**组件坞 > 平台设置 > 许可证**，进入许可证页面，获取当前集群的集群 ID。
++
+image:/images/ks-qkcp/zh/v4.2.0/activate-ks/get-cluster-ID.png[]
+
+. link:https://kubesphere.com.cn/apply-license[申请 KubeSphere 社区版的免费许可]。填入个人信息和集群 ID，提交申请。
++
+--
+image:/images/ks-qkcp/zh/v4.2.0/activate-ks/apply-for-license.png[,50%]
+
+随后会将 KubeSphere 社区版的许可证发放至您的邮箱中（邮件可能会被拦截，如长时间未收到邮件，请尝试在垃圾箱中查找）。
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|在申请许可证时，提供了有效期选项。许可证到期后，如需继续使用，可再次申请免费许可。
+
+|===
+--
+
+. 收到邮件后，复制邮件中的 license，在 KubeSphere Web 控制台的许可证页面，点击**添加许可证**，将 license 填入即可。
++
+image:/images/ks-qkcp/zh/v4.2.0/activate-ks/enter-license.png[, 50%]
+
+. 若许可证页面显示 KubeSphere 和扩展组件**已授权**，即表示激活成功，可开始使用 KubeSphere。
+
+

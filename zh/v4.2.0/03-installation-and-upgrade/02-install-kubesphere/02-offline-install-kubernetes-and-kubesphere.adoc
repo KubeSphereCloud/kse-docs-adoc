@@ -1,0 +1,659 @@
+---
+title: "离线安装 Kubernetes 和 KubeSphere"
+keywords: "Kubernetes, KubeSphere, 安装, 离线包, 离线安装, 离线部署"
+description: "了解如何在离线环境下安装 KubeSphere 和 Kubernetes。"
+weight: 02
+---
+
+本节介绍如何在不能访问 Internet 的环境下使用离线安装包部署 Kubernetes 和 KubeSphere。
+
+安装过程中将用到开源工具 KubeKey  的 v4.x 版本。有关 KubeKey 的更多信息，请访问 link:https://github.com/kubesphere/kubekey[GitHub KubeKey 仓库]。
+
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|``KubeSphere 社区版``用户需要在联网状态下自行构建离线安装包，KubeSphere 其他版本的用户可联系 KubeSphere 交付服务专家获取最新的离线安装包，即，可跳过离线安装包的构建过程。
+|===
+
+
+== 准备工作
+
+参考如下最低配置要求，准备 Linux 主机。
+
+// [.admon.note,cols="a"]
+// |===
+// |说明
+
+// |若无需构建离线安装包，则无需准备打包节点。
+// |===
+
+[%header,cols="1,1,2,2"]
+|===
+|角色	|主机数量	|最低要求（每个节点）	|网络要求
+
+|打包节点	|1	|CPU：1 核，内存：1 GB，硬盘：150 GB	|需能访问：link:https://github.com/[github.com]、link:https://www.docker.com/[docker.io]、link:https://quay.io/[quay.io]
+|部署节点（运行 Web Installer 服务）	|1	|CPU：1 核，内存：1 GB，硬盘：150 GB	|与 Kubernetes 节点网络互通
+|私有镜像仓库节点	|1	|CPU：8 核，内存：16 GB，硬盘：100 GB	|与 Kubernetes 节点网络互通
+|Kubernetes 节点	|≥ 1 |CPU：2 核，内存：4 GB，硬盘：40 GB	|节点间网络互通
+|===
+
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|
+* 同一台主机可同时承担多个角色，如同时是部署节点和私有镜像仓库节点，或者同时是部署节点和 Kubernetes 节点。
+* 私有镜像仓库节点与 Kubernetes 节点不能是同一台主机。
+|===
+
+* **打包节点**：您需要准备至少 1 台 Linux 服务器作为打包节点。该节点将从互联网下载所需软件包与镜像，需确保能够访问以下地址：`github.com`、`docker.io`、`quay.io`。
+
+* **部署节点**（运行 **Web Installer** 服务）：安装过程中需要在该节点上执行 `kk` 命令以运行安装服务。该节点需与私有镜像仓库节点、Kubernetes 节点保持网络互通。
+
+* **私有镜像仓库节点**：如果您尚未部署任何私有镜像仓库，请准备至少 1 台 Linux 服务器作为私有镜像仓库节点。该节点需与 Kubernetes 各节点保持网络互通。
+
+* **Kubernetes 节点**：您需要准备至少 1 台 Linux 服务器作为集群节点（无需提前安装 Kubernetes）。
+
+== 前提条件
+
+// 除容器运行时的说明外，其他部分与在线安装的前提条件相同。
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|以下为 Kubernetes 节点需满足的前提条件。
+|===
+
+* 您需要准备至少 1 台 Linux 服务器作为集群节点。在生产环境中，为确保集群具备高可用性，建议准备至少 5 台 Linux 服务器，其中 3 台作为控制平面节点，另外 2 台作为工作节点。如果您在多台 Linux 服务器上安装 KubeSphere，请确保所有服务器属于同一子网。
+
+include::../../../_custom/installationAndUpgrade/installationAndUpgrade-desc-systemRequirements.adoc[]
+
+* 在生产环境中，为确保集群具有足够的计算和存储资源，建议每台集群节点配置至少 8 个 CPU 核心、16 GB 内存和 200 GB 磁盘空间。除此之外，建议在每台集群节点的 **/var/lib/docker**（对于 Docker）或 **/var/lib/containerd**（对于 containerd） 目录额外挂载至少 200 GB 磁盘空间用于存储容器运行时数据。
+
+* 在生产环境中，建议提前为 KubeSphere 集群配置高可用性以避免单个控制平面节点出现故障时集群服务中断。有关更多信息，请参阅link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[配置高可用性]。
++
+--
+// Note
+include::../../../../_ks_components/admonitions/note.adoc[]
+
+如果您规划了多个控制平面节点，请务必提前为集群配置高可用性。
+
+include::../../../../_ks_components/admonitions/admonEnd.adoc[]
+--
+
+* 默认情况下，KubeSphere 使用集群节点的本地磁盘空间作为持久化存储。在生产环境中，建议提前配置外部存储系统作为持久化存储。有关更多信息，请参阅link:../../../03-installation-and-upgrade/01-preparations/04-configure-external-persistent-storage/[配置外部持久化存储]。
+
+// * 如果集群节点未安装容器运行时，安装工具 KubeKey 将在安装过程中自动为每个集群节点安装 Docker 作为容器运行时。您也可以提前手动安装 containerd、CRI-O 或 iSula 作为容器运行时。
+// +
+// --
+// // Note
+// include::../../../../_ks_components/admonitions/note.adoc[]
+
+// CRI-O 和 iSula 与 KubeSphere 的兼容性尚未经过充分测试，可能存在未知问题。
+
+// include::../../../../_ks_components/admonitions/admonEnd.adoc[]
+// --
+
+* 请确保所有集群节点上 **/etc/resolv.conf** 文件中配置的 DNS 服务器地址可用。否则，KubeSphere 集群可能会出现域名解析问题。
+
+* 请确保在所有集群节点上都可以使用 **sudo**、**tar**、**curl** 和 **openssl** 命令。
+
+* 请确保所有集群节点时间同步。
+
+
+== 配置防火墙规则
+
+// 与在线安装的相同
+
+KubeSphere 需要特定端口和协议用于服务之间的通信。如果您的基础设施环境已启用防火墙，您需要在防火墙设置中放行所需的端口和协议。如果您的基础设施环境未启用防火墙，您可以跳过此步骤。
+
+下表列出需要在防火墙中放行的端口和协议。
+
+include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-portRequirement.adoc[]
+
+== 步骤 1：构建离线安装包
+
+登录``打包节点``，然后参照以下步骤构建离线安装包。
+
+=== 1. 创建配置文件
+
+. 访问 https://get-images.kubesphere.io/
+
+. 点击选择需要部署的扩展组件。
+
+. 点击**提交**。
+
+. 在打包节点上创建 `config.yaml` 文件。
++
+[source,bash]
+----
+vi config.yaml
+----
+
+. 将提交按钮下方的**配置文件结果**复制到 config.yaml 文件中。
++
+====
+以下内容仅为示例，请复制实际配置信息。
+
+[source,yaml]
+----
+apiVersion: kubekey.kubesphere.io/v1
+kind: Config
+spec:
+  cni:
+    calico_version: v3.28.2
+    cilium_version: 1.15.4
+    hybridnet_version: 0.6.8
+    kubeovn_version: 1.13.0
+    multus:
+      image:
+        tag: v4.3.0
+  cri:
+    container_manager: containerd
+    containerd_version: v1.7.6
+    crictl_version: v1.32.0
+    cridockerd_version: v0.3.1
+    docker_version: 24.0.7
+    runc_version: v1.1.7
+    sandbox_image:
+      tag: "3.8"
+  dns:
+    dns_cache_image:
+      tag: 1.24.0
+    dns_image:
+      tag: v1.11.1
+  etcd:
+    etcd_version: v3.5.11
+  image_manifests:
+  - docker.io/kubesphere/k8s-dns-node-cache:1.24.0
+  - docker.io/openebs/provisioner-localpv:4.2.0
+  - docker.io/openebs/linux-utils:4.2.0
+  - docker.io/kubesphere/coredns:v1.11.1
+  - docker.io/kubesphere/kube-apiserver:v1.32.6
+  - docker.io/kubesphere/kube-controller-manager:v1.32.6
+  - docker.io/kubesphere/kube-proxy:v1.32.6
+  - docker.io/kubesphere/kube-scheduler:v1.32.6
+  - docker.io/kubesphere/pause:3.8
+  - registry.cn-beijing.aliyuncs.com/kse/ks-apiserver:v4.2.0-community
+  - registry.cn-beijing.aliyuncs.com/kse/ks-console:v4.2.0-community
+  - registry.cn-beijing.aliyuncs.com/kse/ks-controller-manager:v4.2.0-community
+  - registry.cn-beijing.aliyuncs.com/kubesphereio/kubectl:v1.33.1
+  image_registry:
+    docker_registry_version: 2.8.3
+    dockercompose_version: v2.20.3
+    harbor_version: v2.10.1
+    keepalived_version: 2.0.20
+  Kubernetes:
+    helm_version: v3.14.3
+    kube_version: v1.32.6
+  storage_class:
+    local:
+      linux_utils_image:
+        tag: 4.2.0
+      provisioner_image:
+        tag: 4.2.0
+    nfs_provisioner_version: 4.2.0
+----
+
+在未经过身份验证的情况下从某些镜像仓库拉取镜像时，极易触发速率限制（ratelimit）等异常，从而导致操作失败。若要登录镜像仓库并拉取镜像，需更新上述配置信息，方法如下：
+
+[source,bash]
+----
+cat >> config.yaml << 'EOF'
+  cri:
+    registry:
+      auths:
+        - repo: <镜像仓库地址> # 拉取镜像时需访问的镜像仓库，如 docker.io
+          username: <镜像仓库账号> # 如 docker.io 的登录账户
+          password: <镜像仓库密码> # 如 docker.io 的登录密码
+EOF
+----
+====
+
+=== 2. 获取 kk 与 Web Installer
+
+`kk` 是 ​​KubeKey​​ 的命令行可执行文件，用于快速部署和管理 Kubernetes 集群及相关组件，`Web Installer` 是 ​​KubeKey​​ 的图形化界面，用于部署 Kubernetes 和 KubeSphere。
+
+执行以下命令安装 kk 和 Web Installer。请先确保打包节点上已经安装了 `tar` 工具。
+
+[source,bash]
+----
+export KKZONE=cn
+export VERSION=latest
+curl -sfL https://get-kk.kubesphere.io | sh -
+----
+
+执行完成后，会在当前目录生成以下文件：
+
+[%header,cols="1a,4a"]
+|===
+|原文件 |解压后的文件
+
+|`kubekey-v4.x.x-linux-amd64.tar.gz`
+|`kk`：为 KubeKey 的二进制文件。
+
+|`web-installer.tgz`
+|* `dist`：Web 页面资源。
+* `host-check.yaml`，`kubernetes`，`kubesphere`：任务模板文件。
+* `schema`：配置文件。
+* `README.md`：安装说明文档。
+
+|`package.sh`
+|离线安装包的构建脚本。
+|===
+
+=== 3. 制作离线安装包
+
+使用之前创建的配置文件执行离线包构建脚本。该步骤耗时较长，请耐心等待执行完成。
+
+[source,bash]
+----
+./package.sh config.yaml
+----
+
+如果显示如下信息，表明离线包构建成功：
+
+----
+Offline package offline.tgz has been created successfully.
+----
+
+执行完成后，会在当前目录生成 `offline.tgz` 文件，该文件即为完整的离线安装包。
+
+== 步骤 2：将离线安装包复制到部署节点
+
+将离线安装包复制到``部署节点``并解压，后续操作均需在部署节点上解压后的目录中执行。
+
+离线安装包可以是您自己构建的（如 `offline.tgz`），也可以是从 KubeSphere 交付服务专家处获取的。
+
+[source,bash]
+----
+tar -zxvf offline.tgz  #注意替换离线包名称
+----
+
+[source,bash]
+----
+cd offline  #注意替换为实际目录名称
+----
+
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|
+后续步骤都将在部署节点上进行，且必须在解压后的目录（如 `offline`）中执行命令，否则会导致操作失败。
+|===
+
+
+== 步骤 3：同步镜像到私有镜像仓库
+
+登录``部署节点``并进入离线包解压后的目录，参照以下步骤将离线安装包里的镜像同步到私有镜像仓库中。
+
+=== 场景一：没有私有镜像仓库
+
+当没有私有镜像仓库时，可使用 kk 创建 harbor 镜像仓库。
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|私有镜像仓库节点需要预安装 tar 工具。
+|===
+
+. 进入离线包解压后的目录，创建节点配置文件 `inventory_init_registry.yaml`。
++
+====
+[source,bash]
+----
+vi inventory_init_registry.yaml
+----
+
+根据指引，将镜像仓库的相关信息填写至相应位置。
+
+[source,yaml]
+----
+kind: Inventory
+metadata:
+  name: default
+spec:
+  hosts:
+    harbor:
+      # 此处输入的是安装 harbor 的节点的 ssh 登录信息
+      # kubekey 会远程连接到该主机并安装 harbor
+      internal_ipv4: <镜像仓库节点 IP 地址>
+      connector:
+        host: <镜像仓库节点 ssh 连接 IP >
+        port: <镜像仓库节点 ssh 连接端口> # 默认 22 
+        user: <镜像仓库节点 ssh 连接用户> # 默认 root
+        password: <镜像仓库节点 ssh 连接密码>
+  groups:
+      image_registry:
+        hosts:
+         - harbor
+  vars:
+    image_registry:
+      type: harbor
+      auth:
+        # 此处输入您预期的镜像仓库域名和默认账号
+        # 自动创建的 harbor 会使用该域名地址，同时将设置的账号密码作为默认账号密码
+        registry: <预期的镜像仓库域名地址>
+        username: admin
+        password: <预期的镜像仓库 admin 密码>
+        # kk 部署 harbor 镜像仓库默认使用的是自签名证书。如果您已经申请并持有可信的 SSL 证书，可通过可信证书运行 harbor
+        #cert_file: <可信服务证书路径>
+        #key_file: <服务证书 key 路径>
+    localDNS:
+     - /etc/hosts
+----
+====
+
+. 安装 harbor 并同步镜像。
++
+====
+使用上一步创建的 inventory_init_registry.yaml，执行以下命令。
+
+[source,bash]
+----
+./kk init registry -i inventory_init_registry.yaml --workdir $(pwd)/prepare --set binary_dir=$(pwd)/kubekey/kubekey
+----
+
+如果显示如下信息，表明 harbor 镜像仓库创建成功，且离线包中的镜像已成功同步到镜像仓库。
+
+回显示例：
+----
+[Playbook default/init-registry-j2khj] finish. total: 88,success: 88,ignored: 0,failed: 0
+----
+====
+
+. 配置域名发现。harbor 镜像仓库的域名需要被 Kubernetes 节点发现。
++
+* 方案一：在域名服务器上配置域名发现。
+* 方案二：在每个 Kubernetes 节点上，通过配置 /etc/hosts 文件实现本地域名解析。​
++
+====
+登录 ``Kubernetes 节点``，执行以下命令：
+
+[source,bash]
+----
+echo '<镜像仓库节点 IP 地址> <镜像仓库域名地址>' | sudo tee -a /etc/hosts
+----
+====
+
+. （可选）配置 Kubernetes 节点信任 harbor 自签名证书。
++
+kk 部署 harbor 镜像仓库默认使用的是自签名证书。Kubernetes 节点上的容器运行时（docker，containerd）从该私有仓库拉取镜像时，需要进行证书认证。
++
+.. 获取自签名的 harbor 的服务证书。
++
+--
+登录``私有镜像仓库节点``，查询 harbor 版本，以便确定 harbor 服务证书的所在路径：`/opt/harbor/<harbor 版本>/ssl/server.crt`。
+
+查询 harbor 版本：
+[source,bash]
+----
+docker images | grep harbor-core
+----
+
+harbor 服务证书所在路径的示例如下：
+[source,bash]
+----
+/opt/harbor/v2.10.1/ssl/server.crt
+----
+
+--
+
+.. 复制 harbor 服务证书到每个 Kubernetes 节点的可信域中。
++
+====
+登录 ``Kubernetes 节点``，执行以下命令：
+
+* Ubuntu 系统：
++
+[source,bash]
+----
+cp /opt/harbor/<harbor 版本>/ssl/server.crt /usr/local/share/ca-certificates/
+update-ca-certificates
+----
+
+* CentOS 系统：
++
+[source,bash]
+----
+cp /opt/harbor/<harbor 版本>/ssl/server.crt /etc/pki/ca-trust/source/anchors/
+update-ca-trust
+----
+====
+
+=== 场景二：已有私有镜像仓库
+
+如果已经有镜像仓库，则只需要将离线安装包里的镜像同步到已有的私有镜像仓库中。
+
+. 进入离线包解压后的目录，创建节点配置文件 `inventory_sync_image.yaml`。
++
+====
+[source,bash]
+----
+vi inventory_sync_image.yaml
+----
+
+[source,yaml]
+----
+kind: Inventory
+metadata:
+  name: default
+spec:
+  vars:
+    image_registry:
+      auth:
+        # 确保您提供的镜像仓库账号密码拥有创建项目和推送镜像的权限
+        registry: <您的镜像仓库地址>
+        username: <您的镜像仓库账号>
+        password: <您的镜像仓库密码>
+    localDNS:
+     - /etc/hosts
+----
+====
+
+. 同步镜像。使用上一步创建的 `inventory_sync_image.yaml` 来推送镜像。
++
+====
+[source,bash]
+----
+./kk artifact images -i inventory_sync_image.yaml --workdir $(pwd)/prepare --set binary_dir=$(pwd)/kubekey/kubekey,download.download_image=false
+----
+
+如果显示如下信息，表明离线包中的镜像已成功同步到镜像仓库。
+
+回显示例：
+----
+[Playbook default/artifact-images-fkgmw] finish. total: 15,success: 15,ignored: 0,failed: 0
+----
+====
+
+== 步骤 4：启动 Web Installer
+
+Web Installer 是 Kubekey 的图形化页面，用于部署 Kubernetes 和 Kubesphere。
+
+登录``部署节点``并进入离线包解压后的目录，执行以下命令启动 Web Installer：
+
+[source,bash]
+----
+cd offline  #注意替换为实际目录名称
+----
+
+[source,bash]
+----
+./kk web --port 8080 --schema-path schema --ui-path dist
+----
+
+执行后请勿关闭命令终端，在浏览器通过 `http://<部署节点 IP 地址>:8080`，打开 Kubekey 的 UI 页面。
+
+
+== 步骤 5：部署 Kubernetes 和 Kubesphere
+
+在  `http://<部署节点 IP 地址>:8080` 页面，点击**开始安装**，进入部署流程。
+
+===  1. 添加集群节点
+
+在**基本信息**页面，添加 Kubernetes 节点。支持通过手动添加、文件上传和节点扫描的方式添加节点。
+
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|如果只添加一个节点，节点角色必须为 `Master & Worker`。
+
+|===
+
+* **手动添加**
++
+--
+适用于添加单个节点。填写主机名、IP 地址、SSH 地址、SSH 认证等信息。
+
+image::/images/ks-qkcp/zh/v4.2.0/web-installer/add-node-manual.png[,80%]
+--
+
+* **文件上传**
++
+--
+适用于批量添加节点。根据模板填写节点信息后上传。
+
+image::/images/ks-qkcp/zh/v4.2.0/web-installer/add-node-upload.png[,90%]
+--
+
+* **节点扫描**
++
+--
+适用于自动发现节点。通过 IP CIDR 来进行节点扫描。可根据扫描结果自由选择节点进行添加。
+
+image::/images/ks-qkcp/zh/v4.2.0/web-installer/add-node-ip-range.png[,80%]
+--
+
+=== 2. 修改配置参数
+
+配置部署 Kubernetes 和 KubeSphere 所需的参数。
+
+Kubernetes 和 KubeSphere Core 标签页均支持**表单模式**和 **YAML 模式**。您可以在表单中填写配置信息（所有参数均需配置），或直接编辑 yaml 文件。如需了解更多配置信息，请参阅link:https://github.com/kubesphere/kubekey/blob/master/docs/config-example.md[此文件]。
+
+image::/images/ks-qkcp/zh/v4.2.0/web-installer/install-config.png[,80%]
+
+* **Kubernetes 配置**
++
+--
+[%header,cols="1,1a,4a"]
+|===
+|分类 |参数 |描述
+
+.5+|集群配置
+|集群名称
+|输入一个集群名称。
+
+|Kubernetes 版本
+|此处的版本必须和离线安装包目录下 `config.yaml` 中的 `kube_version` 保持一致。
+
+|集群访问地址
+|集群的统一访问入口地址，通常为负载均衡器的域名。
+
+|端口
+|集群的访问端口。
+
+|路由方式
+|支持 local 和 haproxy 两种方式。
+
+.1+|容器运行时
+|类型
+|容器运行时的类型，支持 docker 和 containerd。
+
+.5+|网络设置
+|网络插件
+|支持多种插件，如 calico, cilium, flannel, hybridnet 和 kubeovn。
+
+|每节点最大 Pod 数
+|每个节点可运行 Pod 的最大数量。默认为 110。
+
+|Service CIDR
+|集群内部“服务”可用的 IP 地址范围​​。
+
+Service CIDR 支持 IPv4 和 IPv6，不能与同一个集群的其他网络（如 Pod CIDR 和 Node IP）重复。
+
+|Pod CIDR
+|集群内部“Pod”可用的 IP 地址范围​​。
+
+Pod CIDR 支持 IPv4 和 IPv6，不能与同一个集群的其他网络（如 Node IP）重复。
+
+|IPv4/IPv6 掩码大小
+|IP 地址中用于标识网络部分的位数。
+// 剩余位数则用于标识主机部分。掩码数值越大，对应的网络划分越精细，但每个子网内可用的主机地址数量越少。
+
+.2+|镜像仓库配置
+|仓库地址
+|填写私有镜像仓库的实际地址。
+
+|用户名 & 密码
+|填写私有镜像仓库的登录账户和密码。
+
+.3+|存储设置
+|启用
+|使用集群节点的本地存储系统。
+
+|设置为默认存储
+|设置为默认存储类。
+
+|存储路径
+|存储卷在宿主机上的存储路径。
+
+|===
+--
+
+* **KubeSphere Core 配置**
++
+[%header,cols="1a,4a"]
+|===
+|参数 |描述
+
+|全局镜像仓库
+|填写私有镜像仓库的实际地址。
+
+|扩展组件镜像仓库
+|填写私有镜像仓库的实际地址。
+|===
+
+配置完成后，点击**下一步**。
+
+=== 3. 安装预览
+
+在**安装预览**页面，确认版本等信息无误后，点击**下一步：执行安装**开始安装。也可返回上一步修改配置参数。
+
+=== 4. 安装
+
+耐心等待安装完成。安装完成后自动进入安装校验步骤。
+
+若安装过程中出现异常，点击**查看日志**查看日志详情，退出或初始化后重新安装。
+
+image::/images/ks-qkcp/zh/v4.2.0/web-installer/installing.png[]
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|若需要在 Web Installer 页面重新安装、修改配置参数或清除配置，点击左侧的**初始化**按钮，将重置 Kubernetes 节点上的所有任务并回到基本信息页面。初始化操作不可逆，请谨慎执行。
+|===
+
+=== 5. 安装校验
+
+. 在**安装校验**页面，点击**开始检测**，系统将自动运行对应的检测脚本验证系统可用性。
+
+. 若通过系统检测，点击**完成**，可查看 KubeSphere 的访问地址、管理员用户名和默认密码。
+
+. 在网页浏览器上输入访问地址，登录 KubeSphere Web 控制台，即可开始使用 KubeSphere。
++
+[.admon.note,cols="a"]
+|===
+|说明
+
+|取决于您的网络环境，您可能需要配置流量转发规则并在防火墙中放行 30880 端口。
+|===
+
+
+

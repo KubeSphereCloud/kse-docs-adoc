@@ -1,0 +1,59 @@
+---
+title: "运行镜像构建器"
+keywords: "Kubernetes, {ks_product}, 镜像构建器, 运行镜像构建器"
+description: "介绍如何运行镜像构建器。"
+weight: 05
+---
+
+:ks_permission: **应用负载管理**
+:ks_navigation: **镜像构建器**
+
+
+本节介绍如何运行镜像构建器。
+
+镜像构建器开始运行后会将源代码或制品文件构建为容器镜像，并将其推送到指定的镜像服务。
+
+
+== 前提条件
+
+
+:relfileprefix: ../../../
+
+include::../../../_custom/projectManagement/projectManagement-prer-requiredPermission_v42.adoc[]
+
+:relfileprefix: ./
+
+
+
+== 操作步骤
+
+include::../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
+
++
+
+include::../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
+
++
+
+. 在需要操作的镜像构建器右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**运行**。
+
+. （可选）在**运行**对话框，根据需要修改镜像构建器的参数。
++
+--
+// Note
+include::../../../../_ks_components/admonitions/note.adoc[]
+
+有关镜像构建器参数的更多信息，请参阅link:../01-create-an-image-builder/01-create-an-image-builder-using-source-code/[使用源代码创建镜像构建器]和link:../01-create-an-image-builder/02-create-an-image-builder-using-an-artifact/[使用制品创建镜像构建器]。
+
+include::../../../../_ks_components/admonitions/admonEnd.adoc[]
+--
+
+. 在**运行**对话框，点击**运行**。
++
+--
+镜像构建器将启动镜像构建流程。如果镜像构建成功，访问镜像仓库，您将看到带有预期标签的镜像。
+--

@@ -1,0 +1,13 @@
+---
+title: "WizTelemetry 可观测平台"
+keywords: "Kubernetes, {ks_product}, 可观测中心, 监控, 告警, 事件, 通知, 日志, 审计, 事件, 数据流水线, OpenSearch"
+description: "介绍如何使用 WizTelemetry 可观测平台。"
+weight: 09
+layout: "second"
+---
+
+WizTelemetry 可观测平台是一款企业级多集群监控告警产品，专注于提供一体化的云原生可观测性服务。该平台提供了从基础设施到应用的多层级、多维度、多租户的指标监控和告警功能。
+
+WizTelemetry 可观测平台由以下扩展组件构成：
+
+include::../../../_custom/extensionIntro/WizTelemetry-intro-kse_v420.adoc[]

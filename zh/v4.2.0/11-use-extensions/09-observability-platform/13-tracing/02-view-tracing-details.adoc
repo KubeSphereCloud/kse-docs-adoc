@@ -1,0 +1,86 @@
+---
+title: "查看链路详情"
+keywords: "Kubernetes, {ks_product}, 链路追踪, 网络, 可观测"
+description: "介绍如何查看链路详情。"
+weight: 02
+---
+
+:ks_navigation: **链路追踪 > 链路查询**
+
+
+本节介绍如何查看链路详情。
+
+
+== 前提条件
+
+* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../05-users-and-roles/01-users/[用户]和link:../../../../05-users-and-roles/02-platform-roles/[平台角色]。
+
+* KubeSphere 平台需要安装并启用 **WizTelemetry 链路追踪**扩展组件。
+
+== 操作步骤
+
+include::../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
+
++
+
+include::../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
+. 点击 Trace ID（例：`c76049d283c30cdfdf26e2485ba5fae32`）或 <服务名称>:<根 Span 名称>（例：`loadgenerator:GET`）均可以访问链路详情。
+
+. 在链路详情页面的上方区域，查看链路的基本信息。
++
+[%header,cols="1a,4a"]
+|===
+|参数 |描述
+
+|根 Span 名称
+|调用链路的全局入口，表示初始请求行为。
+
+// 普通 Span
+// 链路中的最小操作单元，标识单个服务内的离散动作（如 API 端点、方法调用或 DB 查询）。
+
+|Trace ID
+|链路的​​唯一标识符​​，用于在分布式系统中追踪完整的请求生命周期（通常为 32 位哈希值），如 `c76049d283c30cdfdf26e2485ba5fae32`。
+
+|起始时间
+|发起请求的时间。
+
+|持续时间
+|请求从发起到完成的总耗时。
+
+|Span
+|链路中 Span 的总数量。
+
+每个 Span 代表链路中的一个​​独立操作单元​。例如 `8` 表示该条链路共触发 8 个独立操作。
+
+|服务
+|链路中调用的服务的总数量。
+
+|层级
+|调用深度指标，反映请求的复杂程度。例如 `3` 表示最长调用链含 3 层服务嵌套。
+|===
+
+. 在链路详情页面的**链路时间线**页签下，通过可视化图表，您能清晰看到请求从开始到结束的完整路径，以及各个 Span 的执行耗时，帮助定位性能瓶颈。
++
+--
+* 点击搜索框，可按服务名称、Span 名称进行搜索，搜索结果会高亮显示。
+
+* 在**服务和 Span** 右侧，点击image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18]展开当前层级的直接子 Span，点击image:/images/ks-qkcp/zh/icons/chevron-right.svg[chevron-right,18,18]往上收起一层，点击image:/images/ks-qkcp/zh/icons/chevron-down-double.png[chevron-down-double,18,18]展开所有嵌套 Span，点击image:/images/ks-qkcp/zh/icons/chevron-right-double.png[chevron-right-double,18,18]收起所有层级。
+
+* 点击 Span 可查看 Span 的详细信息，再次点击 Span 所在行或左侧的彩色区块可收起详细信息。有关 Span 参数的更多信息，请参阅 link:https://opentelemetry.io/zh/docs/concepts/signals/traces/#spans[OpenTelemetry 官方文档]。
+--
+
+. 点击链路详情页面的 **Span 列表**页签，查看该条链路中所有的 Span。
++
+--
+* 点击搜索框，可按服务名称、Span 名称进行搜索。
+
+include::../../../../../_ks_components/oper-refreshListData.adoc[]
+
+include::../../../../../_ks_components/oper-customizeColumns.adoc[]
+
+--

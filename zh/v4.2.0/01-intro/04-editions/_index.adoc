@@ -1,0 +1,8 @@
+---
+title: "版本区别"
+weight:  04
+---
+
+// 自 KubeSphere v4.2.0 起，KubeSphere 分为社区版、标准版、高级版、旗舰版四个版本。各版本支持的产品功能和资源配额不同。有关版本差异的更多信息，请参阅 link:https://kubesphere.io/zh/features/[KubeSphere 官网]。
+
+目前暂时只提供 KubeSphere 社区版和 KubeSphere 企业版。

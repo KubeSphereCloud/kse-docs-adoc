@@ -1,0 +1,43 @@
+---
+title: "扩展持久卷声明"
+keywords: "Kubernetes, {ks_product}, 集群管理, 存储, 持久卷声明, 持久卷, 扩展持久卷"
+description: "介绍如何扩展持久卷容量。"
+weight: 05
+---
+
+:ks_permission: **持久卷声明管理**
+:ks_navigation: **存储 > 持久卷声明**
+
+
+include::../../../../_custom/clusterManagement/persistentVolumeClaims/persistentVolumeClaims-desc-expandAPersistentVolumeClaim.adoc[]
+
+
+== 前提条件
+
+:relfileprefix: ../../../../
+* {empty}
+include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPermission_new.adoc[]
+
+:relfileprefix: ./
+
+
+include::../../../../_custom/clusterManagement/persistentVolumeClaims/persistentVolumeClaims-prer-persistentVolumeCreated.adoc[]
+
+* 扩展操作最终由后端存储系统执行，请确保后端存储系统具备卷扩展能力，并且持久卷声明对应的存储类已启用卷扩展功能。有关更多信息，请参阅link:../../02-storage-classes/05-enable-and-disable-volume-operations/[启用和禁用卷操作]。
+
+
+== 操作步骤
+
+include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../_custom/clusterManagement/persistentVolumeClaims/persistentVolumeClaims-oper-openDetailsPage.adoc[]
+
++
+
+include::../../../../_custom/clusterManagement/persistentVolumeClaims/persistentVolumeClaims-oper-expandAPersistentVolume.adoc[]

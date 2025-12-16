@@ -1,0 +1,23 @@
+---
+title: "WizTelemetry 链路追踪"
+keywords: "Kubernetes, {ks_product}, 链路追踪, 网络, 可观测"
+description: "介绍如何使用“WizTelemetry 链路追踪”扩展组件。"
+weight: 13
+layout: "second"
+---
+
+本节介绍如何使用“WizTelemetry 链路追踪”扩展组件。
+
+WizTelemetry 链路追踪基于 link:https://opentelemetry.io/docs/specs/otel/trace/[OpenTelemetry] 提供分布式链路追踪的功能。
+
+链路追踪是一种监控分布式系统的技术，它通过生成唯一的 Trace ID 来标识每个请求，并记录请求在各个服务间的流转路径。当请求流经系统时，每个服务内部的关键操作会被记录为 Span，包含耗时、状态等关键信息。这些 Span 通过父子关系组成完整的调用链（Trace），使您能够通过可视化工具清晰地观察请求的全链路流转，快速定位延迟、错误或性能瓶颈。有关更多信息，请参阅 link:https://opentelemetry.io/zh/docs/concepts/signals/traces/[OpenTelemetry 官方文档]。
+
+安装“WizTelemetry 链路追踪”扩展组件后，组件坞中的 WizTelemetry 可观测平台将显示**链路追踪**菜单。
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|
+有关组件配置的更多信息，请参阅扩展中心“WizTelemetry 链路追踪”扩展组件的详情页说明。
+|===

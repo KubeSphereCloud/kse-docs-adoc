@@ -1,0 +1,67 @@
+---
+title: "流量日志"
+keywords: "Kubernetes, {ks_product}, BPFConductor, HTTP 流量, 流量日志, 可观测"
+description: "介绍如何查看 HTTP 流量日志。"
+weight: 01
+---
+
+:ks_navigation: **网络 > HTTP 流量**
+
+本节介绍如何查看集群内 HTTP 请求的详细记录。
+
+
+== 前提条件
+
+* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
+
+* KubeSphere 平台需要安装并启用 **WizTelemetry 网络可观测** 扩展组件。
+
+== 操作步骤
+
+include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
+
++
+
+include::../../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
+
++
+
+include::../../../../../../_ks_components/oper-navigate.adoc[]
+
+. 在页面上方的下拉列表中选择集群、项目（流量流入的项目），查看选定项目在指定时间范围内的 HTTP 流量日志。
++
+--
+* 在右上角点击image:/images/ks-qkcp/zh/icons/clock-2.svg[clock-2,18,18]可设置数据的时间范围。默认为**最近 30 分钟**。
+// include::../../../../../../_ks_components/oper-selectTimeRange.adoc[]
+
+* 在列表上方点击搜索框并设置搜索条件，可快速搜索 HTTP 流量日志。
+
+include::../../../../../../_ks_components/oper-refreshListData.adoc[]
+
+include::../../../../../../_ks_components/oper-customizeColumns.adoc[]
+
+* {empty}
+include::../../../../../../_ks_components/oper-sortAscendingDescending.adoc.adoc[]
+
+[%header,cols="1a,4a"]
+|===
+|参数 |描述
+
+​|​时间​​
+|发起请求的时间。
+​|​客户端​​
+|发起 HTTP 请求的源端点，显示其资源类型和资源名称。
+​|​请求方法​​
+|HTTP 方法（如 GET、POST）。
+|请求路径
+|HTTP 请求的 API 路径（如 /health）。
+​|​状态码​
+|HTTP 状态码（200 表示成功）。
+​|​延迟​​
+|从客户端发起 HTTP 请求到完整接收到服务器响应所经历的时间，即​​请求总耗时​​。
+|服务器端
+|接收 HTTP 请求的目标端点，显示其资源类型和资源名称。
+|===
+
+* 点击日志信息，打开右侧面板查看日志详情。点击image:/images/ks-qkcp/zh/icons/code.png[code,18,18]查看 json 格式的日志信息，可一键复制。
+--

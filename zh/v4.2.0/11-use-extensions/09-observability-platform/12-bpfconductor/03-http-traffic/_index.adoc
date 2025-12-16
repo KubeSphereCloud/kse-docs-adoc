@@ -1,0 +1,11 @@
+---
+title: "HTTP 流量"
+keywords: "Kubernetes, {ks_product}, BPFConductor, HTTP 流量, 可观测"
+description: "介绍如何查看 HTTP 流量。"
+weight: 03
+layout: "second"
+---
+
+
+HTTP 流量页面提供对集群内 HTTP 流量数据的全方位观测能力，帮助您实时掌握 HTTP 请求的详细日志，以及每个服务和容器组的流量数据，快速定位性能瓶颈或异常流量。
+

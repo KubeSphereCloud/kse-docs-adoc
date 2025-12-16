@@ -1,0 +1,7 @@
+---
+title: "证书管理"
+keywords: "Kubernetes, {ks_product}, 证书管理, 更新证书"
+description: "介绍如何使用证书管理扩展组件。"
+weight: 23
+layout: "second"
+---
