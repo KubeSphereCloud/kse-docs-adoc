@@ -1,0 +1,7 @@
+* 点击image:/images/ks-qkcp/zh/icons/topology_1.svg[topology_1,18,18]以默认视图查看拓扑图。默认视图下，您可以自由拖动拓扑节点。
+
+* 点击image:/images/ks-qkcp/zh/icons/topology_2.svg[topology_2,18,18]以排列视图查看拓扑图。拓扑节点将按照一定的方向排列，方便查看。
+
+* 点击image:/images/ks-qkcp/zh/icons/zoom_in.svg[zoom_in,18,18]/image:/images/ks-qkcp/zh/icons/zoom_out.svg[zoom_out,18,18]放大或缩小拓扑图。
+
+* 点击image:/images/ks-qkcp/zh/icons/maximize.svg[maximize,18,18]全屏查看拓扑图。

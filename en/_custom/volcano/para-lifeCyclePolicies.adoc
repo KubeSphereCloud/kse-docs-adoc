@@ -1,0 +1,24 @@
+[%header,cols="1a,4a"]
+|===
+|参数 |描述
+
+|事件
+|
+* **PodPending**：Pod 正在等待创建。
+* **PodRunning**：Pod 正在运行。
+* **PodFailed**：Pod 运行失败。
+* **PodEvicted**：Pod 被驱逐。
+* **Unknown**：Pod 状态未知。
+* **TaskCompleted**：Task 中已成功完成的 Pod 数量达到了该 Task 预设的完成要求。
+
+|动作
+
+|
+* **RestartJob**：重启整个作业。
+* **RestartTask**：重启 Task。
+* **RestartPod**：重启 Pod。
+* **AbortJob**：暂停该作业，不会清理已创建的 Pod 资源。
+* **TerminateJob**：终止作业运行，并清理删除所有相关的 Pod。
+* **CompleteJob**：强制将作业状态标记为“已完成”，来结束整个作业。
+* **ResumeJob**：恢复被暂停的作业。
+|===

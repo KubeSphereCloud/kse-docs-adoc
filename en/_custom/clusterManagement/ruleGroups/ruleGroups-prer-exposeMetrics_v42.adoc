@@ -1,0 +1,1 @@
+* 如需对应用程序的指标进行监控，您需要配置运行在容器中的应用程序，将符合 link:https://prometheus.io/docs/instrumenting/clientlibs/[Prometheus 规范]的监控指标暴露在某个服务端路径下，并在用于暴露工作负载的服务上设置监控导出器，以声明提供应用程序监控指标的路径。有关更多信息，请参阅xref:11-use-extensions/09-observability-platform/05-monitoring/08-edit-a-metrics-exporter.adoc[编辑监控导出器]。

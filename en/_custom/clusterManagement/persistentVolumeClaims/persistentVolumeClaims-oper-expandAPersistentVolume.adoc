@@ -1,0 +1,13 @@
+// :ks_include_id: b1b90c0bbcf94434a5daecc86d546c03
+. 在持久卷声明详情页面，点击**操作 > 扩展**。
+
+. 在**扩展卷**对话框，设置卷的容量，然后点击**确定**。
++
+--
+// Note
+include::../../../../_ks_components/admonitions/warning.adoc[]
+
+卷容量只能增加，不能减少。
+
+include::../../../../_ks_components/admonitions/admonEnd.adoc[]
+--

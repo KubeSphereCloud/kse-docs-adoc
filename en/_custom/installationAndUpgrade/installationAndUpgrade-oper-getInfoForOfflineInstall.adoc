@@ -1,0 +1,142 @@
+登录部署节点，进入离线包目录，获取节点信息和安装配置文件，用于后续执行 kk 命令。
+
+[source,bash]
+----
+cd offline
+----
+
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|后续步骤必须在离线包解压后的目录（如 `offline`）中执行，否则会导致操作失败。
+|===
+
+
+**一、获取节点信息: kkv4-inventory.yaml**
+
+
+. 获取节点信息文件。
++
+====
+[source,bash]
+----
+cp kubekey/runtime/kubekey.kubesphere.io/v1/inventories/default/default.yaml kkv4-inventory.yaml
+----
+
+节点信息示例如下：
+[source,yaml]
+----
+apiVersion: kubekey.kubesphere.io/v1
+kind: Inventory
+metadata:
+  name: default
+  namespace: default
+spec:
+  groups:
+    etcd:
+      hosts:
+      - scan-cqxbav3
+      vars: null
+    image_registry:
+      hosts: []
+      vars: null
+    k8s_cluster:
+      groups:
+      - kube_control_plane
+      - kube_worker
+      hosts: null
+      vars: null
+    kube_control_plane:
+      hosts:
+      - scan-cqxbav3
+      vars: null
+    kube_worker:
+      hosts:
+      - scan-cqxbav3
+      vars: null
+    nfs:
+      hosts: []
+      vars: null
+  hosts:
+    scan-cqxbav3:
+      connector:
+        host: 172.16.0.4
+        password: ""
+        port: "22"
+        user: root
+      internal_ipv4: 172.16.0.4
+      kubernetes:
+        custom_labels: {}
+  vars: null
+status: {}
+----
+====
+
+**二、获取安装配置文件: kkv4-config.json**
+
+. 安装 `jq`。
++
+--
+在 Ubuntu 操作系统上，执行以下安装命令：
+
+[source,bash]
+----
+sudo apt install jq
+----
+
+如果部署节点使用其他操作系统，请将 **apt** 替换为操作系统对应的软件包管理工具。
+--
+
+. 获取安装集群时的配置文件 `kkv4-config.json`。
++
+====
+[source,bash]
+----
+cd schema/config.json | jq '{spec: .["kubernetes.json"]}' > kkv4-config.json
+----
+配置信息示例：
+
+[source,yaml]
+----
+{
+  "spec": {
+    "kubernetes": {
+      "cluster_name": "cluster-01",
+      "kube_version": "v1.33.3",
+      "control_plane_endpoint": {
+        "host": "lb.kubesphere.local",
+        "port": 6443,
+        "type": "local"
+      }
+    },
+    "cri": {
+      "container_manager": "containerd"
+    },
+    "cni": {
+      "type": "calico",
+      "max_pods": 110,
+      "service_cidr": "10.233.0.0/18",
+      "pod_cidr": "10.233.64.0/18",
+      "ipv4_mask_size": 24,
+      "ipv6_mask_size": 64
+    },
+    "image_registry": {
+      "auth": {
+        "registry": "dockerhub.kubekey.local",
+        "username": "admin",
+        "password": "Harbor12345",
+        "insecure": true
+      }
+    },
+    "storage_class": {
+      "local": {
+        "enabled": true,
+        "default": true,
+        "path": "/var/openebs/local"
+      }
+    }
+  }
+}
+----
+====

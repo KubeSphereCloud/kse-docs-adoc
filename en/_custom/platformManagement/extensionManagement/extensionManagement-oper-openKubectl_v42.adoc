@@ -1,0 +1,2 @@
+// :ks_include_id: db20d1bbd2ed4dc9af2b84f07b0b87e3
+. 点击页面右上角的**组件坞**，选择 **kubectl**。

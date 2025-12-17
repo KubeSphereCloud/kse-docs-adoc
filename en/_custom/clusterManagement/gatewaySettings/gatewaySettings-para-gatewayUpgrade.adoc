@@ -1,0 +1,37 @@
+// :ks_include_id: 6fca3db90bdf4fd8bb61eb771c1a7308
+[%header,cols="1a,4a"]
+|===
+|参数 |描述
+
+|名称
+|网关的名称。启用网关后，系统自动设置网关名称。
+
+|状态
+|网关的状态：创建中、运行中、警告、或故障。
+
+|网关版本
+|`kubesphere-nginx-ingress` 的版本。
+
+|类型
+|网关的类型，为集群网关、企业空间网关或项目网关。
+
+|访问模式
+|网关服务的外部访问模式。
+
+include::../services/services-para-externalAccess.adoc[tag=bullets]
+
+|IP 地址
+|
+网关的外部访问地址。
+
+include::gatewaySettings-para-address.adoc[tag=bullets]
+
+|节点端口
+|网关服务的 HTTP 和 HTTPS 节点端口。仅在网关的外部访问模式为 NodePort 时显示。
+
+|副本数量
+|网关工作负载的副本数。
+
+|所属任务
+|升级网关实例所对应的任务。若升级网关实例，将自动创建升级任务。
+|===

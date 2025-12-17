@@ -1,7 +1,0 @@
----
-title: "全局监控"
-keywords: "Kubernetes, {ks_product}, 多集群, WizTelemetry 全局监控, 资源监控"
-description: "介绍如何查看多集群的资源监控数据。"
-weight: 03
-layout: "second"
----

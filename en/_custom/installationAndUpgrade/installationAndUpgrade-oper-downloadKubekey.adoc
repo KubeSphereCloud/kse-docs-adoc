@@ -1,0 +1,37 @@
+// :ks_include_id: e25e26f73c8441e69eef35173babd610
+
+. 如果您访问 GitHub/Googleapis 受限，请登录任意集群节点，执行以下命令设置下载区域：
++
+--
+// Bash
+include::../../../_ks_components/code/bash.adoc[]
+
+export KKZONE=cn
+
+include::../../../_ks_components/code/codeEnd.adoc[]
+--
+
+
+. 执行以下命令下载 KubeKey 最新版本：
++
+--
+// Bash
+include::../../../_ks_components/code/bash.adoc[]
+
+curl -sfL https://get-kk.kubesphere.io | sh -
+
+include::../../../_ks_components/code/codeEnd.adoc[]
+
+下载完成后当前目录下将生成 KubeKey 二进制文件 **kk**。
+--
+
+. 执行以下命令为 KubeKey 二进制文件 **kk** 添加执行权限：
++
+--
+// Bash
+include::../../../_ks_components/code/bash.adoc[]
+
+sudo chmod +x kk
+
+include::../../../_ks_components/code/codeEnd.adoc[]
+--

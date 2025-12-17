@@ -1,0 +1,33 @@
+**WizTelemetry 平台服务**：是 WizTelemetry 可观测平台各扩展组件的公共服务。是各个可观测性扩展组件通用的 APIServer，为所有可观测性扩展组件提供公共的后端平台服务。
+
+**WizTelemetry 数据流水线**: 提供可观测性数据的收集、转换和路由能力。
+
+**OpenSearch 分布式检索与分析引擎**：KubeSphere 默认使用的日志接收器，用于存储日志、审计、事件、通知历史等可观测数据。
+
+**WizTelemetry 日志**：提供多租户视角的云原生应用实时及历史日志收集、查询、导出、存储等功能，可对接如 ElasticSearch、OpenSearch、Kafka 等日志接收器。
+
+**WizTelemetry 事件**：可长期保存 Kubernetes 相关对象产生的事件，并提供多租户视角的事件检索和查看功能。
+
+**WizTelemetry 审计**：实时记录 KubeSphere 平台上的用户相关操作行为，并提供多租户视角的审计历史的检索及查看功能，可快速回溯相关用户的操作行为。
+
+**WizTelemetry 监控**：提供多租户视角的云原生资源监控能力，对集群，节点，工作负载、GPU、Kubernetes 控制面等对象的核心监控指标进行实时和历史数据展示。
+
+**WizTelemetry 告警**：基于 KubeSphere 采集的监控数据，可针对不同资源类型和监控指标，提供平台及租户视角的告警及告警规则管理功能。
+
+**WizTelemetry 全局监控**：是 WizTelemetry 可观测平台中提供跨集群资源监控、多集群告警的扩展组件，包含原有 Whizard 可观测中心的功能。
+
+**WizTelemetry 事件告警**：为 Kubernetes/KubeSphere 审计事件、Kubernetes 原生事件、以及容器日志定义告警规则，对传入的事件数据和日志数据进行评估，并将告警发送到指定的接收器，如 alertmanager。
+
+**WizTelemetry 通知**：管理多租户 Kubernetes 环境中的通知。它能够接收来自不同发送者的告警、云事件以及其他类型的事件（例如审计和 Kubernetes 事件），并根据租户标签（如命名空间或用户）将通知发送给相应的租户。
+
+**WizTelemetry 网络可观测**：用于在 Kubernetes 集群中部署和管理 eBPF 监控代理。内置了多个网络可观测性相关的 eBPF 程序/插件，可提供对第 4 层网络流量、第 7 层 HTTP 流量以及网络拓扑的深入洞察。
+
+**WizTelemetry 链路追踪**：基于 link:https://opentelemetry.io/docs/specs/otel/trace/[OpenTelemetry] 提供分布式链路追踪的功能。
+
+**Grafana for WizTelemetry**：一个开放且可组合的数据可视化和监控分析平台，内置众多仪表盘（Dashboard）来增强 WizTelemetry 可观测平台的可视化能力。
+
+**Grafana Loki for WizTelemetry**：存储 KubeSphere 日志、审计、事件及通知历史数据，并支持在 Grafana 控制台查看。
+
+**Grafana Alloy for WizTelemetry**：一个 OpenTelemetry Collector 发行版。除了收集 Kubernetes 日志、Prometheus 指标、OpenTelemetry 数据，还可以用作导出各种指标的 Exporter。
+
+**Grafana Tempo for WizTelemetry**：是一个开源、易于使用且高度可扩展的分布式跟踪后端。Tempo 具有成本效益，仅需对象存储即可运行，并且与 Grafana、Prometheus 和 Loki 深度集成。您可以将 Tempo 与开源跟踪协议（包括 Jaeger、Zipkin 或 OpenTelemetry）结合使用。

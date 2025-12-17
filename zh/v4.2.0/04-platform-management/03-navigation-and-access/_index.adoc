@@ -1,9 +1,0 @@
----
-title: "导航与快捷功能"
-keywords: "Kubernetes, {ks_product}, 导航, 组件坞, 快捷访问"
-description: "介绍平台的导航与快捷访问功能。"
-weight: 03
-layout: "second"
----
-
-为提升您在 KubeSphere 平台的操作效率，现提供多种快捷访问方式，如顶部导航栏、组件坞、工作台的快捷访问区域、可收起/展开的快捷访问栏和左侧导航栏等。

@@ -1,9 +1,0 @@
----
-title: "持续部署"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 使用 DevOps"
-description: "介绍如何创建持续部署以实现应用的部署。"
-weight: 04
-layout: "second"
----
-
-本节介绍如何管理持续部署，以通过 GitOps 持续部署资源。
