@@ -1,23 +1,23 @@
 ---
-title: "应用场景"
-description: "介绍 KubeSphere 的应用场景。"
+title: "Application Scenarios"
+description: "Introduces the application scenarios of KubeSphere."
 weight: 03
 ---
 
-KubeSphere 适用于以下场景。
+KubeSphere is suitable for the following scenarios.
 
-== 资源量化运营
+== Resource Quantification and Operations
 
-多部门资源管理往往会给运维带来巨大的资源管理压力，运维部门统计各业务线的资源利用率，评估各业务资源利用率的合理性，都需要巨大的工作时间成本。KubeSphere 提供多维度、多角度的资源量化统计方式，资源数据一目了然。
+Multi-department resource management often imposes significant pressure on operations teams. For the operations department, tasks such as calculating the resource utilization rates of various business lines and assessing the reasonableness of their resource usage require substantial time and effort. KubeSphere provides multi-dimensional and multi-perspective resource quantification and statistics, making resource data clear at a glance.
 
-== 多级权限管控
+== Multi-level Permission Control
 
-公司各业务线如何高效协同一直是个亘古难题，基础设施运维、应用运维以及业务开发人员如何能通过平台紧密合作，实现权限隔离成为了组织架构的核心需求。KubeSphere 提供 “三权分立” 的用户权限体系，平台管理员、集群运维和应用运维三大权限视角合理分配，促进部门协作。
+Efficient collaboration among different business lines within a company has always been a persistent challenge. How infrastructure operations, application operations, and business development personnel can work closely together through a platform while achieving permission isolation has become a core requirement of organizational structure. KubeSphere offers a "separation of powers" user permission system, reasonably distributing the three major permission perspectives—platform administrator, cluster operations, and application operations—to facilitate departmental collaboration.
 
-== 智能弹性运维
+== Intelligent Elastic Operations
 
-基础资源过度浪费会给企业带来额外的运营成本，如何有效分析资源使用的合理性、在不同的场景下进行高效资源弹性管理也成为运维人员的难题。KubeSphere 提供业务资源的智能推荐方案，定时分析，一键应用，同时支持自定义指标弹性伸缩，赋能智能运维。
+Excessive waste of basic resources can impose additional operational costs on enterprises. Effectively analyzing the reasonableness of resource usage and performing efficient elastic resource management under different scenarios have also become challenges for operations personnel. KubeSphere provides intelligent recommendations for business resources, featuring periodic analysis and one-click application. It also supports custom metric-based elastic scaling, empowering intelligent operations.
 
-== 云原生一栈式转型
+== One-stop Cloud Native Transformation
 
-不少企业转型云原生都会遇到技术选型难题，如何实现 DevOps 运维一体化，云原生微服务治理，云边协同，AI 人工智能以及云原生下的可观测性。各种技术方案的选型以及运维给各企业带来了极大的困扰。KubeSphere 集成业界最佳实践，提供高度图形化，一致性的使用体验，助力企业低成本走向云原生。
+Many enterprises encounter difficulties in technology selection when transitioning to cloud-native. How to achieve integrated DevOps operations, cloud-native microservices governance, cloud-edge collaboration, AI artificial intelligence, and observability in a cloud-native context—the selection of various technical solutions and their operations pose significant challenges for enterprises. KubeSphere integrates industry best practices, offering a highly graphical and consistent user experience to help enterprises transition to cloud-native at a low cost.

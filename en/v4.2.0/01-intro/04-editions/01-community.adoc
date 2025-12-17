@@ -1,94 +1,93 @@
 ---
-title: "社区版"
+title: "Community Edition"
 weight: 01
 ---
 
-link:https://www.kubesphere.io/zh/[KubeSphere 社区版]支持部署在任何基础设施环境，提供在线与离线安装，支持一键升级与扩容集群，提供多租户、多集群、云原生可观测性、应用生命周期、DevOps 等功能。
+link:https://www.kubesphere.io/[KubeSphere Community Edition] supports deployment on any infrastructure, offering both online and offline installation, one-click cluster upgrades and scaling, and provides features such as multi-tenancy, multi-cluster management, cloud-native observability, application lifecycle management, and DevOps.
 
-使用 KubeSphere 社区版，您将免费享受持续迭代的企业级功能，轻松构建云原生基石。
+With KubeSphere Community Edition, you will enjoy continuously iterated enterprise-grade features for free, effortlessly building the cornerstone of cloud-native.
 
-== 功能清单
+== Feature List
 
-// 和官网的功能清单页面一致，https://kubesphere.io/zh/features/
+// Consistent with the feature list page on the official website: https://kubesphere.io/features/
 
 [%header,cols="1a,4a"]
 |===
-|功能模块 |描述
+|Feature Module |Description
 
-|集群管理	|跨云、跨基础设施的多个 Kubernetes 集群的集中式可视化管理与运维	
-|多租户管理	|跨集群、跨项目的资源逻辑隔离、网络隔离和细粒度的访问控制能力
-|应用管理 |统一的应用生命周期管理能力，对 Helm、Operator 等类型应用提供统一的抽象层
-|K8s 资源管理 |提供 Web 控制台对接 Kubernetes 原生 API 快速创建与管理 Kubernetes 资源
-|扩展组件管理   |采用微内核+扩展组件的架构，按需定制、扩展平台能力
-|WizTelemetry 可观测 |对应用与基础设施性能及健康状态的全面洞察
-|DevOps	|提供端到端的工作流，集成主流 CI/CD 工具	
-|KubeSphere 网关	|基于流量的统一入口管理、七层负载均衡与多种路由策略	
-|GateKeeper |可灵活配置安全策略的准入控制器
-|Metrics Server	|可扩展、高效的容器资源度量源，为 Kubernetes 内置的自动扩展管道提供服务
-|NVIDIA GPU Operator	|在 Kubernetes 上创建、配置和管理 GPU
-|DeepSeek	|基于 ollama 运行 DeepSeek-R1 模型，对外提供 API 服务
-|Grafana	|开放且可组合的观测和数据可视化平台
-|Loki	|可扩展、高可用、多租户日志聚合系统
-|Higress	|基于 Istio 和 Envoy 的 API 网关
-|OB-Operator	|管理 Kubernetes 集群中的 OceanBase 相关资源
-|OceanBase Dashboard  |OceanBase 交互式管理应用
-|Fluid |一个开源的、原生 Kubernetes 的分布式数据集编排器和加速器
+|Cluster Management |Centralized visual management and operation of multiple Kubernetes clusters across clouds and infrastructures
+|Multi-Tenancy Management |Logical resource isolation, network isolation, and fine-grained access control across clusters and projects
+|Application Management |Unified application lifecycle management capability, providing a unified abstraction layer for applications like Helm and Operator
+|K8s Resource Management |Provides a web console to interface with native Kubernetes APIs for quick creation and management of Kubernetes resources
+|Extension Component Management |Adopts a microkernel + extension component architecture, allowing on-demand customization and platform capability extension
+|WizTelemetry Observability |Comprehensive insight into application and infrastructure performance and health status
+|DevOps |Provides an end-to-end workflow, integrating mainstream CI/CD tools
+|KubeSphere Gateway |Unified ingress management based on traffic, layer 7 load balancing, and multiple routing strategies
+|GateKeeper |Admission controller with flexible security policy configuration
+|Metrics Server |Scalable, efficient container resource metrics source, serving Kubernetes' built-in autoscaling pipeline
+|NVIDIA GPU Operator |Create, configure, and manage GPUs on Kubernetes
+|DeepSeek |Runs the DeepSeek-R1 model based on ollama, providing external API services
+|Grafana |Open and composable observability and data visualization platform
+|Loki |Scalable, highly available, multi-tenant log aggregation system
+|Higress |API gateway based on Istio and Envoy
+|OB-Operator |Manages OceanBase-related resources in Kubernetes clusters
+|OceanBase Dashboard |Interactive management application for OceanBase
+|Fluid |An open-source, Kubernetes-native distributed dataset orchestrator and accelerator
 |===
 
-== 资源配额
+== Resource Quotas
 
-KubeSphere 社区版最高可支持 128 vCPU 的集群规模，且仅支持 1 个集群。
+KubeSphere Community Edition supports clusters up to a maximum scale of 128 vCPUs and only supports 1 cluster.
 
-// 配额主要分成三个维度：全局配额、集群配额、企业空间配额，其中全局配额包括平台配额、扩展组件配额。
+// Quotas are mainly divided into three dimensions: global quotas, cluster quotas, and workspace quotas. Global quotas include platform quotas and extension component quotas.
 
-// === 平台配额
+// === Platform Quotas
 
 // [%header,cols="1a,1a"]
 // |===
-// |配额 |数量
+// |Quota |Quantity
 
-// |用户	|3 个	
-// |企业空间	|3 个（包含系统企业空间）	
-// |集群	|1 个	
-// |集群规模	|128 vCPU
-// |告警规则组	|30 条
+// |Users |3
+// |Workspaces |3 (including the system workspace)
+// |Clusters |1
+// |Cluster Scale |128 vCPU
+// |Alert Rule Groups |30
 // |===
 
-// === 扩展组件配额
+// === Extension Component Quotas
 
 // [%header,cols="1a,1a,1a"]
 // |===
-// |扩展组件 |配额项 |数量
+// |Extension Component |Quota Item |Quantity
 
-// |WizTelemetry 通知	|通知规则	|2 条
+// |WizTelemetry Notification |Notification Rules |2
 
-// .3+|DevOps	|项目	|3 个（每个集群）
-// |流水线	|10 个（每个 DevOps 项目）
-// |持续部署	|3 个（每个 DevOps 项目）
+// .3+|DevOps |Projects |3 (per cluster)
+// |Pipelines |10 (per DevOps project)
+// |Continuous Deployment |3 (per DevOps project)
 
-// |Gateway	|项目网关	|30 个（每个集群）
+// |Gateway |Project Gateways |30 (per cluster)
 // |===
 
-// === 集群配额
+// === Cluster Quotas
 
-// 可在集群页面，查看每个集群下的资源配额，如下：
+// You can view the resource quotas for each cluster on the cluster page, as follows:
 
 // [%header,cols="1a,1a"]
 // |===
-// |配额项 |数量
+// |Quota Item |Quantity
 
-// |工作负载模板	|30 个
-// |告警规则组	|30 条
+// |Workload Templates |30
+// |Alert Rule Groups |30
 // |===
 
-// === 企业空间配额
+// === Workspace Quotas
 
-// 可在企业空间页面，查看每个企业空间下的资源配额，如下：
+// You can view the resource quotas for each workspace on the workspace page, as follows:
 
 // [%header,cols="1a,1a"]
 // |===
-// |配额项 |数量
+// |Quota Item |Quantity
 
-// |应用仓库	|1 个
+// |Application Repositories |1
 // |===
-

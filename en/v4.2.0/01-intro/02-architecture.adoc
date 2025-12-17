@@ -1,107 +1,105 @@
 ---
-title: "产品架构"
-description: "介绍 KubeSphere LuBan 架构及扩展组件。"
+title: "Product Architecture"
+description: "Introduces the architecture and extension components of KubeSphere LuBan."
 weight: 02
 ---
 
-KubeSphere LuBan，是一个分布式的云原生可扩展开放架构，为扩展组件提供一个可热插拔的微内核。其中内核部分（KubeSphere Core）仅包含系统运行的必备基础功能，而将独立的业务模块分别封装在各个扩展组件（Extensions）中。用户可在系统运行时动态地安装、卸载、启用、禁用扩展组件。
+KubeSphere LuBan is a distributed, cloud-native, extensible, and open architecture that provides a hot-pluggable microkernel for extension components. The core part (KubeSphere Core) only includes essential basic functions required for system operation, while independent business modules are encapsulated in various extension components (Extensions). Users can dynamically install, uninstall, enable, or disable extension components while the system is running.
 
-== KubeSphere LuBan 架构
+== KubeSphere LuBan Architecture
 
-KubeSphere LuBan 架构设计如下图所示。
+The architectural design of KubeSphere LuBan is shown in the following diagram.
 
 image:/images/ks-qkcp/zh/v4.0/4.0-architecture.png[architecture,80%]
 
-== 为什么推出 KubeSphere LuBan
+== Why KubeSphere LuBan Was Introduced
 
-自 2018 年以来，KubeSphere 混合多云容器管理平台已发布过十几个版本，其中包括三个重大版本。为了满足用户需求，KubeSphere 集成了众多企业级功能，如多租户管理，多集群管理，DevOps，GitOps，服务网格，微服务，可观测（包括监控、告警、日志、审计、事件、通知等），应用商店，边缘计算，网络与存储管理等。
+Since 2018, the KubeSphere hybrid multi-cloud container management platform has released over a dozen versions, including three major releases. To meet user demands, KubeSphere has integrated numerous enterprise-grade features, such as multi-tenant management, multi-cluster management, DevOps, GitOps, service mesh, microservices, observability (including monitoring, alerting, logging, auditing, events, notifications, etc.), application store, edge computing, and network and storage management.
 
-虽然 KubeSphere 的一站式容器解决方案极大地提升了用户的容器使用体验，但也带来了如下挑战：
+Although KubeSphere's all-in-one container solution greatly enhances the user experience with containers, it also presents the following challenges:
 
-**发版周期长**
+**Long Release Cycles**
 
-在发布新版本时，需要等待所有组件完成开发、测试并通过集成测试。
+When releasing a new version, it is necessary to wait for all components to complete development, testing, and pass integration testing.
 
-**响应用户不及时**
+**Delayed Response to Users**
 
-由于各组件无法单独迭代，KubeSphere 发布后，对社区和用户组件反馈处理需要等待 KubeSphere 发布新版本后才能一并交付给用户，导致响应不够及时。
+Since components cannot be iterated independently, after a KubeSphere release, feedback from the community and users regarding components must wait for a new KubeSphere version to be released before being delivered, resulting in insufficiently timely responses.
 
-**代码耦合**
+**Code Coupling**
 
-尽管之前已能实现单独启用/禁用特定组件，但这些组件的前后端代码仍然耦合在一起，容易互相影响，架构上不够优雅。
+Although it was previously possible to individually enable/disable specific components, the frontend and backend code of these components were still coupled together, making them prone to mutual interference and architecturally inelegant.
 
-**系统资源占用过多**
+**Excessive System Resource Consumption**
 
-部分组件默认启用，对于没有相关需求的用户来说，可能会占用过多的系统资源。
+Some components are enabled by default, which may consume excessive system resources for users without related requirements.
 
-== KubeSphere LuBan 优势
+== Advantages of KubeSphere LuBan
 
-**插件式的核心框架**
+**Plugin-Based Core Framework**
 
-支持独立开发和部署组件以扩展系统的功能。组件可以根据需求进行添加、升级或移除，而不需要修改核心框架的代码。
+Supports independent development and deployment of components to extend system functionality. Components can be added, upgraded, or removed as needed without modifying the core framework's code.
 
-**全开放的基础 UI 组件库**
+**Fully Open Basic UI Component Library**
 
-组件对所有人开放，任何人都可以自由地访问、使用和扩展这些组件。用户根据自己的需求进行定制和扩展，以满足不同的设计和功能要求。
+Components are open to everyone; anyone can freely access, use, and extend these components. Users can customize and extend them according to their needs to meet different design and functional requirements.
 
-**前后端热更新、热修复**
+**Hot Updates and Hot Fixes for Frontend and Backend**
 
-开发者可以在系统运行时对前端和后端进行实时更新和修复，提高了开发和运维的效率，同时保证了应用程序的可用性和用户体验。
+Developers can perform real-time updates and fixes to the frontend and backend while the system is running, improving development and operational efficiency while ensuring application availability and user experience.
 
-**开放性扩展中心，生态共建**
+**Open Extension Center, Ecosystem Co-creation**
 
-我们提供一个开放的平台，鼓励第三方开发者通过组件向系统添加新的功能或增强现有功能，在系统的框架内进行开发和集成，并将他们的组件与系统进行无缝连接，共同构建一个健康、繁荣的生态系统。
+We provide an open platform that encourages third-party developers to add new features or enhance existing ones through components, develop and integrate within the system's framework, and seamlessly connect their components with the system, collectively building a healthy and prosperous ecosystem.
 
-== KubeSphere LuBan 如何帮助到您
+== How KubeSphere LuBan Can Help You
 
-KubeSphere LuBan 架构可以使以下人员受益：
+The KubeSphere LuBan architecture can benefit the following individuals:
 
-**KubeSphere 用户**
+**KubeSphere Users**
 
-KubeSphere 用户可以自由选择启用哪些 KubeSphere 扩展组件。同时还能将自己的应用无缝融入到 KubeSphere 控制台。此外，随着 KubeSphere 扩展组件生态的丰富，用户可以在 KubeSphere 扩展中心自由选择更丰富的产品和服务，最终实现容器管理平台的千人千面的效果。
+KubeSphere users can freely choose which KubeSphere extension components to enable. They can also seamlessly integrate their own applications into the KubeSphere console. Additionally, as the KubeSphere extension component ecosystem grows, users can freely select a richer variety of products and services from the KubeSphere Extension Center, ultimately achieving a personalized container management platform.
 
-**KubeSphere 维护者**
+**KubeSphere Maintainers**
 
-扩展机制使得维护者可以更聚焦 KubeSphere 核心功能的开发，并可使得 KubeSphere Core 更加轻量，版本发布节奏也可以加快。此外，因为扩展组件能够独立进行迭代，能够更及时地满足用户的需求。
+The extension mechanism allows maintainers to focus more on developing KubeSphere's core features, making KubeSphere Core lighter and accelerating version release cycles. Moreover, because extension components can iterate independently, they can more promptly meet user needs.
 
-**KubeSphere 贡献者**
+**KubeSphere Contributors**
 
-扩展机制的引入使得 KubeSphere Core 及 KubeSphere 其他扩展组件变得更加松耦合，开发也更加易于上手。
+The introduction of the extension mechanism makes KubeSphere Core and other KubeSphere extension components more loosely coupled and easier to develop.
 
-**云原生应用开发商（ISV）或其他开源项目**
+**Cloud-Native Application Developers (ISVs) or Other Open-Source Projects**
 
-众多 ISV 或其他开源项目可以低成本将产品或开源项目无缝融入到 KubeSphere 生态系统中。比如 Karmada/KubeEdge 的开发人员可以基于 KubeSphere LuBan 开发独立的 Karmada/KubeEdge 控制台。
+Numerous ISVs or other open-source projects can seamlessly integrate their products or open-source projects into the KubeSphere ecosystem at low cost. For example, Karmada/KubeEdge developers can develop independent Karmada/KubeEdge consoles based on KubeSphere LuBan.
 
-== 什么是 KubeSphere 扩展组件？
+== What is a KubeSphere Extension Component?
 
-KubeSphere 扩展组件是一个可以对 KubeSphere 功能进行扩展并借助 Helm 进行编排的，遵循 KubeSphere 扩展组件开发规范的 Helm Chart。
+A KubeSphere extension component is a Helm Chart that can extend KubeSphere's functionality, orchestrated via Helm, and adheres to the KubeSphere extension component development specifications.
 
-作为云原生领域的开发者，您不必再花大量的时间去学习一个私有的应用编排方式。
+As a developer in the cloud-native field, you no longer need to spend a significant amount of time learning a proprietary application orchestration method.
 
-可前往 link:https://kubesphere.com.cn/extensions/marketplace/[KubeSphere Marketplace] 查看、安装已发布的扩展组件。
+Visit link:https://kubesphere.com.cn/extensions/marketplace/[KubeSphere Marketplace] to view and install published extension components.
 
-== KubeSphere 扩展组件可以做什么？
+== What Can KubeSphere Extension Components Do?
 
-从前端 UI 到后端 API，KubeSphere 的几乎每个部分都可以通过扩展 API 进行定制和增强。KubeSphere 的许多核心功能也都是作为扩展构建的，并使用相同的扩展 API。
+From the frontend UI to the backend API, almost every part of KubeSphere can be customized and enhanced through extension APIs. Many of KubeSphere's core features are also built as extensions using the same extension APIs.
 
-以下是使用扩展 API 可以实现的一些示例：
+Here are some examples of what can be achieved using extension APIs:
 
-. 在项目的侧边导航栏，注入新的菜单与功能页面，支持管理更多类型的资源。
-. 在平台层级菜单中注入功能入口，对平台的管理能力进行增强。
-. 直接嵌入已有的第三方功能组件页面到 KubeSphere，对各分散的系统进行聚合。
-. 覆盖 KubeSphere 已有的页面路由，实现您独有的业务逻辑。
-. 对 KubeSphere 的 API 进行扩展。
+. Inject new menus and functional pages into the project's sidebar navigation to support managing more types of resources.
+. Inject functional entry points at the platform level menu to enhance platform management capabilities.
+. Directly embed existing third-party functional component pages into KubeSphere to aggregate various dispersed systems.
+. Override existing page routes in KubeSphere to implement your unique business logic.
+. Extend KubeSphere's APIs.
 
-如果您想更全面地了解扩展 API，请参阅link:https://dev-guide.kubesphere.io/extension-dev-guide/zh/feature-customization/[扩展能力]。
+If you want to understand extension APIs more comprehensively, please refer to link:https://dev-guide.kubesphere.io/extension-dev-guide/zh/feature-customization/[Extension Capabilities].
 
-== 如何构建扩展组件？
+== How to Build an Extension Component?
 
-请参阅link:https://dev-guide.kubesphere.io/extension-dev-guide/zh/best-practice/develop-example/[开发案例]章节来熟悉如何构建扩展组件。
+Please refer to the link:https://dev-guide.kubesphere.io/extension-dev-guide/zh/best-practice/develop-example/[Development Examples] section to familiarize yourself with how to build extension components.
 
-如果您在扩展组件的开发过程中有疑问，请尝试在 link:https://github.com/kubesphere/kubesphere/issues/new/choose[GitHub Issue] 获得帮助。
+If you have questions during the development of extension components, try seeking help via link:https://github.com/kubesphere/kubesphere/issues/new/choose[GitHub Issue].
 
+== How to Publish an Extension Component?
 
-== 如何发布扩展组件？
-
-请参阅link:https://dev-guide.kubesphere.io/extension-dev-guide/zh/packaging-and-release/release/[发布扩展组件]，了解如何提交扩展组件到 KubeSphere Marketplace。
-
+Please refer to link:https://dev-guide.kubesphere.io/extension-dev-guide/zh/packaging-and-release/release/[Publishing Extension Components] to learn how to submit extension components to the KubeSphere Marketplace.
