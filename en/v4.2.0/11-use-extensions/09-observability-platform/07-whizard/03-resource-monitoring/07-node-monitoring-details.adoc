@@ -1,0 +1,112 @@
+---
+title: "查看节点的监控详情"
+keywords: "Kubernetes, {ks_product}, WizTelemetry 全局监控, 节点, 资源用量排行"
+description: "介绍如何查看节点的资源用量详情。"
+weight: 07
+---
+
+:ks_navigation: **全局监控 > 节点**
+
+
+本节介绍如何查看单个节点的监控详情。
+
+
+== 前提条件
+
+您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
+
+
+== 操作步骤
+
+include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
+
++
+
+include::../../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
+
++
+
+include::../../../../../../_ks_components/oper-navigate.adoc[]
+
+. 在节点列表中点击一个节点的名称打开其详情页面。
+
+. 在详情页面的上方区域，查看当前节点的基本信息。
++
+--
+* 点击**管理节点**可进入节点详情页面。
+* 点击image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18]可隐藏该区域。
+--
+
+. 在详情页面的**概览**页签下，查看节点的概览信息。
++
+--
+[%header,cols="1a,4a"]
+|===
+|功能区 |描述
+
+|节点健康
+|显示节点的调度状态、就绪状态、以及网络、内存、磁盘、进程压力。如果显示image:/images/ks-qkcp/zh/icons/check-healthy.svg["healthy",15px,15px] 则表明状态正常，如果显示image:/images/ks-qkcp/zh/icons/substract-unhealthy.svg["unhealthy",15px,15px] 则表明出现告警。
+
+* **调度状态**：节点是否被正常调度。
+
+* **就绪状态**：节点是否已经准备好接收容器组。
+
+* **网络可用性**：节点的网络配置是否正确。
+
+* **内存压力**：节点剩余内存是否小于阈值，默认阈值为 100 MiB。
+
+* **磁盘压力**：节点剩余磁盘空间或 inode 数量是否小于阈值，默认磁盘空间阈值为磁盘空间总量的 10%，默认 inode 数量阈值为 inode 最大数量的 5%。
+
+* **进程压力**：节点上可创建的进程数量是否小于阈值。新安装的 KubeSphere 集群默认未设置进程数量阈值。
+
+|实时资源用量
+|当前节点的 CPU、内存、磁盘的实时用量和总量。
+
+点击相应区域，可查看该资源的实时用量百分比。
+
+|节点配额统计
+|当前节点的 CPU 配额、内存配额和临时存储配额，包含预留数量、上限数量和总量。
+
+|容器组
+|当前节点上各种类型容器组的数量。
+
+容器组状态类型包括：
+
+include::../../../../../_custom/clusterManagement/pods/pods-para-podStatus_overview.adoc[]
+
+容器组 QoS（服务质量）类型包括：
+
+include::../../../../../_custom/clusterManagement/pods/pods-para-qosTypes.adoc[]
+
+include::../../../../../_custom/clusterManagement/pods/pods-para-oomTypes.adoc[]
+
+|Kubelet 的健康状况
+|
+* **容器组启动时间**：Pod 从创建到进入运行状态所需的时间。  
+* **容器状态同步周期耗时（PLEG Relist Duration）**：Kubelet 周期性检查容器状态（如存活/就绪）的耗时。  
+* **容器运行时操作耗时（Runtime Operator Duration）**：容器运行时执行操作的耗时（如启停容器）。  
+* **存储操作耗时（Storage Operator Duration）**：Kubelet 处理存储相关操作（如挂载卷）的耗时。
+|===
+--
+
+. 点击详情页面的**容器组**页签，查看节点上所有容器组的监控信息。
++
+--
+include::../../../../../_custom/WizTelemetry/sort-by-fields-and-order.adoc[]
+
+* 在列表上方点击搜索框并输入关键字，可按名称搜索容器组。
+
+include::../../../../../../_ks_components/oper-refreshListData.adoc[]
+
+include::../../../../../../_ks_components/oper-customizeColumns.adoc[]
+--
+
+. 点击详情页面的**监控**页签，查看监控指标在指定时间范围内的详细信息。
++
+--
+include::../../../../../../_ks_components/oper-selectTimeRange.adoc[]
+
+include::../../../../../../_ks_components/oper-Autorefresh.adoc[]
+
+include::../../../../../../_ks_components/oper-refreshData.adoc[]
+--

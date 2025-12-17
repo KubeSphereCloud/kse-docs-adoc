@@ -1,0 +1,49 @@
+---
+title: "启用企业空间网络隔离"
+keywords: "Kubernetes, {ks_product}, 企业空间, 企业空间设置, 启用和禁用网络隔离"
+description: "介绍如何启用和禁用企业空间网络隔离。"
+weight: 02
+---
+
+:ks_permission: **企业空间网络隔离管理**
+:ks_navigation: **服务网络 > 企业空间网络隔离**
+
+
+本节介绍如何启用企业空间网络隔离。
+
+启用企业空间网络隔离后，属于该企业空间的容器组将不能被企业空间外部的客户端访问，也不能被其所属集群外部的客户端访问。
+
+启用企业空间网络隔离默认不限制出站流量，但您可以选择是否限制出站流量。限制出站流量后，该企业空间将不能访问其他企业空间，只能访问当前企业空间内的资源。
+
+但是，在启用企业空间网络隔离（含出站流量限制）的情况下，您可以通过link:../04-set-whitelist/[添加白名单]，放行特定的项目、服务、网段或端口，以便与企业空间某一项目中的容器组相互通信。
+
+== 前提条件
+
+:relfileprefix: ../../../../
+* {empty}
+include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requiredPermission_v4.adoc[]
+
+:relfileprefix: ./
+
+* 企业空间所属的集群需要安装 **KubeSphere 网络**扩展组件。
+
+== 操作步骤
+
+include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+. （可选）勾选**出站流量限制**后，该企业空间将不能访问其他企业空间。
+
+. 点击右侧的开关启用或禁用企业空间网络隔离。
++
+[.admon.note,cols="a"]
+|===
+|说明
+
+|启用“企业空间网络隔离”后，不支持开启或禁用“出站流量限制”。您需要禁用“企业空间网络隔离”，再行勾选/取消勾选“出站流量限制”。
+|===

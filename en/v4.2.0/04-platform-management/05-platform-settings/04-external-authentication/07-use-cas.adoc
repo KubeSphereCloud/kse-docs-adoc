@@ -1,0 +1,104 @@
+---
+title: "CAS 身份验证"
+keywords: "Kubernetes, KubeSphere, CAS, 身份提供者, 身份验证"
+description: "了解如何在 KubeSphere 上配置 CAS 服务。"
+weight: 07
+---
+
+:ks_navigation: **配置 > 保密字典**
+
+
+KubeSphere 支持通过 Central Authentication Service (CAS) 进行外部身份验证，以便使用 CAS 的用户名和密码登录 KubeSphere Web 控制台。
+
+平台管理员可以通过 secret（保密字典）配置 CAS 身份验证。
+
+== 操作步骤
+
+include::../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
+
+. 点击**集群管理**，并进入 host 集群。
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-clickCreate.adoc[]
+
+. 在**创建保密字典**对话框，点击右上角的**编辑 YAML** 开关，使用 yaml 创建保密字典。
+
+. 按照以下示例及参数说明修改 yaml 文件，配置完成后，点击**创建**。
+
+. 登出 KubeSphere Web 控制台，在登录页面，点击**通过 cas 登录**，输入 CAS 用户名和密码进行登录。
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|
+多集群环境中，只需要在主集群中进行配置。
+|===
+
+
+== CAS 基本配置
+
+[source,yaml]
+----
+apiVersion: v1
+kind: Secret
+metadata:
+  namespace: kubesphere-system  # 请勿修改
+  name: identity-provider-cas  # 确保该 Secret 名称在 Kubernetes 集群中唯一
+  labels:
+    config.kubesphere.io/type: identityprovider # 请勿修改
+    config.kubesphere.io/identityprovider: cas # 与 configuration.yaml 中的 name 字段保持一致
+type: config.kubesphere.io/identityprovider # 请勿修改
+
+stringData:
+  configuration.yaml: |
+    name: cas
+    type: CASIdentityProvider
+    mappingMethod: auto
+    hidden: false
+    disabled: false
+    displayName: "cas"
+    provider:
+      # 必填项
+      redirectURL: "https://your-app.com/cas/callback"
+      casServerURL: "https://cas.example.com/cas"
+----
+
+
+== CAS 完整配置
+
+以下仅展示 `stringData:configuration.yaml` 下 `provider` 部分的配置，其他部分请与 link:#_cas_基本配置[CAS 基本配置]的相应部分保持相同。
+
+[source,yaml]
+----
+    provider:
+      # 必填项
+      redirectURL: "https://your-app.com/cas/callback"
+      casServerURL: "https://cas.example.com/cas"
+      
+      # 可选项
+      insecureSkipVerify: false
+      displayNameAttribute: "displayName"
+----
+
+== CAS 参数说明
+
+此为 `stringData:configuration.yaml` 下 `provider` 部分的参数说明。保密字典中其他部分的参数说明，请参阅link:../01-set-up-external-authentication/#_参数说明[配置外部身份验证]。
+
+[%header,cols="2a,1a,1a,1,3a"]
+|===
+|参数 |类型 |必填 |默认值 |说明
+
+| redirectURL 	|string  |是 	 |-	  |CAS 客户端回调地址 
+
+|casServerURL |string	 |是 	 |- 	|CAS 服务器的根 URL
+
+|insecureSkipVerify 	|bool	 |否	|false 	|是否跳过 TLS 证书验证
+
+|displayNameAttribute 	|string 	|否	|-	|用户显示名称的属性名称 
+|===

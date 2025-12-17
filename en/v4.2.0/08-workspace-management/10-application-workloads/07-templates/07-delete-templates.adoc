@@ -1,0 +1,61 @@
+---
+title: "删除工作负载模板"
+keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 工作负载, 删除工作负载模板"
+description: "介绍如何删除工作负载模板。"
+weight: 07
+---
+
+:ks_permission: **应用负载管理**
+:ks_navigation: **应用负载 > 工作负载模板**
+
+
+本节介绍如何删除工作负载模板。
+
+
+== 前提条件
+
+
+:relfileprefix: ../../../../
+
+include::../../../../_custom/projectManagement/projectManagement-prer-requiredPermission_v42.adoc[]
+
+:relfileprefix: ./
+
+
+
+== 删除单个工作负载模板
+
+include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
+
++
+
+include::../../../../_custom/clusterManagement/workloadTemplates/workloadTemplates-oper-deleteASingleTemplate.adoc[]
+
+
+== 批量删除工作负载模板
+
+include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
+
++
+
+include::../../../../_custom/clusterManagement/workloadTemplates/workloadTemplates-oper-deleteMultipleTemplates.adoc[]
++
+--
+include::../../../../_custom/note-separateNamesByComma.adoc[]
+--

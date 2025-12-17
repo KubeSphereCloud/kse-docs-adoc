@@ -1,0 +1,44 @@
+---
+title: "扩展组件使用"
+keywords: "Kubernetes, {ks_product}, 扩展组件, 使用指南, DevOps, DMP, whizard, 可观测组件"
+description: "介绍如何使用各个扩展组件。"
+weight: 11
+icon: "/images/docs/common/docs.svg"
+layout: "second"
+---
+
+本节介绍如何使用 KubeSphere 的各个扩展组件。
+
+// KubeSphere 社区版、标准版、高级版和旗舰版支持的扩展组件范围以及部分功能的资源配额不同，请以实际为准。
+
+include::../../_custom/extensionSupported/community-supported.adoc[]
+
+ifeval::["{file_output_type}" == "pdf"]
+== 产品版本
+
+本文档适用于 KubeSphere v4.2.0 版本。
+
+== 读者对象
+
+本文档主要适用于以下读者：
+
+* KubeSphere 用户
+
+* 交付工程师
+
+* 运维工程师
+
+* 售后工程师
+
+
+== 修订记录
+
+[%header,cols="1a,1a,3a"]
+|===
+|文档版本 |发布日期 |修改说明
+
+|01
+|{pdf_releaseDate}
+|第一次正式发布。
+|===
+endif::[]

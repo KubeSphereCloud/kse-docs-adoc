@@ -1,0 +1,238 @@
+---
+title: "从 KubeSphere 开源版升级到社区版 v4.2.0"
+weight: 05
+---
+
+本节介绍如何从 KubeSphere 开源版 v3.x 或 v4.x 升级到 KubeSphere 社区版 v4.2.0。
+
+
+== 前提条件
+
+* 请确保当前 Kubernetes 版本为 v1.23.x ~ v1.32.x。
+
+* 若扩展组件有特殊配置，需备份扩展组件配置。在“扩展组件配置”对话框中，下载文件备份。
+
+* {empty}
+include::../../../_custom/installationAndUpgrade/installationAndUpgrade-prer-backUpData.adoc[]
+
+== 步骤 1：升级前环境检查
+
+. 检查当前集群规模。
++
+KubeSphere 社区版的总集群规模**不得超过 128 vCPU**。集群超出规模后，仅可查看资源，无法创建、变更资源。在升级前运行以下脚本查看当前集群的规模。
+
+.. 创建 `collect-node-info.sh` 脚本文件。
++
+--
+[source,bash]
+----
+vi collect-node-info.sh
+----
+
+粘贴以下内容并保存：
+
+[source,bash]
+----
+#!/bin/bash
+t=0
+printf "┌────────────────────┬─────────────────────────┬────────────┐\n│ %-18s │ %-23s │ %-10s │\n├────────────────────┼─────────────────────────┼────────────┤\n" "Cluster" "Node" "CPU(cores)"
+while IFS=$'\t' read -r c k; do
+  [[ -n $k ]] && f=$(mktemp) && echo "$k"|base64 -d>"$f" && a="--kubeconfig=$f"
+  cc=0
+  while read -r n cpu; do
+    [[ $cpu == *m ]] && v=$(awk "BEGIN{print ${cpu%m}/1000}") || v=$cpu
+    printf "│ %-18s │ %-23s │ %-10s │\n" "$c" "$n" "$v"
+    cc=$(awk "BEGIN{print $cc+$v}")
+  done < <(kubectl $a get nodes -o jsonpath='{range .items[*]}{.metadata.name}{" "}{.status.capacity.cpu}{"\n"}{end}')
+  printf "│ %-18s │ %-23s │ %-10s │\n" "$c" "Cluster Total" "$cc"
+  t=$(awk "BEGIN{print $t+$cc}")
+  [[ -n $f ]] && rm -f "$f"
+done < <(
+  if [[ $(kubectl get clusters -o json 2>/dev/null | jq '.items|length') -eq 0 ]]; 
+    then echo -e "\t"
+  else
+    kubectl get clusters -o json | jq -r '.items[] | [.metadata.name,.spec.connection.kubeconfig] | @tsv'
+  fi
+)
+printf "├────────────────────┼─────────────────────────┼────────────┤\n│ %-18s │ %-23s │ %-10s │\n└────────────────────┴─────────────────────────┴────────────┘\n" "All Clusters" "" "$t"
+----
+--
+
+.. 运行脚本。
++
+====
+[.admon.note,cols="a"]
+|===
+|说明
+
+|在执行脚本前，需要安装 `jq` JSON 处理器。请根据你的操作系统，选择对应的安装方法。
+|===
+
+[source,bash]
+----
+bash collect-node-info.sh
+----
+====
+
+.. 查看最后一列中的 CPU 数据。
+
+. 确认待升级的扩展组件是否在社区版的支持清单内。
++
+--
+include::../../../_custom/extensionSupported/community-supported.adoc[]
+--
+
+. 检查当前部署环境是否符合 link:../../01-preparations/01-supported-k8s/[KubeSphere 环境要求]。
+
+== 步骤 2：数据备份
+
+. 在集群节点上安装 KubeSphere 命令行工具。
++
+[source,bash]
+----
+IMAGE=registry.cn-beijing.aliyuncs.com/kse/cli:latest
+POD=kubesphere-cli
+NS=default
+
+kubectl run "$POD" -n "$NS" --image="$IMAGE" -- sleep 120 \
+  && kubectl wait --for=condition=Ready pod/"$POD" -n "$NS" --timeout=60s \
+  && kubectl cp "$NS/$POD":/usr/local/bin/ks /usr/local/bin/ks \
+  && chmod +x /usr/local/bin/ks \
+  && ln -sf /usr/local/bin/ks /usr/local/bin/kubectl-ks \
+  && kubectl delete pod "$POD" -n "$NS" --wait=false
+----
+
+
+. 检查 KubeSphere 组件的运行状态。
++
+--
+[source,bash]
+----
+ks status
+----
+
+如果最后显示如下信息，表明各组件状态正常。
+
+----
+✅ All components are running normally. Review any warning messages above if applicable.
+----
+--
+
+. 备份 KubeSphere 及扩展组件的 CR（Custom Resource）数据。
++
+--
+[source,bash]
+----
+ks backup
+----
+
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|此命令只备份 CR 数据。为避免数据丢失，请在卸载前备份所有重要数据。
+
+|===
+
+如果最后显示如下信息，表明备份成功。
+
+----
+✅ Backup completed. File saved at: 20250925/backup.tgz
+----
+--
+
+== 步骤 3：卸载和数据清理
+
+卸载 KubeSphere 及扩展组件并清理数据。
+
+[source,bash]
+----
+ks uninstall --purge
+----
+
+如果最后显示如下信息，表明卸载清理成功。
+
+----
+✅ Uninstallation completed successfully.
+----
+
+== 步骤 4：安装 KubeSphere 社区版
+
+参阅link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/#_安装_kubesphere[部署文档]安装 KubeSphere。
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|KubeSphere 社区版和 KubeSphere 企业版的安装命令相同。
+
+|===
+
+== 步骤 5：安装扩展组件
+
+ifeval::["{file_output_type}" == "html"]
+在 KubeSphere Web 控制台link:../../../06-extension-management/01-install-extensions/[安装您所需的扩展组件]。对于已备份特殊配置的扩展组件，可一键上传配置文件。
+
+endif::[]
+
+ifeval::["{file_output_type}" == "pdf"]
+在 KubeSphere Web 控制台安装您所需的扩展组件。对于已备份特殊配置的扩展组件，可一键上传配置文件。
+
+endif::[]
+
+== 步骤 6：数据迁移
+
+迁移 KubeSphere 或扩展组件的数据，恢复备份数据，实现数据跨集群迁移。
+
+**目前仅支持以下三种数据的迁移：**
+
+* `ks-core`：包含用户、RBAC 规则、企业空间。
+
+* `DevOps`: 包含凭证、流水线、持续部署。
+
+* ``KubeSphere 网关``（gateway）的数据。
+
+**迁移步骤：**
+
+. 迁移 ks-core 的数据。
++
+--
+[source,bash]
+----
+ks migrate ks-core
+----
+
+执行命令后，按照提示输入 `y` 回车，可看到 ks-core 相关资源已自动创建。输出示例如下：
+----
+15:44:29 INFO  Found 2 users to migrate
+15:44:29 INFO  iam.kubesphere.io/v1beta1, Kind=User/admin in cluster unchanged
+15:44:29 INFO  iam.kubesphere.io/v1beta1, Kind=User/cindy in cluster created
+15:44:29 INFO  Found 2 workspacetemplates to migrate
+15:44:29 INFO  tenant.kubesphere.io/v1beta1, Kind=WorkspaceTemplate/system-workspace in cluster unchanged
+15:44:29 INFO  tenant.kubesphere.io/v1beta1, Kind=WorkspaceTemplate/ws1 in cluster created
+----
+
+
+在 KubeSphere Web 控制台查看，可发现用户、企业空间等已迁移成功。
+--
+
+. 迁移扩展组件的数据，以 DevOps 为例。
++
+--
+[source,bash]
+----
+ks migrate devops
+----
+
+执行命令后，按照提示输入 `y` 回车，可看到 DevOps 相关资源已自动创建。
+
+在 KubeSphere Web 控制台查看，可发现凭证、流水线、持续部署已迁移成功。
+--
+
+至此，KubeSphere 完成全部升级。
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+---
+title: "扩展组件管理"
+keywords: "Kubernetes, {ks_product}, 扩展组件管理"
+description: "介绍如何安装、管理扩展组件。"
+weight: 06
+icon: "/images/docs/common/docs.svg"
+layout: "second"
+---
+
+
+
+本节介绍如何安装、配置、升级和卸载扩展组件。
+
+KubeSphere 扩展组件，是构建在 KubeSphere LuBan 之上、用以扩展并增强 KubeSphere 产品能力、进一步满足企业各类型业务需求的应用形态。KubeSphere 安装完成后默认仅启用了核心组件。建议您在扩展中心安装扩展组件以充分利用 KubeSphere 的功能特性。
+
+
+ifeval::["{file_output_type}" == "pdf"]
+
+== 产品版本
+
+本文档适用于 KubeSphere v4.2.0 版本。
+
+== 读者对象
+
+本文档主要适用于以下读者：
+
+* KubeSphere 用户
+
+* 交付工程师
+
+* 运维工程师
+
+* 售后工程师
+
+
+== 修订记录
+
+[%header,cols="1a,1a,3a"]
+|===
+|文档版本 |发布日期 |修改说明
+
+|01
+|{pdf_releaseDate}
+|第一次正式发布。
+|===
+
+endif::[]

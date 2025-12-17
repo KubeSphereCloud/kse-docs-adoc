@@ -1,0 +1,14 @@
+---
+title: "EdgeWize"
+keywords: "Kubernetes, {ks_product}, 集群管理, 边缘集群, EdgeWize"
+description: "介绍如何使用 EdgeWize 管理边缘集群。"
+weight: 17
+---
+
+EdgeWize 边缘计算平台是一款面向边缘计算场景的云边协同基础设施平台，它建立在业界流行的 Kubernetes 容器编排引擎之上，借助可拔插架构整合并优化边缘计算场景下的关键功能模块，为企业用户提供可落地、可迭代、面向场景的综合边缘计算解决方案，帮助企业用户快速构建一个开放、易用、智能的边缘容器应用管理平台，助力客户实现业务的边缘化转型。
+
+安装 EdgeWize 扩展组件后，点击顶部导航栏上的image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18]图标，点击 **edgewize-io**，进入 EdgeWize 边缘计算平台。
+
+有关如何使用 EdgeWize 边缘计算平台，请参阅 link:https://edgewize-docs.kubesphere.com.cn[EdgeWize 使用指南]。
+
+

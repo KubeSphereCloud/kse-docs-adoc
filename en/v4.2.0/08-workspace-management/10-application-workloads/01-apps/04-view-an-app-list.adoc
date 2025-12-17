@@ -1,0 +1,86 @@
+---
+title: "查看应用列表"
+keywords: "Kubernetes, {ks_product}, 项目管理, 应用, 查看应用列表"
+description: "介绍如何查看应用列表。"
+weight: 04
+---
+
+
+:ks_permission: **应用实例查看**
+:ks_navigation: **应用负载 > 应用**
+
+
+本节介绍如何查看应用列表。
+
+
+== 前提条件
+
+:relfileprefix: ../../../../
+
+include::../../../../_custom/projectManagement/projectManagement-prer-requiredPermission_v42.adoc[]
+
+:relfileprefix: ./
+
+
+== 操作步骤
+
+include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
+
++
+====
+* 应用列表提供以下信息：
++
+--
+[%header,cols="1a,4a"]
+|===
+|参数 |描述
+
+|名称
+|应用的名称。
+
+include::../../../../_custom/projectManagement/apps/apps-para-status_v4.adoc[]
+
+|企业空间
+|应用所属的企业空间。
+
+|项目
+|应用所属的项目。
+
+|集群
+|应用所属的集群。
+
+|操作者
+|创建应用的用户。
+
+|应用类型
+|应用模板的类型，如 **helm 应用**、**yaml 应用** 或 **operator 应用**。
+
+|应用模板
+|创建应用所使用的应用模板。仅对基于模板的应用显示。
+
+|版本
+|应用的版本号。
+
+* 对于基于模板的应用，显示 Helm Chart 的版本。
+
+// * 对于自制应用，显示用户自定义的版本号。
+
+|更新时间
+|应用的更新时间。
+|===
+--
+
+* 在列表上方点击搜索框并输入关键字，可按名称搜索应用。
+
+include::../../../../../_ks_components/oper-refreshListData.adoc[]
+
+include::../../../../../_ks_components/oper-customizeColumns.adoc[]
+====

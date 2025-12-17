@@ -1,0 +1,55 @@
+---
+title: "启用项目网络隔离"
+keywords: "Kubernetes, {ks_product}, 项目管理, 项目设置, 网络隔离, 启用网络隔离"
+description: "介绍如何启用项目网络隔离。"
+weight: 03
+---
+
+:ks_permission: **项目网络隔离管理**
+:ks_navigation: **服务网络 > 项目网络隔离**
+
+
+本节介绍如何启用项目网络隔离。
+
+启用项目网络隔离后，当前项目中的容器组将不能被其他项目的容器组、其他节点主机环境以及集群外部的所有网段访问。
+
+// 默认对出站没有限制，即在未设置白名单条目的情况下，当前项目中的容器组可以与其他项目的容器组、其他节点主机环境以及集群外部的所有网段通信。添加白名单条目后，仅允许当前项目中的容器组与特定项目中的容器组、其他节点主机环境和集群外部网段通信。
+
+启用项目网络隔离默认不限制出站流量，但您可以选择是否限制出站流量。限制出站流量后，当前项目中的容器组将不能访问其他项目，只能访问当前项目内的资源。
+
+但是，在启用项目网络隔离（含出站流量限制）的情况下，您可以通过link:../04-set-whitelist/[添加白名单]，放行特定的项目、服务、网段或端口，以便与当前项目中的容器组相互通信。
+
+== 前提条件
+
+:relfileprefix: ../../../../
+* {empty}
+include::../../../../_custom/projectManagement/projectManagement-prer-requiredPermission_v42.adoc[]
+
+:relfileprefix: ./
+
+* 项目所属的集群需要安装 **KubeSphere 网络**扩展组件。
+
+== 操作步骤
+
+include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
+
++
+
+. （可选）勾选**出站流量限制**后，该项目将不能访问其他项目。
+
+. 点击右侧的开关启用或禁用项目网络隔离。
++
+[.admon.note,cols="a"]
+|===
+|说明
+
+|启用“项目网络隔离”后，不支持开启或禁用“出站流量限制”。您需要禁用“项目网络隔离”，再行勾选/取消勾选“出站流量限制”。
+|===

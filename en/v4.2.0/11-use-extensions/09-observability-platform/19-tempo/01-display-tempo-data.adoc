@@ -1,0 +1,122 @@
+---
+title: "使用 Tempo 可视化 WizTelemetry 链路追踪的数据"
+keywords: "Kubernetes, {ks_product}, Grafana, Tempo, dashboard, 可观测"
+description: "介绍如何在 Grafana 可视化 Tempo 中的分布式追踪数据。"
+weight: 01
+---
+
+
+本节介绍如何使用 Grafana Tempo for WizTelemetry（简称为 Tempo） 将 WizTelemetry 链路追踪的分布式追踪数据以可视化的方式呈现在 Grafana 控制台，即，将用户请求在分布式系统中的完整流转过程进行可视化。
+
+== 前提条件
+
+已通过 link:../../16-grafana/[Grafana for WizTelemetry] 扩展组件部署一个 Grafana 控制台。
+
+== 操作步骤
+
+. 安装 **Grafana Tempo for WizTelemetry** 扩展组件到集群。
+
+. 进入已安装 Tempo 的集群，在**应用负载 > 服务**页面，查找服务 `tempo-distributor`，点击名称进入详情页面。点击**操作 > 编辑外部访问**，开启 NodePort。然后在此页面获取服务端口 `4317` 对应的 NodePort。
++
+--
+image:/images/ks-qkcp/zh/v4.2.0/tempo/tempo-distributor-nodeport.png[, 80%]
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|
+取决于您的网络环境，您可能需要配置流量转发规则并在防火墙中放行该 NodePort 端口。
+|===
+--
+
+. 安装 **WizTelemetry 链路追踪**扩展组件，并修改扩展组件配置，以便将追踪数据发送到 Tempo。
++
+--
+[source,bash]
+----
+collector:
+  collector:
+    config: |
+      exporters:
+        otlp:
+          # tempo-distributor.wiz-telemetry-tracing:4317
+          endpoint: < tempo distributor grpc endpoint >
+          headers:
+            x-scope-orgid: wiztelemetry-tracing-ks
+          tls:
+            insecure: true
+      service:
+        pipelines:
+          traces:
+            exporters:
+              - otlp
+              - otlphttp
+----
+
+注意将 `< tempo distributor grpc endpoint >` 替换为 `<cluster-node-ip>:<grpc nodeport>`。例如，根据上一步获取的 NodePort，应修改为 `<cluster-node-ip>:31459`。
+--
+
+. 在 Grafana 控制台中配置 Tempo 数据源。
++
+====
+若 Tempo 和 Grafana for WizTelemetry 扩展组件部署在同一集群，Tempo 安装完成后，会自动在 Grafana 控制台添加 Tempo 数据源。
+
+image:/images/ks-qkcp/zh/v4.2.0/tempo/tempo-data-source.png[]
+
+若 Tempo 和 Grafana for WizTelemetry 扩展组件部署在不同集群，您需要link:../../../../02-quickstart/08-access-a-service/[通过 NodePort 或 LoadBalancer 暴露服务] `tempo-query-frontend` 以获取 Tempo 数据源的服务器地址，然后在 Grafana 控制台手动添加 Tempo 数据源。详细步骤如下：
+
+* 暴露 `tempo-query-frontend` 服务
++
+--
+下文以 NodePort 方式暴露 `tempo-query-frontend` 服务。
+
+. 进入已安装 Tempo 的集群，在**应用负载 > 服务**页面，查找服务 `tempo-query-frontend`，点击名称进入详情页面。
+
+. 点击**操作 > 编辑外部访问**，开启 NodePort。然后在此页面获取服务端口 `3100` 对应的 NodePort。
+
+image:/images/ks-qkcp/zh/v4.2.0/tempo/tempo-query-frontend-nodeport.png[]
+--
+
+* 手动添加 Tempo 数据源
++
+--
+. 登录 Grafana 控制台后，点击左侧导航栏的 **Connections**。
+. 搜索数据源，如 **Tempo**。
+. 点击数据源名称，进入数据源概览页面。
+. 点击右上角的 **Add new data source**，进入数据源配置页面。
+. 输入 Tempo 数据源的服务器地址：`<cluster-node-ip>:<tempo-query-frontend-nodeport>`。例如，根据上一步获取的 NodePort，应输入 `<cluster-node-ip>:30835`。
++
+image:/images/ks-qkcp/zh/v4.2.0/tempo/url.png[]
+
+. 添加 header。`x-scope-orgid: wiztelemetry-tracing-ks`
++
+image:/images/ks-qkcp/zh/v4.2.0/tempo/http-header.png[]
+
+. 为 Service graph 设置 **Prometheus** 数据源。
++
+image:/images/ks-qkcp/zh/v4.2.0/tempo/prometheus.png[]
+
+. 点击最下方的 **Save & test**，完成数据源的添加。
+--
+====
+
+. 在 Grafana 控制台的左侧导航栏点击 **Explore** 进入页面，选择 **Tempo** 数据源。
+
+. 点击 **TraceQL** 页签，然后点击右上角的image:/images/ks-qkcp/zh/icons/refresh-light.png[refresh-light,18,18]运行查询，以列出最新追踪数据。点击其中一个查看链路图。
++
+image:/images/ks-qkcp/zh/v4.2.0/tempo/trace-tab.png[]
+
+. 点击 **Service Graph** 页签，然后点击右上角的image:/images/ks-qkcp/zh/icons/refresh-light.png[refresh-light,18,18]运行查询，以查看由 Tempo 生成的服务拓扑图。
++
+--
+image:/images/ks-qkcp/zh/v4.2.0/tempo/graph.png[]
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|有关 Tempo 的更多信息，请参阅 link:https://grafana.org.cn/docs/tempo/latest/[Grafana Tempo 官方文档]。
+
+|===
+--

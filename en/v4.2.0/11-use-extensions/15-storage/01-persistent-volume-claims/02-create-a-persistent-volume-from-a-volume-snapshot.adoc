@@ -1,0 +1,48 @@
+---
+title: "通过卷快照创建持久卷声明"
+keywords: "Kubernetes, {ks_product}, 集群管理, 存储, 持久卷声明, 持久卷, 创建持久卷声明, 卷快照"
+description: "介绍如何通过卷快照创建持久卷声明。"
+weight: 02
+---
+
+:ks_permission: **持久卷声明管理**
+:ks_navigation: **存储 > 持久卷声明**
+:snapshot:
+
+
+本节介绍如何通过卷快照创建持久卷声明。除了link:../../03-volume-snapshots/04-create-a-persistent-volume-from-a-volume-snapshot/[在卷快照页面创建持久卷声明]外，您还可以在创建持久卷声明时选择通过卷快照创建。
+
+ifeval::["{file_output_type}" == "html"]
+有关持久卷声明的其他创建方式，请参阅link:../../../../07-cluster-management/08-storage/01-persistent-volume-claims/01-create-a-persistent-volume-claim/[创建持久卷声明]。
+endif::[]
+
+ifeval::["{file_output_type}" == "pdf"]
+有关持久卷声明的其他创建方式，请参阅《KubeSphere 集群管理指南》的“持久卷声明”章节。
+endif::[]
+
+
+== 前提条件
+
+
+:relfileprefix: ../../../../
+
+include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPermission_clusterandproject_v42.adoc[]
+
+:relfileprefix: ./
+
+
+
+== 操作步骤
+
+. 以具有pass:a,q[{ks_permission}]权限的用户登录 KubeSphere Web 控制台并进入您的集群或企业空间。
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-clickCreate.adoc[]
+
++
+
+include::../../../../_custom/clusterManagement/persistentVolumeClaims/persistentVolumeClaims-oper-createAPersistentVolumeClaim_v42.adoc[]

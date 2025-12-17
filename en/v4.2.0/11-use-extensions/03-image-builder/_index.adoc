@@ -1,0 +1,57 @@
+---
+title: "镜像构建器"
+keywords: "Kubernetes, {ks_product}, 镜像构建器, s2i, b2i"
+description: "如何从源代码或二进制可执行文件构建容器镜像。"
+weight: 03
+layout: "second"
+---
+
+
+
+本节介绍如何管理镜像构建器。
+
+安装“镜像构建器”扩展组件后，企业空间左侧导航栏将显⽰**镜像构建器**菜单。
+
+您可以使用镜像构建器将源代码或二进制可执行文件构建成容器镜像 (S2I & B2I)，将镜像推送到指定的镜像服务，并最终部署至 Kubernetes。
+
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|仅支持 docker 运行时构建镜像，即节点上必须安装 docker。
+
+|===
+
+== 配置
+
+link:01-create-an-image-builder/02-create-an-image-builder-using-an-artifact/[使用制品创建镜像构建器]之前, 您必须在镜像构建器的扩展组件配置中配置一个可读写的 S3 Bucket, 用于存储二进制文件。
+
+示例如下（需替换为实际信息）：
+
+[source,yaml]
+----
+backend:
+  kubesphereConfig:
+    s3:
+      endpoint: "<endpoint>"
+      region: "<region>"
+      disableSSL: false
+      forcePathStyle: true
+      accessKeyID: "<access-key>"
+      secretAccessKey: "<secret-key>"
+      bucket: "<bucket>"
+      sessionToken: ""
+----
+
+配置完成，待扩展组件更新完毕后，需重启 `s2iapiserver` 才能生效。
+
+[source,yaml]
+----
+kubectl -n extension-s2ibuilder rollout restart deploy s2iapiserver
+----
+
+
+
+
+
+

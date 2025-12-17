@@ -1,0 +1,89 @@
+---
+title: "使用源代码创建镜像构建器"
+keywords: "Kubernetes, {ks_product}, 创建镜像构建器, 使用源代码创建镜像构建器"
+description: "介绍如何创建镜像构建器将源代码构建成容器镜像。"
+weight: 01
+---
+
+:ks_permission: **应用负载管理**
+:ks_navigation: **镜像构建器**
+
+
+本节介绍如何将源代码构建成容器镜像 (S2I)。
+
+include::../../../../_custom/projectManagement/imageBuilders/imageBuilders-desc-imageBuilderCreated.adoc[]
+
+include::../../../../_custom/projectManagement/services/services-oper-pullSourceCodeAndBuildImage.adoc[]
+
++
+
+include::../../../../_custom/projectManagement/services/services-oper-pushPullImage.adoc[]
+
+
+== 前提条件
+
+:relfileprefix: ../../../../
+* {empty}
+include::../../../../_custom/projectManagement/projectManagement-prer-requiredPermission_v42.adoc[]
+
+:relfileprefix: ./
+
+
+:relfileprefix: ../../../../
+
+include::../../../../_custom/projectManagement/services/services-prer-sourceCodeRepository_v42.adoc[]
+
+:relfileprefix: ./
+
+
+:relfileprefix: ../../../../
+
+include::../../../../_custom/projectManagement/services/services-prer-imageRegistry_v42.adoc[]
+
+:relfileprefix: ./
+
+
+== 操作步骤
+
+include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-clickCreate.adoc[]
+
++
+
+. 在**构建模式**页签，根据源代码的语言选择 **Java**、**Node.js** 或 **Python**，然后点击**下一步**。
+
+. 在**构建设置**页签，设置构建环境、代码仓库信息和镜像服务信息，然后点击**创建**。
++
+--
+[%header,cols="1a,4a"]
+|===
+|参数 |描述
+
+include::../../../../_custom/projectManagement/services/services-para-buildEnvironmentSourceCode.adoc[]
+
+include::../../../../_custom/projectManagement/services/services-para-codeRepositoryURL.adoc[]
+
+include::../../../../_custom/projectManagement/services/services-para-buildSettings.adoc[]
+
+include::../../../../_custom/projectManagement/services/services-para-codeRelativePath.adoc[]
+
+include::../../../../_custom/projectManagement/services/services-para-environmentVariablesSourceCode.adoc[]
+|===
+
+include::../../../../_custom/projectManagement/imageBuilders/imageBuilders-desc-creationComplete.adoc[]
+--
+
+
+
+

@@ -1,0 +1,127 @@
+---
+title: "卸载 Kubernetes 和 KubeSphere "
+keywords: "Kubernetes, {ks_product}, 卸载 Kubernetes 和 KubeSphere "
+description: "介绍如何卸载 Kubernetes 和 KubeSphere。"
+weight: 02
+---
+
+
+本节介绍如何卸载 Kubernetes 和 KubeSphere。
+
+// Note
+include::../../../../_ks_components/admonitions/note.adoc[]
+
+本节介绍的 Kubernetes 卸载方式仅适用于 Kubernetes 通过 KubeKey 安装的场景。如果您的 Kubernetes 不是通过 KubeKey 安装，请参阅 link:https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-reset/[Kubernetes 官方文档]卸载 Kubernetes。
+
+include::../../../../_ks_components/admonitions/admonEnd.adoc[]
+
+[.admon.warning,cols="a"]
+|===
+|警告
+
+|
+* 此操作将导致 KubeSphere 集群业务中断，并且无法撤销，请谨慎执行此操作。
+
+* {empty}
+include::../../../_custom/installationAndUpgrade/installationAndUpgrade-prer-backUpData.adoc[]
+|===
+
+
+== 若 KubeSphere 为在线安装
+
+若 KubeSphere 为link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[在线安装]，请按照以下步骤卸载 Kubernetes 和 KubeSphere。
+
+=== 准备工作
+
+您需要获取安装配置文件 **config-sample.yaml** 并将其传输到用于执行本节操作的集群节点。
+
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|
+如果您无法获取安装配置文件 **config-sample.yaml**，您需要参阅link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[在线安装 KubeSphere] 重新创建 **config-sample.yaml** 文件。重新创建该文件时，请务必确保文件中的集群信息与集群的当前实际情况一致。否则，卸载过程可能会出现错误。
+|===
+
+=== 操作步骤
+
+include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-downloadKubekey.adoc[]
+// https://get-kk.kubesphere.io 不加参数。是在线版默认使用的 kubekey v3.1.11
+// 离线版需要加参数：curl -sfL https://get-kk.kubesphere.io | VERSION=latest sh -
+
++
+include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-transferConfig.adoc[]
+
++
+
+. 执行以下命令开始卸载 KubeSphere：
++
+--
+// Bash
+include::../../../../_ks_components/code/bash.adoc[]
+
+ ./kk delete cluster -f config-sample.yaml
+
+include::../../../../_ks_components/code/codeEnd.adoc[]
+
+如果显示如下信息，则表明卸载成功：
+
+// Bash
+include::../../../../_ks_components/code/bash.adoc[]
+
+Pipeline[DeleteClusterPipeline] execute successful
+
+include::../../../../_ks_components/code/codeEnd.adoc[]
+--
+
+
+== 若 KubeSphere 为离线安装
+
+若 KubeSphere 使用 Web Installer link:../../02-install-kubesphere/02-offline-install-kubernetes-and-kubesphere/[离线安装]，请按照以下步骤卸载 Kubernetes 和 KubeSphere。
+
+[.admon.note,cols="a"]
+|===
+|说明
+
+|不支持单独卸载 Kubesphere。
+|===
+
+
+=== 方法一：初始化
+
+在 Web Installer 页面点击**初始化**按钮卸载 Kubernetes 和 KubeSphere。
+
+初始化任务完成后，会重新回到开始安装页面。
+
+=== 方法二：执行卸载命令
+
+include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-getInfoForOfflineInstall.adoc[]
+
+**三、卸载 Kubernetes 和 KubeSphere**
+
+. 使用 `kkv4-inventory.yaml` 和 `kkv4-config.json` 执行卸载命令。
++
+--
+[source,bash]
+----
+./kk delete cluster -i kkv4-inventory.yaml -c kkv4-config.json --workdir=$(pwd)/operator
+----
+
+如果显示如下信息，则表明卸载成功。
+
+回显示例：
+
+// Bash
+include::../../../../_ks_components/code/bash.adoc[]
+
+[Playbook default/delete-cluster-5vfjw] finish. total: 36,success: 31,ignored: 5,failed: 0
+
+include::../../../../_ks_components/code/codeEnd.adoc[]
+--
+
+. 命令成功执行后，Web Installer 页面并不会显示集群已卸载。继续执行以下命令以使 Web Installer 页面恢复到开始安装页面：
++
+[source,bash]
+----
+rm -rf kubekey/runtime/kubekey.kubesphere.io/v1/playbooks/
+----

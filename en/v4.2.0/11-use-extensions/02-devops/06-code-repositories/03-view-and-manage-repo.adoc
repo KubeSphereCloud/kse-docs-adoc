@@ -1,0 +1,62 @@
+---
+title: "查看和管理代码仓库"
+keywords: "Kubernetes, {ks_product}, DevOps 项目, 代码仓库"
+description: "介绍如何查看和管理代码仓库。"
+weight: 03
+---
+
+:ks_navigation:  **DevOps > 代码仓库**
+
+
+本节介绍如何查看代码仓库详情，并修改仓库中的文件。
+
+
+== 前提条件
+
+* KubeSphere 平台需要安装并启用 **DevOps** 扩展组件。
+
+* 已创建一个企业空间、一个 DevOps 项目和一个用户（例如 **project-regular**），并已邀请该用户至 DevOps 项目且授予 **operator** 角色。请参阅link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[邀请用户加入 DevOps 项目]。
+
+
+== 操作步骤
+
+include::../../../../_custom/devops/project-regular-oper-logIn.adoc[]
+
++
+
+include::../../../../../_ks_components/oper-navigate.adoc[]
+
++
+
+include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
+
++
+
+. 在代码仓库列表中点击一个仓库的名称打开其详情页面。
+
+. 在详情页面左上角选择一个分支，查看仓库中的文件。
++
+--
+* 点击搜索框，输入关键字查找文件。
+
+* 点击image:/images/ks-qkcp/zh/icons/refresh-new.png[,18,18]刷新目录。
+
+* 点击上方的image:/images/ks-qkcp/zh/icons/collapse1.svg[,18,18]可收起目录树区域。再次点击image:/images/ks-qkcp/zh/icons/expand1.svg[,18,18]可展开目录树区域。
+--
+
+. 点击image:/images/ks-qkcp/zh/icons/update.svg[,18,18]或**上传文件**向代码仓库上传文件或目录（tgz 或 tar.gz 格式的压缩包）。文件或目录会上传到当前所选路径下。
++
+[.admon.attention,cols="a"]
+|===
+|注意
+
+|
+请确保您在当前仓库具有写入权限。
+|===
+
+
+. 在**更多操作**下，点击**复制路径**可复制当前所选文件或目录的路径；点击**删除**可删除当前所选文件或目录。
++
+--
+若选择对象为文件，还可以编辑文件、复制文件内容、下载文件。
+--
