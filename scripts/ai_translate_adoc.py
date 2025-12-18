@@ -2,9 +2,16 @@ import os
 import sys
 import json
 import time
+from datetime import datetime, timezone
 from openai import OpenAI
 
 PROGRESS_FILE = "translation_progress.json"
+CHUNK_SIZE = 10000  # characters per chunk (10KB)
+
+def log(msg: str):
+    """Print log message with RFC3339 timestamp."""
+    ts = datetime.now(timezone.utc).isoformat()
+    print(f"{ts} {msg}")
 
 def load_progress():
     if os.path.exists(PROGRESS_FILE):
@@ -19,7 +26,7 @@ def save_progress(done_files):
 def load_glossary(path: str) -> dict:
     """Load glossary dictionary from JSON file."""
     if not os.path.isfile(path):
-        print(f"Warning: glossary file {path} not found, skipping glossary.")
+        log(f"Warning: glossary file {path} not found, skipping glossary.")
         return {}
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -30,7 +37,7 @@ def apply_glossary(text: str, glossary: dict) -> str:
         text = text.replace(zh, en)
     return text
 
-def translate_text(client, model: str, text: str, glossary: dict) -> str:
+def translate_chunk(client, model: str, text: str, glossary: dict) -> str:
     """Translate given text to English using chosen model, respecting glossary."""
     # Apply glossary replacements before sending to model
     # preprocessed = apply_glossary(text, glossary)
@@ -55,28 +62,49 @@ def translate_text(client, model: str, text: str, glossary: dict) -> str:
         translated = translated.replace(zh, en).replace(en, en)
     return translated
 
+def chunk_text(text: str, size: int = CHUNK_SIZE):
+    """Split text into chunks by size, preferring to cut at line breaks."""
+    chunks = []
+    start = 0
+    while start < len(text):
+        end = min(start + size, len(text))
+        # try to cut at nearest newline before end
+        if end < len(text):
+            newline_pos = text.rfind("\n\n", start, end)
+            if newline_pos != -1 and newline_pos > start:
+                end = newline_pos + 1
+        chunks.append(text[start:end])
+        start = end
+    return chunks
+
 def process_file(client, model: str, glossary: dict, path: str, done_files: set):
     try:
         with open(path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        translated = translate_text(client, model, content, glossary)
+        chunks = chunk_text(content, CHUNK_SIZE)
+        translated_chunks = []
+        for i, chunk in enumerate(chunks, 1):
+            log(f"Sleep for 10 seconds to avoid rate limits")
+            time.sleep(10)
+            log(f"Translating chunk {i}/{len(chunks)} of {path}")
+            translated_chunks.append(translate_chunk(client, model, chunk, glossary))
+
+        translated = "\n".join(translated_chunks)
 
         with open(path, "w", encoding="utf-8") as f:
             f.write(translated)
 
         done_files.add(path)
         save_progress(done_files)
-        print(f"✅ Successfully translated {path}")
+        log(f"✅ Successfully translated {path}")
     except Exception as e:
-        print(f"❌ Error translating {path}: {e}")
-        # wait a bit before continuing, to avoid hammering API
-        time.sleep(5)
+        log(f"❌ Error translating {path}: {e}")
 
 def main():
     if len(sys.argv) < 4:
-        print("Usage: python translate_adoc.py <SOURCE_DIR> <MODEL_NAME> <GLOSSARY_FILE>")
-        print("Example: python translate_adoc.py ./docs DeepSeek-V3.2 glossary.json")
+        log("Usage: python translate_adoc.py <SOURCE_DIR> <MODEL_NAME> <GLOSSARY_FILE>")
+        log("Example: python translate_adoc.py ./docs DeepSeek-V3.2 glossary.json")
         sys.exit(1)
 
     source_dir = sys.argv[1]
@@ -84,7 +112,7 @@ def main():
     glossary_file = sys.argv[3]
 
     if not os.path.isdir(source_dir):
-        print(f"Error: {source_dir} is not a valid directory")
+        log(f"Error: {source_dir} is not a valid directory")
         sys.exit(1)
 
     glossary = load_glossary(glossary_file)
@@ -97,12 +125,11 @@ def main():
             if file.endswith(".adoc"):
                 src_path = os.path.join(root, file)
                 if src_path in done_files:
-                    print(f"⏩ Skipping already translated {src_path}")
+                    log(f"⏩ Skipping already translated {src_path}")
                     continue
-                print(f"Translating {src_path} with {model} (in place, glossary applied)")
+                log(f"Translating {src_path} with {model} (in place, glossary applied)")
                 process_file(client, model, glossary, src_path, done_files)
-                print(f"Sleep for 10 seconds to avoid rate limits")
-                time.sleep(10)
 
 if __name__ == "__main__":
     main()
+
