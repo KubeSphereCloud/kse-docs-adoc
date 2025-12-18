@@ -1,7 +1,7 @@
 ---
-title: "扩展组件管理"
-keywords: "Kubernetes, {ks_product}, 扩展组件管理"
-description: "介绍如何安装、管理扩展组件。"
+title: "Extension Management"
+keywords: "Kubernetes, {ks_product}, Extension Management"
+description: "Describes how to install and manage extensions."
 weight: 06
 icon: "/images/docs/common/docs.svg"
 layout: "second"
@@ -9,39 +9,39 @@ layout: "second"
 
 
 
-本节介绍如何安装、配置、升级和卸载扩展组件。
+This section describes how to install, configure, upgrade, and uninstall extensions.
 
-KubeSphere 扩展组件，是构建在 KubeSphere LuBan 之上、用以扩展并增强 KubeSphere 产品能力、进一步满足企业各类型业务需求的应用形态。KubeSphere 安装完成后默认仅启用了核心组件。建议您在扩展中心安装扩展组件以充分利用 KubeSphere 的功能特性。
+KubeSphere extensions are application forms built on KubeSphere LuBan, designed to extend and enhance KubeSphere's product capabilities, further meeting various business needs of enterprises. After KubeSphere installation, only the core components are enabled by default. It is recommended that you install extensions from the Extensions Center to fully utilize KubeSphere's features.
 
 
 ifeval::["{file_output_type}" == "pdf"]
 
-== 产品版本
+== Product Version
 
-本文档适用于 KubeSphere v4.2.0 版本。
+This document applies to KubeSphere v4.2.0.
 
-== 读者对象
+== Target Audience
 
-本文档主要适用于以下读者：
+This document is primarily intended for the following readers:
 
-* KubeSphere 用户
+* KubeSphere Users
 
-* 交付工程师
+* Delivery Engineers
 
-* 运维工程师
+* Operations Engineers
 
-* 售后工程师
+* Support Engineers
 
 
-== 修订记录
+== Revision History
 
 [%header,cols="1a,1a,3a"]
 |===
-|文档版本 |发布日期 |修改说明
+|Document Version |Release Date |Description of Changes
 
 |01
 |{pdf_releaseDate}
-|第一次正式发布。
+|First official release.
 |===
 
 endif::[]

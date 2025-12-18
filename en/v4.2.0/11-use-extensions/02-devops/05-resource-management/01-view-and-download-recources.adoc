@@ -1,24 +1,21 @@
 ---
-title: "查看和下载资源文件"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 资源管理"
-description: "介绍如何通过 File-tree 的形式查看项目中的 k8s 资源。"
+title: "View and Download Resource Files"
+keywords: "Kubernetes, {ks_product}, DevOps Project, Resource Management"
+description: "Introduces how to view k8s resources in a project through a File-tree format."
 weight: 01
 ---
 
-:ks_navigation:  **DevOps > 资源管理**
+:ks_navigation:  **DevOps > Resource Management**
 
+This section describes how to view Kubernetes resources in a project through a directory tree format.
 
-本节介绍如何通过目录树的形式查看项目中的 Kubernetes 资源。
+== Prerequisites
 
+* The **DevOps** extension must be installed and enabled on the KubeSphere platform.
 
-== 前提条件
+* A workspace, a DevOps project, and a user (e.g., **project-regular**) have been created. The user has been invited to the DevOps project and granted the **operator** role. Please refer to link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[Invite a User to a DevOps Project].
 
-* KubeSphere 平台需要安装并启用 **DevOps** 扩展组件。
-
-* 已创建一个企业空间、一个 DevOps 项目和一个用户（例如 **project-regular**），并已邀请该用户至 DevOps 项目且授予 **operator** 角色。请参阅link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[邀请用户加入 DevOps 项目]。
-
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/devops/project-regular-oper-logIn.adoc[]
 
@@ -30,19 +27,18 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
 
-. 点击搜索资源文件，或点击目录名称，在右侧窗口查看目录中的文件。
+. Click to search for resource files, or click a directory name to view the files within that directory in the right pane.
 +
 --
-* 点击目录左侧的image:/images/ks-qkcp/zh/icons/triangle-right.svg[,18,18]可展开单个目录。
+* Click the image:/images/ks-qkcp/zh/icons/triangle-right.svg[,18,18] to the left of a directory to expand that single directory.
 
-* 点击**全部资源**右侧的image:/images/ks-qkcp/zh/icons/fold.png[,18,18]可收起所有目录，点击image:/images/ks-qkcp/zh/icons/refresh-new.png[,18,18]刷新目录。
+* Click the image:/images/ks-qkcp/zh/icons/fold.png[,18,18] to the right of **All Resources** to collapse all directories. Click image:/images/ks-qkcp/zh/icons/refresh-new.png[,18,18] to refresh the directories.
 --
 
-. 在右侧窗口点击目录中的文件，查看文件。
+. In the right pane, click a file within a directory to view it.
 +
 --
-* 点击上方的image:/images/ks-qkcp/zh/icons/collapse1.svg[,18,18]可收起目录树区域。再次点击image:/images/ks-qkcp/zh/icons/expand1.svg[,18,18]可展开目录树区域。
+* Click the image:/images/ks-qkcp/zh/icons/collapse1.svg[,18,18] at the top to collapse the directory tree area. Click image:/images/ks-qkcp/zh/icons/expand1.svg[,18,18] again to expand the directory tree area.
 
-* 点击右上角的image:/images/ks-qkcp/zh/icons/download-light.png[,18,18]可下载当前资源文件。
+* Click the image:/images/ks-qkcp/zh/icons/download-light.png[,18,18] in the top right corner to download the current resource file.
 --
-

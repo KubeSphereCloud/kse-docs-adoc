@@ -1,66 +1,65 @@
 ---
-title: "删除企业空间"
-keywords: "Kubernetes, {ks_product}, 访问控制, 企业空间, 删除企业空间"
-description: "介绍如何删除企业空间。"
+title: "Delete Workspace"
+keywords: "Kubernetes, {ks_product}, Access Control, Workspace, Delete Workspace"
+description: "Introduces how to delete a workspace."
 weight: 04
 ---
 
-:ks_permission: **企业空间管理**
+:ks_permission: **Workspace Management**
 
-
-本节介绍如何删除企业空间。
+This section describes how to delete a workspace.
 
 //note
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-系统企业空间 **system-workspace** 无法删除。
+The system workspace **system-workspace** cannot be deleted.
 |===
 
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-企业空间删除后无法恢复。如果您选择同时删除企业空间中的项目，企业空间中的所有项目以及其中的所有资源也将被删除。请谨慎执行此操作。
+The deleted workspace cannot be recovered. If you choose to delete the projects in the workspace simultaneously, all projects in the workspace and all resources in them will also be deleted. Perform this operation with caution.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。
+You must have the pass:a,q[{ks_permission}] permission on the KubeSphere platform.
 
 
-== 删除单个企业空间
+== Delete a Single Workspace
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击**企业空间管理**。
-. 在需要操作的企业空间右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**删除**。
-. 在**删除企业空间**对话框，输入企业空间的名称，然后点击**确定**。
+. Click **Workspace Management**.
+. On the right of the workspace to operate, click image:/images/ks-qkcp/en/icons/more.svg[more,18,18], and then select **Delete** from the drop-down list.
+. In the **Delete Workspace** dialog box, enter the workspace name, and then click **OK**.
 +
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|您可以选择**删除企业空间中的项目**复选框，以同时删除企业空间中的所有项目。
+|You can select the **Delete projects in the workspace** check box to delete all projects in the workspace simultaneously.
 
 |===
 
 
-== 批量删除企业空间
+== Batch Delete Workspaces
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击**企业空间管理**。
-. 选择需要删除的企业空间左侧的复选框，然后在企业空间列表上方点击**删除**。
-. 在**批量删除企业空间**对话框，输入企业空间的名称，然后点击**确定**。
+. Click **Workspace Management**.
+. Select the check boxes on the left of the workspaces to be deleted, and then click **Delete** above the workspace list.
+. In the **Batch Delete Workspaces** dialog box, enter the workspace names, and then click **OK**.
 +
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-请使⽤半⻆逗号（,）和空格分隔多个名称。
+Use half-width commas (,) and spaces to separate multiple names.
 
 |===

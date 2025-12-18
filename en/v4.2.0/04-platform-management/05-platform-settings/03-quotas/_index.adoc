@@ -1,4 +1,4 @@
 ---
-title: "配额"
+title: "Quota"
 weight:  03
 ---

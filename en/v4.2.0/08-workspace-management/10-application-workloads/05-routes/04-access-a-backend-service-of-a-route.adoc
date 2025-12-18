@@ -1,18 +1,18 @@
 ---
-title: "访问应用路由的后端服务"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 应用路由, 访问应用路由的后端服务"
-description: "介绍如何访问应用路由的后端服务。"
+title: "Access Backend Services of an Ingress"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Ingress, Access Backend Services of an Ingress"
+description: "Describes how to access backend services of an Ingress."
 weight: 04
 ---
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 应用路由**
+:ks_permission: **Application Workloads View**
+:ks_navigation: **Application Workloads > Ingress**
 
 
 include::../../../../_custom/clusterManagement/routes/routes-desc-accessABackendServiceOfARoute.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 * {empty}
@@ -20,12 +20,12 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 网关**扩展组件，然后启用集群网关或项目网关。有关更多信息，请参阅 link:../../../../11-use-extensions/12-gateway[KubeSphere 网关]。
+* The **KubeSphere Gateway** extension must be installed and enabled on the KubeSphere platform, and then the cluster gateway or project gateway must be enabled. For more information, refer to link:../../../../11-use-extensions/12-gateway[KubeSphere Gateway].
 
 include::../../../../_custom/clusterManagement/routes/routes-prer-accessABackendServiceOfARoute.adoc[]
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

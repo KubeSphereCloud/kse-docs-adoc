@@ -1,35 +1,34 @@
 ---
-title: "编辑成员集群配置"
-keywords: "Kubernetes, {ks_product}, 多集群管理, 集群, 编辑集群配置"
-description: "介绍如何编辑成员集群配置。"
+title: "Edit Member Cluster Configuration"
+keywords: "Kubernetes, {ks_product}, Multi-cluster Management, Cluster, Edit Cluster Configuration"
+description: "Describes how to edit member cluster configuration."
 weight: 05
 ---
 
-:ks_permission: **集群管理**
+:ks_permission: **Cluster Management**
 
+This section describes how to edit the cluster configuration of a member cluster, i.e., adjust the ks-agent configuration parameters.
 
-本节介绍如何编辑成员集群的集群配置，即调整 ks-agent 配置参数。
-
-除了在添加成员集群时进行集群配置外，成员集群被添加后，也可以编辑集群配置。
+In addition to configuring the cluster when adding a member cluster, you can also edit the cluster configuration after the member cluster has been added.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-当成员集群的 KubeSphere 版本与主集群的 KubeSphere 版本不一致时，无法编辑集群配置。请更新为相同版本后再操作。
+When the KubeSphere version of the member cluster is inconsistent with the KubeSphere version of the host cluster, you cannot edit the cluster configuration. Please update to the same version before proceeding.
 |===
 
-== 前提条件
+== Prerequisites
 
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。
+You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform.
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
-. 点击**集群管理**。
+. Click **Cluster Management**.
 
-. 在需要操作的集群右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**编辑配置**。
+. On the right side of the cluster you want to operate, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], then select **Edit Configuration** from the dropdown list.
 
-. 在**编辑配置**对话框输入 ks-agent 的信息，然后点击**确定**。
+. In the **Edit Configuration** dialog box, enter the ks-agent information, then click **OK**.

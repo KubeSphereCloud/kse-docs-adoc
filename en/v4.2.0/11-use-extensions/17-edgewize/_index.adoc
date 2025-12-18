@@ -1,14 +1,12 @@
 ---
 title: "EdgeWize"
-keywords: "Kubernetes, {ks_product}, 集群管理, 边缘集群, EdgeWize"
-description: "介绍如何使用 EdgeWize 管理边缘集群。"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Edge Cluster, EdgeWize"
+description: "Introduces how to use EdgeWize to manage edge clusters."
 weight: 17
 ---
 
-EdgeWize 边缘计算平台是一款面向边缘计算场景的云边协同基础设施平台，它建立在业界流行的 Kubernetes 容器编排引擎之上，借助可拔插架构整合并优化边缘计算场景下的关键功能模块，为企业用户提供可落地、可迭代、面向场景的综合边缘计算解决方案，帮助企业用户快速构建一个开放、易用、智能的边缘容器应用管理平台，助力客户实现业务的边缘化转型。
+EdgeWize Edge Computing Platform is a cloud-edge collaborative infrastructure platform designed for edge computing scenarios. It is built on the popular Kubernetes container orchestration engine and integrates and optimizes key functional modules for edge computing scenarios through a pluggable architecture. It provides enterprise users with a practical, iterative, and scenario-oriented comprehensive edge computing solution, helping them quickly build an open, easy-to-use, and intelligent edge container application management platform to facilitate the edge transformation of their business.
 
-安装 EdgeWize 扩展组件后，点击顶部导航栏上的image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18]图标，点击 **edgewize-io**，进入 EdgeWize 边缘计算平台。
+After installing the EdgeWize extension, click the image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18] icon in the top navigation bar, then click **edgewize-io** to enter the EdgeWize Edge Computing Platform.
 
-有关如何使用 EdgeWize 边缘计算平台，请参阅 link:https://edgewize-docs.kubesphere.com.cn[EdgeWize 使用指南]。
-
-
+For instructions on how to use the EdgeWize Edge Computing Platform, please refer to the link:https://edgewize-docs.kubesphere.com.cn[EdgeWize User Guide].

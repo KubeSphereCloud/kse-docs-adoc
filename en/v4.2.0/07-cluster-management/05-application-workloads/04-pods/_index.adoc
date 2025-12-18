@@ -1,7 +1,7 @@
 ---
-title: "容器组"
-keywords: "Kubernetes, {ks_product}, 集群管理, 容器组"
-description: "介绍如何管理容器组。"
+title: "Pods"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Pods"
+description: "Introduces how to manage pods."
 weight: 04
 layout: "second"
 ---

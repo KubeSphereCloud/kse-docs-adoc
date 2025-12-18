@@ -1,28 +1,25 @@
 ---
-title: "从集群上移除标签"
-keywords: "Kubernetes, {ks_product}, 多集群管理, 集群标签, 从集群上移除标签"
-description: "介绍如何从集群上移除标签。"
+title: "Remove Labels from Clusters"
+keywords: "Kubernetes, {ks_product}, Multi-cluster Management, Cluster Labels, Remove Labels from Clusters"
+description: "Describes how to remove labels from clusters."
 weight: 04
 ---
 
-:ks_permission: **集群管理**
+:ks_permission: **Cluster Management**
 
+This section describes how to remove labels from clusters.
 
-本节介绍如何从集群上移除标签。
+== Prerequisites
 
+You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform.
 
-== 前提条件
-
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。
-
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
 +
 
-. 点击**集群管理**。
+. Click **Cluster Management**.
 
 +
 
@@ -30,6 +27,6 @@ include::../../../../_custom/platformManagement/multiclusterManagement/clusterTa
 
 +
 
-. 在需要从集群上移除的标签右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**从集群上移除**。
+. To the right of the label you want to remove from clusters, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], and then select **Remove from Clusters** from the drop-down list.
 
-. 在**从集群上移除标签**对话框，在需要移除标签的集群右侧点击image:/images/ks-qkcp/zh/icons/chain-off-duotone.svg[chain-off-duotone,18,18]，然后点击**确定**。
+. In the **Remove Labels from Clusters** dialog box, to the right of the cluster from which you want to remove the label, click image:/images/ks-qkcp/zh/icons/chain-off-duotone.svg[chain-off-duotone,18,18], and then click **OK**.

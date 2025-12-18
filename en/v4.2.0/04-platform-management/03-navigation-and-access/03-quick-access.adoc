@@ -1,19 +1,19 @@
 ---
-title: "快捷访问"
+title: "Quick Access"
 weight: 03
-description: 添加或移除对集群和企业空间的快捷访问。
+description: Add or remove quick access to clusters and workspaces.
 ---
 
 
-本节介绍如何添加对集群和企业空间的快捷访问，以便快速进入对应资源的管理页面。
+This section describes how to add quick access to clusters and workspaces for quickly navigating to their respective management pages.
 
-== 前提条件
+== Prerequisites
 
-已获取 KubeSphere Web 控制台的用户名和密码。
+You have obtained the username and password for the KubeSphere web console.
 
-== 操作步骤
+== Steps
 
-. 登录 KubeSphere Web 控制台。
-. 在集群列表和企业空间列表页面，点击image:/images/ks-qkcp/zh/icons/star_none.svg[star_none,18,18]，即可添加对应集群和企业空间到**快捷访问栏**和**快捷访问**区域。点击image:/images/ks-qkcp/zh/icons/star.svg[star,18,18]，即可从快捷访问中移除集群和企业空间。
+. Log in to the KubeSphere web console.
+. On the cluster list and workspace list pages, click image:/images/ks-qkcp/zh/icons/star_none.svg[star_none,18,18] to add the corresponding cluster or workspace to the **Quick Access Bar** and **Quick Access** area. Click image:/images/ks-qkcp/zh/icons/star.svg[star,18,18] to remove the cluster or workspace from quick access.
 +
-也可在**快捷访问**区域点击image:/images/ks-qkcp/zh/icons/star.svg[star,18,18]，移除已添加的集群和企业空间。
+Alternatively, in the **Quick Access** area, click image:/images/ks-qkcp/zh/icons/star.svg[star,18,18] to remove an added cluster or workspace.

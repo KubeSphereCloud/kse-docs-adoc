@@ -1,7 +1,7 @@
 ---
 title: "NVIDIA GPU Operator"
 keywords: "Kubernetes, {ks_product}, GPU Operator, NVIDIA"
-description: "介绍如何使用 NVIDIA GPU Operator 扩展组件。"
+description: "Introduction to using the NVIDIA GPU Operator extension."
 weight: 22
 layout: "second"
 ---

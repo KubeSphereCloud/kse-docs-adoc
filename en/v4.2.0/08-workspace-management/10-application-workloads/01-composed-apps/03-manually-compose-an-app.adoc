@@ -1,22 +1,22 @@
 ---
-title: "创建自制应用"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用, 创建自制应用"
-description: "介绍如何创建自制应用。"
+title: "Create a Composed App"
+keywords: "Kubernetes, {ks_product}, Project Management, App, Create a Composed App"
+description: "Describes how to create a composed app."
 weight: 03
 ---
 
-:ks_permission: **应用实例创建**
-:ks_navigation: **应用负载 > 自制应用**
+:ks_permission: **App Instance Creation**
+:ks_navigation: **Application Workloads > Composed Apps**
 
 
-本节介绍如何创建自制应用。
+This section describes how to create a composed app.
 
 // include::../../../../_custom/projectManagement/apps/apps-compose-description.adoc[]
-您可以自定义应用的服务、工作负载和路由以创建自制应用。
+You can customize the services, workloads, and routes of an app to create a composed app.
 
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -24,7 +24,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -40,37 +40,37 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 include::../../../../../_ks_components/oper-clickCreate.adoc[]
 
-. 在**基本信息**页签，设置应用的基本信息，然后点击**下一步**。
+. On the **Basic Information** tab, configure the basic information for the app and then click **Next**.
 +
 --
 include::../../../../_custom/projectManagement/apps/apps-basic-para.adoc[]
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Description
 
-|安装“KubeSphere 服务网格”扩展组件后，才能启用应用治理。
+|App governance can only be enabled after installing the "KubeSphere Service Mesh" extension.
 |===
 --
 
-. 在**服务设置**页签，点击**创建服务**，选择**有状态服务**或**无状态服务**为应用创建服务，然后点击**下一步**。
+. On the **Service Settings** tab, click **Create Service**, select **Stateful Service** or **Stateless Service** to create a service for the app, and then click **Next**.
 +
 --
 include::../../../../_custom/clusterManagement/services/services-para-statelessStatefulExternal.adoc[]
 
 ifeval::["{file_output_type}" == "html"]
-有关**有状态服务**和**无状态服务**的参数设置，请参阅link:../../../../08-workspace-management/10-application-workloads/02-services/01-create-a-service/01-create-a-stateful-or-stateless-service/#_参数描述[创建有状态服务或无状态服务]。
+For the parameter settings of **Stateful Service** and **Stateless Service**, see link:../../../../08-workspace-management/10-application-workloads/02-services/01-create-a-service/01-create-a-stateful-or-stateless-service/#_parameter-description[Create a Stateful Service or a Stateless Service].
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-有关**有状态服务**和**无状态服务**的参数设置，请参阅《KubeSphere 企业空间和项目管理指南》的“创建有状态服务或无状态服务”章节。
+For the parameter settings of **Stateful Service** and **Stateless Service**, refer to the "Create a Stateful Service or a Stateless Service" chapter in the *KubeSphere Workspace and Project Management Guide*.
 endif::[]
 --
 
-. 在**路由设置**页签，点击**添加路由规则**为应用创建路由规则，然后点击**创建**。
+. On the **Route Settings** tab, click **Add Routing Rule** to create a routing rule for the app, and then click **Create**.
 +
 --
 include::../../../../_custom/clusterManagement/routes/routes-para-routingRules.adoc[]
 
-应用创建完成后将显示在**自制应用**页面。
+After the app is created, it will be displayed on the **Composed Apps** page.
 --

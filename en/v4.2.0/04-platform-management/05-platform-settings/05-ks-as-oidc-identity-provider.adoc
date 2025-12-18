@@ -1,27 +1,27 @@
 ---
-title: "作为 OIDC 身份提供者"
-keywords: "Kubernetes, KubeSphere, OIDC, 身份提供者"
-description: "了解如何配置 OIDC 身份提供者。"
+title: "As an OIDC Identity Provider"
+keywords: "Kubernetes, KubeSphere, OIDC, Identity Provider"
+description: "Learn how to configure an OIDC identity provider."
 weight: 05
 ---
 
-OpenID Connect 是一种基于 OAuth 2.0 规范框架（IETF RFC 6749 和 6750）的可互操作的身份验证协议。自 KubeSphere v4.1.3 起，实现了 link:https://openid.net/developers/how-connect-works/[OpenID Connect] 协议中的授权码认证流程  link:https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[Authorization Code Flow]，用于扩展组件向上对接 KubeSphere 的账户系统。本教程使用 link:https://goharbor.io/[Harbor] 作为 OIDC 客户端，配置完成后将使用 KubeSphere 账户登录 Harbor。
+OpenID Connect is an interoperable authentication protocol based on the OAuth 2.0 specification framework (IETF RFC 6749 and 6750). Starting from KubeSphere v4.1.3, the link:https://openid.net/developers/how-connect-works/[OpenID Connect] protocol's link:https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[Authorization Code Flow] has been implemented for extensions to integrate with the KubeSphere account system. This tutorial uses link:https://goharbor.io/[Harbor] as the OIDC client. After configuration, KubeSphere accounts can be used to log in to Harbor.
 
-== 基于 OIDC 实现 SSO 的基本流程
+== Basic SSO Flow Based on OIDC
 
 image:/images/ks-qkcp/zh/v4.2.0/oidc-flow.png[, 70%]
 
-. 终端用户通过浏览器访问网站或网络应用。
-. 终端用户点击登录并输入用户名和密码。
-. 依赖方（客户端）向 OpenID 提供商（OP）发送请求。
-. OpenID 提供商验证用户身份并获取授权。
-. OpenID 提供商返回身份令牌（Identity Token），通常会同时返回访问令牌（Access Token）。
-. 依赖方可使用该访问令牌向用户设备发送请求。
-. 用户信息端点（UserInfo Endpoint）将返回终端用户的相关身份声明信息（Claims）。
+. The end-user accesses a website or web application via a browser.
+. The end-user clicks login and enters their username and password.
+. The Relying Party (client) sends a request to the OpenID Provider (OP).
+. The OpenID Provider authenticates the user and obtains authorization.
+. The OpenID Provider returns an Identity Token, often accompanied by an Access Token.
+. The Relying Party can use this Access Token to send requests to the user's device.
+. The UserInfo Endpoint returns relevant identity claim information about the end-user.
 
-== 部署 KubeSphere 
+== Deploy KubeSphere
 
-需在安装命令后添加如下命令：
+The following commands need to be added after the installation command:
 
 [source,bash]
 ----
@@ -32,13 +32,13 @@ image:/images/ks-qkcp/zh/v4.2.0/oidc-flow.png[, 70%]
   --set ingress.ingressClassName=kubesphere-router-cluster
 ----
 
-示例如下：
+Example:
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|以下命令仅为示例，请根据实际安装命令修改。
+|The following command is for example only. Please modify it according to your actual installation command.
 
 |===
 
@@ -66,29 +66,29 @@ helm upgrade --install -n kubesphere-system --create-namespace ks-core $chart --
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Explanation
 
 |
-应用配置前需要预先将 ks-console 以 https 方式暴露。此教程中，使用 ingress 方式暴露 ks-console。使用 KubeSphere 网关扩展组件创建集群网关，对应的 IngressClass 为 `kubesphere-router-cluster`。暴露 HTTPS 端口为 30491，将 `portal.https.port` 设置为 30491。
+Before applying the configuration, ks-console needs to be exposed via HTTPS in advance. In this tutorial, ks-console is exposed using the ingress method. Use the KubeSphere gateway extension to create a cluster gateway, with the corresponding IngressClass being `kubesphere-router-cluster`. The exposed HTTPS port is 30491, so set `portal.https.port` to 30491.
 |===
 
 [%header,cols="1a,4a"]
 |===
-| 参数 | 说明
+| Parameter | Description
 
-| `portal.hostname` | 用于访问 KubeSphere Console 的域名或 IP（需替换为实际的节点 IP 地址）
+| `portal.hostname` | The domain name or IP used to access KubeSphere Console (replace with the actual node IP address)
 
 | `portal.https.port`
 `portal.http.port` 
-| 用于访问 KubeSphere Console 的端口
+| The port used to access KubeSphere Console
 
 | `ingress.enabled`
-`ingress.tls.enabled` | Ingress、TLS 配置
+`ingress.tls.enabled` | Ingress, TLS configuration
 
-| `ingress.ingressClassName` | Ingress 对应的 IngressClass（需要使用已有的 IngressClass）
+| `ingress.ingressClassName` | The IngressClass corresponding to the Ingress (needs to use an existing IngressClass)
 |===
 
-== 新建 OAuth Client
+== Create a New OAuth Client
 
 [source,bash]
 ----
@@ -117,25 +117,25 @@ EOF
 
 [%header,cols="1a,4a"]
 |===
-| 参数                                                       | 说明
+| Parameter                                                       | Description
 
 | `metadata.name`
-`stringData.configuration.yaml.name` | OAuth Client 的 ID
+`stringData.configuration.yaml.name` | The ID of the OAuth Client
 
-| `stringData.configuration.yaml.secret`                  | OAuth Client 的 Secret
-| `stringData.configuration.yaml.redirectURIs`            | OAuth Client 支持的回调 URL 列表
+| `stringData.configuration.yaml.secret`                  | The Secret of the OAuth Client
+| `stringData.configuration.yaml.redirectURIs`            | The list of callback URLs supported by the OAuth Client
 |===
 
-== OIDC 配置参考
+== OIDC Configuration Reference
 
-以 Harbor 对接 OIDC 为例
+Using Harbor integration with OIDC as an example
 image:/images/ks-qkcp/zh/v4.2.0/configure-harbor.png[]
 
-使用 OIDC 方式登录 Harbor
+Logging in to Harbor using the OIDC method
 image:/images/ks-qkcp/zh/v4.2.0/harbor-login.png[]
 
-登录 KubeSphere Console
+Logging in to KubeSphere Console
 image:/images/ks-qkcp/zh/v4.2.0/ks-login.png[]
 
-首次登录，关联 Harbor 账号
+First-time login, associating Harbor account
 image:/images/ks-qkcp/zh/v4.2.0/first-login.png[]

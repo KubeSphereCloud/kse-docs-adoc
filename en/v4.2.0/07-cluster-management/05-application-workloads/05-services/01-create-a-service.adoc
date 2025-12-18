@@ -1,19 +1,19 @@
 ---
-title: "创建服务"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 服务, 创建服务"
-description: "介绍如何创建服务。"
+title: "Create a Service"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Service, Create a Service"
+description: "Describes how to create a Service."
 weight: 01
 ---
 
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 服务**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Services**
 
 
 include::../../../../_custom/clusterManagement/services/services-desc-createAService.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -24,7 +24,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -43,14 +43,14 @@ include::../../../../_custom/projectManagement/services/services-oper-setBasicIn
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/clusterManagement/services/services-para-serviceName.adoc[]
 
 include::../../../../_custom/clusterManagement/services/services-para-serviceAlias.adoc[]
 
-|项目
-|服务所属的项目。系统项目通常用于管理系统资源，建议选择用户项目。
+|Project
+|The project to which the Service belongs. System projects are typically used for managing system resources. It is recommended to select a user project.
 
 include::../../../../_custom/clusterManagement/services/services-para-serviceDescription.adoc[]
 |===

@@ -1,69 +1,69 @@
 ---
-title: "在线安装 Kubernetes 和 KubeSphere"
-keywords: "Kubernetes, {ks_product}, 安装, 安装 KubeSphere , 安装 Kubernetes"
-description: "介绍如何安装 Kubernetes 和 KubeSphere。"
+title: "Online Installation of Kubernetes and KubeSphere"
+keywords: "Kubernetes, {ks_product}, Installation, Install KubeSphere, Install Kubernetes"
+description: "Describes how to install Kubernetes and KubeSphere."
 weight: 01
 ---
 
 
-本节介绍如何在可访问 Internet 的环境下安装 Kubernetes 和 KubeSphere。
+This section describes how to install Kubernetes and KubeSphere in an environment with Internet access.
 
-安装过程中将用到开源工具 KubeKey。有关 KubeKey 的更多信息，请访问 link:https://github.com/kubesphere/kubekey[GitHub KubeKey 仓库]。
+The open-source tool KubeKey will be used during the installation. For more information about KubeKey, visit the link:https://github.com/kubesphere/kubekey[GitHub KubeKey repository].
 
 
 
-== 前提条件
+== Prerequisites
 
-* 您需要准备至少 1 台 Linux 服务器作为集群节点。在生产环境中，为确保集群具备高可用性，建议准备至少 5 台 Linux 服务器，其中 3 台作为控制平面节点，另外 2 台作为工作节点。如果您在多台 Linux 服务器上安装 KubeSphere，请确保所有服务器属于同一子网。
+* You need to prepare at least 1 Linux server as a cluster node. In a production environment, to ensure high availability of the cluster, it is recommended to prepare at least 5 Linux servers, with 3 as control plane nodes and the other 2 as worker nodes. If you are installing KubeSphere on multiple Linux servers, ensure all servers belong to the same subnet.
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-desc-systemRequirements.adoc[]
 
-* 在生产环境中，为确保集群具有足够的计算和存储资源，建议每台集群节点配置至少 8 个 CPU 核心、16 GB 内存和 200 GB 磁盘空间。除此之外，建议在每台集群节点的 **/var/lib/docker**（对于 Docker）或 **/var/lib/containerd**（对于 containerd） 目录额外挂载至少 200 GB 磁盘空间用于存储容器运行时数据。
+* In a production environment, to ensure the cluster has sufficient computing and storage resources, it is recommended to configure each cluster node with at least 8 CPU cores, 16 GB of memory, and 200 GB of disk space. Additionally, it is recommended to mount at least 200 GB of extra disk space on the **/var/lib/docker** (for Docker) or **/var/lib/containerd** (for containerd) directory of each cluster node for storing container runtime data.
 
-* 在生产环境中，建议提前为 KubeSphere 集群配置高可用性以避免单个控制平面节点出现故障时集群服务中断。有关更多信息，请参阅link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[配置高可用性]。
+* In a production environment, it is recommended to configure high availability for the KubeSphere cluster in advance to avoid cluster service interruption when a single control plane node fails. For more information, refer to link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[Configure High Availability].
 +
 --
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-如果您规划了多个控制平面节点，请务必提前为集群配置高可用性。
+If you have planned multiple control plane nodes, be sure to configure high availability for the cluster in advance.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-* 默认情况下，KubeSphere 使用集群节点的本地磁盘空间作为持久化存储。在生产环境中，建议提前配置外部存储系统作为持久化存储。有关更多信息，请参阅link:../../../03-installation-and-upgrade/01-preparations/04-configure-external-persistent-storage/[配置外部持久化存储]。
+* By default, KubeSphere uses the local disk space of cluster nodes as persistent storage. In a production environment, it is recommended to configure an external storage system as persistent storage in advance. For more information, refer to link:../../../03-installation-and-upgrade/01-preparations/04-configure-external-persistent-storage/[Configure External Persistent Storage].
 
-* 如果集群节点未安装容器运行时，安装工具 KubeKey 将在安装过程中自动为每个集群节点安装 Docker 作为容器运行时。您也可以提前手动安装 containerd、CRI-O 或 iSula 作为容器运行时。
+* If container runtime is not installed on the cluster nodes, the installation tool KubeKey will automatically install Docker as the container runtime on each cluster node during the installation process. You can also manually install containerd, CRI-O, or iSula as the container runtime in advance.
 +
 --
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-CRI-O 和 iSula 与 KubeSphere 的兼容性尚未经过充分测试，可能存在未知问题。
+The compatibility of CRI-O and iSula with KubeSphere has not been fully tested, and there may be unknown issues.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-* 请确保所有集群节点上 **/etc/resolv.conf** 文件中配置的 DNS 服务器地址可用。否则，KubeSphere 集群可能会出现域名解析问题。
+* Ensure the DNS server addresses configured in the **/etc/resolv.conf** file on all cluster nodes are available. Otherwise, the KubeSphere cluster may experience domain name resolution issues.
 
-* 请确保在所有集群节点上都可以使用 **sudo**、**tar**、**curl** 和 **openssl** 命令。
+* Ensure the **sudo**, **tar**, **curl**, and **openssl** commands are available on all cluster nodes.
 
-* 请确保所有集群节点时间同步。
+* Ensure time synchronization across all cluster nodes.
 
 
-== 配置防火墙规则
+== Configure Firewall Rules
 
-KubeSphere 需要特定端口和协议用于服务之间的通信。如果您的基础设施环境已启用防火墙，您需要在防火墙设置中放行所需的端口和协议。如果您的基础设施环境未启用防火墙，您可以跳过此步骤。
+KubeSphere requires specific ports and protocols for communication between services. If a firewall is enabled in your infrastructure environment, you need to allow the required ports and protocols in the firewall settings. If a firewall is not enabled in your infrastructure environment, you can skip this step.
 
-下表列出需要在防火墙中放行的端口和协议。
+The following table lists the ports and protocols that need to be allowed in the firewall.
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-portRequirement.adoc[]
 
-== 安装依赖项
+== Install Dependencies
 
-您需要为所有集群节点安装 socat、conntrack、ebtables 和 ipset。如果上述依赖项在各集群节点上已存在，您可以跳过此步骤。
+You need to install socat, conntrack, ebtables, and ipset for all cluster nodes. If the above dependencies already exist on each cluster node, you can skip this step.
 
-在 Ubuntu 操作系统上，执行以下命令为服务器安装依赖项：
+On Ubuntu operating systems, execute the following command to install dependencies for the server:
 
 // Bash
 include::../../../../_ks_components/code/bash.adoc[]
@@ -72,16 +72,16 @@ sudo apt install socat conntrack ebtables ipset -y
 
 include::../../../../_ks_components/code/codeEnd.adoc[]
 
-如果集群节点使用其他操作系统，请将 **apt** 替换为操作系统对应的软件包管理工具。
+If the cluster nodes use other operating systems, replace **apt** with the package management tool corresponding to the operating system.
 
-== 创建 Kubernetes 集群
+== Create a Kubernetes Cluster
 
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-downloadKubekey.adoc[]
 
 +
 
-. 执行以下命令创建安装配置文件 **config-sample.yaml**：
+. Execute the following command to create the installation configuration file **config-sample.yaml**:
 +
 --
 // Bash
@@ -91,14 +91,14 @@ include::../../../../_ks_components/code/bash.adoc[]
  
 include::../../../../_ks_components/code/codeEnd.adoc[]
 
-将 <Kubernetes version> 替换为实际需要的版本，例如 **v1.27.4**。KubeSphere 默认支持 Kubernetes v1.23~1.32。
+Replace <Kubernetes version> with the actual required version, for example, **v1.27.4**. KubeSphere natively supports Kubernetes v1.23~1.32.
 
-命令执行完毕后将生成安装配置文件 **config-sample.yaml**。
+After the command is executed, the installation configuration file **config-sample.yaml** will be generated.
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-note-doNotDeleteConfig_v4.adoc[]
 --
 
-. 执行以下命令编辑安装配置文件 **config-sample.yaml**：
+. Execute the following command to edit the installation configuration file **config-sample.yaml**:
 +
 --
 // Bash
@@ -108,7 +108,7 @@ vi config-sample.yaml
 
 include::../../../../_ks_components/code/codeEnd.adoc[]
 
-以下为部分示例配置文件，如需了解完整示例，请参阅link:https://github.com/kubesphere/kubekey/blob/master/docs/config-example.md[此文件]。
+The following is a partial example configuration file. For the complete example, refer to link:https://github.com/kubesphere/kubekey/blob/master/docs/config-example.md[this file].
 
 // YAML
 include::../../../../_ks_components/code/yaml.adoc[]
@@ -119,7 +119,7 @@ metadata:
   name: sample
 spec:
   hosts:
-  - {name: controlplane1, address: 192.168.0.2, internalAddress: 192.168.0.2, port: 23, user: ubuntu, password: Testing123, arch: arm64} # arm64 节点注意添加参数 arch: arm64
+  - {name: controlplane1, address: 192.168.0.2, internalAddress: 192.168.0.2, port: 23, user: ubuntu, password: Testing123, arch: arm64} # For arm64 nodes, add the parameter arch: arm64
   - {name: controlplane2, address: 192.168.0.3, internalAddress: 192.168.0.3, user: ubuntu, privateKeyPath: "~/.ssh/id_rsa"}
   - {name: worker1, address: 192.168.0.4, internalAddress: 192.168.0.4, user: ubuntu, password: Testing123}
   - {name: worker2, address: 192.168.0.5, internalAddress: 192.168.0.5, user: ubuntu, password: Testing123}
@@ -134,11 +134,11 @@ spec:
     worker:
     - worker1
     - worker2
-    # 如需使用 kk 自动部署镜像仓库，请设置 registry（建议镜像仓库与集群节点分离部署，减少相互影响）   
+    # To use kk to automatically deploy the image registry, set registry (it is recommended to deploy the image registry separately from cluster nodes to reduce mutual impact)
     registry:
     - registry
   controlPlaneEndpoint:
-    internalLoadbalancer: haproxy # 如需部署⾼可⽤集群，且⽆负载均衡器可⽤，可开启该参数，做集群内部负载均衡
+    internalLoadbalancer: haproxy # To deploy a highly available cluster and if no load balancer is available, you can enable this parameter for internal cluster load balancing
     domain: lb.kubesphere.local
     address: ""
     port: 6443
@@ -152,17 +152,17 @@ spec:
     ## multus support. https://github.com/k8snetworkplumbingwg/multus-cni
     enableMultusCNI: false
   registry:
-    # 如需使用 kk 部署 harbor，可将该参数设置为 harbor，不设置该参数且需使用 kk 部署容器镜像仓库，将默认部署 docker registry。
-    # harbor 不支持 arm64，arm64 环境部署时，可不配置该参数。
+    # To use kk to deploy harbor, set this parameter to harbor. If this parameter is not set and you need to use kk to deploy a container image registry, docker registry will be deployed by default.
+    # harbor does not support arm64. When deploying in an arm64 environment, you can leave this parameter unconfigured.
     type: harbor
-    # 如使用 kk 部署的 harbor 或其他需要登录的仓库，需设置对应仓库的 auths，如使用 kk 部署默认的 docker registry 仓库，则无需配置 auths 参数。
-    # 注意：如使用 kk 部署 harbor，auths 参数请于创建 harbor 项目之后设置。
+    # If using a harbor deployed by kk or another registry that requires login, you need to set the auths for the corresponding registry. If using the default docker registry deployed by kk, there is no need to configure the auths parameter.
+    # Note: If using kk to deploy harbor, please set the auths parameter after creating the harbor project.
     auths:
-      "dockerhub.kubekey.local": 
-        username: admin # harbor 默认用户名
-        password: Harbor12345 # harbor 默认密码
-        plainHTTP: false  # 如果仓库使用 http，请将该参数设置为 true
-    privateRegistry: "dockerhub.kubekey.local/kse"   # 设置集群部署时使用的私有仓库地址
+      "dockerhub.kubekey.local":
+        username: admin # Default harbor username
+        password: Harbor12345 # Default harbor password
+        plainHTTP: false  # If the registry uses http, set this parameter to true
+    privateRegistry: "dockerhub.kubekey.local/kse"   # Set the private registry address used during cluster deployment
     registryMirrors: []
     insecureRegistries: []
   addons: []
@@ -170,37 +170,37 @@ spec:
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 在 **config-sample.yaml** 配置文件的 **spec:hosts** 参数下设置各服务器的信息。
+. In the **spec:hosts** parameter of the **config-sample.yaml** configuration file, set the information for each server.
 +
 --
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-hosts.adoc[]
 
 --
 
-. 在 **config-sample.yaml** 配置文件的 **spec:roleGroups** 参数下设置服务器的角色：
+. In the **spec:roleGroups** parameter of the **config-sample.yaml** configuration file, set the roles of the servers:
 +
 --
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-roleGroups.adoc[]
 --
 
-. 如果您规划了多个控制平面节点，在 **config-sample.yaml** 配置文件的 **spec:controlPlaneEndpoint** 参数下设置高可用性信息。
+. If you have planned multiple control plane nodes, set the high availability information in the **spec:controlPlaneEndpoint** parameter of the **config-sample.yaml** configuration file.
 +
 --
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-controlPlaneEndpoint.adoc[]
 --
 
-. 如果您需要使用外部持久化存储，在 **config-sample.yaml** 配置文件的 **spec:addons** 参数下设置外部持久化存储信息。
+. If you need to use external persistent storage, set the external persistent storage information in the **spec:addons** parameter of the **config-sample.yaml** configuration file.
 +
 ====
-// 注意修改：
+// Note the modifications:
 
-// 离线版
+// Offline version:
 //         path: charts/csi-qingcloud
 
-// 在线订阅版:
-//         repo: https://charts.kubesphere.io/test（ 只有 nfs 是 repo: https://charts.kubesphere.io/main）
+// Online subscription version:
+//         repo: https://charts.kubesphere.io/test (Only nfs is repo: https://charts.kubesphere.io/main)
 
-* 如果使用云上存储设备，在 **spec:addons** 下设置以下参数（将 <configuration file path> 替换为存储插件配置文件的实际路径）：
+* If using cloud storage devices, set the following parameters under **spec:addons** (replace <configuration file path> with the actual path of the storage plugin configuration file):
 +
 --
 // Bash
@@ -216,7 +216,7 @@ include::../../../../_ks_components/code/bash.adoc[]
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-* 如果使用 NeonSAN 存储设备，在 **spec:addons** 下设置以下参数（将 <configuration file path> 替换为存储插件配置文件的实际路径）：
+* If using NeonSAN storage devices, set the following parameters under **spec:addons** (replace <configuration file path> with the actual path of the storage plugin configuration file):
 +
 --
 // Bash
@@ -233,7 +233,7 @@ include::../../../../_ks_components/code/bash.adoc[]
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-* 如果使用 NFS 存储系统，在 **spec:addons** 下设置以下参数（将 <configuration file path> 替换为存储插件配置文件的实际路径）：
+* If using an NFS storage system, set the following parameters under **spec:addons** (replace <configuration file path> with the actual path of the storage plugin configuration file):
 +
 --
 // Bash
@@ -251,7 +251,7 @@ include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 ====
 
-. 执行以下命令创建 Kubernetes 集群：
+. Execute the following command to create the Kubernetes cluster:
 +
 --
 include::../../../../_ks_components/code/bash.adoc[]
@@ -263,12 +263,12 @@ include::../../../../_ks_components/code/codeEnd.adoc[]
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-如需使用 openebs localpv，可在命令后添加参数 --with-local-storage。如需对接其他存储，可在配置文件 addons 中添加配置相关存储插件，或 Kubernetes 集群部署完成后自行安装。
+If you need to use openebs localpv, you can add the parameter --with-local-storage after the command. If you need to connect to other storage, you can add the configuration for the relevant storage plugin in the addons section of the configuration file, or install it yourself after the Kubernetes cluster deployment is complete.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 
-如果显示如下信息，则表明 Kubernetes 集群创建成功。
+If the following information is displayed, it indicates the Kubernetes cluster was created successfully.
 
 [,yaml]
 ----
@@ -276,11 +276,11 @@ Pipeline[CreateclusterPipeline] execute successfully
 ----
 --
 
-== 安装 KubeSphere 
+== Install KubeSphere
 
-KubeSphere Core (ks-core) 是 KubeSphere 的核心组件，为扩展组件提供基础的运行环境。KubeSphere Core 安装完成后，即可访问 KubeSphere Web 控制台。
+KubeSphere Core (ks-core) is the core component of KubeSphere, providing the basic runtime environment for extensions. After KubeSphere Core is installed, you can access the KubeSphere web console.
 
-. 在集群节点上，执行以下命令安装 KubeSphere Core。
+. On a cluster node, execute the following command to install KubeSphere Core.
 +
 ====
 [,bash]
@@ -290,14 +290,14 @@ version=1.2.3-20251118
 helm upgrade --install -n kubesphere-system --create-namespace ks-core $chart --debug --wait --version $version --reset-values
 ----
 
-如果您访问 Docker Hub 受限，请在命令后添加如下配置，修改扩展组件镜像的拉取地址。
+If access to Docker Hub is restricted, add the following configuration after the command to modify the pull address for extension images.
 [source,bash]
 ----
 --set extension.imageRegistry=swr.cn-north-9.myhuaweicloud.com/ks
 ----
 
 
-如果显示如下信息，则表明 ks-core 安装成功：
+If the following information is displayed, it indicates ks-core was installed successfully:
 
 [,yaml]
 ----
@@ -331,25 +331,24 @@ For additional information and details, please visit https://kubesphere.io.
 ----
 ====
 
-. 从成功信息中的 **Console**、**Account** 和 **Password** 参数分别获取 KubeSphere Web 控制台的 IP 地址、管理员用户名和管理员密码，并使用网页浏览器登录 KubeSphere Web 控制台。
+. From the **Console**, **Account**, and **Password** parameters in the success message, obtain the IP address, administrator username, and administrator password for the KubeSphere web console respectively, and use a web browser to log in to the KubeSphere web console.
 +
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-取决于您的网络环境，您可能需要配置流量转发规则并在防火墙中放行 30880 端口。
+Depending on your network environment, you may need to configure traffic forwarding rules and allow port 30880 in the firewall.
 |===
 
 ifeval::["{file_output_type}" == "html"]
-. 此时，Web 控制台仅提供 KubeSphere 的核心功能，若要体验更多功能，还需在扩展中心link:../../../06-extension-management/01-install-extensions/[安装扩展组件]。
+. At this point, the web console only provides the core functions of KubeSphere. To experience more features, you need to link:../../../06-extension-management/01-install-extensions/[install extensions] in the Extensions Center.
 
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-. 此时，Web 控制台仅提供 KubeSphere 的核心功能，若要体验更多功能，还需在扩展中心安装扩展组件。有关更多信息，请参阅《KubeSphere 扩展组件管理指南》。
+. At this point, the web console only provides the core functions of KubeSphere. To experience more features, you need to install extensions in the Extensions Center. For more information, refer to the *KubeSphere Extension Management Guide*.
 
 endif::[]
 +
-在使用 KubeSphere 及扩展组件之前，请先link:../03-activate-ks/[激活 KubeSphere 和扩展组件]。
-
+Before using KubeSphere and its extensions, please link:../03-activate-ks/[activate KubeSphere and extensions] first.

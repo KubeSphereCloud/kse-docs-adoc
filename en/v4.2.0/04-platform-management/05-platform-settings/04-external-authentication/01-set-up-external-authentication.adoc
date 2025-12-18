@@ -1,21 +1,21 @@
 ---
-title: "配置外部身份验证"
-keywords: "Kubernetes, KubeSphere, 第三方验证, LDAP, CAS, GitHub, OIDC"
-description: "了解如何在 KubeSphere 上设置外部身份验证。"
+title: "Configure External Authentication"
+keywords: "Kubernetes, KubeSphere, Third-party Authentication, LDAP, CAS, GitHub, OIDC"
+description: "Learn how to set up external authentication on KubeSphere."
 weight: 01
 ---
 
-:ks_navigation: **配置 > 保密字典**
+:ks_navigation: **Configuration > Secrets**
 
-KubeSphere 支持设置外部身份验证，平台管理员可以通过 secret（保密字典）配置身份提供者。
+KubeSphere supports setting up external authentication. Platform administrators can configure identity providers through secrets.
 
-配置外部身份提供者后，允许使用 LDAP、CAS、GitHub、阿里云 IDaas、或 OpenID Connect 的用户名和密码登录 KubeSphere Web 控制台。
+After configuring an external identity provider, users can log in to the KubeSphere web console using their LDAP, CAS, GitHub, Alibaba Cloud IDaaS, or OpenID Connect username and password.
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
-. 点击**集群管理**，并进入 host 集群。
+. Click **Cluster Management** and enter the host cluster.
 
 +
 
@@ -25,34 +25,34 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 include::../../../../../_ks_components/oper-clickCreate.adoc[]
 
-. 在**创建保密字典**对话框，点击右上角的**编辑 YAML** 开关，使用 yaml 创建保密字典。
+. In the **Create Secret** dialog box, click the **Edit YAML** switch in the upper right corner to create the secret using YAML.
 
-. 按照以下示例及配置说明修改 yaml 文件，配置完成后，点击**创建**。
+. Modify the YAML file according to the following examples and configuration instructions. After configuration is complete, click **Create**.
 
-. 登出 KubeSphere Web 控制台，在登录页面，根据配置的外部身份验证类型，输入 LDAP、CAS、GitHub、阿里云 IDaas、或 OpenID Connect 的用户名和密码登录。
+. Log out of the KubeSphere web console. On the login page, enter the username and password for the configured external authentication type (LDAP, CAS, GitHub, Alibaba Cloud IDaaS, or OpenID Connect) to log in.
 
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-多集群环境中，只需要在主集群中进行配置。
+In a multi-cluster environment, configuration is only required in the host cluster.
 |===
 
-== OpenLDAP 示例 yaml
+== OpenLDAP Example YAML
 
 [,yaml]
 ----
 apiVersion: v1
 kind: Secret
 metadata:
-  namespace: kubesphere-system  # 请勿修改
-  name: identity-provider-ldap  # 确保该 Secret 名称在 Kubernetes 集群中唯一
+  namespace: kubesphere-system  # Do not modify
+  name: identity-provider-ldap  # Ensure this Secret name is unique within the Kubernetes cluster
   labels:
-    config.kubesphere.io/type: identityprovider # 请勿修改
-    config.kubesphere.io/identityprovider: openldap # 与 configuration.yaml 中的 name 字段保持一致
-type: config.kubesphere.io/identityprovider # 请勿修改
+    config.kubesphere.io/type: identityprovider # Do not modify
+    config.kubesphere.io/identityprovider: openldap # Must match the `name` field in configuration.yaml
+type: config.kubesphere.io/identityprovider # Do not modify
 
 stringData:
   configuration.yaml: |
@@ -74,58 +74,58 @@ stringData:
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Attention
 
 |
-- secret 必须创建在 `kubeshere-system` 项目中。
+- The secret must be created in the `kubesphere-system` project.
 
-- secret 必须包含 label。
+- The secret must contain the label.
 +
 `config.kubesphere.io/type: identityprovider`
 
-- secret 必须包含 type。
+- The secret must contain the type.
 +
 `type: config.kubesphere.io/identityprovider`
 
 |===
 
-== 参数说明
+== Parameter Description
 
-上述示例的 `stringData:configuration.yaml` 参数中：
+For the `stringData:configuration.yaml` parameters in the example above:
 
-- `name`: 指定外部身份验证的名称，必须唯一，否则会创建失败。必须与 label 中 config.kubesphere.io/identityprovider 的值保持一致。
+- `name`: Specifies the name of the external authentication. It must be unique; otherwise, creation will fail. Must match the value of `config.kubesphere.io/identityprovider` in the labels.
 
-- `type`: 指定外部身份验证的类型，支持以下类型：
+- `type`: Specifies the type of external authentication. The following types are supported:
 +
 --
-- LDAP: `LDAPIdentityProvider` 
+- LDAP: `LDAPIdentityProvider`
 
-- CAS: `CASIdentityProvider` 
+- CAS: `CASIdentityProvider`
 
-- GitHub: `GitHubIdentityProvider` 
+- GitHub: `GitHubIdentityProvider`
 
-- 阿里云 IDaas: `AliyunIDaaSProvider` 
+- Alibaba Cloud IDaaS: `AliyunIDaaSProvider`
 
-- OpenID Connect: `OIDCIdentityProvider` 
+- OpenID Connect: `OIDCIdentityProvider`
 --
 
-- `mappingMethod`: 指定外部身份用户与 KubeSphere 用户的关联方式。
+- `mappingMethod`: Specifies how external identity users are associated with KubeSphere users.
 +
 --
-- auto: 自动创建相同名称的 KubeSphere 用户，当平台中已存在名称时会创建失败。
+- auto: Automatically creates a KubeSphere user with the same name. Creation fails if a user with that name already exists on the platform.
 
-- manual: 登录后创建一个任意名称的新用户。
+- manual: Creates a new user with an arbitrary name after login.
 
-- lookup: 自动关联已存在的具有相同名称的 KubeSphere 用户，如果不存在该名称的用户，则创建失败。
+- lookup: Automatically associates with an existing KubeSphere user with the same name. If no user with that name exists, the association fails.
 --
 
-- `hidden`: 是否隐藏前端登录选项。默认为 false。
+- `hidden`: Whether to hide the frontend login option. Default is false.
 
-- `disabled`: 是否禁用该登录方式。默认为 false。
+- `disabled`: Whether to disable this login method. Default is false.
 
-- `displayName`: 登录选项的展示名称。
+- `displayName`: The display name for the login option.
 
-- `provider`: 身份提供者信息。身份提供者会对用户进行验证，并向 KubeSphere 提供身份令牌。以下是不同身份提供者的 provider 参数示例。
+- `provider`: Identity provider information. The identity provider authenticates users and provides identity tokens to KubeSphere. Below are example `provider` parameters for different identity providers.
 +
 ====
 - LDAPIdentityProvider
@@ -141,7 +141,7 @@ loginAttribute: uid
 mailAttribute: mail
 ----
 
-有关 LDAP 的更多配置信息，请参阅 link:../03-use-ldap/[LDAP/LDAPS 身份验证]。
+For more configuration information about LDAP, please refer to link:../03-use-ldap/[LDAP/LDAPS Authentication].
 --
 
 - OIDCIdentityProvider
@@ -155,7 +155,7 @@ clientSecret: "your-client-secret"
 redirectURL: "https://your-app.com/oauth/callback"
 ----
 
-有关 OIDC 的更多配置信息，请参阅 link:../05-use-oidc/[OIDC 身份验证]。
+For more configuration information about OIDC, please refer to link:../05-use-oidc/[OIDC Authentication].
 --
 
 - CASIdentityProvider
@@ -167,7 +167,7 @@ redirectURL: "https://your-app.com/cas/callback"
 casServerURL: "https://cas.example.com/cas"
 ----
 
-有关 CAS 的更多配置信息，请参阅 link:../07-use-cas/[CAS 身份验证]。
+For more configuration information about CAS, please refer to link:../07-use-cas/[CAS Authentication].
 --
 
 - GitHubIdentityProvider
@@ -179,6 +179,6 @@ clientSecret: '******'
 redirectURL: 'https://ks-console/oauth/redirect/github'
 ----
 
-- 阿里云 IDaaS 身份提供者的配置方法，请参阅link:https://www.alibabacloud.com/help/zh/idaas/[阿里云 IDaaS 文档]。
+- For the configuration method of the Alibaba Cloud IDaaS identity provider, please refer to the link:https://www.alibabacloud.com/help/zh/idaas/[Alibaba Cloud IDaaS documentation].
 
 ====

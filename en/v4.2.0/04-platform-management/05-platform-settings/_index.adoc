@@ -1,10 +1,10 @@
 ---
-title: "平台设置"
-keywords: "Kubernetes, KubeSphere, 平台, 设置"
-description: "介绍如何管理 KubeSphere 平台的基本设置。"
+title: "Platform Settings"
+keywords: "Kubernetes, KubeSphere, Platform, Settings"
+description: "Introduces how to manage the basic settings of the KubeSphere platform."
 weight: 05
 layout: "second"
 ---
 
 
-本节介绍如何管理 KubeSphere Web 控制台的平台信息、许可证、配额，以及配置外部身份验证等。
+This section describes how to manage the platform information, license, quotas of the KubeSphere web console, and configure external authentication, etc.

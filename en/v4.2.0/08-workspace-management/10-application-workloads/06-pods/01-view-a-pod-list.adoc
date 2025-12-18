@@ -1,18 +1,18 @@
 ---
-title: "查看容器组列表"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 容器组, 查看容器组列表"
-description: "介绍如何查看容器组列表。"
+title: "Viewing Pod Lists"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Pods, Viewing Pod Lists"
+description: "Describes how to view a list of pods."
 weight: 01
 ---
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 容器组**
+:ks_permission: **Application Workloads Viewing**
+:ks_navigation: **Application Workloads > Pods**
 :project:
 
 include::../../../../_custom/clusterManagement/pods/pods-desc-viewAPodList.adoc[]
 
 
-== 前提条件
+## Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 操作步骤
+## Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

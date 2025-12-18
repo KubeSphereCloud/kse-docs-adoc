@@ -1,18 +1,18 @@
 ---
-title: "重新创建工作负载"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 工作负载, 重新创建工作负载"
-description: "介绍如何重新创建工作负载。"
+title: "Recreate a Workload"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Workload, Recreate a Workload"
+description: "Describes how to recreate a workload."
 weight: 05
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 工作负载**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Workloads**
 
 
 include::../../../../_custom/clusterManagement/workloads/workloads-desc-recreateAWorkload.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

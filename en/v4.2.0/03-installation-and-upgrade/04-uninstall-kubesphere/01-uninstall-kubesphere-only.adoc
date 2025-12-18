@@ -1,39 +1,39 @@
 ---
-title: "仅卸载 KubeSphere "
-keywords: "Kubernetes, {ks_product}, 仅卸载 KubeSphere "
-description: "介绍如何卸载 KubeSphere。"
+title: "Uninstall KubeSphere Only"
+keywords: "Kubernetes, {ks_product}, Uninstall KubeSphere Only"
+description: "Describes how to uninstall KubeSphere."
 weight: 01
 ---
 
-本节介绍如何卸载 KubeSphere。当前集群中运行的 Kubernetes 将不会被卸载。
+This section describes how to uninstall KubeSphere. The Kubernetes running in the current cluster will not be uninstalled.
 
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-* 虽然此操作不会卸载 Kubernetes，如果当前集群中运行的业务使用了 KubeSphere 提供的功能，此操作仍然可能导致业务中断。
+* Although this operation will not uninstall Kubernetes, if the business running in the current cluster uses features provided by KubeSphere, this operation may still cause business interruption.
 
-* 此操作不能撤销，请谨慎执行此操作。
+* This operation cannot be undone. Please perform this operation with caution.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-prer-backUpData.adoc[]
 
-== 卸载扩展组件
+== Uninstall Extensions
 
-. 登录任意集群节点，执行以下命令查看集群中已安装的扩展组件。
+. Log in to any cluster node and execute the following command to view the extensions installed in the cluster.
 +
 [,bash]
 ----
 kubectl get installplan
 ----
 
-. 卸载指定扩展组件或所有扩展组件。
+. Uninstall the specified extension or all extensions.
 
 
-* 卸载指定扩展组件。
+* Uninstall a specified extension.
 +
 --
 [,bash]
@@ -42,13 +42,13 @@ kubectl delete installplan {InstallPlan Name}
 ----
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-可根据第一步的命令获取扩展组件的 `InstallPlan Name`。
+You can obtain the `InstallPlan Name` of the extension using the command from the first step.
 |===
 
-如果显示如下信息，表明该扩展组件卸载成功。
+If the following information is displayed, the extension has been successfully uninstalled.
 
 [,bash]
 ----
@@ -56,7 +56,7 @@ installplan.kubesphere.io "{InstallPlan Name}" deleted
 ----
 --
 
-* 卸载全部扩展组件。
+* Uninstall all extensions.
 +
 --
 [,bash]
@@ -64,7 +64,7 @@ installplan.kubesphere.io "{InstallPlan Name}" deleted
 kubectl delete installplan --all
 ----
 
-输出信息应如下所示：
+The output should be similar to the following:
 
 [,bash]
 ----
@@ -91,7 +91,7 @@ installplan.kubesphere.io "whizard-telemetry" deleted
 installplan.kubesphere.io "whizard-telemetry-ruler" deleted
 ----
 
-再次执行以下命令，如果显示 No resources found，表明所有扩展组件都已卸载。
+Execute the following command again. If `No resources found` is displayed, all extensions have been uninstalled.
 
 [,bash]
 ----
@@ -100,18 +100,18 @@ kubectl get installplan
 --
 
 
-== 卸载 ks-core
+== Uninstall ks-core
 
-卸载 ks-core 之前，请确保集群中的扩展组件都已被卸载，即执行 `kubectl get installplan` 命令后显示 No resources found。
+Before uninstalling ks-core, ensure all extensions in the cluster have been uninstalled, meaning the command `kubectl get installplan` returns `No resources found`.
 
-. 执行以下命令卸载 ks-core。
+. Execute the following command to uninstall ks-core.
 +
 [,bash]
 ----
 helm del -n kubesphere-system ks-core
 ----
 
-. 执行以下命令，如果返回结果为空（如下所示），表明 KubeSphere 卸载成功。
+. Execute the following command. If the result is empty (as shown below), KubeSphere has been successfully uninstalled.
 +
 --
 [,bash]

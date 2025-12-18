@@ -1,18 +1,18 @@
 ---
-title: "删除项目"
-keywords: "Kubernetes, {ks_product}, 集群管理, 项目, 删除项目"
-description: "介绍如何删除项目。"
+title: "Delete a Project"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Project, Delete a Project"
+description: "Describes how to delete a project."
 weight: 08
 ---
 
-:ks_permission: **项目管理**
-:ks_navigation: **项目**
+:ks_permission: **Project Management**
+:ks_navigation: **Project**
 
 
 include::../../../_custom/clusterManagement/projects/projects-desc-deleteProjects.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../
@@ -23,7 +23,7 @@ include::../../../_custom/clusterManagement/clusterManagement-prer-requiredPermi
 
 
 
-== 删除单个项目
+== Delete a Single Project
 
 include::../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -36,7 +36,7 @@ include::../../../../_ks_components/oper-navigate.adoc[]
 include::../../../_custom/clusterManagement/projects/projects-oper-deleteASingleProject.adoc[]
 
 
-== 批量删除项目
+== Delete Multiple Projects in Batches
 
 include::../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 

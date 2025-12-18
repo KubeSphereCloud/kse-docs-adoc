@@ -1,20 +1,16 @@
 ---
-title: "查看存储类列表"
-keywords: "Kubernetes, {ks_product}, 集群管理, 存储, 存储类, 查看存储类列表"
-description: "介绍如何查看存储类列表。"
+title: "View Storage Class List"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Storage, Storage Class, View Storage Class List"
+description: "Describes how to view the storage class list."
 weight: 02
 ---
 
-:ks_permission: **存储类查看**
-:ks_navigation: **存储 > 存储类**
+:ks_permission: **Storage Class View**
+:ks_navigation: **Storage > Storage Classes**
 
+This section describes how to view the storage class list.
 
-本节介绍如何查看存储类列表。
-
-
-== 前提条件
-
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -22,9 +18,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -34,40 +28,40 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 ====
-* 存储类列表提供以下信息：
+* The storage class list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|存储类的名称、别名和描述信息。
+|Name
+|The name, alias, and description of the storage class.
 
-|存储类型
-|块存储、对象存储或文件存储。
+|Storage Type
+|Block storage, object storage, or file storage.
 
-|持久卷声明数量
-|通过存储类创建的持久卷声明的数量。
+|Number of Persistent Volume Claims
+|The number of persistent volume claims created through the storage class.
 
-// |默认存储类
+// |Default Storage Class
 // |
 // include::../../../../_custom/clusterManagement/storageClasses/systemClasses-para-defaultStorageClass.adoc[]
 
-|允许卷克隆
+|Allow Volume Cloning
 |
 include::../../../../_custom/clusterManagement/storageClasses/systemClasses-para-allowVolumeCloning.adoc[]
 
-// |允许卷快照
+// |Allow Volume Snapshot
 // |
 // include::../../../../_custom/clusterManagement/storageClasses/systemClasses-para-allowVolumeSnapshot.adoc[]
-// 安装存储组件后才显示
+// Displayed only after storage components are installed
 
-|允许卷扩展
+|Allow Volume Expansion
 |
 include::../../../../_custom/clusterManagement/storageClasses/systemClasses-para-allowVolumeExpansion.adoc[]
 
-|供应者
+|Provisioner
 |
 include::../../../../_custom/clusterManagement/persistentVolumes/persistentVolumes-para-provisioner.adoc[]
 |===
@@ -75,12 +69,12 @@ include::../../../../_custom/clusterManagement/persistentVolumes/persistentVolum
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]
 
-**允许卷克隆**和**允许卷扩展**仅表明是否允许用户在 KubeSphere Web 控制台上执行操作，持久卷声明是否实际支持这些操作取决于后端存储系统。有关更多信息，请参阅link:../05-enable-and-disable-volume-operations/[设置卷操作]。
+**Allow Volume Cloning** and **Allow Volume Expansion** only indicate whether users are allowed to perform these operations on the KubeSphere web console. Whether persistent volume claims actually support these operations depends on the backend storage system. For more information, see link:../05-enable-and-disable-volume-operations/[Configure Volume Operations].
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-* 在列表上方点击搜索框并设置搜索条件，可按名称和存储类型搜索存储类。
+* Click the search box above the list and set search criteria to search for storage classes by name and storage type.
 
 include::../../../../../_ks_components/oper-refreshListData.adoc[]
 

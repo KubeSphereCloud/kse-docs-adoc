@@ -1,19 +1,16 @@
 ---
-title: "查看项目角色详情"
-keywords: "Kubernetes, {ks_product}, 项目管理, 项目设置, 项目角色, 查看项目角色详情"
-description: "介绍如何查看项目角色详情。"
+title: "View Project Role Details"
+keywords: "Kubernetes, {ks_product}, Project Management, Project Settings, Project Roles, View Project Role Details"
+description: "Describes how to view project role details."
 weight: 03
 ---
 
-:ks_permission: **角色查看**
-:ks_navigation: **项目管理 > 项目角色**
+:ks_permission: **Role Viewing**
+:ks_navigation: **Project Management > Project Roles**
 
+This section describes how to view project role details.
 
-本节介绍如何查看项目角色详情。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,9 +18,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -37,8 +32,8 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 
-. 在项目角色列表中点击一个项目角色的名称打开其详情页面。
+. In the project roles list, click the name of a project role to open its details page.
 
-. 在项目角色详情页面的**权限**页签查看项目角色具有的权限。
+. On the **Permissions** tab of the project role details page, view the permissions the project role has.
 
-. 在项目角色详情页面点击**授权用户**页签具有当前项目角色的用户。
+. On the project role details page, click the **Authorized Users** tab to view users who have the current project role.

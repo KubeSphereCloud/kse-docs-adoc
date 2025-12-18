@@ -1,16 +1,16 @@
 ---
-title: "集群成员"
-keywords: "Kubernetes, {ks_product}, 集群管理, 集群成员"
-description: "介绍如何管理集群成员。"
+title: "Cluster Members"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Cluster Members"
+description: "Introduces how to manage cluster members."
 weight: 03
 layout: "second"
 ---
 
 
 
-本节介绍如何管理集群成员。
+This section introduces how to manage cluster members.
 
-集群成员是在集群中具有资源查看或管理权限的用户，集群成员的权限由成员在集群中的角色决定。
+Cluster members are users who have resource viewing or management permissions within a cluster. The permissions of a cluster member are determined by the member's role in the cluster.
 
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]

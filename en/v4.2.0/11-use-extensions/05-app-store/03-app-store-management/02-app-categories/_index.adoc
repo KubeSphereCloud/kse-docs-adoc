@@ -1,13 +1,13 @@
 ---
-title: "应用分类"
-keywords: "Kubernetes, {ks_product}, 平台管理, 应用商店管理, 应用分类"
-description: "介绍如何管理应用分类。"
+title: "Application Categories"
+keywords: "Kubernetes, {ks_product}, Platform Management, App Store Management, Application Categories"
+description: "Describes how to manage application categories."
 weight: 02
 layout: "second"
 ---
 
 
 
-本节介绍如何管理应用分类。
+This section describes how to manage application categories.
 
-您可以根据需要将应用模板分配到一个分类中以便于管理。
+You can assign application templates to a category as needed for easier management.

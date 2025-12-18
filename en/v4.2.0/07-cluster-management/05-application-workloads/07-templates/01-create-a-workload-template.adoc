@@ -1,20 +1,18 @@
 ---
-title: "创建工作负载模板"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 工作负载模板, 创建工作负载模板"
-description: "介绍如何创建工作负载模板。"
+title: "Create Workload Template"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Workload Template, Create Workload Template"
+description: "Describes how to create a workload template."
 weight: 01
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 工作负载模板**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Workload Templates**
 
+This section describes how to create a workload template.
 
-本节介绍如何创建工作负载模板。
+You can create a workload template directly, or link:../../01-workloads/13-generate-template[create a template based on an existing workload].
 
-您可以直接创建工作负载模版，也可以link:../../01-workloads/13-generate-template[基于现有的工作负载创建模板]。
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -22,9 +20,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -42,6 +38,4 @@ include::../../../../_custom/clusterManagement/workloadTemplates/workloadTemplat
 
 +
 
-. 之后的步骤与创建工作负载相同，请参阅link:../../01-workloads/01-create-a-workload/[创建工作负载]。
-
-
+. The subsequent steps are the same as creating a workload. Please refer to link:../../01-workloads/01-create-a-workload/[Create a Workload].

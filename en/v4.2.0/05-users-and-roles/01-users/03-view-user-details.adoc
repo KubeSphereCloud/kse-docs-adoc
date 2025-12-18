@@ -1,62 +1,59 @@
 ---
-title: "查看用户详情"
-keywords: "Kubernetes, {ks_product}, 访问控制, 用户, 查看用户详情"
-description: "介绍如何查看用户详情。"
+title: "View User Details"
+keywords: "Kubernetes, {ks_product}, Access Control, User, View User Details"
+description: "Introduces how to view user details."
 weight: 03
 ---
 
-:ks_menu: **用户和角色管理**
-:ks_navigation: **用户**
-:ks_permission: **用户查看**
+:ks_menu: **Users and Role Management**
+:ks_navigation: **Users**
+:ks_permission: **User Viewing**
 
+This section introduces how to view user details.
 
-本节介绍如何查看用户详情。
+== Prerequisites
 
+You need to have pass:a,q[{ks_permission}] permissions in the KubeSphere platform. For more information, please refer to link:../../01-users/[Users] and link:../../02-platform-roles/[Platform Roles].
 
-== 前提条件
-
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。有关更多信息，请参阅link:../../01-users/[用户]和link:../../02-platform-roles/[平台角色]。
-
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**用户**。
-. 在用户列表中点击一个用户的名称打开其详情页面。
-. 在用户详情页面的**属性**区域查看用户的资源属性。
+. click pass:a,q[{ks_menu}].
+. In the left navigation pane, select **Users**.
+. In the user list, click the name of a user to open their details page.
+. On the user details page, view the user's resource attributes in the **Attributes** area.
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|平台角色
-|用户的平台角色。
+|Platform Role
+|The user's platform role.
 
-|邮箱
-|用户的邮箱地址。
+|Email
+|The user's email address.
 
-|最近登录
-|用户最后一次登录 KubeSphere Web 控制台的时间。
+|Last Login
+|The time the user last logged into the KubeSphere web console.
 |===
 
-. 在用户详情页面的**登录历史**页签查看用户的登录历史记录。
+. On the user details page, view the user's login history on the **Login History** tab.
 +
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|时间
-|用户的登录时间。
+|Time
+|The user's login time.
 
-|状态
-|用户是否登录成功。
+|Status
+|Whether the user logged in successfully.
 
-|源 IP 地址
-|用户登录 KubeSphere Web 控制台的客户端 IP 地址。
+|Source IP Address
+|The client IP address from which the user logged into the KubeSphere web console.
 
-|原因
-|如果用户登录失败，显示登录失败的原因。
+|Reason
+|If the user failed to log in, the reason for the login failure is displayed.
 |===
-

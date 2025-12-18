@@ -1,31 +1,28 @@
 ---
-title: "设置钉钉通知"
-keywords: "Kubernetes, {ks_product}, 平台设置, 通知管理, 通知设置, 设置钉钉通知"
-description: "介绍如何设置钉钉通知。"
+title: "Configure DingTalk Notification"
+keywords: "Kubernetes, {ks_product}, Platform Settings, Notification Management, Notification Settings, Configure DingTalk Notification"
+description: "Describes how to configure DingTalk notification."
 weight: 03
 ---
 
-:ks_navigation: **通知 > 通知渠道**
-// :ks_permission: **平台设置管理**
+:ks_navigation: **Notification > Notification Channels**
+// :ks_permission: **Platform Settings Management**
 
+This section describes how to configure DingTalk notification.
 
-本节介绍如何设置钉钉通知。
+The DingTalk notification feature supports sending notifications to users in the following two ways:
 
-钉钉通知功能支持通过以下两种方式向用户发送通知：
+* **Session Settings**: Use a DingTalk app to send notifications to specific users or departments.
 
-* **会话设置**：使用钉钉应用向特定用户或部门发送通知。
+* **Group Chat Bot Settings**: Use a DingTalk bot to send notifications to specific group chats.
 
-* **群机器人设置**：使用钉钉机器人向特定群聊发送通知。
+== Prerequisites
 
+* The **WizTelemetry Notification** extension must be installed and enabled on the KubeSphere platform.
 
-== 前提条件
+* You need to obtain the access parameters for the app or group chat bot from the DingTalk platform in advance. For more information, refer to link:https://open.dingtalk.com/document/orgapp-server/how-to-call-apis[DingTalk Developer Documentation].
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 通知**扩展组件。
-
-* 您需要提前从钉钉平台获取应用或群机器人的访问参数。有关更多信息，请参阅link:https://open.dingtalk.com/document/orgapp-server/how-to-call-apis[钉钉开发者文档]。
-
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
@@ -39,24 +36,24 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**通知渠道**页面，点击**钉钉**页签，设置钉钉通知参数，然后点击**确定**。
+. On the **Notification Channels** page, click the **DingTalk** tab, configure the DingTalk notification parameters, and then click **OK**.
 +
 ====
-* 会话设置
+* Session Settings
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 |App Key
-|钉钉应用的 AppKey。
+|The AppKey of the DingTalk app.
 
 |App Secret
-|钉钉应用 App Secret。
+|The App Secret of the DingTalk app.
 
 |Chat ID
-|接收通知的 Chat ID。点击**添加**可设置多个 Chat ID。
+|The Chat ID to receive notifications. Click **Add** to set multiple Chat IDs.
 |===
 --
 
@@ -68,4 +65,4 @@ include::../../../../../_custom/platformManagement/platformSettings/notification
 ====
 
 
-. 在**钉钉**页签右上角，点击切换开关将钉钉通知功能设置为**已启用**。
+. In the upper right corner of the **DingTalk** tab, click the toggle switch to set the DingTalk notification feature to **Enabled**.

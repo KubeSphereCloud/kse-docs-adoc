@@ -1,18 +1,18 @@
 ---
-title: "查看模板列表"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 应用负载模板, 查看应用负载模板列表"
-description: "介绍如何查看应用负载模板列表。"
+title: "View Template List"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Application Workload Templates, View Application Workload Template List"
+description: "Describes how to view the application workload template list."
 weight: 02
 ---
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 应用负载模板**
+:ks_permission: **Application Workload View**
+:ks_navigation: **Application Workloads > Application Workload Templates**
 
 
-本节介绍如何查看应用负载模板列表。
+This section describes how to view the application workload template list.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,7 +21,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -36,28 +36,28 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 +
 ====
-* 应用负载模板列表提供以下信息：
+* The application workload template list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|应用负载模板的名称和描述信息。
+|Name
+|The name and description of the application workload template.
 
-|类型
-|应用负载模板的类型。
+|Type
+|The type of the application workload template.
 
-|项目
-|应用负载模板所属的项目。
+|Project
+|The project to which the application workload template belongs.
 
-|创建时间
-|应用负载模板的创建时间。
+|Creation Time
+|The creation time of the application workload template.
 |===
 --
 
-* 在列表上方点击搜索框并设置搜索条件，可按名称和类型搜索应用负载模板。
+* Click the search box above the list and set search criteria to search for application workload templates by name and type.
 
 include::../../../../../_ks_components/oper-refreshListData.adoc[]
 

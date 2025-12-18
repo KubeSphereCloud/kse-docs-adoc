@@ -1,18 +1,18 @@
 ---
-title: "资源管理"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 资源管理"
-description: "介绍如何通过目录树的形式管理项目中的 k8s 资源。"
+title: "Resource Management"
+keywords: "Kubernetes, {ks_product}, DevOps project, resource management"
+description: "Introduces how to manage k8s resources in a project using a directory tree format."
 weight: 05
 layout: "second"
 ---
 
 
-资源管理提供租户视角的物理集群下的 Kubernetes 资源管理、通过目录树的形式预览各类资源，支持查看、下载资源的 YAML 文件，并同步到代码仓库。
+Resource Management provides Kubernetes resource management from a tenant's perspective under a physical cluster, previews various resources through a directory tree format, supports viewing and downloading resource YAML files, and synchronizes them to a code repository.
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
-// |此功能仅在 KubeSphere ``标准版、高级版和旗舰版``中提供。
+// |This feature is only available in KubeSphere ``Standard Edition, Advanced Edition, and Enterprise Edition``.
 
 // |===

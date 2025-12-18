@@ -1,22 +1,22 @@
 ---
-title: "复制微服务配置"
-keywords: "Kubernetes, {ks_product}, 项目管理, Spring Cloud, 复制微服务配置"
-description: "介绍如何复制微服务配置。"
+title: "Copy Microservice Configuration"
+keywords: "Kubernetes, {ks_product}, Project Management, Spring Cloud, Copy Microservice Configuration"
+description: "Describes how to copy a microservice configuration."
 weight: 05
 ---
 
-:ks_permission: ** Spring Cloud 微服务管理**
-:ks_navigation:  **Spring Cloud > 微服务配置**
+:ks_permission: ** Spring Cloud Microservice Management**
+:ks_navigation:  **Spring Cloud > Microservice Configuration**
 
 
-本节介绍如何复制微服务配置。
+This section describes how to copy a microservice configuration.
 
-您可以使用已有的微服务配置创建一个名称不同但数据完全相同的微服务配置。
+You can use an existing microservice configuration to create a new one with a different name but identical data.
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **KubeSphere Spring Cloud** 扩展组件。
+* The **KubeSphere Spring Cloud** extension must be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../
 * {empty}
@@ -25,7 +25,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -39,17 +39,17 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 
-. 在需要操作的微服务配置右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**复制**。
+. On the right side of the microservice configuration you want to operate, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], then select **Copy** from the dropdown list.
 
-. 在**复制微服务配置**对话框，设置新微服务配置的名称，然后点击**确定**。
+. In the **Copy Microservice Configuration** dialog box, set the name for the new microservice configuration, then click **OK**.
 +
 --
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]
 
-根据需要，您也可以修改配置数据。
+If needed, you can also modify the configuration data.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 
-复制完成后，复制生成的微服务配置将显示在列表中。
+After the copy is complete, the newly created microservice configuration will appear in the list.
 --

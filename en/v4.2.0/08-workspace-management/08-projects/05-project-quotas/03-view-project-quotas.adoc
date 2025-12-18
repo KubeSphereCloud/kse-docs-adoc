@@ -1,18 +1,17 @@
 ---
-title: "查看项目配额"
-keywords: "Kubernetes, {ks_product}, 联邦项目, 项目设置, 项目配额, 查看项目配额"
-description: "介绍如何查看项目配额。"
+title: "View Project Quota"
+keywords: "Kubernetes, {ks_product}, Federated Project, Project Settings, Project Quota, View Project Quota"
+description: "Describes how to view project quota."
 weight: 03
 ---
 
-:ks_permission: **项目设置查看**
-:ks_navigation: **项目管理 > 项目配额**
+:ks_permission: **Project Settings View**
+:ks_navigation: **Project Management > Project Quota**
+
+This section describes how to view project quota.
 
 
-本节介绍如何查看项目配额。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,7 +20,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -31,19 +30,19 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在左上角的下拉列表中选择一个项目，查看特定项目的配额信息。
+. In the drop-down list in the upper-left corner, select a project to view the quota information of a specific project.
 +
 --
-**默认容器配额**区域提供以下资源信息：
+The **Default Container Quota** area provides the following resource information:
 
 [options="header",cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/clusterManagement/projects/projects-para-containerQuotas.adoc[]
 |===
 
-**项目配额**区域提供以下资源信息（配置资源配额后显示）：
+The **Project Quota** area provides the following resource information (displayed after the resource quota is configured):
 
 include::../../../../_custom/multi-clusterProjectManagement/project-config/project-quota-para_v42.adoc[]
 

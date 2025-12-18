@@ -1,18 +1,18 @@
 ---
-title: "查看服务列表"
-keywords: "Kubernetes, {ks_product}, 项目管理, 工作负载, 服务, 查看服务列表"
-description: "介绍如何查看服务列表。"
+title: "View Service List"
+keywords: "Kubernetes, {ks_product}, Project Management, Workloads, Service, View Service List"
+description: "Describes how to view the service list."
 weight: 02
 ---
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 服务**
+:ks_permission: **View Application Workloads**
+:ks_navigation: **Application Workloads > Services**
 
 
 include::../../../../_custom/clusterManagement/services/services-desc-viewServiceList.adoc[]
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -26,28 +26,28 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 ====
-* 服务列表提供以下信息：
+* The service list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/clusterManagement/services/services-para-name.adoc[]
 
-|服务类型
-|服务的类型。取决于服务的创建方式，KubeSphere 将服务划分为以下类型：
+|Service Type
+|The type of service. Depending on how the service is created, KubeSphere categorizes services as follows:
 
 include::../../../../_custom/clusterManagement/services/services-para-statelessStatefulExternal.adoc[]
 
-* **外部服务**：服务将业务流量转发给集群外部的其他服务。系统不为服务分配虚拟 IP 地址，可通过 <service name>.<project name>**.svc.cluster.local** 格式的域名从集群内部访问。
+* **External Service**: The service forwards business traffic to other services outside the cluster. The system does not assign a virtual IP address to the service. It can be accessed from within the cluster using a domain name in the format <service name>.<project name>**.svc.cluster.local**.
 
-* **自定义服务**：用户通过自定义服务的内部访问模式和后端工作负载创建的服务。
+* **Custom Service**: A service created by the user by customizing the internal access mode and backend workloads.
 
-|应用
-|服务所属的应用。
+|Application
+|The application to which the service belongs.
 
-|内部访问
+|Internal Access
 |
 include::../../../../_custom/clusterManagement/services/services-para-internalAccess.adoc[]
 

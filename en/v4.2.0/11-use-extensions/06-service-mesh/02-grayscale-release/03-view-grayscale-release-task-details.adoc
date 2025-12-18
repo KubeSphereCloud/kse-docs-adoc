@@ -1,18 +1,16 @@
 ---
-title: "查看灰度发布任务详情"
-keywords: "Kubernetes, {ks_product}, 项目管理, 灰度发布, 查看灰度发布任务详情"
-description: "介绍如何查看灰度发布任务详情。"
+title: "View Grayscale Release Job Details"
+keywords: "Kubernetes, {ks_product}, Project Management, Grayscale Release, View Grayscale Release Job Details"
+description: "Describes how to view grayscale release job details."
 weight: 03
 ---
 
-:ks_permission: ** Service Mesh 查看**
-:ks_navigation: **灰度发布 > 灰度发布**
+:ks_permission: ** Service Mesh View**
+:ks_navigation: **Grayscale Release > Grayscale Release**
 
+This section describes how to view grayscale release job details.
 
-本节介绍如何查看灰度发布任务详情。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 * {empty}
@@ -20,9 +18,9 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 服务网格**扩展组件。
+* The **KubeSphere Service Mesh** extension must be installed and enabled on the KubeSphere platform.
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -35,35 +33,34 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 include::../../../../_custom/projectManagement/grayscaleRelease/grayscaleRelease-oper-openDetailsPage.adoc[]
 +
 --
-灰度发布任务详情页面提供以下信息：
+The grayscale release job details page provides the following information:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|灰度发布任务的名称和发布模式。
+|Name
+|The name of the grayscale release job and its release mode.
 
-|版本
-|新旧版本的容器组副本数量、容器组名称、CPU 用量和内存用量。
+|Version
+|The number of pod replicas, pod names, CPU usage, and memory usage for the old and new versions.
 
-|流量分配
+|Traffic Distribution
 |
-* 对于蓝绿部署，显示当前接收全部流量的服务版本。
+* For Blue-Green Deployment, shows the service version currently receiving all traffic.
 
-* 对于金丝雀发布，显示新旧版本的流量接收比例。
+* For Canary Release, shows the traffic reception ratio between the old and new versions.
 
-* 对于流量镜像，显示旧版本接收新版本流量的相同副本。
+* For Traffic Mirroring, shows the same replica of traffic from the new version being received by the old version.
 
-|发布策略
+|Release Strategy
 |
-* 立即切换：立即将全部流量切换到对应版本。
+* Switch Immediately: Immediately switch all traffic to the corresponding version.
 
-* 就绪后切换：等待对应版本的容器组就绪后自动切换流量。
+* Switch After Ready: Automatically switch traffic after the pods of the corresponding version are ready.
 
-* 暂停切换：主动暂停流量切换，保持当前流量分配状态。
+* Pause Switch: Actively pause traffic switching, maintaining the current traffic distribution state.
 
 include::../../../../_custom/projectManagement/grayscaleRelease/grayscaleRelease-para-trafficSuccessLatency.adoc[]
 |===
 --
-

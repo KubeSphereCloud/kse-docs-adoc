@@ -1,18 +1,18 @@
 ---
-title: "删除工作负载"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 工作负载, 删除工作负载"
-description: "介绍如何删除工作负载。"
+title: "Delete Workloads"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Workloads, Delete Workloads"
+description: "Describes how to delete workloads."
 weight: 15
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 工作负载**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Workloads**
 
 
 include::../../../../_custom/clusterManagement/workloads/workloads-desc-deleteWorkloads.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 删除单个工作负载
+== Delete a Single Workload
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -45,11 +45,11 @@ include::../../../../_custom/clusterManagement/workloads/workloads-oper-deleteAS
 
 +
 
-. 在**删除工作负载**对话框，选择需要同时删除的相关资源，然后点击**确定**。
+. In the **Delete Workload** dialog box, select the related resources to be deleted simultaneously, and then click **OK**.
 
 
 
-== 批量删除工作负载
+== Delete Workloads in Batches
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

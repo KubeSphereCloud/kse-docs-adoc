@@ -1,18 +1,16 @@
 ---
-title: "审核应用版本"
-keywords: "Kubernetes, {ks_product}, 应用商店, 应用审核, 审核应用版本"
-description: "介绍如何审核提交到应用商店的应用版本。"
+title: "Review Application Versions"
+keywords: "Kubernetes, {ks_product}, App Store, Application Review, Review Application Version"
+description: "Describes how to review application versions submitted to the App Store."
 weight: 01
 ---
 
-:ks_navigation: **应用审核**
-:ks_permission: **应用商店管理**
+:ks_navigation: **Application Review**
+:ks_permission: **App Store Management**
 
+This section describes how to review application versions submitted to the App Store.
 
-本节介绍如何审核提交到应用商店的应用版本。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,12 +18,11 @@ include::../../../../../_custom/platformManagement/platformManagement-prer-requi
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The **KubeSphere App Store Management** extension must be installed and enabled on the KubeSphere platform.
 
-* 企业空间成员已提交应用版本并且应用版本尚未被审核。
+* A workspace member has submitted an application version and the version has not yet been reviewed.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
@@ -39,17 +36,17 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**新提交**页签，点击需要审核的应用版本的名称。
+. On the **New Submissions** tab, click the name of the application version you want to review.
 
-. 在**应用详情**区域，查看应用的相关信息，然后根据需要点击**拒绝**或**批准**。
+. In the **Application Details** area, review the application information, then click **Reject** or **Approve** as needed.
 +
 --
 // Note
 include::../../../../../../_ks_components/admonitions/note.adoc[]
 
-* 如果点击**拒绝**，您需要在**拒绝原因**对话框进一步输入拒绝应用发布的原因，然后点击**确定**。
+* If you click **Reject**, you need to further enter the reason for rejecting the application release in the **Rejection Reason** dialog box, then click **OK**.
 
-* 应用版本审核通过后，还需要应用商店管理员将其上架，才能将应用版本发布到应用商店。
+* After an application version is approved, it still needs to be listed by the App Store administrator before it can be published to the App Store.
 
 include::../../../../../../_ks_components/admonitions/admonEnd.adoc[]
 --

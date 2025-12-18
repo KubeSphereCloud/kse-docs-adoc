@@ -1,20 +1,20 @@
 ---
-title: "项目列表"
-keywords: "Kuberentes, {ks_product}, 企业空间管理, 项目"
-description: "介绍如何查看项目信息以及管理项目。"
+title: "Project List"
+keywords: "Kuberentes, {ks_product}, Workspace Management, Project"
+description: "Introduces how to view project information and manage projects."
 weight: 01
 layout: "second"
 ---
 
 
 
-本节介绍如何管理企业空间中的普通项目。普通项目中的所有资源都运行在同一个集群上。
+This section introduces how to manage ordinary projects in a workspace. All resources in an ordinary project run on the same cluster.
 
-在 KubeSphere 平台，企业空间和项目都用于对资源进行分组管理。每个企业空间可包含多个项目。
+On the KubeSphere platform, both workspaces and projects are used for grouping and managing resources. Each workspace can contain multiple projects.
 
 
-// KubeSphere 支持两类项目：
+// KubeSphere supports two types of projects:
 
-// * 普通项目：基于单个集群创建的项目。普通项目中的所有资源都运行在同一个集群上。
+// * Ordinary Projects: Projects created based on a single cluster. All resources in an ordinary project run on the same cluster.
 
-// * 联邦项目：基于多个集群创建的项目。联邦项目中的资源可运行在不同集群上。
+// * Federated Projects: Projects created based on multiple clusters. Resources in a federated project can run on different clusters.

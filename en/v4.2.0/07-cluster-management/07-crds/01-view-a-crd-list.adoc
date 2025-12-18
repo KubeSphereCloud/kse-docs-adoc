@@ -1,19 +1,16 @@
 ---
-title: "查看定制资源定义列表"
-keywords: "Kubernetes, {ks_product}, 集群管理, 定制资源定义, 查看定制资源定义列表"
-description: "介绍如何查看定制资源定义列表。"
+title: "View Custom Resource Definition List"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Custom Resource Definition, View Custom Resource Definition List"
+description: "Describes how to view the Custom Resource Definition list."
 weight: 01
 ---
 
-:ks_permission: **定制资源定义查看**
-:ks_navigation: **定制资源定义**
+:ks_permission: **Custom Resource Definition View**
+:ks_navigation: **Custom Resource Definition**
 
+This section describes how to view the Custom Resource Definition list.
 
-本节介绍如何查看定制资源定义列表。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../
 
@@ -21,9 +18,7 @@ include::../../../_custom/clusterManagement/clusterManagement-prer-requiredPermi
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -33,29 +28,29 @@ include::../../../../_ks_components/oper-navigate.adoc[]
 
 +
 ====
-* 定制资源定义列表提供以下信息：
+* The Custom Resource Definition list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|类别
-|定制资源定义的类别和 API 版本。
+|Category
+|The category and API version of the Custom Resource Definition.
 
-|名称
-|定制资源定义的名称。
+|Name
+|The name of the Custom Resource Definition.
 
-|作用域
+|Scope
 |
 include::../../../_custom/clusterManagement/crds/crds-para-scope.adoc[]
 
-|创建时间
-|定制资源定义的创建时间。
+|Creation Time
+|The creation time of the Custom Resource Definition.
 |===
 --
 
-* 在列表上方点击搜索框并输入关键字，可按名称搜索定制资源定义。
+* Click the search box above the list and enter a keyword to search for Custom Resource Definitions by name.
 
 include::../../../../_ks_components/oper-refreshListData.adoc[]
 

@@ -1,19 +1,16 @@
 ---
-title: "删除工作负载模板"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 工作负载, 删除工作负载模板"
-description: "介绍如何删除工作负载模板。"
+title: "Delete Workload Templates"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Workloads, Delete Workload Templates"
+description: "Describes how to delete workload templates."
 weight: 07
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 工作负载模板**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Workload Templates**
 
+This section describes how to delete workload templates.
 
-本节介绍如何删除工作负载模板。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,9 +18,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-
-
-== 删除单个工作负载模板
+== Delete a Single Workload Template
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -35,8 +30,7 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 include::../../../../_custom/clusterManagement/workloadTemplates/workloadTemplates-oper-deleteASingleTemplate.adoc[]
 
-
-== 批量删除工作负载模板
+== Batch Delete Workload Templates
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 

@@ -1,20 +1,18 @@
 ---
-title: "将项目纳管到其他企业空间"
-keywords: "Kuberentes, {ks_product}, 企业空间管理, 项目, 解绑项目"
-description: "介绍如何解绑项目并纳管到其他企业空间。"
+title: "Assign a Project to Another Workspace"
+keywords: "Kubernetes, {ks_product}, Workspace Management, Project, Unbind Project"
+description: "Describes how to unbind a project and assign it to another workspace."
 weight: 08
 ---
 
-:ks_permission: **项目管理**
-:ks_navigation: **项目**
+:ks_permission: **Project Management**
+:ks_navigation: **Project**
 
+This section describes how to unbind a project from its current workspace and reassign it to another workspace.
 
-本节介绍如何将项目与当前企业空间解绑，并重新纳管到其他企业空间。
+== 1. Unbind the Project
 
-
-== 1. 解绑项目
-
-在项目所在的集群中，执行以下命令，解除项目和所属企业空间的关系。
+In the cluster where the project resides, execute the following command to remove the relationship between the project and its workspace.
 
 [,bash]
 ----
@@ -23,22 +21,22 @@ kubectl label ns <namespace> kubesphere.io/workspace- && kubectl patch ns <names
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-以上命令会移除项目与企业空间关联的标签并移除 ownerReferences。
+The above command removes the label associating the project with the workspace and clears the ownerReferences.
 |===
 
-== 2. 移除项目成员
+== 2. Remove Project Members
 
-在项目所在的集群中，执行以下命令，移除项目下所有的成员。
+In the cluster where the project resides, execute the following command to remove all members from the project.
 
 [,bash]
 ----
 kubectl delete rolebindings.iam.kubesphere.io -n <namespace> --all
 ----
 
-== 3. 纳管到新的企业空间
+== 3. Assign to a New Workspace
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -46,8 +44,8 @@ include::../../../../_custom/clusterManagement/clusterManagement-oper-openCluste
 
 include::../../../../../_ks_components/oper-navigate.adoc[]
 
-. 在项目列表中，在项目右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**分配企业空间**。
+. In the project list, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the project, then select **Assign Workspace** from the dropdown list.
 
-. 在**分配企业空间**对话框，设置项目所属的企业空间，并选择一个企业空间成员作为项目管理员，然后点击**确定**。
+. In the **Assign Workspace** dialog box, set the workspace to which the project belongs, select a workspace member as the project administrator, and then click **OK**.
 
-. 进入选定的企业空间，即可在**项目管理 > 项目列表**页面看到该项目。
+. Navigate to the selected workspace, and you will see the project on the **Project Management > Project List** page.

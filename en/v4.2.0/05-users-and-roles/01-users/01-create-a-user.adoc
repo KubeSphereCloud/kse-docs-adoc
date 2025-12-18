@@ -1,52 +1,52 @@
 ---
-title: "创建用户"
-keywords: "Kubernetes, {ks_product}, 访问控制, 用户, 创建用户"
-description: "介绍如何创建用户。"
+title: "Create a User"
+keywords: "Kubernetes, {ks_product}, Access Control, User, Create User"
+description: "Describes how to create a user."
 weight: 01
 ---
 
-:ks_menu: **用户和角色管理**
-:ks_navigation: **用户**
-:ks_permission: **用户管理**
+:ks_menu: **Users and Roles Management**
+:ks_navigation: **Users**
+:ks_permission: **User Management**
 
-本节介绍如何创建用户。
+This section describes how to create a user.
 
-== 前提条件
+== Prerequisites
 
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。有关更多信息，请参阅link:../../01-users/[用户]和link:../../02-platform-roles/[平台角色]。
+You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform. For more information, refer to link:../../01-users/[Users] and link:../../02-platform-roles/[Platform Roles].
 
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**用户**。
-. 在页面点击**创建**。
-. 在**创建用户**对话框，设置用户的信息，然后点击**确定**。
+. Click pass:a,q[{ks_menu}].
+. In the left navigation pane, select **Users**.
+. On the page, click **Create**.
+. In the **Create User** dialog box, set the user's information, then click **OK**.
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|用户名
-|用户的名称。用户名只能包含小写字母、数字、连字符（-）和句点（.），必须以小写字母或数字开头及结尾，最长 32 个字符。
+|Username
+|The name of the user. The username can only contain lowercase letters, numbers, hyphens (-), and periods (.). It must start and end with a lowercase letter or number, with a maximum length of 32 characters.
 
-|别名
-|用户的别名。
-// 别名可包含任意字符，最长 63 个字符。
+|Alias
+|The alias of the user.
+// The alias can contain any characters, with a maximum length of 63 characters.
 
-|邮箱
-|用户的邮箱地址。邮箱地址可用于登录 KubeSphere Web 控制台。
+|Email
+|The email address of the user. The email address can be used to log in to the KubeSphere web console.
 
-|平台角色
-|用户在 KubeSphere 平台的角色。平台角色将决定用户在 KubeSphere 的权限。
+|Platform Role
+|The role of the user on the KubeSphere platform. The platform role determines the user's permissions in KubeSphere.
 
-|密码
-|用户的密码。密码必须包含数字、大写字母、小写字母和特殊字符，长度为 8 至 64 个字符。
+|Password
+|The password of the user. The password must contain numbers, uppercase letters, lowercase letters, and special characters, with a length between 8 and 64 characters.
 
-|描述
-|用户的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|The description of the user. The description can contain any characters, with a maximum length of 256 characters.
 |===
 +
-用户创建完成后将显示在用户列表中。
+After creation, the user will appear in the user list.

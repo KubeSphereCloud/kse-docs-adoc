@@ -1,29 +1,28 @@
 ---
-title: "查看企业空间列表"
-keywords: "Kubernetes, {ks_product}, 访问控制, 企业空间, 查看企业空间列表"
-description: "介绍如何查看企业空间列表。"
+title: "View Workspace List"
+keywords: "Kubernetes, {ks_product}, Access Control, Workspace, View Workspace List"
+description: "Describes how to view the workspace list."
 weight: 02
 ---
 
-:ks_permission: **企业空间查看**
+:ks_permission: **Workspace Viewing**
 
-本节介绍如何查看企业空间列表。
+This section describes how to view the workspace list.
 
+== Prerequisites
 
-== 前提条件
+You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform.
 
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。
-
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击**企业空间管理**。企业空间列表显示当前平台的所有企业空间。
+. Click **Workspace Management**. The workspace list displays all workspaces on the current platform.
 +
 --
-* 在企业空间列表中，点击企业空间的名称可进入企业空间，查看和管理企业空间中的资源。
+* In the workspace list, click the name of a workspace to enter it and view and manage resources within the workspace.
 
-* 在列表上方点击搜索框并输入关键字，可按名称搜索企业空间。
+* Click the search box above the list and enter a keyword to search for workspaces by name.
 
 include::../../../../_ks_components/oper-refreshListData.adoc[]
 

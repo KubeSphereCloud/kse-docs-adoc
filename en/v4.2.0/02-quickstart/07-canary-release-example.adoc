@@ -1,72 +1,72 @@
 ---
-title: "金丝雀发布实践"
-keywords: "KubeSphere, Kubernetes, Bookinfo, Istio, 金丝雀发布, 服务网格"
-description: "了解如何在 KubeSphere 中部署金丝雀服务。"
+title: "Canary Release Practice"
+keywords: "KubeSphere, Kubernetes, Bookinfo, Istio, Canary Release, Service Mesh"
+description: "Learn how to deploy a canary service in KubeSphere."
 weight: 07
 ---
 
-在金丝雀发布中，您可以引入应用的新版本，并向其发送一小部分流量来进行测试。同时，旧版本负责处理其余的流量。如果一切顺利，您就可以逐渐增加向新版本发送的流量，同时逐步停用旧版本。如果出现任何问题，您可以更改流量比例，回滚至先前版本。
+In a canary release, you can introduce a new version of an application and send a small portion of traffic to it for testing. Meanwhile, the old version handles the rest of the traffic. If everything goes well, you can gradually increase the traffic sent to the new version while phasing out the old version. If any issues arise, you can adjust the traffic ratio and roll back to the previous version.
 
-该方法能够高效地测试服务性能和可靠性，有助于在实际环境中发现潜在问题，同时不影响系统整体稳定性。
+This method efficiently tests service performance and reliability, helping to identify potential issues in a real-world environment without affecting the overall system stability.
 
-== 前提条件
+== Prerequisites
 
-* 准备一个项目（例如 **demo-project**）和一个已邀请到该项目的用户（例如 **project-regular**）。该用户在项目中应具有 **operator** 角色。有关更多信息，请参阅link:../03-control-user-permissions/[控制用户权限]。
+* Prepare a project (e.g., **demo-project**) and a user (e.g., **project-regular**) invited to that project. This user should have the **operator** role in the project. For more information, refer to link:../03-control-user-permissions/[Control User Permissions].
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 服务网格**和 **KubeSphere 网关**扩展组件。
+* The KubeSphere platform needs to have the **KubeSphere Service Mesh** and **KubeSphere Gateway** extensions installed and enabled.
 
 ifeval::["{file_output_type}" == "html"]
-* 启用项目网关，并为项目网关启用**链路追踪**功能。有关更多信息，请参阅link:../../11-use-extensions/12-gateway/01-project-gateway/01-enable-a-project-gateway[启用项目网关]。
+* Enable the project gateway and enable the **Tracing** feature for the project gateway. For more information, refer to link:../../11-use-extensions/12-gateway/01-project-gateway/01-enable-a-project-gateway[Enable a Project Gateway].
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-* 启用项目网关，并为项目网关启用**链路追踪**功能。有关更多信息，请参阅《KubeSphere 扩展组件使用指南》的“启用项目网关”章节。
+* Enable the project gateway and enable the **Tracing** feature for the project gateway. For more information, refer to the "Enable a Project Gateway" chapter in the *KubeSphere Extensions Usage Guide*.
 endif::[]
 +
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-如果启用链路追踪后无法访问路由(Ingress)，请在路由中添加注解 `nginx.ingress.kubernetes.io/service-upstream: true`。
+If you cannot access the Ingress after enabling tracing, add the annotation `nginx.ingress.kubernetes.io/service-upstream: true` to the Ingress.
 |===
 
 
-* 已创建一个可用的自制应用，并且在创建时开启了**应用治理**，以便实现该应用的金丝雀发布。本教程中使用的示例应用是 Bookinfo。有关更多信息，请参阅link:../06-deploy-bookinfo/[部署并访问 Bookinfo]。
+* A composed app has been created and **Application Governance** was enabled during its creation to facilitate a canary release for that app. The sample app used in this tutorial is Bookinfo. For more information, refer to link:../06-deploy-bookinfo/[Deploy and Access Bookinfo].
 
-== 操作步骤
+== Steps
 
-=== 1. 创建金丝雀发布任务
+=== 1. Create a Canary Release Task
 
-. 使用 **project-regular** 用户登录 KubeSphere Web 控制台。
+. Log in to the KubeSphere web console as user **project-regular**.
 
-. 点击**企业空间管理**，并进入项目所在的企业空间。
+. Click **Workspace Management** and enter the workspace where the project resides.
 
-. 在左侧导航栏，选择**灰度发布** > **灰度发布**。
+. In the left navigation pane, select **Gray Release** > **Gray Release**.
 
-. 在**发布模式**页签下，在页面左上角的下拉列表中选择项目 **demo-project**，点击**金丝雀发布**右侧的**创建**。
+. On the **Release Mode** tab, select project **demo-project** from the drop-down list in the upper-left corner of the page, and click **Create** next to **Canary Release**.
 
-. 设置任务名称，点击**下一步**。
+. Set a task name and click **Next**.
 
-. 在**服务设置**页签，从下拉列表中选择您的应用和要实现金丝雀发布的服务。如果您同样使用示例应用 Bookinfo，请选择 **reviews** 并点击**下一步**。
+. On the **Service Settings** tab, select your app and the service for which you want to implement the canary release from the drop-down lists. If you are also using the sample app Bookinfo, select **reviews** and click **Next**.
 
-. 在**新版本设置**页签，设置新版本号 `v2`，并修改 `reviews` 的容器镜像地址（例如 `kubesphere/examples-bookinfo-reviews-v2:1.16.2`；将 `v1` 改为 `v2`），点击**下一步**。
+. On the **New Version Settings** tab, set the new version number to `v2`, and modify the container image address for `reviews` (e.g., change `kubesphere/examples-bookinfo-reviews-v2:1.16.2`; change `v1` to `v2`), then click **Next**.
 
-. 您可以使用具体比例或者使用请求内容（例如 `Http Header`、`Cookie` 和 `URI`）分别向这两个版本（`v1` 和 `v2`）发送流量。选择**指定流量分配**，并拖动中间的滑块来更改向这两个版本分别发送的流量比例（例如设置为各 50%）。操作完成后，点击**创建**。
+. You can send traffic to the two versions (`v1` and `v2`) either by specifying a specific ratio or by using request content (e.g., `Http Header`, `Cookie`, and `URI`). Select **Specify Traffic Distribution**, and drag the middle slider to change the traffic ratio sent to each version (e.g., set it to 50% each). After completing the operation, click **Create**.
 +
-该发布任务也会同时创建新的部署，可在**应用负载 > 工作负载**页面查看新版本对应的部署。
+This release task will also create a new deployment simultaneously. You can view the deployment corresponding to the new version on the **Application Workloads > Workloads** page.
 
-=== 2. 验证金丝雀发布
+=== 2. Verify the Canary Release
 
-现在您有两个可用的应用版本，请访问该应用以验证金丝雀发布。
+Now that you have two available application versions, access the application to verify the canary release.
 
-. link:../06-deploy-bookinfo//#_3_通过_nodeport_访问_bookinfo[访问 Bookinfo 网站]，重复刷新浏览器。您会看到 **Book Reviews** 板块以 50% 的比例在 v1 版本和 v2 版本之间切换，即不展示或展示 5 个黑色星标的评级。
+. link:../06-deploy-bookinfo//#_3_Access_Bookinfo_via_NodePort[Access the Bookinfo website] and repeatedly refresh the browser. You will see the **Book Reviews** section switching between the v1 and v2 versions at a 50% ratio, i.e., either not displaying or displaying ratings with 5 black stars.
 
-. 金丝雀发布任务创建后会显示在**发布任务**页签下。点击该任务查看详情。
+. After the canary release task is created, it will be displayed under the **Release Tasks** tab. Click the task to view its details.
 
-. 您可以看到每个版本分别收到一半流量。
+. You can see that each version receives half of the traffic.
 
-. 也可以在运行 KubeSphere 的机器上执行以下命令，直接获取虚拟服务来识别权重：
+. Alternatively, you can execute the following command on the machine running KubeSphere to directly obtain the virtual service and identify the weights:
 
 +
 --
@@ -77,14 +77,14 @@ kubectl -n demo-project get virtualservice -o yaml
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-- 当您执行上述命令时，请将 `demo-project` 替换为您自己的项目名称。
-- 如果您想在 KubeSphere Web 控制台使用 kubectl 工具执行命令，则需要使用 `admin` 帐户登录。
+- When executing the above command, replace `demo-project` with your own project name.
+- If you want to use the kubectl tool to execute commands in the KubeSphere web console, you need to log in with the `admin` account.
 |===
 
-预期输出：
+Expected output:
 
 [source,bash]
 ----
@@ -110,9 +110,9 @@ kubectl -n demo-project get virtualservice -o yaml
 ----
 --
 
-=== 3. 查看网络拓扑
+=== 3. View Network Topology
 
-. 在运行 KubeSphere 的机器上执行以下命令引入真实流量，模拟每 0.5 秒访问一次 Bookinfo。
+. Execute the following command on the machine running KubeSphere to introduce real traffic, simulating access to Bookinfo every 0.5 seconds.
 +
 --
 [source,bash]
@@ -122,39 +122,39 @@ watch -n 0.5 "curl http://productpage.demo-project.192.168.0.2.nip.io:32277/prod
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-请将 `demo-project`、`192.168.0.2` 和  `32277` 替换为您自己环境的实际值。
+Replace `demo-project`, `192.168.0.2`, and `32277` with the actual values for your own environment.
 |===
 --
 
-. 在**自制应用**页面，点击 **Bookinfo** 进入详情页，点击**流量监控**页签，您可以看到不同服务之间的通信、依赖关系、运行状态及性能。
+. On the **Composed Apps** page, click **Bookinfo** to enter its details page, then click the **Traffic Monitoring** tab. You can see the communication, dependencies, operational status, and performance between different services.
 
-. 点击组件（例如 **reviews**），在右侧可以看到流量监控信息，显示**流量**、**成功率**和**持续时间**的实时数据。
+. Click on an extension (e.g., **reviews**), and on the right side, you can see traffic monitoring information displaying real-time data for **Traffic**, **Success Rate**, and **Duration**.
 
-=== 4. 查看链路追踪详情
+=== 4. View Tracing Details
 
-KubeSphere 提供基于 link:https://www.jaegertracing.io/[Jaeger] 的分布式追踪功能，用来对基于微服务的分布式应用程序进行监控及故障排查。
+KubeSphere provides distributed tracing functionality based on link:https://www.jaegertracing.io/[Jaeger] for monitoring and troubleshooting microservices-based distributed applications.
 
-. 在**链路追踪**页签，可以清楚地看到请求的所有阶段及内部调用，以及每个阶段的调用耗时。
+. On the **Tracing** tab, you can clearly see all phases of a request and internal calls, as well as the call duration for each phase.
 
-. 点击任意条目，可以深入查看请求的详细信息及该请求被处理的位置（在哪个机器或者容器）。
+. Click on any entry to drill down and view detailed information about the request and where it was processed (on which machine or container).
 
-=== 5. 接管所有流量
+=== 5. Take Over All Traffic
 
-如果一切运行顺利，则可以将所有流量引入新版本。
+If everything runs smoothly, you can direct all traffic to the new version.
 
-. 回到**灰度发布**页面，在**发布任务**页签，点击金丝雀发布任务。
+. Return to the **Gray Release** page, and under the **Release Tasks** tab, click the canary release task.
 
-. 在弹出的对话框中，点击 **reviews v2** 右侧的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**接管**。这代表 100% 的流量将会被发送到新版本 (v2)。
+. In the dialog box that pops up, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of **reviews v2** and select **Take Over**. This means 100% of the traffic will be sent to the new version (v2).
 +
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-如果新版本出现任何问题，选择 v1 版本接管，即可回滚到之前的 v1 版本。
+If any issues arise with the new version, select the v1 version to take over, allowing you to roll back to the previous v1 version.
 |===
 
-. 再次访问 Bookinfo，多刷新几次浏览器，您会发现页面只显示 **reviews v2** 的结果（即带有黑色星标的评级）。
+. Access Bookinfo again and refresh the browser several times. You will find that the page only displays results from **reviews v2** (i.e., ratings with black stars).

@@ -1,18 +1,16 @@
 ---
-title: "查看应用模板详情"
-keywords: "Kubernetes, {ks_product}, 应用商店管理, 应用, 查看应用模板详情"
-description: "介绍如何查看应用模板详情。"
+title: "View Application Template Details"
+keywords: "Kubernetes, {ks_product}, App Store Management, Application, View Application Template Details"
+description: "Describes how to view application template details."
 weight: 02
 ---
 
-:ks_permission: **应用商店管理**
-:ks_navigation: **应用**
+:ks_permission: **App Store Management**
+:ks_navigation: **Applications**
 
+This section describes how to view application template details.
 
-本节介绍如何查看应用模板详情。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,10 +18,9 @@ include::../../../../../_custom/platformManagement/platformManagement-prer-requi
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The **KubeSphere App Store Management** extension must be installed and enabled on the KubeSphere platform.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
@@ -46,15 +43,15 @@ include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-op
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|应用 ID
-|应用名称。
+|App ID
+|The name of the application.
 
 include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-para-status_v4.adoc[]
 
-|分类
-|应用模板所属的分类。将应用模板分配到一个分类中以便于管理。有关更多信息，请参阅link:../../02-app-categories/[应用分类]。
+|Category
+|The category to which the application template belongs. Assigning an application template to a category facilitates management. For more information, see link:../../02-app-categories/[Application Categories].
 
 include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-para-type_v42.adoc[]
 
@@ -71,20 +68,20 @@ include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-op
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|状态
-|应用版本当前的状态。
+|Status
+|The current status of the application version.
 
-* **未提交**：应用版本已上传到企业空间，但未提交给 KubeSphere 平台的应用商店管理员审核。
+* **Not Submitted**: The application version has been uploaded to the workspace but has not been submitted to the KubeSphere platform's App Store administrator for review.
 
-* **已提交**：应用版本已提交给 KubeSphere 平台的应用商店管理员审核。
+* **Submitted**: The application version has been submitted to the KubeSphere platform's App Store administrator for review.
 
-* **已发布**：应用版本已获得 KubeSphere 平台的应用商店管理员的批准，可以上架到应用商店。
+* **Published**: The application version has been approved by the KubeSphere platform's App Store administrator and can be listed in the App Store.
 
-* **已拒绝**：应用版本未获得 KubeSphere 平台的应用商店管理员的批准，审核不通过。
+* **Rejected**: The application version was not approved by the KubeSphere platform's App Store administrator; the review failed.
 
-* **未发布**：应用版本发布后被应用商店管理员取消发布，或应用版本上架到 KubeSphere 平台的应用商店后被应用商店管理员下架。
+* **Unpublished**: The application version was unpublished by the App Store administrator after publication, or the application version was delisted from the KubeSphere platform's App Store by the App Store administrator.
 
 include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-para-version.adoc[]
 

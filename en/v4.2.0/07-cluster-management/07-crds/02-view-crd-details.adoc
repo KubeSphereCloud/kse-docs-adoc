@@ -1,19 +1,16 @@
 ---
-title: "查看定制资源定义详情"
-keywords: "Kubernetes, {ks_product}, 集群管理, 定制资源定义, 查看定制资源定义列表"
-description: "介绍如何查看定制资源定义详情。"
+title: "View Custom Resource Definition Details"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Custom Resource Definition, View Custom Resource Definition List"
+description: "Describes how to view Custom Resource Definition details."
 weight: 02
 ---
 
-:ks_permission: **定制资源定义查看**
-:ks_navigation: **定制资源定义**
+:ks_permission: **Custom Resource Definition View**
+:ks_navigation: **Custom Resource Definition**
 
+This section describes how to view Custom Resource Definition details.
 
-本节介绍如何查看定制资源定义详情。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../
 
@@ -21,9 +18,7 @@ include::../../../_custom/clusterManagement/clusterManagement-prer-requiredPermi
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -37,42 +32,42 @@ include::../../../_custom/clusterManagement/crds/crds-oper-openDetailsPage.adoc[
 
 +
 
-. 在详情页面的**属性**区域查看定制资源定义的属性。
+. On the details page, view the attributes of the Custom Resource Definition in the **Attributes** area.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|集群
-|定制资源定义所属的集群。
+|Cluster
+|The cluster to which the Custom Resource Definition belongs.
 
-|作用域
+|Scope
 |
 include::../../../_custom/clusterManagement/crds/crds-para-scope.adoc[]
 
-|创建时间
-|定制资源定义的创建时间。
+|Creation Time
+|The creation time of the Custom Resource Definition.
 
-|创建者
-|创建定制资源定义的用户。
+|Creator
+|The user who created the Custom Resource Definition.
 |===
 --
 
-. 在**定制资源定义**页签查看使用定制资源定义创建的定制资源。
+. On the **Custom Resource Definition** tab, view the custom resources created using this Custom Resource Definition.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|定制资源的名称。
+|Name
+|The name of the custom resource.
 
-|项目/DevOps 项目
-|定制资源所属的项目或 DevOps 项目。
+|Project/DevOps Project
+|The project or DevOps project to which the custom resource belongs.
 
-|创建时间
-|定制资源的创建时间。
+|Creation Time
+|The creation time of the custom resource.
 |===
 --

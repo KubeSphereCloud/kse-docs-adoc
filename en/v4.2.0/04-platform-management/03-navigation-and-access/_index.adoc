@@ -1,9 +1,9 @@
 ---
-title: "导航与快捷功能"
-keywords: "Kubernetes, {ks_product}, 导航, 组件坞, 快捷访问"
-description: "介绍平台的导航与快捷访问功能。"
+title: "Navigation and Shortcut Functions"
+keywords: "Kubernetes, {ks_product}, Navigation, Component Dock, Quick Access"
+description: "Introduces the platform's navigation and quick access functions."
 weight: 03
 layout: "second"
 ---
 
-为提升您在 KubeSphere 平台的操作效率，现提供多种快捷访问方式，如顶部导航栏、组件坞、工作台的快捷访问区域、可收起/展开的快捷访问栏和左侧导航栏等。
+To enhance your operational efficiency on the KubeSphere platform, multiple quick access methods are provided, such as the top navigation bar, the Component Dock, the quick access area on the dashboard, the collapsible/expandable quick access bar, and the left navigation pane.

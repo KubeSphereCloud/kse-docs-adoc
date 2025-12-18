@@ -1,18 +1,16 @@
 ---
-title: "查看应用仓库列表"
-keywords: "Kubernetes, {ks_product}, 企业空间, 应用仓库, 查看应用仓库列表"
-description: "介绍如何查看应用仓库列表。"
+title: "View App Repository List"
+keywords: "Kubernetes, {ks_product}, workspace, app repository, view app repository list"
+description: "Describes how to view the app repository list."
 weight: 02
 ---
 
-:ks_permission: **应用商店管理**
-:ks_navigation: **应用仓库**
+:ks_permission: **App Store Management**
+:ks_navigation: **App Repositories**
 
+This section describes how to view the app repository list in "App Store Management".
 
-本节介绍如何查看“应用商店管理”中的应用仓库列表。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,10 +18,9 @@ include::../../../../../_custom/platformManagement/platformManagement-prer-requi
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The **KubeSphere App Store Management** extension must be installed and enabled on the KubeSphere platform.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
@@ -38,7 +35,7 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 ====
 include::../../../../../_custom/workspaceManagement/appRepositories/appRepositories-para-viewRepositoryList.adoc[]
 
-* 在列表上方点击搜索框并输入关键字，可按名称搜索应用仓库。
+* Click the search box above the list and enter a keyword to search for app repositories by name.
 
 include::../../../../../../_ks_components/oper-refreshListData.adoc[]
 

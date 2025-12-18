@@ -1,7 +1,7 @@
 ---
-title: "凭证"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 凭证"
-description: "介绍如何管理凭证。"
-weight:  07
+title: "Credentials"
+keywords: "Kubernetes, {ks_product}, DevOps Project, Credentials"
+description: "Introduces how to manage credentials."
+weight: 07
 layout: "second"
 ---

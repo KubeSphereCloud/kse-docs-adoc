@@ -1,16 +1,16 @@
 ---
-title: "许可证"
-keywords: "Kubernetes, {ks_product}, 平台设置, 许可证"
-description: "介绍如何管理 KubeSphere 平台和扩展组件的许可证。"
+title: "License"
+keywords: "Kubernetes, {ks_product}, Platform Settings, License"
+description: "Introduces how to manage licenses for the KubeSphere platform and extensions."
 weight: 02
 layout: "second"
 ---
 
 
-本节介绍如何查看及添加 KubeSphere 平台和扩展组件的许可证（license）。
+This section describes how to view and add licenses for the KubeSphere platform and extensions.
 
-**KubeSphere 许可证**：用于激活 KubeSphere 平台。KubeSphere 所有版本均需通过许可证激活。请访问 KubeSphere 官网link:https://kubesphere.com.cn/kse/[购买许可证]，或link:https://kubesphere.com.cn/apply-license[免费申请社区版的许可证]。
-// 自 KubeSphere v4.2.0 起，KubeSphere 分为社区版、标准版、高级版、旗舰版四个版本。
+**KubeSphere License**: Used to activate the KubeSphere platform. All versions of KubeSphere require activation via a license. Please visit the KubeSphere official website link:https://kubesphere.com.cn/kse/[to purchase a license], or link:https://kubesphere.com.cn/apply-license[apply for a free Community Edition license].
+// Starting from KubeSphere v4.2.0, KubeSphere is divided into four editions: Community Edition, Standard Edition, Advanced Edition, and Enterprise Edition.
 
-**扩展组件许可证**：用于激活某些需购买的扩展组件，此处仅展示扩展组件的授权信息。
-// 有关扩展组件许可的更多信息，请访问扩展中心的组件详情页，联系扩展组件供应商获取支持。
+**Extension License**: Used to activate certain paid extensions. Only the authorization information for extensions is displayed here.
+// For more information about extension licensing, please visit the extension details page in the Extensions Center and contact the extension provider for support.

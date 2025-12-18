@@ -1,7 +1,7 @@
 ---
-title: "自制应用"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用"
-description: "介绍如何管理项目中安装的应用。"
+title: "Composed Apps"
+keywords: "Kubernetes, {ks_product}, Project Management, Apps"
+description: "Introduces how to manage apps installed in a project."
 weight: 01.5
 layout: "second"
 ---
@@ -9,34 +9,34 @@ layout: "second"
 
 include::../../../../_custom/projectManagement/apps/apps-types_v42.adoc[]
 
-本节介绍如何管理自制应用。有关基于模板的应用的更多信息，请参阅link:../01-apps[应用]。
+This section describes how to manage composed apps. For more information about template-based apps, refer to link:../01-apps[Apps].
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
-// |``自制应用``，仅在 KubeSphere ``标准版、高级版和旗舰版``中提供。
+// |``Composed apps`` are only available in KubeSphere ``Standard, Advanced, and Enterprise editions``.
 
 // |===
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|在创建自制应用时，如需启用应用治理以使用流量监控、灰度发布和链接追踪功能，您需要安装“KubeSphere 服务网格”扩展组件。
+|When creating a composed app, if you need to enable application governance to use traffic monitoring, canary release, and link tracing features, you need to install the "KubeSphere Service Mesh" extension.
 |===
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Attention
 
 |
 include::../../../../_custom/projectManagement/apps/composedapps-desc-syncwithServiceMesh.adoc[]
 ifeval::["{file_output_type}" == "html"]
-有关更多信息，请参阅 link:../../../11-use-extensions/06-service-mesh/[KubeSphere 服务网格]。
+For more information, refer to link:../../../11-use-extensions/06-service-mesh/[KubeSphere Service Mesh].
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-有关更多信息，请参阅《KubeSphere 扩展组件使用指南》的“KubeSphere 服务网格”章节。
+For more information, refer to the "KubeSphere Service Mesh" chapter in the *KubeSphere Extensions User Guide*.
 endif::[]
 |===

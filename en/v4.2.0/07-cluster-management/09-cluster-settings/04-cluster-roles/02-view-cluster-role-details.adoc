@@ -1,19 +1,16 @@
 ---
-title: "查看集群角色详情"
-keywords: "Kubernetes, {ks_product}, 集群管理, 集群设置, 集群成员, 查看集群角色详情"
-description: "介绍如何查看集群成员详情。"
+title: "View Cluster Role Details"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Cluster Settings, Cluster Members, View Cluster Role Details"
+description: "Describes how to view cluster member details."
 weight: 02
 ---
 
-:ks_permission: **角色查看**
-:ks_navigation: **集群设置 > 集群角色**
+:ks_permission: **Role Viewing**
+:ks_navigation: **Cluster Settings > Cluster Roles**
 
+This section describes how to view cluster role details.
 
-本节介绍如何查看集群角色详情。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,9 +18,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -33,174 +28,174 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在集群角色列表中点击一个集群角色的名称打开其详情页面。
+. In the cluster role list, click the name of a cluster role to open its details page.
 
-. 在集群角色详情页面的**权限**页签查看集群角色具有的权限。
+. On the cluster role details page, click the **Permissions** tab to view the permissions granted to the cluster role.
 +
 ====
-所有集群成员都可以查看集群的资源信息。其他操作所需的权限如下：
+All cluster members can view cluster resource information. Permissions required for other operations are as follows:
 
-* 存储
+* Storage
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|持久卷声明查看
-|查看持久卷声明列表、查看持久卷声明详情、查看持久卷列表、查看持久卷详情。
+|Persistent Volume Claim Viewing
+|View Persistent Volume Claim list, view Persistent Volume Claim details, view Persistent Volume list, view Persistent Volume details.
 
-|持久卷声明管理
-|创建持久卷声明、克隆持久卷声明、扩展持久卷声明、编辑持久卷声明信息、编辑持久卷信息、删除持久卷声明、删除持久卷。
+|Persistent Volume Claim Management
+|Create Persistent Volume Claim, clone Persistent Volume Claim, expand Persistent Volume Claim, edit Persistent Volume Claim information, edit Persistent Volume information, delete Persistent Volume Claim, delete Persistent Volume.
 
-|存储类查看
-|查看存储类列表、查看存储类详情。
+|Storage Class Viewing
+|View Storage Class list, view Storage Class details.
 
-|存储类管理
-|创建存储类、设置默认存储类、启用和禁用卷操作、编辑存储类信息、删除存储类。
+|Storage Class Management
+|Create Storage Class, set default Storage Class, enable and disable volume operations, edit Storage Class information, delete Storage Class.
 
-// |卷快照查看
-// |查看卷快照列表、查看卷快照详情、查看卷快照内容列表、查看卷快照内容详情。
+// |Volume Snapshot Viewing
+// |View Volume Snapshot list, view Volume Snapshot details, view Volume Snapshot Content list, view Volume Snapshot Content details.
 
-// |卷快照管理
-// |创建卷快照、使用卷快照创建持久卷、删除卷快照、编辑卷快照内容信息、删除卷快照内容。
+// |Volume Snapshot Management
+// |Create Volume Snapshot, create Persistent Volume using Volume Snapshot, delete Volume Snapshot, edit Volume Snapshot Content information, delete Volume Snapshot Content.
 
-// |卷快照类查看
-// |查看卷快照类列表、查看卷快照类详情。
+// |Volume Snapshot Class Viewing
+// |View Volume Snapshot Class list, view Volume Snapshot Class details.
 
-// |卷快照类管理
-// |创建卷快照类、编辑卷快照类信息、删除卷快照类。
+// |Volume Snapshot Class Management
+// |Create Volume Snapshot Class, edit Volume Snapshot Class information, delete Volume Snapshot Class.
 |===
 --
 
-* 访问控制
+* Access Control
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|角色查看
-|查看集群角色列表、查看集群角色详情。
+|Role Viewing
+|View cluster role list, view cluster role details.
 
-|成员查看
-|查看集群成员列表。
+|Member Viewing
+|View cluster member list.
 
-|成员管理
-|邀请用户加入集群、修改集群成员的角色、移除集群成员。
+|Member Management
+|Invite users to join the cluster, modify cluster member roles, remove cluster members.
 |===
 --
 
-* 项目
+* Projects
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-// |项目资源查看
+// |Project Resource Viewing
 // |
-// * 保密字典查看：查看保密字典列表、查看保密字典详情。
+// * Secret Viewing: View Secret list, view Secret details.
 
-// * 配置字典查看：查看配置字典列表、查看配置字典详情。
+// * ConfigMap Viewing: View ConfigMap list, view ConfigMap details.
 
-// * 服务帐户查看：查看服务帐户列表、查看服务帐户详情。
+// * Service Account Viewing: View Service Account list, view Service Account details.
 
-// |项目资源管理
+// |Project Resource Management
 // |
 
-// * 保密字典管理：创建保密字典、编辑保密字典信息、编辑保密字典设置、删除保密字典。
+// * Secret Management: Create Secret, edit Secret information, edit Secret settings, delete Secret.
 
-// * 配置字典管理：创建配置字典、编辑配置字典信息、编辑配置字典设置、删除配置字典。
+// * ConfigMap Management: Create ConfigMap, edit ConfigMap information, edit ConfigMap settings, delete ConfigMap.
 
-// * 服务账户管理：创建服务帐户、编辑服务帐户信息、为服务帐户分配角色、删除服务帐户。
+// * Service Account Management: Create Service Account, edit Service Account information, assign roles to Service Account, delete Service Account.
 
-|项目查看
-|查看项目列表、查看项目详情。
+|Project Viewing
+|View project list, view project details.
 
-|项目管理
-|创建项目、编辑项目信息、编辑项目注解、编辑项目配额、编辑默认容器配额、删除项目。
+|Project Management
+|Create project, edit project information, edit project annotations, edit project quotas, edit default container quotas, delete project.
 |===
 --
 
-* 集群资源
+* Cluster Resources
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|节点查看
-|查看节点列表、查看节点详情。
+|Node Viewing
+|View node list, view node details.
 
-|节点管理
-|阻止和允许容器组调度到节点、访问节点终端、编辑节点污点、编辑节点标签。
+|Node Management
+|Cordon and uncordon nodes, access node terminal, edit node taints, edit node labels.
 
-// |系统组件查看
-// |查看系统组件列表、查看系统组件详情。
+// |System Component Viewing
+// |View system component list, view system component details.
 
-|定制资源定义查看
-|查看定制资源定义列表、查看定制资源定义详情。
+|Custom Resource Definition Viewing
+|View Custom Resource Definition list, view Custom Resource Definition details.
 
-|定制资源定义管理
-|编辑定制资源、删除定制资源。
+|Custom Resource Definition Management
+|Edit Custom Resource, delete Custom Resource.
 |===
 --
 
-* 集群设置
+* Cluster Settings
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|集群设置查看
-|查看集群概览信息、查看集群基本信息、查看集群可见性。
+|Cluster Settings Viewing
+|View cluster overview information, view cluster basic information, view cluster visibility.
 
-|集群设置管理
-|使用集群管理功能、编辑集群基本信息、编辑集群可见性。
+|Cluster Settings Management
+|Use cluster management functions, edit cluster basic information, edit cluster visibility.
 |===
 --
 
-* 应用负载
+* Application Workloads
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|应用负载查看
+|Application Workloads Viewing
 |
-* 工作负载查看：查看工作负载列表、查看工作负载详情。
+* Workload Viewing: View workload list, view workload details.
 
-* 任务查看：查看任务列表、查看任务详情。
+* Job Viewing: View Job list, view Job details.
 
-* 容器组查看：查看容器组列表、查看容器组详情、查看容器详情。
+* Pod Viewing: View pod list, view pod details, view container details.
 
-* 服务查看：查看服务列表、查看服务详情。
+* Service Viewing: View Service list, view Service details.
 
-* 应用路由查看：查看应用路由列表、查看应用路由详情、访问应用路由的后端服务。
+* Ingress Viewing: View Ingress list, view Ingress details, access backend services of Ingress.
 
-* 工作负载模板查看：查看工作负载模板列表。
+* Workload Template Viewing: View workload template list.
 
-|应用负载管理
+|Application Workloads Management
 |
-* 工作负载管理：创建工作负载、编辑工作负载信息、重新创建工作负载、调整容器组副本数量、停止工作负载、回退工作负载设置、编辑工作负载设置、删除工作负载。
+* Workload Management: Create workload, edit workload information, recreate workload, adjust pod replicas, stop workload, rollback workload settings, edit workload settings, delete workload.
 
-* 任务管理：创建任务、编辑任务信息、重新运行任务、暂停定时任务、删除任务。
+* Job Management: Create Job, edit Job information, rerun Job, suspend CronJob, delete Job.
 
-* 容器组管理：访问容器终端、删除容器组。
+* Pod Management: Access container terminal, delete pod.
 
-* 服务管理：创建服务、编辑服务信息、编辑服务设置、编辑服务外部访问设置、删除服务。
+* Service Management: Create Service, edit Service information, edit Service settings, edit Service external access settings, delete Service.
 
-* 应用路由管理：创建应用路由、编辑应用路由信息、编辑路由规则、编辑应用路由注解、删除应用路由。
+* Ingress Management: Create Ingress, edit Ingress information, edit routing rules, edit Ingress annotations, delete Ingress.
 
-* 工作负载模板管理：创建工作负载模板、编辑模板设置、通过模板创建工作负载、删除工作负载模板。
+* Workload Template Management: Create workload template, edit template settings, create workload from template, delete workload template.
 |===
 --
 ====
 
-. 点击**授权用户**页签，查看具有当前集群角色的用户。
+. Click the **Authorized Users** tab to view users who have the current cluster role.
 +
 --
 include::../../../../_custom/clusterManagement/clusterRoles/clusterRoles-para-authorizedUsers.adoc[]

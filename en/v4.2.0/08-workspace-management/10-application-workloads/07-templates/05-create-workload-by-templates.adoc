@@ -1,18 +1,16 @@
 ---
-title: "通过模板创建工作负载"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 工作负载, 通过模板创建工作负载"
-description: "介绍如何通过模板创建工作负载。"
+title: "Create a Workload from a Template"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Workload, Create a Workload from a Template"
+description: "Describes how to create a workload from a template."
 weight: 05
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 工作负载模板**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Workload Templates**
 
+This section describes how to create a workload from a template.
 
-本节介绍如何通过模板创建工作负载。
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -20,7 +18,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -34,9 +32,8 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 
-. 在工作负载模板右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**通过模板创建**。
+. On the right side of the workload template, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], then select **Create from Template** from the dropdown list.
 
-
-. 在**通过模板创建**对话框，分别设置工作负载的基本信息、容器组设置、存储设置和高级设置，然后点击**确定**。
+. In the **Create from Template** dialog box, configure the basic information, pod settings, storage settings, and advanced settings for the workload, then click **OK**.
 +
-有关具体的参数设置方法，请参阅link:../../03-workloads/01-create-a-workload#_参数描述[参数描述]。
+For detailed parameter configuration methods, please refer to link:../../03-workloads/01-create-a-workload#_parameter-description[Parameter Description].

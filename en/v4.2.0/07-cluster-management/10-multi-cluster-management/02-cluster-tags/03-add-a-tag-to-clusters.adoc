@@ -1,28 +1,25 @@
 ---
-title: "将标签添加到集群"
-keywords: "Kubernetes, {ks_product}, 多集群管理, 集群标签, 将标签添加到集群"
-description: "介绍如何将标签添加到集群。"
+title: "Add Labels to Clusters"
+keywords: "Kubernetes, {ks_product}, Multi-cluster Management, Cluster Labels, Add Labels to Clusters"
+description: "Describes how to add labels to clusters."
 weight: 03
 ---
 
-:ks_permission: **集群管理**
+:ks_permission: **Cluster Management**
 
+This section describes how to add labels to clusters.
 
-本节介绍如何将标签添加到集群。
+== Prerequisites
 
+You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform.
 
-== 前提条件
-
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。
-
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
 +
 
-. 点击**集群管理**。
+. Click **Cluster Management**.
 
 +
 
@@ -30,6 +27,6 @@ include::../../../../_custom/platformManagement/multiclusterManagement/clusterTa
 
 +
 
-. 在需要添加到集群的标签右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**添加到集群**。
+. To the right of the label you want to add to a cluster, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], then select **Add to Cluster** from the dropdown list.
 
-. 在**添加标签到集群**对话框，选择需要添加标签的集群，然后点击**确定**。
+. In the **Add Label to Cluster** dialog box, select the cluster(s) to which you want to add the label, then click **OK**.

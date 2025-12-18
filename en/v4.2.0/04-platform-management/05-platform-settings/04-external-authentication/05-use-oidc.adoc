@@ -1,22 +1,21 @@
 ---
-title: "OIDC 身份验证"
-keywords: "Kubernetes, KubeSphere, OIDC, 身份提供者, 身份验证"
-description: "了解如何在 KubeSphere 上配置 OIDC 服务。"
+title: "OIDC Authentication"
+keywords: "Kubernetes, KubeSphere, OIDC, Identity Provider, Authentication"
+description: "Learn how to configure OIDC service on KubeSphere."
 weight: 05
 ---
 
-:ks_navigation: **配置 > 保密字典**
+:ks_navigation: **Configuration > Secrets**
 
+KubeSphere supports external authentication via link:https://openid.net/connect/[OpenID Connect] (OIDC), allowing users to log in to the KubeSphere web console using OIDC usernames and passwords.
 
-KubeSphere 支持通过 link:https://openid.net/connect/[OpenID Connect] (OIDC) 进行外部身份验证，以便使用 OIDC 的用户名和密码登录 KubeSphere Web 控制台。
+Platform administrators can configure OIDC authentication through a Secret.
 
-平台管理员可以通过 secret（保密字典）配置 OIDC 身份验证。
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
-. 点击**集群管理**，并进入 host 集群。
+. Click **Cluster Management** and enter the host cluster.
 
 +
 
@@ -26,34 +25,34 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 include::../../../../../_ks_components/oper-clickCreate.adoc[]
 
-. 在**创建保密字典**对话框，点击右上角的**编辑 YAML** 开关，使用 yaml 创建保密字典。
+. In the **Create Secret** dialog, click the **Edit YAML** toggle in the upper right corner to create the secret using YAML.
 
-. 按照以下示例及参数说明修改 yaml 文件，配置完成后，点击**创建**。
+. Modify the YAML file according to the example and parameter descriptions below. After configuration, click **Create**.
 
-. 登出 KubeSphere Web 控制台，在登录页面，点击**通过 oidc 登录**，输入 OpenID Connect 用户名和密码进行登录。
+. Log out of the KubeSphere web console. On the login page, click **Log in via OIDC**, and enter your OpenID Connect username and password to log in.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-多集群环境中，只需要在主集群中进行配置。
+In a multi-cluster environment, configuration is only required in the host cluster.
 |===
 
 
-== OIDC 基本配置
+== OIDC Basic Configuration
 
 [source,yaml]
 ----
 apiVersion: v1
 kind: Secret
 metadata:
-  namespace: kubesphere-system  # 请勿修改
-  name: identity-provider-oidc  # 确保该 Secret 名称在 Kubernetes 集群中唯一
+  namespace: kubesphere-system  # Do not modify
+  name: identity-provider-oidc  # Ensure this Secret name is unique within the Kubernetes cluster
   labels:
-    config.kubesphere.io/type: identityprovider # 请勿修改
-    config.kubesphere.io/identityprovider: oidc # 与 configuration.yaml 中的 name 字段保持一致
-type: config.kubesphere.io/identityprovider # 请勿修改
+    config.kubesphere.io/type: identityprovider # Do not modify
+    config.kubesphere.io/identityprovider: oidc # Must match the name field in configuration.yaml
+type: config.kubesphere.io/identityprovider # Do not modify
 
 stringData:
   configuration.yaml: |
@@ -63,7 +62,7 @@ stringData:
     hidden: false
     disabled: false
     provider:
-        # 使用自动发现
+        # Use auto-discovery
         issuer: https://accounts.google.com
         clientID: "your-client-id"
         clientSecret: "your-client-secret"
@@ -71,20 +70,20 @@ stringData:
 ----
 
 
-== OIDC 完整配置
+== OIDC Full Configuration
 
-以下仅展示 `stringData:configuration.yaml` 下 `provider` 部分的配置，其他部分请与 link:#_oidc_基本配置[OIDC 基本配置]的相应部分保持相同。
+The following only shows the configuration of the `provider` section under `stringData:configuration.yaml`. Other parts should remain the same as the corresponding parts in the link:#_oidc_basic_configuration[OIDC Basic Configuration].
 
 [source,yaml]
 ----
     provider:
-        # 基本配置
+        # Basic configuration
         issuer: https://accounts.google.com
         clientID: "your-client-id"
         clientSecret: "your-client-secret"
         redirectURL: "https://your-app.com/oauth/callback"
         
-        # 可选配置
+        # Optional configuration
         scopes: 
             - "openid"
             - "email"
@@ -98,12 +97,12 @@ endif::[]
         getUserInfo: true
         insecureSkipVerify: false
         
-        # 自定义 claims 配置
+        # Custom claims configuration
         emailKey: "email"
         preferredUsernameKey: "preferred_username"
         displayNameKey: "name"
         
-        # 手动端点配置（当不使用 issuer 时，endpoint 相关配置为必填项）
+        # Manual endpoint configuration (endpoint-related configurations are required when issuer is not used)
         endpoint:
             authURL: "https://accounts.google.com/o/oauth2/v2/auth"
             tokenURL: "https://oauth2.googleapis.com/token"
@@ -112,41 +111,41 @@ endif::[]
             endSessionURL: "https://accounts.google.com/logout"
 ----
 
-== OIDC 参数说明
+== OIDC Parameter Description
 
-此为 `stringData:configuration.yaml` 下 `provider` 部分的参数说明。保密字典中其他部分的参数说明，请参阅link:../01-set-up-external-authentication/#_参数说明[配置外部身份验证]。
+This is the parameter description for the `provider` section under `stringData:configuration.yaml`. For parameter descriptions of other parts in the Secret, please refer to link:../01-set-up-external-authentication/#_parameter_description[Configure External Authentication].
 
 [%header,cols="2a,1a,1a,1,3a"]
 |===
-|参数 |类型 |必填 |默认值 |说明
+|Parameter |Type |Required |Default Value |Description
 
-|  issuer                  | string    | 否   |  -                   | OpenID Provider 的发行者 URL，用于动态发现配置
+|  issuer                  | string    | No   |  -                   | The issuer URL of the OpenID Provider, used for dynamic discovery configuration
 
-|  clientID                | string    |  是  | -                    | OAuth2 客户端 ID
+|  clientID                | string    |  Yes  | -                    | OAuth2 client ID
 
-|  clientSecret            | string    |  是  | -                    | OAuth2 客户端密钥
+|  clientSecret            | string    |  Yes  | -                    | OAuth2 client secret
 
-|  redirectURL             | string    |  是  | -                    | OAuth2 回调地址
+|  redirectURL             | string    |  Yes  | -                    | OAuth2 callback address
 
-|  scopes                  |  []string | 否   | ["openid"]          | 请求的权限范围。默认包含 "openid"
+|  scopes                  |  []string | No   | ["openid"]          | Requested scopes. Default includes "openid"
 
-|  getUserInfo             | bool      | 否   | false                | 是否使用 userinfo 端点获取额外用户信息
+|  getUserInfo             | bool      | No   | false                | Whether to use the userinfo endpoint to obtain additional user information
 
-|  insecureSkipVerify      | bool      | 否   | false                | 是否跳过 TLS 证书验证
+|  insecureSkipVerify      | bool      | No   | false                | Whether to skip TLS certificate verification
 
-|  endpoint.authURL        | string    | 否   | -                    | OAuth2 授权端点 URL
+|  endpoint.authURL        | string    | No   | -                    | OAuth2 authorization endpoint URL
 
-|  endpoint.tokenURL       | string    |  否  | -                    | OAuth2 令牌端点 URL
+|  endpoint.tokenURL       | string    |  No  | -                    | OAuth2 token endpoint URL
 
-|  endpoint.userInfoURL    | string    |  否  | -                    | OpenID UserInfo 端点 URL
+|  endpoint.userInfoURL    | string    |  No  | -                    | OpenID UserInfo endpoint URL
 
-|  endpoint.jwksURL        | string    | 否   | -                    | JSON Web Key Set URL
+|  endpoint.jwksURL        | string    | No   | -                    | JSON Web Key Set URL
 
-|  endpoint.endSessionURL  | string    | 否   | -                    | 登出端点 URL
+|  endpoint.endSessionURL  | string    | No   | -                    | End session endpoint URL
 
-|  emailKey                | string    | 否   | "email"              |  邮箱信息的自定义 claim 键名
+|  emailKey                | string    | No   | "email"              | Custom claim key name for email information
 
-|  preferredUsernameKey    | string    |  否  | "preferred_username" | 用户名信息的自定义 claim 键名
+|  preferredUsernameKey    | string    |  No  | "preferred_username" | Custom claim key name for username information
 
-|  displayNameKey           | string    | 否   |  -                   | 显示名称的自定义 claim 键名
+|  displayNameKey           | string    | No   |  -                   | Custom claim key name for display name
 |===

@@ -1,27 +1,26 @@
 ---
-title: "灰度发布"
-keywords: "Kubernetes, {ks_product}, 项目管理, 灰度发布"
-description: "介绍如何管理灰度发布任务。"
+title: "Canary Release"
+keywords: "Kubernetes, {ks_product}, Project Management, Canary Release"
+description: "Introduction to managing canary release tasks."
 weight: 02
 layout: "second"
 ---
 
+This section describes how to use the canary release feature.
 
-本节介绍如何使用灰度发布功能。
+When a container version needs an update, if the new version is released directly to the production environment without sufficient testing, it may pose significant risks to the business. Using the canary release feature allows production traffic to be directed to the new version under test, thereby exposing and fixing any potential issues with the new version before its official release.
 
-当容器的版本需要更新时，如果新版本未经充分测试而直接发布到生产环境，可能会给业务带来很大风险。使用灰度发布功能将生产环境的业务流量转发给测试中的新版本，从而在新版本正式发布前充分暴露并及时修复新版本可能存在的问题。
+KubeSphere supports the following canary release modes:
 
-KubeSphere 支持以下灰度发布模式：
+* Blue-green deployment: Sends business traffic to the new version for testing. If the new version is not functioning properly, business traffic can be immediately switched back to the old version.
 
-* 蓝绿部署：将业务流量发送给新版本进行测试。如果新版本运行不正常，可立即将业务流量切换给旧版本。
+* Canary release: Allocates business traffic in a certain proportion between the new and old versions, ensuring business continuity while testing the new version.
 
-* 金丝雀发布：将业务流量按一定比例分配给新版本和旧版本，在测试新版本的同时保证业务连续性。
-
-* 流量镜像：将业务流量的副本发送给新版本进行测试，而不实际暴露新版本。
+* Traffic mirroring: Sends a copy of business traffic to the new version for testing without actually exposing the new version.
 
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]
 
-灰度发布仅支持自制应用，不支持基于模板的应用。
+Canary release only supports composed apps and does not support template-based applications.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]

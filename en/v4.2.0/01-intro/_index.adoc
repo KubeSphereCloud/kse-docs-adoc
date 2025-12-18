@@ -1,41 +1,41 @@
 ---
-title: "产品介绍"
-keywords: "{ks_product}, KubeSphere, KubeSphere Enterprise, KubeSphere LuBan, 产品简介"
-description: 介绍产品优势，架构以及应用场景。
+title: "Product Introduction"
+keywords: "{ks_product}, KubeSphere, KubeSphere Enterprise, KubeSphere LuBan, Product Introduction"
+description: Introduces product advantages, architecture, and application scenarios.
 weight: 01
 icon: "/images/docs/common/docs.svg"
 layout: "second"
 ---
 
-本节介绍 KubeSphere 的功能特性，架构、应用场景以及各版本区别。
+This section introduces the features, architecture, application scenarios, and differences between versions of KubeSphere.
 
 ifeval::["{file_output_type}" == "pdf"]
 
-== 产品版本
+== Product Version
 
-本文档适用于 KubeSphere v4.2.0 版本。
+This document applies to KubeSphere v4.2.0.
 
-== 读者对象
+== Target Audience
 
-本文档主要适用于以下读者：
+This document is primarily intended for the following readers:
 
-* KubeSphere 用户
+* KubeSphere Users
 
-* 交付工程师
+* Delivery Engineers
 
-* 运维工程师
+* Operations Engineers
 
-* 售后工程师
+* After-sales Engineers
 
 
-== 修订记录
+== Revision History
 
 [%header,cols="1a,1a,3a"]
 |===
-|文档版本 |发布日期 |修改说明
+|Document Version |Release Date |Modification Description
 
 |01
 |{pdf_releaseDate}
-|第一次正式发布。
+|First official release.
 |===
 endif::[]

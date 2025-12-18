@@ -1,12 +1,12 @@
 ---
-title: "通知设置"
-keywords: "Kubernetes, {ks_product}, 平台设置, 通知管理, 通知设置"
-description: "本节介绍如何管理静默策略和通知语言。"
+title: "Notification Settings"
+keywords: "Kubernetes, {ks_product}, Platform Settings, Notification Management, Notification Settings"
+description: "This section describes how to manage mute policies and notification languages."
 weight: 03
 layout: "second"
 ---
 
 
-本节介绍如何管理静默策略和通知语言。
+This section describes how to manage mute policies and notification languages.
 
-使用静默策略设置系统在特定条件和特定时间下不发送通知。通知以键值对的形式呈现，您可以指定通知的键的语言。
+Use mute policies to configure the system not to send notifications under specific conditions and time periods. Notifications are presented as key-value pairs, and you can specify the language for the notification keys.

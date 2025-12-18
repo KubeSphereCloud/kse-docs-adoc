@@ -1,39 +1,37 @@
 ---
-title: "激活 KubeSphere 企业版"
-keywords: "激活，KubeSphere 企业版，Kubernetes，KubeSphere"
-description: "介绍如何激活 KubeSphere 企业版和扩展组件。"
+title: "Activate KubeSphere Enterprise Edition"
+keywords: "Activate, KubeSphere Enterprise Edition, Kubernetes, KubeSphere"
+description: "Describes how to activate KubeSphere Enterprise Edition and extensions."
 weight: 04
 ---
 
-登录{ks_product_left} Web 控制台后，您需要导入许可证（license），激活{ks_product_both}和扩展组件，以体验所有功能。
+After logging into the {ks_product_left} web console, you need to import a license to activate {ks_product_both} and extensions to experience all features.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-若您是离线安装的{ks_product_left}，请联系交付服务专家直接获取 license。
+If you installed {ks_product_left} offline, please contact the delivery service expert to obtain the license directly.
 |===
 
-== 步骤 1：购买并获取 license
+== Step 1: Purchase and Obtain the License
 
-若您是在线安装的{ks_product_left}，请访问 link:https://kubesphere.com.cn/[{ks_product_right}官网]，点击**联系我们**，通过微信或 slack 咨询{ks_product_both}和扩展组件 license 的购买方式和获取方式。
+If you installed {ks_product_left} online, please visit the link:https://kubesphere.com.cn/[{ks_product_right} official website], click **Contact Us**, and consult via WeChat or Slack about the purchase and acquisition methods for {ks_product_both} and extension licenses.
 
 image:/images/ks-qkcp/zh/v4.1.3/contact-us.png[, 70%]
 
-== 步骤 2：导入 license
+== Step 2: Import the License
 
 ifeval::["{file_output_type}" == "html"]
-待获得 license 后，请参阅link:../../../04-platform-management/05-platform-settings/02-license/03-add-a-license/[添加许可证]导入{ks_product_both}和扩展组件的 license。
+After obtaining the license, please refer to link:../../../04-platform-management/05-platform-settings/02-license/03-add-a-license/[Add a License] to import the license for {ks_product_both} and extensions.
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-待获得 license 后，请参阅《{ks_product_right}平台管理指南》的“许可证”章节导入{ks_product_both}和扩展组件的 license。
+After obtaining the license, please refer to the "License" chapter in the "{ks_product_right} Platform Management Guide" to import the license for {ks_product_both} and extensions.
 endif::[]
 
 
-== 步骤 3：验证激活
+== Step 3: Verify Activation
 
-若许可证页面显示{ks_product_both}和扩展组件**已授权**，即表示激活成功，可开始使用{ks_product_left}。
-
-
+If the License page shows that {ks_product_both} and extensions are **Authorized**, it means the activation is successful, and you can start using {ks_product_left}.

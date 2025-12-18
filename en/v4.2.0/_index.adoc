@@ -8,55 +8,55 @@ pdf_projectVersion: '4.2.0'
 pdf_releaseDate: 2025-07-11
 section1:
   title: KubeSphere
-  content: 了解如何通过 KubeSphere 构建并管理云原生应用程序。获取文档、示例代码与教程等信息。
+  content: Learn how to build and manage cloud-native applications with KubeSphere. Get information on documentation, sample code, and tutorials.
   image: /images/docs/banner.png
 study_section:
-  - title: 了解
+  - title: Understand
     icon: icon-note_tree_duotone
     children:
-      - title: 产品介绍
+      - title: Product Introduction
         children:
-          - title: 产品简介
+          - title: Product Overview
             url: 01-intro/01-introduction/
-          - title: 产品架构
+          - title: Product Architecture
             url: 01-intro/02-architecture/
-          - title: 应用场景
+          - title: Application Scenarios
             url: 01-intro/03-scenarios/
-  - title: 上手
+  - title: Get Started
     icon: icon-gamepad_2_duotone
     children:
-      - title: 快速入门
+      - title: Quick Start
         children:
-          - title: 安装示例组件
+          - title: Install an Example extension
             url: 02-quickstart/02-install-an-extension
-          - title: 控制用户权限
+          - title: Control User Permissions
             url: 02-quickstart/03-control-user-permissions
-          - title: 部署示例应用
+          - title: Deploy the Example Application
             url: 02-quickstart/06-deploy-bookinfo
-  - title: 管理
+  - title: Manage
     icon: icon-simulation_duotone
     children:
-      - title: 管理指南
+      - title: Management Guide
         children:
-          - title: 平台管理
+          - title: Platform Management
             url: 04-platform-management
-          - title: 扩展组件管理
+          - title: extension Management
             url: 06-extension-management
-          - title: 集群管理
+          - title: Cluster Management
             url: 07-cluster-management
-          - title: 企业空间管理
+          - title: workspace Management
             url: 08-workspace-management
-  - title: 使用
+  - title: Use
     icon: icon-apps_2_duotone
     children:
-      - title: 扩展组件
+      - title: Extensions
         children:
           - title: DevOps
             url: 11-use-extensions/02-devops
-          - title: 应用商店管理
+          - title: App Store Management
             url: 11-use-extensions/05-app-store
-          - title: Whizard 可观测平台
+          - title: WizTelemetry Observability Platform
             url: 11-use-extensions/09-observability-platform
-          - title: KubeSphere 网络
+          - title: KubeSphere Network
             url: 11-use-extensions/11-network
 ---

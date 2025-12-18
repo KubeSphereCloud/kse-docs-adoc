@@ -1,20 +1,20 @@
 ---
-title: "查看微服务配置详情"
-keywords: "Kubernetes, {ks_product}, 项目管理, Spring Cloud, 查看微服务配置详情"
-description: "介绍如何查看微服务配置详情。"
+title: "View Microservice Configuration Details"
+keywords: "Kubernetes, {ks_product}, Project Management, Spring Cloud, View Microservice Configuration Details"
+description: "Describes how to view microservice configuration details."
 weight: 03
 ---
 
-:ks_permission: ** Spring Cloud 微服务查看**
-:ks_navigation:  **Spring Cloud > 微服务配置**
+:ks_permission: ** Spring Cloud Microservice View**
+:ks_navigation:  **Spring Cloud > Microservice Configuration**
 
 
-本节介绍如何查看微服务配置详情。
+This section describes how to view microservice configuration details.
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **KubeSphere Spring Cloud** 扩展组件。
+* The **KubeSphere Spring Cloud** extension must be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../
 * {empty}
@@ -23,7 +23,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -40,20 +40,20 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 include::../../../../_custom/projectManagement/microserviceConfiguration/microserviceConfiguration-oper-openDetailsPage.adoc[]
 +
 --
-* 微服务配置详情页面的**属性**区域显示微服务配置所属的项目、集群和创建时间。
+* The **Attributes** area on the microservice configuration details page displays the project, cluster, and creation time to which the microservice configuration belongs.
 
-* 微服务配置详情页面的**数据**页签显示微服务配置所包含的数据。
+* The **Data** tab on the microservice configuration details page displays the data contained in the microservice configuration.
 --
 
-. 在微服务配置详情页面点击**历史版本**页签查看微服务配置的修改记录。
+. On the microservice configuration details page, click the **History** tab to view the modification records of the microservice configuration.
 +
 --
-* 每次编辑微服务配置都会生成修改记录，可用于回退微服务配置。
+* Each time a microservice configuration is edited, a modification record is generated, which can be used to roll back the microservice configuration.
 
-* 点击修改记录可查看微服务配置的数据内容。
+* Click a modification record to view the data content of the microservice configuration.
 --
 
-. 在微服务配置详情页面点击**事件**页签查看微服务配置的事件。
+. On the microservice configuration details page, click the **Events** tab to view the events of the microservice configuration.
 +
 --
 include::../../../../_custom/clusterManagement/clusterManagement-para-eventsTab.adoc[]

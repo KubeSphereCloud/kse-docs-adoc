@@ -1,38 +1,38 @@
 ---
-title: "通过直接连接添加成员集群"
-keywords: "Kubernetes, {ks_product}, 多集群管理, 集群, 添加成员集群"
-description: "介绍如何通过直接连接添加成员集群。"
+title: "Add a Member Cluster via Direct Connection"
+keywords: "Kubernetes, {ks_product}, Multi-cluster Management, Cluster, Add Member Cluster"
+description: "Describes how to add a member cluster via direct connection."
 weight: 01
 ---
 
 
 
-本节介绍如何通过直接连接添加成员集群。
+This section describes how to add a member cluster via direct connection.
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-成员集群被纳管之前仅需安装 Kubernetes，无需安装 KubeSphere。若已安装 KubeSphere，请迁移数据并卸载 KubeSphere 后再进行纳管。
+Before being managed, a member cluster only needs to have Kubernetes installed; KubeSphere installation is not required. If KubeSphere is already installed, please migrate the data and uninstall KubeSphere before proceeding with management.
 |===
 
-== 前提条件
+== Prerequisites
 
-* 您需要在主集群中具有 **platform-admin** 角色。
+* You need to have the **platform-admin** role in the host cluster.
 
-* 主集群所有节点必须能访问成员集群的 Kubernetes API 服务（默认为成员集群主节点的 6443 端口）。取决于您的网络环境，您可能需要配置防火墙和流量转发规则。
+* All nodes in the host cluster must be able to access the Kubernetes API service of the member cluster (default is port 6443 on the master node of the member cluster). Depending on your network environment, you may need to configure firewall and traffic forwarding rules.
 
-== 获取成员集群 kubeconfig
+== Obtain the Member Cluster kubeconfig
 
-. 在成员集群的节点上，执行以下命令获取成员集群的 kubeconfig 信息：
+. On a node of the member cluster, execute the following command to obtain the kubeconfig information of the member cluster:
 +
 [,bash]
 ----
 kubectl config view --raw
 ----
 
-. 复制 kubeconfig 信息，并修改其中的 **clusters:cluster:server** 参数，如下：
+. Copy the kubeconfig information and modify the **clusters:cluster:server** parameter as follows:
 +
 [,yaml]
 ----
@@ -42,47 +42,47 @@ clusters:
 ----
 
 
-== 添加成员集群
+== Add a Member Cluster
 
 include::../../../../../_custom/platformManagement/multiclusterManagement/clusters/clusters-oper-logInToHost.adoc[]
 
 +
 
-. 点击**集群管理**。
+. Click **Cluster Management**.
 
 +
 
 include::../../../../../_custom/platformManagement/multiclusterManagement/clusters/clusters-oper-addClusterBasicInfo.adoc[]
 +
-在**高级设置**下，设置集群的用途标识。
+Under **Advanced Settings**, set the usage identifier for the cluster.
 
 
-. 在**连接设置**页签，将**连接方式**设置为**直接连接**，在 **kubeconfig** 区域输入成员集群的 kubeconfig 信息，然后点击**下一步**。
+. On the **Connection Settings** tab, set **Connection Mode** to **Direct Connection**, enter the member cluster's kubeconfig information in the **kubeconfig** area, and then click **Next**.
 
-. 在**集群配置**页签，设置集群配置，然后点击**创建**。
+. On the **Cluster Configuration** tab, configure the cluster settings, and then click **Create**.
 +
 --
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|在集群配置中，请将镜像仓库地址修改为实际使用的仓库地址。默认为 KubeSphere 官方在线仓库地址，请确认可访问后使用。
+|In the cluster configuration, please change the image registry address to the actual registry address in use. The default is the official KubeSphere online registry address; please confirm it is accessible before using it.
 
 |===
 
-成员集群添加完成后将显示在**集群管理**页面的集群列表中。
+After the member cluster is added, it will appear in the cluster list on the **Cluster Management** page.
 
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 ifeval::["{file_output_type}" == "html"]
-|成员集群被纳管后，如果其 KubeSphere 版本与主集群的 KubeSphere 版本不一致，需在成员集群节点上手动link:../../../../../03-installation-and-upgrade/03-upgrade-kubesphere/[升级 KubeSphere]。待更新为相同 KubeSphere 版本后，才能在成员集群上进行后续操作。
+|After a member cluster is managed, if its KubeSphere version is inconsistent with the host cluster's KubeSphere version, you need to manually link:../../../../../03-installation-and-upgrade/03-upgrade-kubesphere/[upgrade KubeSphere] on the member cluster nodes. Only after updating to the same KubeSphere version can subsequent operations be performed on the member cluster.
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-|成员集群被纳管后，如果其 KubeSphere 版本与主集群的 KubeSphere 版本不一致，需在成员集群节点上手动升级 KubeSphere。待更新为相同 KubeSphere 版本后，才能在成员集群上进行后续操作。有关如何升级 KubeSphere，请参阅《KubeSphere 安装指南》。
+|After a member cluster is managed, if its KubeSphere version is inconsistent with the host cluster's KubeSphere version, you need to manually upgrade KubeSphere on the member cluster nodes. Only after updating to the same KubeSphere version can subsequent operations be performed on the member cluster. For information on how to upgrade KubeSphere, please refer to the *KubeSphere Installation Guide*.
 endif::[]
 |===
 --

@@ -1,17 +1,15 @@
 ---
-title: "从应用商店部署应用"
-description: "介绍如何从应用商店部署应用。"
+title: "Deploy Applications from the App Store"
+description: "Describes how to deploy applications from the App Store."
 weight: 08
 ---
 
-:ks_permission: **应用商店管理**
-:ks_navigation: **部署管理**
+:ks_permission: **App Store Management**
+:ks_navigation: **Deployment Management**
 
+This section describes how to deploy applications from the App Store on the App Store Management page.
 
-本节介绍如何在应用商店管理页面从应用商店部署应用。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -19,10 +17,9 @@ include::../../../../../_custom/platformManagement/platformManagement-prer-requi
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The **KubeSphere App Store Management** extension must be installed and enabled on the KubeSphere platform.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
@@ -41,20 +38,20 @@ include::../../../../../../_ks_components/oper-clickCreate.adoc[]
 
 +
 
-. 在**创建应用**对话框点击**从应用商店**。
+. In the **Create Application** dialog box, click **From App Store**.
 
-. 在应用商店中，点击需要使用的应用模板，然后在右上角点击**部署**。
+. In the App Store, click the application template you want to use, and then click **Deploy** in the upper right corner.
 +
 --
 // Note
 include::../../../../../../_ks_components/admonitions/note.adoc[]
 
-如果弹出**部署须知**对话框，请仔细阅读相关内容，然后点击**同意**。
+If the **Deployment Notice** dialog box pops up, please read the relevant content carefully and then click **Agree**.
 
 include::../../../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-. 在弹出的**位置**对话框，选择应用的安装位置，然后点击**确定**。
+. In the pop-up **Location** dialog box, select the installation location for the application, and then click **OK**.
 
 +
 
@@ -65,9 +62,9 @@ include::../../../../../_custom/projectManagement/apps/apps-oper-installApp.adoc
 // Note
 include::../../../../../../_ks_components/admonitions/note.adoc[]
 
-应用商店中的应用由具有相关权限的企业空间成员发布或由第三方提供。有关应用功能参数的更多信息，请联系应用的提供方。
+Applications in the App Store are published by workspace members with relevant permissions or provided by third parties. For more information about application feature parameters, please contact the application provider.
 
 include::../../../../../../_ks_components/admonitions/admonEnd.adoc[]
 
-应用创建完成后将显示在应用列表中。
+After the application is created, it will appear in the application list.
 --

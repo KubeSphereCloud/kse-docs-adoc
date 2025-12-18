@@ -1,42 +1,42 @@
 ---
-title: "快速入门"
-keywords: "Kubernetes, {ks_product}, 快速入门"
-description: "介绍如何安装 KubeSphere 和扩展组件，以及如何进行访问控制。"
+title: "Quick Start"
+keywords: "Kubernetes, {ks_product}, Quick Start"
+description: "Introduces how to install KubeSphere and extensions, and how to perform access control."
 weight: 02
 icon: "/images/docs/common/docs.svg"
 layout: "second"
 ---
 
-本节简要介绍如何安装并使用扩展组件、控制用户权限、部署应用程序等，帮助您快速了解使用 KubeSphere。
+This section briefly introduces how to install and use extensions, control user permissions, deploy applications, etc., to help you quickly get started with KubeSphere.
 
-有关 KubeSphere 安装和使用的更多信息，请参阅文档的其他章节。
+For more information about KubeSphere installation and usage, please refer to other chapters of the documentation.
 
 ifeval::["{file_output_type}" == "pdf"]
-== 产品版本
+== Product Version
 
-本文档适用于 KubeSphere v4.2.0 版本。
+This document applies to KubeSphere v4.2.0.
 
-== 读者对象
+== Target Audience
 
-本文档主要适用于以下读者：
+This document is primarily intended for the following readers:
 
-* KubeSphere 用户
+* KubeSphere Users
 
-* 交付工程师
+* Delivery Engineers
 
-* 运维工程师
+* Operations Engineers
 
-* 售后工程师
+* Post-sales Engineers
 
 
-== 修订记录
+== Revision History
 
 [%header,cols="1a,1a,3a"]
 |===
-|文档版本 |发布日期 |修改说明
+|Document Version |Release Date |Modification Description
 
 |01
 |{pdf_releaseDate}
-|第一次正式发布。
+|First official release.
 |===
 endif::[]

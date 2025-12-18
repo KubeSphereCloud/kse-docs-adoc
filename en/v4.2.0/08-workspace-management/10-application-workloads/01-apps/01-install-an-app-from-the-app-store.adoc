@@ -1,19 +1,19 @@
 ---
-title: "从应用商店安装应用"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用, 查看项目概览信息"
-description: "介绍如何从应用商店安装应用。"
+title: "Install Apps from the App Store"
+keywords: "Kubernetes, {ks_product}, Project Management, App, View Project Overview Information"
+description: "Describes how to install apps from the App Store."
 weight: 01
 ---
 
 
-:ks_permission: **应用实例创建**
-:ks_navigation: **应用负载 > 应用**
+:ks_permission: **App Instance Creation**
+:ks_navigation: **Application Workloads > Apps**
 
 
-本节介绍如何从 KubeSphere 平台的应用商店安装应用。
+This section describes how to install apps from the KubeSphere platform's App Store.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -22,7 +22,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 // include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -40,22 +40,22 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 // +
 
-// . 在**创建应用**对话框点击**从应用商店**。
+// . In the **Create App** dialog box, click **From App Store**.
 
-. 在页面右上角点击image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18]，然后点击**应用商店**。
+. In the upper right corner of the page, click image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18], and then click **App Store**.
 
-. 在应用商店中，点击需要使用的应用模板，然后在右上角点击**部署**。
+. In the App Store, click the app template you want to use, and then click **Deploy** in the upper right corner.
 +
 --
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]
 
-如果弹出**部署须知**对话框，请仔细阅读相关内容，然后点击**同意**。
+If the **Deployment Notice** dialog box pops up, please read the relevant content carefully, and then click **Agree**.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-. 在弹出的**位置**对话框，选择应用的安装位置，然后点击**确定**。
+. In the pop-up **Location** dialog box, select the installation location for the app, and then click **OK**.
 
 +
 
@@ -66,9 +66,9 @@ include::../../../../_custom/projectManagement/apps/apps-oper-installApp.adoc[]
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]
 
-应用商店中的应用由具有相关权限的企业空间成员发布或由第三方提供。有关应用功能参数的更多信息，请联系应用的提供方。
+Apps in the App Store are published by workspace members with relevant permissions or provided by third parties. For more information about app feature parameters, please contact the app provider.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 
-应用创建完成后将显示在所属项目的应用列表中。
+After the app is created, it will be displayed in the app list of the project it belongs to.
 --

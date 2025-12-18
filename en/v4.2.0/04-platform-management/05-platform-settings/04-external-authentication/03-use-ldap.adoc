@@ -1,50 +1,50 @@
 ---
-title: "LDAP/LDAPS 身份验证"
-keywords: "Kubernetes, KubeSphere, LDAP, 身份提供者, 身份验证"
-description: "了解如何在 KubeSphere 上配置 LDAP 服务。"
+title: "LDAP/LDAPS Authentication"
+keywords: "Kubernetes, KubeSphere, LDAP, Identity Provider, Authentication"
+description: "Learn how to configure LDAP service on KubeSphere."
 weight: 03
 ---
 
-:ks_navigation: **配置 > 保密字典**
+:ks_navigation: **Configuration > Secrets**
 
-KubeSphere 支持通过 LDAP 和 LDAPS 两种方式进行外部身份验证，以便使用 LDAP 或 LDAPS 用户名和密码登录 KubeSphere Web 控制台。
+KubeSphere supports external authentication via LDAP and LDAPS, allowing users to log in to the KubeSphere web console using their LDAP or LDAPS username and password.
 
-平台管理员可以通过 secret（保密字典）配置 LDAP/LDAPS 身份验证。
+Platform administrators can configure LDAP/LDAPS authentication through a Secret.
 
-== LDAP 与 LDAPS 的区别
+== Differences Between LDAP and LDAPS
 
 [%header,cols="1a,2a,5a"]
 |===
-|认证方式 |连接方式 |安全性
+|Authentication Method |Connection Method |Security
 
 |LDAP
-|使用明文传输，默认端口 389
-|数据传输未加密，不适合生产环境。
+|Uses plaintext transmission, default port 389
+|Data transmission is not encrypted, not suitable for production environments.
 
 |LDAPS
-|使用 SSL/TLS 加密传输，默认端口 636
-|数据传输加密，提供更高的安全性，建议在生产环境中使用。
+|Uses SSL/TLS encrypted transmission, default port 636
+|Data transmission is encrypted, providing higher security, recommended for production environments.
 
 **LDAPS (SSL/TLS)**
 
-- 端口：636，使用 SSL/TLS 加密通道，URL 格式：ldaps://hostname:636，类似 HTTPS，在建立连接时就进行 SSL/TLS 握手。
+- Port: 636, uses SSL/TLS encrypted channel, URL format: ldaps://hostname:636, similar to HTTPS, performs SSL/TLS handshake when establishing the connection.
 
 **STARTTLS**
 
-- 端口：389（与普通 LDAP 相同），先建立普通连接，然后升级为加密连接，URL 格式：ldap://hostname:389，在建立连接后通过 STARTTLS 命令升级为加密连接。
+- Port: 389 (same as regular LDAP), establishes a regular connection first, then upgrades to an encrypted connection, URL format: ldap://hostname:389, upgrades to an encrypted connection via the STARTTLS command after establishing the connection.
 
 |===
 
 
-// == 准备工作
+// == Prerequisites
 
-// 您需要获取 LDAP 或 LDAPS 服务的服务器地址、管理员专有名称（DN）和管理员密码。
+// You need to obtain the server address, administrator Distinguished Name (DN), and administrator password for the LDAP or LDAPS service.
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
-. 点击**集群管理**，并进入 host 集群。
+. Click **Cluster Management** and enter the host cluster.
 
 +
 
@@ -54,37 +54,37 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 include::../../../../../_ks_components/oper-clickCreate.adoc[]
 
-. 在**创建保密字典**对话框，点击右上角的**编辑 YAML** 开关，使用 yaml 创建保密字典。
+. In the **Create Secret** dialog, click the **Edit YAML** toggle in the upper right corner to create the secret using YAML.
 
-. 按照以下示例及参数说明修改 yaml 文件，配置完成后，点击**创建**。
+. Modify the YAML file according to the following example and parameter descriptions. After configuration is complete, click **Create**.
 
-. 登出 KubeSphere Web 控制台，在登录页面，点击**通过 LDAP 登录**，输入 LDAP/LDAPS 用户名和密码进行登录。
+. Log out of the KubeSphere web console. On the login page, click **Log in with LDAP**, and enter your LDAP/LDAPS username and password to log in.
 +
 image:/images/ks-qkcp/zh/v4.1.3/ldap-login.png[ldap, 80%]
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-多集群环境中，只需要在主集群中进行配置。
+In a multi-cluster environment, configuration is only required in the host cluster.
 |===
 
-== LDAP 配置
+== LDAP Configuration
 
-=== LDAP 基本配置
+=== Basic LDAP Configuration
 
 [source,yaml]
 ----
 apiVersion: v1
 kind: Secret
 metadata:
-  namespace: kubesphere-system  # 请勿修改
-  name: identity-provider-ldap  # 确保该 Secret 名称在 Kubernetes 集群中唯一
+  namespace: kubesphere-system  # Do not modify
+  name: identity-provider-ldap  # Ensure this Secret name is unique within the Kubernetes cluster
   labels:
-    config.kubesphere.io/type: identityprovider # 请勿修改
-    config.kubesphere.io/identityprovider: openldap # 与 configuration.yaml 中的 name 字段保持一致
-type: config.kubesphere.io/identityprovider # 请勿修改
+    config.kubesphere.io/type: identityprovider # Do not modify
+    config.kubesphere.io/identityprovider: openldap # Must match the name field in configuration.yaml
+type: config.kubesphere.io/identityprovider # Do not modify
 
 stringData:
   configuration.yaml: |
@@ -95,7 +95,7 @@ stringData:
     disabled: false
     displayName: "Third-party login for LDAP"
     provider:
-      # ldap.example.com:389 不带协议时，默认使用 ldap 协议
+      # ldap.example.com:389 When no protocol is specified, defaults to ldap protocol
       host: "ldap://ldap.example.com:389"
       managerDN: "cn=admin,dc=example,dc=com"
       managerPassword: "your-password"
@@ -105,14 +105,14 @@ stringData:
 ----
 
 
-=== LDAP 完整配置
+=== Complete LDAP Configuration
 
-以下仅展示 `stringData:configuration.yaml` 下 `provider` 部分的配置，其他部分请与 link:#_ldap_基本配置[LDAP 基本配置]的相应部分保持相同。
+The following only shows the configuration of the `provider` section under `stringData:configuration.yaml`. Other parts should remain the same as the corresponding parts in link:#_ldap_基本配置[Basic LDAP Configuration].
 
 [source,yaml]
 ----
     provider:
-      # 必填项
+      # Required fields
       host: ldap.example.com:389
       managerDN: cn=admin,dc=example,dc=com
       managerPassword: "your-password"
@@ -120,7 +120,7 @@ stringData:
       loginAttribute: uid
       mailAttribute: mail
       
-      # 可选项
+      # Optional fields
       readTimeout: 15000
       startTLS: false
       insecureSkipVerify: false
@@ -140,62 +140,62 @@ endif::[]
       displayNameAttribute: displayName
 ----
 
-=== LDAP 参数说明
+=== LDAP Parameter Description
 
-此为 `stringData:configuration.yaml` 下 `provider` 部分的参数说明。保密字典中其他部分的参数说明，请参阅link:../01-set-up-external-authentication/#_参数说明[配置外部身份验证]。
+This is the parameter description for the `provider` section under `stringData:configuration.yaml`. For parameter descriptions of other parts in the Secret, please refer to link:../01-set-up-external-authentication/#_parameter-description[Configure External Authentication].
 
 [%header,cols="2a,1a,1a,1a,3a"]
 |===
-|参数 |类型 |必填 |默认值 |说明
+|Parameter |Type |Required |Default |Description
 
-|  host                  | string  |  是  |  -     | LDAP 服务器地址和端口，格式：`host: port`。
+|  host                  | string  |  Yes  |  -     | LDAP server address and port, format: `host: port`.
 
-如果不指定端口，默认为 389 (LDAP) 或 636 (LDAPS)
+If no port is specified, defaults to 389 (LDAP) or 636 (LDAPS)
 
-|  managerDN             | string  |  是  |  -     | 管理员用户的 DN（Distinguished Name）
+|  managerDN             | string  |  Yes  |  -     | DN (Distinguished Name) of the administrator user
 
-|  managerPassword       | string  |  是  | -      | 管理员用户的密码
+|  managerPassword       | string  |  Yes  | -      | Password of the administrator user
 
-|  userSearchBase        | string  |  是  | -      | 用户搜索的基准 DN
+|  userSearchBase        | string  |  Yes  | -      | Base DN for user search
 
-|  loginAttribute        | string  |  是  | -      |  用于比较用户条目的登录属性
+|  loginAttribute        | string  |  Yes  | -      |  Login attribute used to compare user entries
 
-|  mailAttribute         | string  |  是  | -      | 用户邮箱属性名称
+|  mailAttribute         | string  |  Yes  | -      | User email attribute name
 
-|  readTimeout           | int     | 否   |  15000 | 从远程服务器读取数据的超时时间(毫秒)
+|  readTimeout           | int     | No   |  15000 | Timeout (in milliseconds) for reading data from the remote server
 
-|  startTLS              | bool    | 否   | false  |  是否使用 StartTLS 连接。如果指定，连接将使用 ldaps:// 协议
+|  startTLS              | bool    | No   | false  |  Whether to use StartTLS connection. If specified, the connection will use the ldaps:// protocol
 
-|  insecureSkipVerify    | bool    | 否   | false  | 是否跳过 TLS 证书验证
+|  insecureSkipVerify    | bool    | No   | false  | Whether to skip TLS certificate verification
 
-|  rootCA                | string  | 否   | -      | 受信任的根证书文件路径。默认使用主机的根 CA
+|  rootCA                | string  | No   | -      | Path to the trusted root certificate file. Defaults to the host's root CA
 
-|  rootCAData            | string  | 否   | -      | Base64 编码的 PEM 格式根证书数据
+|  rootCAData            | string  | No   | -      | Base64-encoded PEM format root certificate data
 
-|  userSearchFilter      | string  | 否   | -      |  用于标识用户对象的 LDAP 过滤器，例如 (objectClass=person)
+|  userSearchFilter      | string  | No   | -      |  LDAP filter used to identify user objects, e.g., (objectClass=person)
 
-|  groupSearchBase       | string  | 否   | -      | 组搜索的基准 DN
+|  groupSearchBase       | string  | No   | -      | Base DN for group search
 
-|  groupSearchFilter     | string  | 否   |  -     | 用于标识组对象的 LDAP 过滤器，例如 (objectClass=group)
+|  groupSearchFilter     | string  | No   |  -     | LDAP filter used to identify group objects, e.g., (objectClass=group)
 
-|  userMemberAttribute   | string  | 否   | -      |  用户对象中存储组成员身份信息的属性
+|  userMemberAttribute   | string  | No   | -      |  Attribute in the user object that stores group membership information
 
-|  groupMemberAttribute  | string  | 否   | -      | 组对象中存储主要组成员身份信息的属性
+|  groupMemberAttribute  | string  | No   | -      | Attribute in the group object that stores primary group membership information
 
-|  displayNameAttribute  | string  | 否   | -      | 用户显示名称的属性名称
+|  displayNameAttribute  | string  | No   | -      | Attribute name for the user's display name
 
 |===
 
 
-== LDAPS 配置
+== LDAPS Configuration
 
 [source,yaml]
 ----
 apiVersion: v1
 kind: Secret
 metadata:
-  namespace: kubesphere-system  # 请勿修改
-  name: identity-provider-ldaps  # 确保该 Secret 名称在 Kubernetes 集群中唯一
+  namespace: kubesphere-system  # Do not modify
+  name: identity-provider-ldaps  # Ensure this Secret name is unique within the Kubernetes cluster
 ifeval::["{file_output_type}" == "pdf"]
 ----
 <<<
@@ -203,9 +203,9 @@ ifeval::["{file_output_type}" == "pdf"]
 ----
 endif::[]
   labels:
-    config.kubesphere.io/type: identityprovider # 请勿修改
-    config.kubesphere.io/identityprovider: openldap # 与 configuration.yaml 中的 name 字段保持一致
-type: config.kubesphere.io/identityprovider # 请勿修改
+    config.kubesphere.io/type: identityprovider # Do not modify
+    config.kubesphere.io/identityprovider: openldap # Must match the name field in configuration.yaml
+type: config.kubesphere.io/identityprovider # Do not modify
 
 stringData:
   configuration.yaml: |
@@ -222,50 +222,50 @@ stringData:
       userSearchBase: "ou=Users,dc=example,dc=com"
       loginAttribute: uid
       mailAttribute: mail
-      startTLS: false  # 使用 LDAPS 时设置为 false
-      insecureSkipVerify: false  # 生产环境建议设置为 false
-      # 如果需要指定 CA 证书，可以添加以下配置
+      startTLS: false  # Set to false when using LDAPS
+      insecureSkipVerify: false  # Recommended to set to false in production environments
+      # If you need to specify a CA certificate, you can add one of the following configurations
       rootCA: <ca-file>
       rootCAData: <ca-data>
 ----
 
 
-=== LDAPS 特有配置参数说明
+=== LDAPS-Specific Configuration Parameter Description
 
 [%header,cols="1a,3a"]
 |===
-|参数 |说明
+|Parameter |Description
 
 |startTLS
 |
-- false: 使用 LDAPS (SSL/TLS) 连接
-- true: 使用 STARTTLS 方式加密连接
+- false: Use LDAPS (SSL/TLS) connection
+- true: Use STARTTLS method for encrypted connection
 
 |insecureSkipVerify
 |
-- false: 验证服务器证书（推荐）
-- true: 跳过服务器证书验证（仅用于测试环境）
+- false: Verify server certificate (recommended)
+- true: Skip server certificate verification (for testing environments only)
 
 |rootCA
-|LDAP 服务器的 CA 证书路径（可选）
+|Path to the LDAP server's CA certificate (optional)
 
 |rootCAData
-|LDAP 服务器的 CA 证书内容（可选）
+|Content of the LDAP server's CA certificate (optional)
 |===
 
-== STARTTLS 配置
+== STARTTLS Configuration
 
 [source,yaml]
 ----
 apiVersion: v1
 kind: Secret
 metadata:
-  namespace: kubesphere-system  # 请勿修改
-  name: identity-provider-ldaps  # 确保该 Secret 名称在 Kubernetes 集群中唯一
+  namespace: kubesphere-system  # Do not modify
+  name: identity-provider-ldaps  # Ensure this Secret name is unique within the Kubernetes cluster
   labels:
-    config.kubesphere.io/type: identityprovider # 请勿修改
-    config.kubesphere.io/identityprovider: openldap # 与 configuration.yaml 中的 name 字段保持一致
-type: config.kubesphere.io/identityprovider # 请勿修改
+    config.kubesphere.io/type: identityprovider # Do not modify
+    config.kubesphere.io/identityprovider: openldap # Must match the name field in configuration.yaml
+type: config.kubesphere.io/identityprovider # Do not modify
 
 stringData:
   configuration.yaml: |
@@ -276,26 +276,26 @@ stringData:
     disabled: false
     displayName: "Third-party login for LDAP"
     provider:
-      # ldap.example.com:389 不带协议时，默认使用 ldap 协议
+      # ldap.example.com:389 When no protocol is specified, defaults to ldap protocol
       host: "ldap://ldaps.example.com:389"
       managerDN: "cn=admin,dc=example,dc=com"
       managerPassword: "your-password"
       userSearchBase: "ou=Users,dc=example,dc=com"
       loginAttribute: uid
       mailAttribute: mail
-      startTLS: true  # 设置为 true
-      insecureSkipVerify: false  # 生产环境建议设置为 false
-      # 如果需要指定 CA 证书，可以添加以下配置其中一个
+      startTLS: true  # Set to true
+      insecureSkipVerify: false  # Recommended to set to false in production environments
+      # If you need to specify a CA certificate, you can add one of the following configurations
       rootCA: <ca-file>
       rootCAData: <ca-data>
 ----
 
 
-== 配置区别: LDAP/LDAPS/STARTTLS
+== Configuration Differences: LDAP/LDAPS/STARTTLS
 
 [%header,cols="1a,1a,1a,2a"]
 |===
-| 协议       | host 协议 | startTLS   | insecureSkipVerify
+| Protocol    | host Protocol | startTLS   | insecureSkipVerify
 
 | **ldap**     | ldap   | false      | -
 | **ldaps**    | ldaps  | true/false | true/false

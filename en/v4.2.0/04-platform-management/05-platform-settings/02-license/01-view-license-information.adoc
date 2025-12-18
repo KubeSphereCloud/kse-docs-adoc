@@ -1,19 +1,16 @@
 ---
-title: "查看许可证信息"
-keywords: "Kubernetes, {ks_product}, 平台设置, 许可证, 查看许可证信息"
-description: "介绍如何查看许可证信息。"
+title: "View License Information"
+keywords: "Kubernetes, {ks_product}, Platform Settings, License, View License Information"
+description: "Describes how to view license information."
 weight: 01
 ---
 
-:ks_navigation: **许可证**
-:ks_permission: **平台设置管理**
+:ks_navigation: **License**
+:ks_permission: **Platform Settings Management**
 
+This section describes how to view license information.
 
-本节介绍如何查看许可证信息。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,99 +18,98 @@ include::../../../../_custom/platformManagement/platformManagement-prer-required
 
 :relfileprefix: ./
 
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
-. 在页面右上角点击**组件坞 > 平台设置**。
+. In the upper-right corner of the page, click **Component Dock > Platform Settings**.
 
 +
 
 include::../../../../../_ks_components/oper-navigate.adoc[]
 +
-. 查看 KubeSphere 和扩展组件的许可证。
+. View the licenses for KubeSphere and extensions.
 +
 ====
-* KubeSphere 许可
+* KubeSphere License
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|授权组织
-|被授权使用 KubeSphere 的组织。
+|Authorized Organization
+|The organization authorized to use KubeSphere.
 
-|授权状态
+|Authorization Status
 |
-* **未授权**：未获得 KubeSphere 的许可证。
-* **授权已过期**： KubeSphere 的许可证已过期。
-* **授权数量不足**：当前集群规模超出被许可使用 KubeSphere 的集群规模。
-* **已授权**： KubeSphere 授权正常。
+* **Unauthorized**: No KubeSphere license is obtained.
+* **Authorization Expired**: The KubeSphere license has expired.
+* **Insufficient Authorization Quantity**: The current cluster scale exceeds the authorized cluster scale for using KubeSphere.
+* **Authorized**: KubeSphere authorization is normal.
 
-// |维保状态
+// |Maintenance Status
 // |
-// * **无维保**：不享受维保服务。
-// * **已过期**：维保服务已过期。
-// * **维保中**：在维保服务期内。
+// * **No Maintenance**: No maintenance service is available.
+// * **Expired**: The maintenance service has expired.
+// * **Under Maintenance**: Within the maintenance service period.
 
-|集群 ID
-|当前集群 ID，用于判断集群是否享有授权。
+|Cluster ID
+|The current cluster ID, used to determine if the cluster is authorized.
 
-|授权类型
-|授权分为两类：订阅授权和永久授权。
+|Authorization Type
+|There are two types of authorization: Subscription Authorization and Perpetual Authorization.
 
-**订阅授权**：社区版-订阅、标准版-POC、高级版-POC、旗舰版-POC、标准版-订阅、高级版-订阅、旗舰版-订阅。
+**Subscription Authorization**: Community Edition-Subscription, Standard Edition-POC, Advanced Edition-POC, Enterprise Edition-POC, Standard Edition-Subscription, Advanced Edition-Subscription, Enterprise Edition-Subscription.
 
-**永久授权**：标准版-永久、高级版-永久、旗舰版-永久。
+**Perpetual Authorization**: Standard Edition-Perpetual, Advanced Edition-Perpetual, Enterprise Edition-Perpetual.
 
-|授权规模
-|被许可使用 KubeSphere 的集群规模，单位为 **vCPU**。
+|Authorized Scale
+|The authorized cluster scale for using KubeSphere, measured in **vCPU**.
 
-|订阅生效时间
-|产品许可证的生效时间。仅在授权类型为订阅授权时展示。
+|Subscription Start Time
+|The effective time of the product license. Displayed only when the Authorization Type is Subscription Authorization.
 
-|订阅截止时间
-|产品许可证的过期时间。仅在授权类型为订阅授权时展示。
+|Subscription End Time
+|The expiration time of the product license. Displayed only when the Authorization Type is Subscription Authorization.
 
-|维保到期时间
-|维保服务的过期时间。仅在授权类型为永久授权时展示。
+|Maintenance Expiration Time
+|The expiration time of the maintenance service. Displayed only when the Authorization Type is Perpetual Authorization.
 |===
 
-* 扩展组件许可
+* Extension License
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|组件名称
-|扩展组件的名称。
+|Extension Name
+|The name of the extension.
 
-|授权状态
+|Authorization Status
 |
-* **授权已过期**：许可证已过期。
-* **授权数量不足**：当前的资源需求超出被许可使用的资源上限。
-* **已授权**：授权正常。
+* **Authorization Expired**: The license has expired.
+* **Insufficient Authorization Quantity**: The current resource requirement exceeds the authorized resource limit.
+* **Authorized**: Authorization is normal.
 
-|授权类型
-|授权分为两类：订阅授权和永久授权。
+|Authorization Type
+|There are two types of authorization: Subscription Authorization and Perpetual Authorization.
 
-**订阅授权**：社区版-订阅、标准版-POC、高级版-POC、旗舰版-POC、标准版-订阅、高级版-订阅、旗舰版-订阅。
+**Subscription Authorization**: Community Edition-Subscription, Standard Edition-POC, Advanced Edition-POC, Enterprise Edition-POC, Standard Edition-Subscription, Advanced Edition-Subscription, Enterprise Edition-Subscription.
 
-**永久授权**：标准版-永久、高级版-永久、旗舰版-永久。
+**Perpetual Authorization**: Standard Edition-Perpetual, Advanced Edition-Perpetual, Enterprise Edition-Perpetual.
 
-|订阅生效时间
-|产品许可证的生效时间。仅在授权类型为订阅授权时展示。
+|Subscription Start Time
+|The effective time of the product license. Displayed only when the Authorization Type is Subscription Authorization.
 
-|订阅截止时间
-|产品许可证的过期时间。仅在授权类型为订阅授权时展示。
+|Subscription End Time
+|The expiration time of the product license. Displayed only when the Authorization Type is Subscription Authorization.
 
-|维保到期时间
-|维保服务的过期时间。仅在授权类型为永久授权时展示。
+|Maintenance Expiration Time
+|The expiration time of the maintenance service. Displayed only when the Authorization Type is Perpetual Authorization.
 |===
 
-* 在列表上方点击搜索框并设置搜索条件，可按组件名称搜索组件的许可证信息。
+* Click the search box above the list and set search criteria to search for extension license information by extension name.
 
 include::../../../../../_ks_components/oper-refreshListData.adoc[]
 

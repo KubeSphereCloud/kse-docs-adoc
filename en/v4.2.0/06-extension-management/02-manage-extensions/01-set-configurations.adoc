@@ -1,42 +1,42 @@
 ---
-title: "配置扩展组件"
-keywords: "Kubernetes, {ks_product},设置,配置,扩展组件"
-description: "介绍如何配置扩展组件。"
+title: "Configuring Extensions"
+keywords: "Kubernetes, {ks_product}, Settings, Configuration, Extensions"
+description: "Describes how to configure extensions."
 weight: 01
 ---
 
-本节介绍如何配置扩展组件。
+This section describes how to configure extensions.
 
-除了在安装组件时配置组件，您还可以在扩展中心的组件详情页，修改扩展组件的配置。
+In addition to configuring an extension during its installation, you can also modify an extension's configuration on its details page in the Extensions Center.
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|在安装、升级、卸载过程中不允许变更配置。
+|Configuration changes are not allowed during installation, upgrade, or uninstallation processes.
 |===
 
-== 前提条件
+== Prerequisites
 
-* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../05-users-and-roles/01-users/[用户]和link:../../../05-users-and-roles/02-platform-roles/[平台角色]。
-* 您已成功安装一个扩展组件。
+* You need to have the **platform-admin** role in the KubeSphere platform. For more information, refer to link:../../../05-users-and-roles/01-users/[Users] and link:../../../05-users-and-roles/02-platform-roles/[Platform Roles].
+* You have successfully installed an extension.
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
-. 点击**扩展中心**。
-. 点击已安装的组件名称，进入组件详情页。
-. 点击组件图标下的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**扩展组件配置**。
+. Click **Extensions Center**.
+. Click the name of an installed extension to enter its details page.
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] under the extension icon and select **Extension Configuration**.
 
-. 在中间的**自定义配置**框中输入您需要的配置。查看**最终配置**确认后，点击**确定**。
+. Enter the configuration you need in the middle **Custom Configuration** box. After reviewing the **Final Configuration**, click **OK**.
 +
 --
-// * 点击右上角的image:/images/ks-qkcp/zh/icons/maximize.svg[maximize,18,18]可全屏查看配置信息。无需全屏
+// * Click image:/images/ks-qkcp/zh/icons/maximize.svg[maximize,18,18] in the upper right corner to view the configuration information in full screen. Full screen is not required.
 
-* 点击image:/images/ks-qkcp/zh/icons/upload.svg[upload,18,18]上传自定义的配置文件。
+* Click image:/images/ks-qkcp/zh/icons/upload.svg[upload,18,18] to upload a custom configuration file.
 
-* 点击image:/images/ks-qkcp/zh/icons/copy-light.svg[copy-light,18,18]复制配置信息。
+* Click image:/images/ks-qkcp/zh/icons/copy-light.svg[copy-light,18,18] to copy the configuration information.
 
-* 点击image:/images/ks-qkcp/zh/icons/download-new.svg[download-new,18,18]下载配置文件。
+* Click image:/images/ks-qkcp/zh/icons/download-new.svg[download-new,18,18] to download the configuration file.
 --

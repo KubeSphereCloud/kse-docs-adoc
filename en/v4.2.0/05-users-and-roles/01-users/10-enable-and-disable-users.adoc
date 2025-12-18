@@ -1,35 +1,34 @@
 ---
-title: "启用和禁用用户"
-keywords: "Kubernetes, {ks_product}, 访问控制, 用户, 启用和禁用用户"
-description: "介绍如何启用和禁用用户。"
+title: "Enable and Disable Users"
+keywords: "Kubernetes, {ks_product}, Access Control, User, Enable and Disable Users"
+description: "Introduces how to enable and disable users."
 weight: 10
 ---
 
-:ks_menu: **用户和角色管理**
-:ks_navigation: **用户**
-:ks_permission: **用户管理**
+:ks_menu: **Users and Role Management**
+:ks_navigation: **Users**
+:ks_permission: **User Management**
 
-本节介绍如何启用和禁用用户。
+This section describes how to enable and disable users.
 
-用户被禁用后将无法登录 KubeSphere Web 控制台。
+A disabled user cannot log in to the KubeSphere web console.
 
-== 前提条件
+== Prerequisites
 
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。有关更多信息，请参阅link:../../01-users/[用户]和link:../../02-platform-roles/[平台角色]。
+You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform. For more information, please refer to link:../../01-users/[Users] and link:../../02-platform-roles/[Platform Roles].
 
-== 启用和禁用单个用户
-
-include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
-+
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**用户**。
-. 在需要操作的用户右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**启用**或**禁用**。
-
-
-== 批量启用和禁用用户
+== Enable and Disable a Single User
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**用户**。
-. 选择需要操作的用户左侧的复选框，然后在列表上方点击**启用**或**禁用**。
+. Click pass:a,q[{ks_menu}].
+. Select **Users** from the left navigation pane.
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the user you want to operate on, and then select **Enable** or **Disable** from the dropdown list.
+
+== Batch Enable and Disable Users
+
+include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
++
+. Click pass:a,q[{ks_menu}].
+. Select **Users** from the left navigation pane.
+. Select the checkboxes on the left of the users you want to operate on, and then click **Enable** or **Disable** at the top of the list.

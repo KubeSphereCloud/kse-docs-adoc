@@ -1,51 +1,51 @@
 ---
-title: "删除集群节点"
-keywords: "Kubernetes, {ks_product}, 删除集群节点"
-description: "介绍如何删除 KubeSphere 集群节点。"
+title: "Delete Cluster Nodes"
+keywords: "Kubernetes, {ks_product}, Delete Cluster Nodes"
+description: "Describes how to delete KubeSphere cluster nodes."
 weight: 02
 ---
 
 
-本节介绍如何删除 KubeSphere 集群节点。
+This section describes how to delete KubeSphere cluster nodes.
 
-节点删除过程中将用到开源工具 KubeKey。有关 KubeKey 的更多信息，请访问 link:https://github.com/kubesphere/kubekey[GitHub KubeKey 仓库]。
+The open-source tool KubeKey will be used during the node deletion process. For more information about KubeKey, please visit the link:https://github.com/kubesphere/kubekey[GitHub KubeKey repository].
 
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-本节介绍的节点删除方式仅适用于 Kubernetes 通过 KubeKey 安装的场景。如果您的 Kubernetes 不是通过 KubeKey 安装，请参阅 link:https://kubernetes.io/zh/docs/concepts/architecture/nodes/[Kubernetes 官方文档]删除节点。
+The node deletion method described in this section is only applicable to scenarios where Kubernetes was installed via KubeKey. If your Kubernetes was not installed via KubeKey, please refer to the link:https://kubernetes.io/zh/docs/concepts/architecture/nodes/[Kubernetes official documentation] to delete nodes.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-* 请勿删除控制平面节点，否则集群将出现错误。
+* Do not delete control plane nodes, otherwise the cluster will encounter errors.
 
-* 请确保节点删除后，集群中剩余的资源仍然足够运行现有的业务。否则，节点删除后可能会出现业务中断。
+* Ensure that after node deletion, the remaining resources in the cluster are still sufficient to run existing workloads. Otherwise, service interruption may occur after node deletion.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 
-== 若 KubeSphere 为在线安装
+== If KubeSphere Was Installed Online
 
-若 KubeSphere 为link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[在线安装]，请按照以下步骤删除集群节点。
+If KubeSphere was link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[installed online], follow the steps below to delete cluster nodes.
 
-=== 准备工作
+=== Prerequisites
 
-您需要获取安装配置文件 **config-sample.yaml** 并将其传输到用于执行本节操作的集群节点。
+You need to obtain the installation configuration file **config-sample.yaml** and transfer it to the cluster node where you will perform the operations in this section.
 
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-如果您无法获取安装配置文件 **config-sample.yaml**，您需要参阅link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[在线安装 KubeSphere] 重新创建 **config-sample.yaml** 文件。重新创建该文件时，请务必确保文件中的集群信息与集群的当前实际情况一致。否则，删除节点后集群可能会出现错误。
+If you cannot obtain the installation configuration file **config-sample.yaml**, you need to refer to link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[Online Installation of KubeSphere] to recreate the **config-sample.yaml** file. When recreating this file, be sure that the cluster information in the file matches the current actual state of the cluster. Otherwise, the cluster may encounter errors after node deletion.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
-=== 操作步骤
+=== Steps
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-downloadKubekey.adoc[]
 
-. 执行以下命令查看需要删除的节点的名称：
+. Execute the following command to view the name of the node to be deleted:
 +
 --
 // Bash
@@ -56,7 +56,7 @@ kubectl get node
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令将需要删除的节点上运行的容器组驱逐到其他节点（将 <nodename> 替换为需要删除的节点的名称）：
+. Execute the following command to evict the pods running on the node to be deleted to other nodes (replace `<nodename>` with the name of the node to be deleted):
 +
 --
 // Bash
@@ -73,7 +73,7 @@ include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-tra
 
 +
 
-. 执行以下命令开始删除节点：
+. Execute the following command to start deleting the node:
 +
 --
 // Bash
@@ -84,7 +84,7 @@ include::../../../../_ks_components/code/bash.adoc[]
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令查看当前集群节点：
+. Execute the following command to view the current cluster nodes:
 +
 --
 // Bash
@@ -94,27 +94,27 @@ kubectl get node
 
 include::../../../../_ks_components/code/codeEnd.adoc[]
 
-如果没有显示已删除节点的信息，则表明节点删除成功。
+If the information of the deleted node is not displayed, it indicates that the node deletion was successful.
 --
 
-== 若 KubeSphere 为离线安装
+== If KubeSphere Was Installed Offline
 
-若 KubeSphere 使用 Web Installer link:../../02-install-kubesphere/02-offline-install-kubernetes-and-kubesphere/[离线安装]，请按照以下步骤删除集群节点。
+If KubeSphere was link:../../02-install-kubesphere/02-offline-install-kubernetes-and-kubesphere/[installed offline] using the Web Installer, follow the steps below to delete cluster nodes.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|暂不支持在 Web Installer 页面删除节点。
+|Deleting nodes on the Web Installer page is not currently supported.
 |===
 
-=== 准备工作
+=== Prerequisites
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-getInfoForOfflineInstall.adoc[]
 
-=== 操作步骤
+=== Steps
 
-. 登录``集群节点``，执行以下命令查看需要删除的节点的名称：
+. Log in to the ``cluster node`` and execute the following command to view the name of the node to be deleted:
 +
 --
 // Bash
@@ -125,7 +125,7 @@ kubectl get node
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 将需要删除的节点上运行的容器组驱逐到其他节点（将 <nodename> 替换为需要删除的节点的名称）：
+. Evict the pods running on the node to be deleted to other nodes (replace `<nodename>` with the name of the node to be deleted):
 +
 --
 // Bash
@@ -136,7 +136,7 @@ kubectl drain <nodename>
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 在``部署节点``，进入离线包解压后的目录（如 offline），使用 `kkv4-inventory.yaml` 和 `kkv4-config.json` 删除节点。
+. On the ``deployment node``, navigate to the directory where the offline package was extracted (e.g., offline), and use `kkv4-inventory.yaml` and `kkv4-config.json` to delete the node.
 +
 ====
 [source,bash]
@@ -151,14 +151,14 @@ cd offline
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|暂不支持删除 etcd 节点。
+|Deleting etcd nodes is not currently supported.
 |===
 
-如果显示如下信息，则表明节点删除成功。
+If the following information is displayed, it indicates that the node deletion was successful.
 
-回显示例：
+Example output:
 
 // Bash
 include::../../../../_ks_components/code/bash.adoc[]
@@ -168,7 +168,7 @@ include::../../../../_ks_components/code/bash.adoc[]
 include::../../../../_ks_components/code/codeEnd.adoc[]
 ====
 
-. 在``集群节点``上，执行以下命令查看当前集群的节点：
+. On the ``cluster node``, execute the following command to view the current cluster nodes:
 +
 --
 // Bash
@@ -178,5 +178,5 @@ kubectl get node
 
 include::../../../../_ks_components/code/codeEnd.adoc[]
 
-如果没有显示已删除节点的信息，也表明节点删除成功。
+If the information of the deleted node is not displayed, it also indicates that the node deletion was successful.
 --

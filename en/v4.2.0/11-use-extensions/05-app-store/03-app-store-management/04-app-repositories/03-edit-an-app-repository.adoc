@@ -1,18 +1,18 @@
 ---
-title: "编辑应用仓库"
-keywords: "Kubernetes, {ks_product}, 企业空间, 应用仓库, 编辑应用仓库"
-description: "介绍如何编辑应用仓库。"
+title: "Edit App Repository"
+keywords: "Kubernetes, {ks_product}, workspace, App Repository, Edit App Repository"
+description: "Describes how to edit an app repository."
 weight: 03
 ---
 
-:ks_permission: **应用商店管理**
-:ks_navigation: **应用仓库**
+:ks_permission: **App Store Management**
+:ks_navigation: **App Repository**
 :edit:
 
-本节介绍如何编辑应用仓库。
+This section describes how to edit an app repository.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,10 +20,10 @@ include::../../../../../_custom/platformManagement/platformManagement-prer-requi
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The **KubeSphere App Store Management** extension must be installed and enabled on the KubeSphere platform.
 
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
@@ -37,9 +37,9 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在需要编辑的应用仓库右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**编辑信息**。
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the app repository you want to edit, and then select **Edit Information** from the dropdown list.
 
-. 在**编辑应用仓库**对话框，设置应用仓库的参数，然后点击**确定**。
+. In the **Edit App Repository** dialog box, configure the parameters for the app repository, and then click **OK**.
 +
 --
 include::../../../../../_custom/workspaceManagement/appRepositories/appRepositories-para-createAppRepository_v42.adoc[]

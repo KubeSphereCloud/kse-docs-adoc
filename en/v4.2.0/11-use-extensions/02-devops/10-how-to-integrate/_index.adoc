@@ -1,10 +1,10 @@
 ---
-title: "工具集成"
-keywords: "Kubernetes, {ks_product}, DevOps 项目"
-description: "介绍如何将第三方工具与流水线集成。"
+title: "Tool Integration"
+keywords: "Kubernetes, {ks_product}, DevOps Project"
+description: "Introduces how to integrate third-party tools with pipelines."
 weight: 10
 layout: "second"
 ---
 
 
-本节介绍如何将第三方工具与流水线集成。
+This section introduces how to integrate third-party tools with pipelines.

@@ -1,39 +1,35 @@
 ---
-title: "KubeSphere 存储"
-keywords: "Kubernetes, {ks_product}, 存储, 卷快照"
-description: "介绍如何使用“KubeSphere 存储”扩展组件。"
+title: "KubeSphere Storage"
+keywords: "Kubernetes, {ks_product}, Storage, Volume Snapshot"
+description: "Introduces how to use the 'KubeSphere Storage' extension."
 weight: 15
 layout: "second"
 ---
 
 
-本节介绍如何使用“KubeSphere 存储”扩展组件。
+This section introduces how to use the 'KubeSphere Storage' extension.
 
-该扩展组件包含多个存储相关的实用工具：
+This extension contains multiple storage-related utilities:
 
-* snapshot-controller: 用于为 PVC 创建快照。
-* snapshotclass-controller: 用于为快照计数。
-* pvc-auto-resizer: 用于为 PVC 在容量不足的情况下实现自动扩容。
-* storageclass-accessor: 提供准入控制器，用来验证是否准许在某个命名空间或企业空间创建 PVC。
-* volume-initializer: 提供准入控制器，用来为 pod 注入初始化 PVC volumes 的初始容器。
-* nfs-pv-static-provisioner: 根据 PVC 的注解，自动创建 NFS 类型的 PV 并与已有的 NFS volume 关联。
-* apiserver: 提供存储相关的 API。
+* snapshot-controller: Used to create snapshots for PVCs.
+* snapshotclass-controller: Used to count snapshots.
+* pvc-auto-resizer: Used to automatically expand PVCs when capacity is insufficient.
+* storageclass-accessor: Provides an admission controller to validate whether PVC creation is allowed in a specific namespace or workspace.
+* volume-initializer: Provides an admission controller to inject init containers into pods for initializing PVC volumes.
+* nfs-pv-static-provisioner: Automatically creates NFS-type PVs and associates them with existing NFS volumes based on PVC annotations.
+* apiserver: Provides storage-related APIs.
 
-安装“KubeSphere 存储”扩展组件后，
+After installing the 'KubeSphere Storage' extension,
 
-* 集群左侧导航栏的**存储**菜单下将显⽰**卷快照**和**卷快照类**选项，**存储类**将支持**设置授权规则**和**设置自动扩展**。
-* 企业空间左侧导航栏的**存储**菜单下将显⽰**卷快照**选项。
-* 创建持久卷声明时，支持**绑定已有 NAS 卷**和**通过卷快照创建**卷。
-
+* Under the **Storage** menu in the cluster's left navigation pane, the **Volume Snapshots** and **Volume Snapshot Classes** options will appear, and **Storage Classes** will support **Set Authorization Rules** and **Set Auto Expansion**.
+* Under the **Storage** menu in the workspace's left navigation pane, the **Volume Snapshots** option will appear.
+* When creating a PersistentVolumeClaim, you can **Bind to an existing NAS volume** and **Create from a volume snapshot**.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-* 存储类的自动扩展功能支持在 PVC 容量不足的情况下实现自动扩容。仅控制是否允许用户在 KubeSphere Web 控制台使用相关操作，存储类是否实际支持这些操作取决于后端存储系统。
-* 设置自动扩展需要连接 prometheus 服务才能工作。有关更多信息，请参阅扩展中心“KubeSphere 存储”扩展组件的详情页说明。
+* The auto-expansion feature for Storage Classes supports automatic expansion when PVC capacity is insufficient. It only controls whether users are allowed to perform related operations in the KubeSphere web console. Whether the Storage Class actually supports these operations depends on the backend storage system.
+* Setting up auto-expansion requires connecting to the Prometheus service to work. For more information, please refer to the description on the details page of the 'KubeSphere Storage' extension in the Extensions Center.
 |===
-
-
-

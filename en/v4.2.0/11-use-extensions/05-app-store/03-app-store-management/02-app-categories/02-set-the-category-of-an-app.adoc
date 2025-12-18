@@ -1,19 +1,19 @@
 ---
-title: "设置应用所属的分类"
-keywords: "Kubernetes, {ks_product}, 应用商店管理, 应用分类, 设置应用所属的分类"
-description: "介绍如何设置应用的分类。"
+title: "Set Application Category"
+keywords: "Kubernetes, {ks_product}, App Store Management, Application Category, Set Application Category"
+description: "Introduces how to set the category for an application."
 weight: 02
 ---
 
-:ks_permission: **应用商店管理**
-:ks_navigation: **应用分类**
+:ks_permission: **App Store Management**
+:ks_navigation: **Application Category**
 
 
 
-本节介绍如何设置应用所属的分类。
+This section describes how to set the category for an application.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -21,11 +21,11 @@ include::../../../../../_custom/platformManagement/platformManagement-prer-requi
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The **KubeSphere App Store Management** extension must be installed and enabled on the KubeSphere platform.
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
@@ -39,6 +39,6 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在应用模板列表中，选择需要操作的应用模板左侧的复选框，然后在列表上方点击**更改分类**。
+. In the application template list, select the checkbox to the left of the application template you want to operate on, then click **Change Category** above the list.
 
-. 在**更改分类**对话框，设置应用的分类，然后点击**确定**。
+. In the **Change Category** dialog box, set the category for the application, then click **OK**.

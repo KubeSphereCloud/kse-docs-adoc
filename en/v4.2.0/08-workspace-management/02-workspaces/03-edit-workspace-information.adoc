@@ -1,42 +1,40 @@
 ---
-title: "编辑企业空间信息"
-keywords: "Kubernetes, {ks_product}, 访问控制, 企业空间, 编辑企业空间信息"
-description: "介绍如何编辑企业空间信息。"
+title: "Edit Workspace Information"
+keywords: "Kubernetes, {ks_product}, Access Control, Workspace, Edit Workspace Information"
+description: "Describes how to edit workspace information."
 weight: 03
 ---
 
-:ks_permission: **企业空间管理**
+:ks_permission: **Workspace Management**
 
+This section describes how to edit workspace information.
 
-本节介绍如何编辑企业空间信息。
+You can edit the alias and description of a workspace. KubeSphere does not support editing the name of a created workspace.
 
-您可以编辑企业空间的别名和描述。KubeSphere 不支持编辑已创建企业空间的名称。
+== Prerequisites
 
+You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform.
 
-== 前提条件
-
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。
-
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击**企业空间管理**。
-. 在需要操作的企业空间右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**编辑信息**。
-. 在**编辑信息**对话框设置企业空间的别名和描述，然后点击**确定**。
+. Click **Workspace Management**.
+. On the right side of the workspace you want to operate, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], and then select **Edit Information** from the drop-down list.
+. In the **Edit Information** dialog box, set the alias and description for the workspace, and then click **OK**.
 
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|别名
-|企业空间的别名。
-// 别名可包含任意字符，最长 63 个字符。
+|Alias
+|The alias of the workspace.
+// The alias can contain any characters, with a maximum length of 63 characters.
 
-|描述
-|企业空间的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|The description of the workspace. The description can contain any characters, with a maximum length of 256 characters.
 
 |===
 --

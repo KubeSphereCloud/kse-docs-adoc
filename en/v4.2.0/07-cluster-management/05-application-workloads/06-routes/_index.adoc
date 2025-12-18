@@ -1,7 +1,7 @@
 ---
-title: "应用路由"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用路由"
-description: "介绍如何管理应用路由。"
+title: "Ingress"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Ingress"
+description: "Introduces how to manage Ingress."
 weight: 06
 layout: "second"
 ---

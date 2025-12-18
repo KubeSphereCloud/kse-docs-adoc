@@ -1,16 +1,16 @@
 ---
-title: "禁止在非豁免项目中创建特权容器"
-description: "介绍如何配置约束模板和约束，以便禁止在某些项目中创建特权容器。"
+title: "Disallow Creation of Privileged Containers in Non-Exempted Projects"
+description: "Describes how to configure constraint templates and constraints to disallow the creation of privileged containers in certain projects."
 weight: 01
 ---
 
 :ks_permission: ** cluster-admin **
 
 
-本节介绍如何配置约束模板和约束，以便禁止在某些项目中创建特权容器，以拦截高风险操作，避免特权容器被滥用。
+This section describes how to configure constraint templates and constraints to disallow the creation of privileged containers in certain projects, in order to block high-risk operations and prevent the misuse of privileged containers.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -19,11 +19,11 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **Gatekeeper** 扩展组件。
+* The **Gatekeeper** extension must be installed and enabled in the KubeSphere platform.
 
-== 步骤 1：创建约束模板
+== Step 1: Create a Constraint Template
 
-登录集群节点，执行以下命令创建约束模板。
+Log in to a cluster node and execute the following command to create a constraint template.
 
 [source,yaml]
 ----
@@ -64,11 +64,11 @@ spec:
 EOF
 ----
 
-== 步骤 2：创建约束
+== Step 2: Create a Constraint
 
-继续执行以下命令创建约束。
+Continue by executing the following command to create a constraint.
 
-`excludedNamespaces` 字段用于指定允许特权容器的命名空间，即被豁免的项目，您可以添加更多命名空间。
+The `excludedNamespaces` field is used to specify the namespaces where privileged containers are allowed, i.e., exempted projects. You can add more namespaces.
 
 [source,yaml]
 ----
@@ -94,13 +94,13 @@ EOF
 ----
 
 
-== 步骤 3： 验证结果
+== Step 3: Verify the Result
 
-通过以上配置，当用户创建使用特权容器的 Pod 且所属项目不在 `excludedNamespaces` 中时，Gatekeeper 会拦截请求。
+Through the above configuration, when a user attempts to create a pod using a privileged container and the pod belongs to a project not listed in `excludedNamespaces`, Gatekeeper will block the request.
 
-可通过以下步骤，分别在非豁免项目（系统项目 default）和豁免项目（系统项目 kube-system）中创建特权 Pod 进行验证。
+You can verify this by following the steps below to create privileged pods in both a non-exempted project (the system project `default`) and an exempted project (the system project `kube-system`).
 
-. 在集群节点上，为非豁免项目 `default` 创建一个特权 Pod。
+. On a cluster node, create a privileged pod for the non-exempted project `default`.
 +
 --
 [source,bash]
@@ -120,14 +120,14 @@ spec:
 EOF
 ----
 
-预期结果如下，无法在该项目中创建特权容器。
+The expected result is that the privileged container cannot be created in this project.
 
 ----
 Error from server (Forbidden): error when creating "STDIN": admission webhook "validation.gatekeeper.sh" denied the request: [disallow-privileged-containers] Privileged container is not allowed in namespace default
 ----
 --
 
-. 在集群节点上，为豁免项目 `kube-system` 创建一个特权 Pod。
+. On a cluster node, create a privileged pod for the exempted project `kube-system`.
 +
 --
 [source,bash]
@@ -147,7 +147,7 @@ spec:
 EOF
 ----
 
-预期结果如下，成功在该项目中创建特权容器。
+The expected result is that the privileged container is successfully created in this project.
 
 ----
 pod/privileged-pod created
