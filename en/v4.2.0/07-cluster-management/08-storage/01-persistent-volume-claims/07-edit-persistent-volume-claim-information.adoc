@@ -1,18 +1,18 @@
 ---
-title: "编辑持久卷声明信息"
-keywords: "Kubernetes, {ks_product}, 集群管理, 存储, 持久卷声明, 持久卷, 编辑持久卷声明信息"
-description: "介绍如何编辑持久卷声明的基本信息。"
+title: "Edit Persistent Volume Claim Information"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Storage, Persistent Volume Claim, Persistent Volume, Edit Persistent Volume Claim Information"
+description: "Describes how to edit the basic information of a persistent volume claim."
 weight: 07
 ---
 
-:ks_permission: **持久卷声明管理**
-:ks_navigation: **存储 > 持久卷声明**
+:ks_permission: **Persistent Volume Claim Management**
+:ks_navigation: **Storage > Persistent Volume Claims**
 
 
 include::../../../../_custom/clusterManagement/persistentVolumeClaims/persistentVolumeClaims-desc-editPersistentVolumeClaimInformation.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 

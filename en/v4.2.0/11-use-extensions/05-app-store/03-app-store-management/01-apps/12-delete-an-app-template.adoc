@@ -1,28 +1,25 @@
 ---
-title: "删除应用模板"
-description: "介绍如何删除应用模板。"
+title: "Delete an App Template"
+description: "Describes how to delete an app template."
 weight: 12
 ---
 
-:ks_permission: **应用商店管理**
-:ks_navigation: **应用**
+:ks_permission: **App Store Management**
+:ks_navigation: **App**
 
+This section explains how to delete an app template in the App Store.
 
-本节介绍如何删除应用商店中的应用模板。
+== Prerequisites
 
-
-== 前提条件
-
-:relfileprefix: ../../../../../
+:relfileprefix: ../../../../../../
 * {empty}
 include::../../../../../_custom/platformManagement/platformManagement-prer-requiredPermission_v4.adoc[]
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The KubeSphere platform must have the **KubeSphere App Store Management** extension installed and enabled.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
@@ -34,6 +31,6 @@ include::../../../../../_custom/appStore/accessStoreManagement.adoc[]
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]
 
-. 在需要编辑的应用模板右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**删除**。
+. On the right side of the app template you want to edit, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], then select **Delete** from the dropdown list.
 
-. 在**删除应用模板**对话框，输入应用模板的名称，然后点击**确定**。
+. In the **Delete App Template** dialog, enter the name of the app template, then click **OK**.

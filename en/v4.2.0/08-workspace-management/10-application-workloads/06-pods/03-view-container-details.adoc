@@ -1,18 +1,18 @@
 ---
-title: "查看容器详情"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 容器组, 查看容器详情"
-description: "介绍如何查看容器详情。"
+title: "View Container Details"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Pod, View Container Details"
+description: "Describes how to view container details."
 weight: 03
 ---
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 容器组**
+:ks_permission: **Application Workloads View**
+:ks_navigation: **Application Workloads > Pods**
 
 
 include::../../../../_custom/clusterManagement/pods/pods-desc-viewContainerDetails.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

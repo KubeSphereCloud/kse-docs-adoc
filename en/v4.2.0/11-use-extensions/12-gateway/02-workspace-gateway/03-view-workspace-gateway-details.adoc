@@ -1,21 +1,21 @@
 ---
-title: "查看企业空间网关详情"
-keywords: "Kubernetes, {ks_product}, 企业空间管理, 企业空间设置, 网关设置, 查看企业空间网关详情"
-description: "介绍如何查看企业空间网关详情。"
+title: "View Workspace Gateway Details"
+keywords: "Kubernetes, {ks_product}, Workspace Management, Workspace Settings, Gateway Settings, View Workspace Gateway Details"
+description: "Describes how to view workspace gateway details."
 weight: 03
 ---
 
 
-:ks_permission: **企业空间网关查看**
-:ks_navigation: **企业空间设置 > 网关设置**
+:ks_permission: **Workspace Gateway View**
+:ks_navigation: **Workspace Settings > Gateway Settings**
 
 
-本节介绍如何查看企业空间网关详情。
+This section describes how to view workspace gateway details.
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 网关**扩展组件。
+* The **KubeSphere Gateway** extension must be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../
 * {empty}
@@ -24,7 +24,7 @@ include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requir
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -34,7 +34,7 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在页面右侧选择**管理 > 查看详情**打开网关详情页面。
+. On the right side of the page, select **Manage > View Details** to open the gateway details page.
 
 +
 

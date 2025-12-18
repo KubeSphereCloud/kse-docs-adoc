@@ -1,18 +1,18 @@
 ---
-title: "查看项目列表"
-keywords: "Kubernetes, {ks_product}, 集群管理, 项目, 查看项目列表"
-description: "介绍如何查看项目列表。"
+title: "View Project List"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Project, View Project List"
+description: "Describes how to view the project list."
 weight: 02
 ---
 
-:ks_permission: **项目查看**
-:ks_navigation: **项目**
+:ks_permission: **Project View**
+:ks_navigation: **Project**
 
 
 include::../../../_custom/workspaceManagement/projects/projects-desc-viewProjectList.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../
 
@@ -22,7 +22,7 @@ include::../../../_custom/clusterManagement/clusterManagement-prer-requiredPermi
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -36,17 +36,17 @@ include::../../../_custom/clusterManagement/projects/projects-oper-openListPage.
 
 +
 ====
-* 项目列表提供以下信息：
+* The project list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../_custom/workspaceManagement/projects/projects-para-projectList_new.adoc[]
 
-|企业空间
-|项目所属的企业空间。
+|Workspace
+|The workspace to which the project belongs.
 |===
 --
 

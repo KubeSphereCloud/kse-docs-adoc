@@ -1,19 +1,16 @@
 ---
-title: "邀请用户加入企业空间"
-keywords: "Kubernetes, {ks_product}, 企业空间管理, 企业空间设置, 企业空间成员, 邀请用户加入企业空间"
-description: "介绍如何邀请用户加入企业空间。"
+title: "Invite Users to a Workspace"
+keywords: "Kubernetes, {ks_product}, Workspace Management, Workspace Settings, Workspace Members, Invite Users to Workspace"
+description: "Describes how to invite users to a workspace."
 weight: 01
 ---
 
-:ks_permission: **成员管理**
-:ks_navigation: **企业空间设置 > 企业空间成员**
+:ks_permission: **Member Management**
+:ks_navigation: **Workspace Settings > Workspace Members**
 
+This section describes how to invite users to a workspace.
 
-本节介绍如何邀请用户加入企业空间。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 * {empty}
@@ -21,9 +18,9 @@ include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requir
 
 :relfileprefix: ./
 
-* 已在**用户和角色管理**中创建一个用户。
+* A user has been created in **Users and Roles Management**.
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -37,10 +34,10 @@ include::../../../../../_ks_components/oper-clickInvite.adoc[]
 
 +
 
-. 在**邀请成员**对话框，在需要邀请的用户右侧点击image:/images/ks-qkcp/zh/icons/add-dark.svg[add-dark,18,18]，在下拉列表中选择用户在企业空间中的角色，然后点击**确定**。
+. In the **Invite Member** dialog box, click image:/images/ks-qkcp/zh/icons/add-dark.svg[add-dark,18,18] on the right side of the user you want to invite, select the user's role in the workspace from the dropdown list, and then click **OK**.
 +
 --
 include::../../../../_custom/workspaceManagement/workspaceRoles/workspaceRoles-para-presetRoles_v4.adoc[]
 
-用户被邀请加入企业空间后将显示在企业空间成员列表中。
+The invited user will appear in the workspace member list after being successfully invited.
 --

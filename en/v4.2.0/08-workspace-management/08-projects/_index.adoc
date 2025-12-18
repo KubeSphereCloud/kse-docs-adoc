@@ -1,11 +1,11 @@
 ---
-title: "项目管理"
-keywords: "Kuberentes, {ks_product}, 企业空间, 项目管理"
-description: "介绍如何管理企业空间中的项目。"
+title: "Project Management"
+keywords: "Kubernetes, {ks_product}, Workspace, Project Management"
+description: "Introduces how to manage projects in a workspace."
 weight: 08
 layout: "second"
 ---
 
 
 
-本节介绍如何管理企业空间中的项目、项目配额、项目角色、项目成员、服务账户。
+This section introduces how to manage projects, project quotas, project roles, project members, and service accounts in a workspace.

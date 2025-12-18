@@ -1,18 +1,18 @@
 ---
-title: "查看服务列表"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 服务, 查看服务列表"
-description: "介绍如何查看服务列表。"
+title: "View Service List"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Service, View Service List"
+description: "Describes how to view the service list."
 weight: 02
 ---
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 服务**
+:ks_permission: **Application Workloads View**
+:ks_navigation: **Application Workloads > Services**
 
 
 include::../../../../_custom/clusterManagement/services/services-desc-viewServiceList.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 
@@ -24,7 +24,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -33,19 +33,19 @@ include::../../../../_custom/clusterManagement/clusterManagement-oper-openCluste
 include::../../../../../_ks_components/oper-navigate.adoc[]
 +
 ====
-* 服务列表提供以下信息：
+* The service list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/clusterManagement/services/services-para-name.adoc[]
 
-|项目
-|服务所属的项目。
+|Project
+|The project to which the service belongs.
 
-|内部访问
+|Internal Access
 |
 include::../../../../_custom/clusterManagement/services/services-para-internalAccess.adoc[]
 
@@ -59,7 +59,7 @@ include::../../../../_custom/clusterManagement/services/services-para-creationTi
 |===
 --
 
-* 在列表左上角的下拉列表中选择一个项目，可以查看特定项目中的服务。
+* Select a project from the dropdown list in the upper left corner of the list to view services in a specific project.
 
 include::../../../../_custom/clusterManagement/services/services-oper-searchForServices.adoc[]
 

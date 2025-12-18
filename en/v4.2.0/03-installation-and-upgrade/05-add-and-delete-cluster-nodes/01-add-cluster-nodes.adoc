@@ -1,52 +1,52 @@
 ---
-title: "添加集群节点"
-keywords: "Kubernetes, {ks_product}, 添加集群节点"
-description: "介绍如何添加 KubeSphere 集群节点。"
+title: "Add Cluster Nodes"
+keywords: "Kubernetes, {ks_product}, Add Cluster Nodes"
+description: "Describes how to add KubeSphere cluster nodes."
 weight: 01
 ---
 
 
-本节介绍如何添加 KubeSphere 集群节点。
+This section describes how to add KubeSphere cluster nodes.
 
-节点添加过程中将用到开源工具 KubeKey。有关 KubeKey 的更多信息，请访问 link:https://github.com/kubesphere/kubekey[GitHub KubeKey 仓库]。
+The open-source tool KubeKey will be used during the node addition process. For more information about KubeKey, please visit the link:https://github.com/kubesphere/kubekey[GitHub KubeKey repository].
 
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-本节介绍的节点添加方式仅适用于 Kubernetes 通过 KubeKey 安装的场景。如果您的 Kubernetes 不是通过 KubeKey 安装，请参阅 link:https://kubernetes.io/zh/docs/concepts/architecture/nodes/[Kubernetes 官方文档]添加节点。
+The node addition method described in this section is only applicable to scenarios where Kubernetes was installed via KubeKey. If your Kubernetes was not installed via KubeKey, please refer to the link:https://kubernetes.io/zh/docs/concepts/architecture/nodes/[Kubernetes official documentation] to add nodes.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-desc-systemRequirements.adoc[]
 
-* 为确保集群具有足够的计算和存储资源，建议新增节点配置至少 8 个 CPU 核心，16 GB 内存和 200 GB 磁盘空间。除此之外，建议在每台集群节点的 **/var/lib/docker**（对于 Docker）或 **/var/lib/containerd**（对于 containerd） 目录额外挂载至少 200 GB 磁盘空间用于存储容器运行时数据。
+* To ensure the cluster has sufficient computing and storage resources, it is recommended that the new node has at least 8 CPU cores, 16 GB of memory, and 200 GB of disk space. In addition, it is recommended to mount at least 200 GB of additional disk space in the **/var/lib/docker** (for Docker) or **/var/lib/containerd** (for containerd) directory on each cluster node for storing container runtime data.
 
-* 如果添加控制平面节点，您需要提前为集群配置高可用性。如果您使用负载均衡器，请确保负载均衡器监听所有控制平面节点的 6443 端口。有关更多信息，请参阅link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[配置高可用性]。
+* If adding a control plane node, you need to configure high availability for the cluster in advance. If you are using a load balancer, ensure the load balancer listens on port 6443 of all control plane nodes. For more information, please refer to link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[Configure High Availability].
 
-// * 如果您的集群节点无法连接互联网，您还需要准备一台 Linux 服务器用于创建私有镜像服务，该服务器必须与 KubeSphere 集群节点网络连通并且在 **/mnt/registry** 目录挂载至少 100 GB 磁盘空间。
+// * If your cluster nodes cannot connect to the internet, you also need to prepare a Linux server to create a private image service. This server must be network-accessible to the KubeSphere cluster nodes and have at least 100 GB of disk space mounted in the **/mnt/registry** directory.
 
-* 新增节点上已安装 socat、conntrack、tar、ebtables 和 ipset。
+* socat, conntrack, tar, ebtables, and ipset are installed on the new node.
 
-== 若 KubeSphere 为在线安装
+== If KubeSphere is Installed Online
 
-若 KubeSphere 为link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[在线安装]，请按照以下步骤添加集群节点。
+If KubeSphere was link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[installed online], follow the steps below to add cluster nodes.
 
-=== 准备工作
+=== Preparations
 
-您需要获取安装配置文件 **config-sample.yaml** 并将其传输到用于执行本节操作的集群节点。
+You need to obtain the installation configuration file **config-sample.yaml** and transfer it to the cluster node used to perform the operations in this section.
 
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-* 添加节点过程中不支持在 **config-sample.yaml** 配置文件中修改原有的集群配置。
+* Modifying the original cluster configuration in the **config-sample.yaml** configuration file is not supported during node addition.
 
-* 如果您无法获取安装配置文件 **config-sample.yaml**，您需要参阅link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[在线安装 KubeSphere] 重新创建 **config-sample.yaml** 文件。重新创建该文件时，请务必确保文件中的集群信息与集群的当前实际情况一致。否则，添加节点后集群可能会出现错误。
+* If you cannot obtain the installation configuration file **config-sample.yaml**, you need to refer to link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[Install KubeSphere Online] to recreate the **config-sample.yaml** file. When recreating this file, be sure to ensure the cluster information in the file matches the current actual state of the cluster. Otherwise, errors may occur in the cluster after adding nodes.
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 
-=== 操作步骤
+=== Steps
 
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-downloadKubekey.adoc[]
@@ -56,7 +56,7 @@ include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-tra
 
 +
 
-. 执行以下命令编辑安装配置文件 **config-sample.yaml**：
+. Execute the following command to edit the installation configuration file **config-sample.yaml**:
 +
 --
 // Bash
@@ -67,7 +67,7 @@ vi config-sample.yaml
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 在 **config-sample.yaml** 文件的 **hosts** 参数下设置新增节点的信息。
+. Set the information for the new node under the **hosts** parameter in the **config-sample.yaml** file.
 +
 --
 
@@ -76,12 +76,12 @@ include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-hos
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-请勿修改原有节点的信息。否则，添加节点后集群可能会出现错误。
+Do not modify the information of the original nodes. Otherwise, errors may occur in the cluster after adding nodes.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-. 在 **config-sample.yaml** 文件的 **roleGroups** 参数下设置新增节点在集群中的角色。
+. Set the role of the new node in the cluster under the **roleGroups** parameter in the **config-sample.yaml** file.
 +
 --
 
@@ -90,12 +90,12 @@ include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-rol
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-请勿修改原有节点的角色。否则，添加节点后集群可能会出现错误。
+Do not modify the roles of the original nodes. Otherwise, errors may occur in the cluster after adding nodes.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-. 如果新增控制平面节点并且当前集群未配置高可用性，在 **config-sample.yaml** 文件的 **controlPlaneEndpoint** 参数下设置高可用性信息。
+. If adding a control plane node and the current cluster is not configured for high availability, set the high availability information under the **controlPlaneEndpoint** parameter in the **config-sample.yaml** file.
 +
 --
 
@@ -104,14 +104,14 @@ include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-con
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-* 如果当前集群已配置高可用性，请勿修改 **config-sample.yaml** 文件中的高可用性信息。否则，添加节点后集群可能会出现错误。
+* If the current cluster is already configured for high availability, do not modify the high availability information in the **config-sample.yaml** file. Otherwise, errors may occur in the cluster after adding nodes.
 
-* 如果当前集群使用本地负载均衡实现高可用性，您不需要对集群高可用性进行任何操作；如果当前集群使用负载均衡器实现高可用性，您只需要设置负载均衡器监听所有控制平面节点的 6443 端口。有关更多信息，请参阅link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[配置高可用性]。
+* If the current cluster uses local load balancing for high availability, you do not need to perform any operations on cluster high availability; if the current cluster uses a load balancer for high availability, you only need to set the load balancer to listen on port 6443 of all control plane nodes. For more information, please refer to link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[Configure High Availability].
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-. 保存配置文件，执行以下命令开始添加节点：
+. Save the configuration file and execute the following command to start adding nodes:
 +
 --
 // include::../../../_custom/installationAndUpgrade/installationAndUpgrade-code-addNodes.adoc[]
@@ -121,7 +121,7 @@ include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 ----
 --
 
-. 执行以下命令查看当前集群的节点：
+. Execute the following command to view the current cluster nodes:
 +
 --
 // Bash
@@ -131,28 +131,28 @@ kubectl get node
 
 include::../../../../_ks_components/code/codeEnd.adoc[]
 
-如果显示新增节点的信息，则表明节点添加成功。
+If the information of the new node is displayed, it indicates the node addition was successful.
 --
 
 
-== 若 KubeSphere 为离线安装
+== If KubeSphere is Installed Offline
 
-若 KubeSphere 使用 Web Installer link:../../02-install-kubesphere/02-offline-install-kubernetes-and-kubesphere/[离线安装]，请按照以下步骤添加集群节点。
+If KubeSphere was link:../../02-install-kubesphere/02-offline-install-kubernetes-and-kubesphere/[installed offline] using the Web Installer, follow the steps below to add cluster nodes.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|暂不支持在 Web Installer 页面添加节点。
+|Adding nodes on the Web Installer page is not currently supported.
 |===
 
-=== 准备工作
+=== Preparations
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-getInfoForOfflineInstall.adoc[]
 
-=== 操作步骤
+=== Steps
 
-. 在``部署节点``，进入离线包解压后的目录（如 offline），添加新增节点的信息到 `kkv4-inventory.yaml` 文件。
+. On the `deployment node`, navigate to the directory where the offline package is extracted (e.g., offline), and add the information of the new node to the `kkv4-inventory.yaml` file.
 +
 ====
 [source,bash]
@@ -165,13 +165,13 @@ cd offline
 vi kkv4-inventory.yaml
 ----
 
-在 `spec.host` 字段中的原有节点信息后，加入将要添加的节点信息。示例如下：
+After the original node information in the `spec.host` field, add the information of the node to be added. Example:
 
 [source,yaml]
 ----
 spec:
   hosts:
-    scan-cqxbav3: # 原有节点
+    scan-cqxbav3: # Original node
       connector: 
         host: 172.16.0.4
         password: ""
@@ -180,19 +180,19 @@ spec:
       internal_ipv4: 172.16.0.4
       kubernetes:
         custom_labels: {}
-    node1: # 新增节点的名称
-      connector: # 节点连接信息
-        host: 172.16.0.5 # 节点的 ssh 连接地址
-        password: "" # 节点的 ssh 连接密码
-        private_key_content: "" # 节点 ssh 连接的密钥内容
-        port: "" # 节点的 ssh 连接端口
-        user: "" # 节点的 ssh 连接用户
-      internal_ipv4: 172.16.0.5 # 节点内部通信的 IP
+    node1: # Name of the new node
+      connector: # Node connection information
+        host: 172.16.0.5 # SSH connection address of the node
+        password: "" # SSH connection password for the node
+        private_key_content: "" # SSH private key content for the node
+        port: "" # SSH connection port for the node
+        user: "" # SSH connection user for the node
+      internal_ipv4: 172.16.0.5 # Internal communication IP of the node
       kubernetes:
-        custom_labels: {} # 为节点设置的自定义 label
+        custom_labels: {} # Custom labels set for the node
 ----
 
-在 `spec.groups` 字段中对应节点角色下的 `hosts` 中加入新增节点的名称。示例如下：
+Add the name of the new node to the `hosts` list under the corresponding node role in the `spec.groups` field. Example:
 
 [source,yaml]
 ----
@@ -218,31 +218,31 @@ spec:
     kube_worker:
       hosts:
       - scan-cqxbav3
-      - node1 # 新增节点的名称
+      - node1 # Name of the new node
       vars: null
     nfs:
       hosts: []
       vars: null
 ----
 
-* `spec.groups.etcd`: 将新增节点作为 etcd 节点。暂不支持。
-* `spec.groups.kube_control_plane`: 将新增节点作为 Kubernetes 集群的控制平面节点。
-* `spec.groups.worker`: 将新增节点作为 Kubernetes 集群的工作节点。
+* `spec.groups.etcd`: Add the node as an etcd node. Not currently supported.
+* `spec.groups.kube_control_plane`: Add the node as a Kubernetes cluster control plane node.
+* `spec.groups.worker`: Add the node as a Kubernetes cluster worker node.
 ====
 
-. 使用 `kkv4-inventory.yaml` 和 `kkv4-config.json` 添加节点。
+. Use `kkv4-inventory.yaml` and `kkv4-config.json` to add nodes.
 +
 ====
-需将 <nodename1> <nodename2> 替换为 kkv4-inventory.yaml 中添加的节点名称。
+Replace <nodename1> <nodename2> with the node names added in kkv4-inventory.yaml.
 
 [source,bash]
 ----
 ./kk add nodes <nodename1> <nodename2> -i kkv4-inventory.yaml -c kkv4-config.json
 ----
 
-如果显示如下信息，则表明节点添加成功。
+If the following information is displayed, it indicates the node addition was successful.
 
-回显示例：
+Example output:
 
 // Bash
 include::../../../../_ks_components/code/bash.adoc[]
@@ -253,7 +253,7 @@ include::../../../../_ks_components/code/codeEnd.adoc[]
 
 ====
 
-. 登录``集群节点``，执行以下命令查看当前集群的节点：
+. Log in to the `cluster node` and execute the following command to view the current cluster nodes:
 +
 --
 // Bash
@@ -263,5 +263,5 @@ kubectl get node
 
 include::../../../../_ks_components/code/codeEnd.adoc[]
 
-如果显示新增节点的信息，也表明节点添加成功。
+If the information of the new node is displayed, it also indicates the node addition was successful.
 --

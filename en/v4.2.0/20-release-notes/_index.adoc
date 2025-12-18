@@ -1,7 +1,7 @@
 ---
-title: "版本说明"
-keywords: "Kubernetes, {ks_product}, 版本说明，release notes"
-description: "了解当前版本的更新记录。"
+title: "Release Notes"
+keywords: "Kubernetes, {ks_product}, Release Notes, release notes"
+description: "Learn about the update records for the current version."
 weight: 20
 icon: "/images/docs/common/docs.svg"
 layout: "second"

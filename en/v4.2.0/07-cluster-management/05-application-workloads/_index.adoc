@@ -1,11 +1,11 @@
 ---
-title: "应用负载"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载"
-description: "介绍如何管理工作负载、任务、容器组和服务。"
+title: "Application Workloads"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads"
+description: "Introduces how to manage workloads, Jobs, pods, and services."
 weight: 05
 layout: "second"
 ---
 
 
 
-本节介绍如何管理工作负载、任务、容器组、服务、应用路由和工作负载模板。
+This section introduces how to manage workloads, Jobs, pods, services, Ingresses, and workload templates.

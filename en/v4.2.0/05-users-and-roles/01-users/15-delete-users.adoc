@@ -1,41 +1,38 @@
 ---
-title: "删除用户"
-keywords: "Kubernetes, {ks_product}, 访问控制, 用户, 删除用户"
-description: "介绍如何删除用户。"
+title: "Delete Users"
+keywords: "Kubernetes, {ks_product}, Access Control, User, Delete User"
+description: "Describes how to delete users."
 weight: 15
 ---
 
-:ks_menu: **用户和角色管理**
-:ks_navigation: **用户**
-:ks_permission: **用户管理**
+:ks_menu: **User and Role Management**
+:ks_navigation: **Users**
+:ks_permission: **User Management**
 
+This section describes how to delete users.
 
-本节介绍如何删除用户。
+== Prerequisites
 
-== 前提条件
+You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform. For more information, see link:../../01-users/[Users] and link:../../02-platform-roles/[Platform Roles].
 
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。有关更多信息，请参阅link:../../01-users/[用户]和link:../../02-platform-roles/[平台角色]。
-
-== 删除单个用户
-
-include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
-+
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**用户**。
-. 在需要删除的用户右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**删除**。
-. 在**删除用户**对话框输入用户的名称，然后点击**确定**。
-
-
-== 批量删除用户
+== Delete a Single User
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**用户**。
-. 选择需要删除的用户左侧的复选框，然后在列表上方点击**删除**。
-. 在**批量删除用户**对话框，输入用户的名称，然后点击**确定**。
+. Click pass:a,q[{ks_menu}].
+. Select **Users** from the left navigation pane.
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the user you want to delete, and then select **Delete** from the dropdown list.
+. In the **Delete User** dialog box, enter the user's name and click **OK**.
+
+== Delete Users in Batches
+
+include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
++
+. Click pass:a,q[{ks_menu}].
+. Select **Users** from the left navigation pane.
+. Select the checkboxes to the left of the users you want to delete, and then click **Delete** above the list.
+. In the **Batch Delete Users** dialog box, enter the user names and click **OK**.
 +
 include::../../../../_ks_components/admonitions/note.adoc[]
-请使用半角逗号（,）和空格分隔多个名称。
+Please use half-width commas (,) and spaces to separate multiple names.
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
-

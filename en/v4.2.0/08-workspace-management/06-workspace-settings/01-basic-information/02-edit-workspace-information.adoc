@@ -1,21 +1,18 @@
 ---
-title: "编辑企业空间信息"
-keywords: "Kubernetes, {ks_product}, 企业空间, 企业空间设置, 基本信息, 查看编辑企业空间信息"
-description: "介绍如何编辑企业空间信息。"
+title: "Edit Workspace Information"
+keywords: "Kubernetes, {ks_product}, Workspace, Workspace Settings, Basic Information, View and Edit Workspace Information"
+description: "Describes how to edit workspace information."
 weight: 02
 ---
 
-:ks_permission: **企业空间设置管理**
-:ks_navigation: **企业空间设置 > 基本信息**
+:ks_permission: **Workspace Settings Management**
+:ks_navigation: **Workspace Settings > Basic Information**
 
+This section describes how to edit workspace information.
 
-本节介绍如何编辑企业空间信息。
+You can edit the alias and description of a workspace. KubeSphere does not support editing the name of a created workspace.
 
-您可以编辑企业空间的别名和描述。KubeSphere 不支持编辑已创建企业空间的名称。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -23,9 +20,7 @@ include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requir
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -35,20 +30,20 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**企业空间信息**区域右上角选择**管理 > 编辑信息**。
+. In the **Workspace Information** area, click **Manage > Edit Information** in the upper-right corner.
 
-. 在**编辑信息**对话框，设置企业空间的别名和描述，然后点击**确定**。
+. In the **Edit Information** dialog box, set the alias and description for the workspace, and then click **OK**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|别名
-|企业空间的别名。不同企业空间的别名可以相同。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|The alias of the workspace. Different workspaces can have the same alias.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-). It must not start or end with a hyphen (-) and can be up to 63 characters long.
 
-|描述
-|企业空间的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|The description of the workspace. The description can contain any characters and can be up to 256 characters long.
 |===
 --

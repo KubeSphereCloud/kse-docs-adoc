@@ -1,18 +1,18 @@
 ---
-title: "查看工作负载列表"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 工作负载, 查看工作负载列表"
-description: "介绍如何查看工作负载列表。"
+title: "View Workload List"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Workloads, View Workload List"
+description: "Describes how to view the workload list."
 weight: 02
 ---
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 工作负载**
+:ks_permission: **Application Workloads View**
+:ks_navigation: **Application Workloads > Workloads**
 
 
 include::../../../../_custom/clusterManagement/workloads/workloads-desc-viewAWorkloadList.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

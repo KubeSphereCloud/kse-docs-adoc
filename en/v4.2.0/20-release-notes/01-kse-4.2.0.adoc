@@ -1,8 +1,8 @@
 ---
-title: "KubeSphere v4.2.0 版本说明"
-keywords: "v4.2.0 版本说明, KubeSphere"
-description: "介绍 KubeSphere 新特性、功能增强以及问题修复。"
+title: "KubeSphere v4.2.0 Release Notes"
+keywords: "v4.2.0 Release Notes, KubeSphere"
+description: "Introduces new features, enhancements, and bug fixes in KubeSphere."
 weight: 01
 ---
 
-link:https://kubesphere.cloud/docs/kse/release-notes/v4.2.0[点击此处]查看当前版本的更新内容，包括新特性、功能增强以及问题修复。
+link:https://kubesphere.cloud/docs/kse/release-notes/v4.2.0[Click here] to view the update content for the current version, including new features, enhancements, and bug fixes.

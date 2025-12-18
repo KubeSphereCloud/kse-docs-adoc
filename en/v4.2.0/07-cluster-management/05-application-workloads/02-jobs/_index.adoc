@@ -1,7 +1,7 @@
 ---
-title: "任务"
-keywords: "Kubernetes, {ks_product}, 集群管理, 任务"
-description: "介绍如何管理任务。"
+title: "Jobs"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Jobs"
+description: "Introduces how to manage Jobs."
 weight: 02
 layout: "second"
 ---

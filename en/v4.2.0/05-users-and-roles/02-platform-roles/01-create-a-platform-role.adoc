@@ -1,130 +1,128 @@
 ---
-title: "创建平台角色"
-keywords: "Kubernetes, {ks_product}, 平台管理, 访问控制, 平台角色, 创建平台角色"
-description: "介绍如何创建平台角色。"
+title: "Create Platform Roles"
+keywords: "Kubernetes, {ks_product}, Platform Management, Access Control, Platform Roles, Create Platform Roles"
+description: "Describes how to create a platform role."
 weight: 01
 ---
 
-:ks_menu: **用户和角色管理**
-:ks_navigation: **平台角色**
+:ks_menu: **Users and Roles Management**
+:ks_navigation: **Platform Roles**
 
-
-本节介绍如何创建平台角色。
+This section describes how to create a platform role.
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
-// |此功能仅在 KubeSphere ``标准版、高级版和旗舰版``中提供。
+// |This feature is only available in KubeSphere ``Standard, Advanced, and Enterprise editions``.
 
 // |===
 
-KubeSphere 平台提供以下预置平台角色，您也可以创建角色以自定义角色权限。
+The KubeSphere platform provides the following built-in platform roles. You can also create roles to customize role permissions.
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 |platform-admin
-|平台管理员，在 KubeSphere 平台具有所有权限，包括平台角色管理、用户管理、集群和企业空间管理、扩展组件管理等。
+|Platform administrator, who has all permissions on the KubeSphere platform, including platform role management, user management, cluster and workspace management, extension management, etc.
 
 |platform-regular
-|平台普通用户，被邀请加入企业空间之前无法访问任何资源。该角色一般授予不需要其他平台权限的企业空间成员。
+|Platform regular user, who cannot access any resources before being invited to a workspace. This role is generally granted to workspace members who do not require other platform permissions.
 
 |platform-self-provisioner
-|创建企业空间并成为所创建的企业空间的管理员。
+|Create a workspace and become the administrator of the created workspace.
 |===
 
 
-== 前提条件
+== Prerequisites
 
-您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../01-users/[用户]和link:../../02-platform-roles/[平台角色]。
+You need to have the **platform-admin** role on the KubeSphere platform. For more information, see link:../../01-users/[Users] and link:../../02-platform-roles/[Platform Roles].
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**平台角色**。
-. 在页面点击**创建**。
-. 在**创建平台角色**对话框，设置平台角色的名称、别名和描述，然后点击**编辑权限**。
+. Click pass:a,q[{ks_menu}].
+. In the left navigation pane, select **Platform Roles**.
+. On the page, click **Create**.
+. In the **Create Platform Role** dialog box, set the name, alias, and description of the platform role, and then click **Edit Permissions**.
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|平台角色的名称。名称只能包含小写字母、数字和连字符（-），必须以小写字母或数字开头和结尾，最长 63 个字符。
+|Name
+|The name of the platform role. The name can only contain lowercase letters, numbers, and hyphens (-), must start and end with a lowercase letter or number, and can be up to 63 characters long.
 
-|别名
-|平台角色的别名。不同企业空间角色的别名可以相同。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|The alias of the platform role. Different workspace roles can have the same alias.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-), must not start or end with a hyphen (-), and can be up to 63 characters long.
 
-|描述
-|平台角色的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|The description of the platform role. The description can contain any characters and can be up to 256 characters long.
 |===
 
-. 在**编辑权限**对话框，设置平台角色的权限，然后点击**确定**。
+. In the **Edit Permissions** dialog box, set the permissions for the platform role, and then click **OK**.
 +
 --
-平台角色可设置的权限如下：
+The permissions that can be set for a platform role are as follows:
 
-* 应用商店管理
+* App Store Management
 +
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|应用商店管理
-|管理 KubeSphere 平台的应用商店，如应用审核、上架、下架等。
+|App Store Management
+|Manage the App Store on the KubeSphere platform, such as app review, release, removal, etc.
 |===
 
-* 企业空间
+* Workspace
 +
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|企业空间创建
-|创建企业空间。
+|Workspace Creation
+|Create a workspace.
 
-|企业空间管理
-|管理所有企业空间和企业空间下的资源。
+|Workspace Management
+|Manage all workspaces and resources within workspaces.
 
-|企业空间查看
-|查看所有企业空间和企业空间下的资源。
+|Workspace Viewing
+|View all workspaces and resources within workspaces.
 |===
 
-* 集群管理
+* Cluster Management
 +
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|集群管理
-|创建集群、删除集群和管理集群中的所有资源。
+|Cluster Management
+|Create clusters, delete clusters, and manage all resources within clusters.
 
-|集群查看
-|查看所有集群和集群资源。
+|Cluster Viewing
+|View all clusters and cluster resources.
 |===
 
-* 访问控制
+* Access Control
 +
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|角色查看
-|查看平台角色列表、查看平台角色详情。
+|Role Viewing
+|View the platform role list and view platform role details.
 
-|用户查看
-|查看用户列表、查看用户详情。
+|User Viewing
+|View the user list and view user details.
 
-// |用户管理
-// |创建用户、编辑用户信息、启用和禁用用户、修改用户角色、删除用户。
+// |User Management
+// |Create users, edit user information, enable and disable users, modify user roles, delete users.
 
-// |角色管理
-// |创建平台角色、编辑平台角色信息、编辑平台角色权限、删除平台角色。
+// |Role Management
+// |Create platform roles, edit platform role information, edit platform role permissions, delete platform roles.
 |===
 --
-

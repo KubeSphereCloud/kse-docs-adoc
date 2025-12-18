@@ -1,18 +1,16 @@
 ---
-title: "编辑应用模板信息"
-keywords: "Kubernetes, {ks_product}, 企业空间,应用模板, 编辑应用模板信息"
-description: "介绍如何编辑应用模板信息。"
+title: "Edit Application Template Information"
+keywords: "Kubernetes, {ks_product}, Workspace, Application Template, Edit Application Template Information"
+description: "Describes how to edit application template information."
 weight: 04
 ---
 
-:ks_permission: **应用/应用版本/应用实例管理**
-:ks_navigation: **应用管理 > 应用模板**
+:ks_permission: **Application/Application Version/Application Instance Management**
+:ks_navigation: **Application Management > Application Templates**
 
+This section describes how to edit application template information.
 
-本节介绍如何编辑应用模板信息。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,10 +18,9 @@ include::../../../../../_custom/workspaceManagement/workspaceManagement-prer-req
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The **KubeSphere App Store Management** extension must be installed and enabled on the KubeSphere platform.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -37,35 +34,35 @@ include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-op
 
 +
 
-. 在应用模板详情页面，点击**操作 > 编辑**。
+. On the application template details page, click **Operation > Edit**.
 
-. 在**编辑信息**对话框设置应用模板的参数，然后点击**确定**。
+. In the **Edit Information** dialog box, set the parameters for the application template, then click **OK**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|别名
-|应用的别名。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|The alias of the application.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-). It cannot start or end with a hyphen (-) and has a maximum length of 63 characters.
 
-|描述
-|应用的描述信息。描述可包含任意字符，最长 120 个字符。
+|Description
+|The description of the application. The description can contain any characters and has a maximum length of 120 characters.
 
-|图标
-|应用的图标。如果未设置应用模板的图标，系统将默认使用应用名称第一个字符大写作为图标。图标格式必须为 .png 或 .jpg，不能超过 96 x 96 像素和 20 KB。
+|Icon
+|The icon of the application. If no icon is set for the application template, the system will use the first character of the application name in uppercase as the default icon. The icon format must be .png or .jpg, and cannot exceed 96 x 96 pixels and 20 KB.
 
-|应用分类
-|应用的功能分类。应用模板在上传到应用商店后将被自动划分到此处选择的分类下。
+|Application Category
+|The functional category of the application. After the application template is uploaded to the App Store, it will be automatically classified under the category selected here.
 
-|服务商网站
-|服务商的网站地址。从应用商店安装应用的用户可联系服务商获取技术支持。
+|Vendor Website
+|The website address of the vendor. Users who install the application from the App Store can contact the vendor for technical support.
 
-|应用截图
-|应用的介绍图片。最多支持上传 6 张截图，每张截图大小不能超过 2 MB。
+|Application Screenshots
+|Introduction images for the application. A maximum of 6 screenshots are supported. Each screenshot cannot exceed 2 MB.
 
-|应用介绍
-|应用的介绍信息。支持输入 markdown 格式的图文介绍。
+|Application Introduction
+|Introduction information for the application. Supports markdown-formatted text and image introductions.
 |===
 --

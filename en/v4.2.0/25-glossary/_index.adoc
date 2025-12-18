@@ -1,10 +1,10 @@
 ---
-title: "术语表"
+title: "Glossary"
 weight: 25
-keywords: 'Kubernetes, KubeSphere, 术语表, 词汇表'
-description: 'KubeSphere 中使用的术语表。'
+keywords: 'Kubernetes, KubeSphere, Glossary, Terminology'
+description: 'Glossary of terms used in KubeSphere.'
 icon: "/images/docs/common/docs.svg"
 layout: "second"
 ---
 
-本术语表包含 KubeSphere 中专有的通用术语和技术术语。
+This glossary contains common and technical terms specific to KubeSphere.

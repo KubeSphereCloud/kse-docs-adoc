@@ -1,25 +1,25 @@
 ---
-title: "查看和定制平台信息"
-keywords: "Kubernetes, {ks_product}, 平台设置, 平台信息, 查看和定制平台信息"
-description: "介绍如何查看和定制平台信息。"
+title: "View and Customize Platform Information"
+keywords: "Kubernetes, {ks_product}, Platform Settings, Platform Information, View and Customize Platform Information"
+description: "Introduces how to view and customize platform information."
 weight: 01
 ---
 
 
-:ks_navigation: **平台信息**
-:ks_permission: **平台设置管理**
+:ks_navigation: **Platform Information**
+:ks_permission: **Platform Settings Management**
 
 
-本节介绍如何查看和定制 KubeSphere Web 控制台的信息。
+This section describes how to view and customize the information of the KubeSphere web console.
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
-// |``自定义平台信息``，仅在 KubeSphere ``标准版、高级版和旗舰版``中提供。
+// |The ``Customize Platform Information`` feature is only available in the KubeSphere ``Standard, Advanced, and Enterprise Editions``.
 // |===
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../
 
@@ -27,44 +27,44 @@ include::../../../_custom/platformManagement/platformManagement-prer-requiredPer
 
 :relfileprefix: ./
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
-. 在页面右上角点击**组件坞 > 平台设置**。
+. In the upper-right corner of the page, click **Component Dock > Platform Settings**.
 
 +
 
 include::../../../../_ks_components/oper-navigate.adoc[]
 +
 --
-**平台信息**页面显示平台的访问地址、标题、描述、标识、浏览器图标和登录页面背景图片。
+The **Platform Information** page displays the platform's access address, title, description, logo, browser favicon, and login page background image.
 --
 
-. 在页面右上角点击**自定义平台信息**。
+. In the upper-right corner of the page, click **Customize Platform Information**.
 
-. 在**自定义平台信息**对话框设置平台的信息，然后点击**确定**。
+. In the **Customize Platform Information** dialog box, configure the platform information and then click **OK**.
 +
 --
-自定义完成后，可重置平台信息，恢复到默认状态。
+After customization, you can reset the platform information to restore it to the default state.
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|平台标题
-|平台的名称。平台标题可包含任意字符，最长 63 个字符。
+|Platform Title
+|The name of the platform. The platform title can contain any characters and is up to 63 characters long.
 
-|平台描述
-|描述可包含任意字符，最长 256 个字符。
+|Platform Description
+|The description can contain any characters and is up to 256 characters long.
 
-|平台标识
-|Web 控制台界面上方显示的标识。图片格式可以为 SVG、PNG 或 JPG，图片文件大小不能超过 2 MB，推荐的图片分辨率为 200 x 40 像素。
+|Platform Logo
+|The logo displayed at the top of the web console interface. The image format can be SVG, PNG, or JPG, the file size must not exceed 2 MB, and the recommended image resolution is 200 x 40 pixels.
 
-|浏览器图标
-|浏览器页签的图标。图片格式可以为 ICO、SVG、PNG 或 JPG，图片文件大小不能超过 2 MB，推荐图片分辨率为 40 x 40 像素，推荐长宽比为 1:1。
+|Browser Favicon
+|The icon on the browser tab. The image format can be ICO, SVG, PNG, or JPG, the file size must not exceed 2 MB, the recommended image resolution is 40 x 40 pixels, and a 1:1 aspect ratio is recommended.
 
-|登录页面背景图片
-|平台登录页面的背景图片。图片格式可以为 SVG、PNG 或 JPG，图片文件大小不能超过 2 MB，推荐的图片分辨率为 1920 x 1080 像素。
+|Login Page Background Image
+|The background image of the platform login page. The image format can be SVG, PNG, or JPG, the file size must not exceed 2 MB, and the recommended image resolution is 1920 x 1080 pixels.
 |===
 --

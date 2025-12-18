@@ -1,184 +1,183 @@
 ---
-title: "创建并部署 WordPress"
-keywords: "Kubernetes, {ks_product}, 快速入门, 安装, 示例, 应用"
-description: "以安装 WordPress 为例，演示如何在 KubeSphere Web 控制台部署应用程序。"
+title: "Create and Deploy WordPress"
+keywords: "Kubernetes, {ks_product}, Quick Start, Installation, Example, Application"
+description: "Using WordPress installation as an example, demonstrates how to deploy an application in the KubeSphere web console."
 weight: 05
 ---
 
 ifeval::["{file_output_type}" == "html"]
-本节以安装 WordPress 为例，演示如何在 KubeSphere Web 控制台部署应用程序，并在集群外进行访问。有关应用资源管理的更多信息，请参阅link:../../08-workspace-management/10-application-workloads[应用负载]。
+This section uses the installation of WordPress as an example to demonstrate how to deploy an application in the KubeSphere web console and access it from outside the cluster. For more information on application resource management, please refer to link:../../08-workspace-management/10-application-workloads[Application Workloads].
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-本节以安装 WordPress 为例，演示如何在 KubeSphere Web 控制台部署应用程序，并在集群外进行访问。有关应用资源管理的更多信息，请参阅《KubeSphere 企业空间和项目管理指南》的“应用负载”章节。
+This section uses the installation of WordPress as an example to demonstrate how to deploy an application in the KubeSphere web console and access it from outside the cluster. For more information on application resource management, please refer to the "Application Workloads" chapter in the *KubeSphere Workspace and Project Management Guide*.
 endif::[]
 
-== WordPress 简介
+== WordPress Introduction
 
-WordPress 是一款基于 PHP 的免费、开源内容管理系统，您可以使用 WordPress 搭建自己的网站。完整的 WordPress 应用程序包括以下 Kubernetes 对象，由 MySQL 作为后端数据库。
+WordPress is a free, open-source content management system based on PHP. You can use WordPress to build your own website. The complete WordPress application includes the following Kubernetes objects, with MySQL serving as the backend database.
 
 image:/images/ks-qkcp/zh/v4.1/WordPress.png[, 70%]
 
 
-== 前提条件
+== Prerequisites
 
-* 准备一个项目（例如 **demo-project**）和一个已邀请到该项目的用户（例如 **project-regular**）。该用户在项目中应具有 **operator** 角色。有关更多信息，请参阅link:../03-control-user-permissions/[控制用户权限]。
+* Prepare a project (e.g., **demo-project**) and a user (e.g., **project-regular**) who has been invited to this project. This user should have the **operator** role in the project. For more information, please refer to link:../03-control-user-permissions/[Control User Permissions].
 
-== 操作步骤
+== Steps
 
-=== 1. 创建保密字典
+=== 1. Create Secrets
 
-创建两个保密字典，分别用于设置 MySQL 和 WordPress 的 root 密码。
+Create two Secrets to set the root passwords for MySQL and WordPress respectively.
 
-. 使用 **project-regular** 用户登录 KubeSphere Web 控制台。
+. Log in to the KubeSphere web console as the **project-regular** user.
 
-. 点击**企业空间管理**，并进入项目所在的企业空间。
+. Click **Workspace Management** and enter the workspace where the project is located.
 
-. 在左侧导航栏，选择**配置** > **保密字典**。
+. In the left navigation pane, select **Configuration** > **Secrets**.
 
-. 在页面左上角的下拉列表中选择项目 **demo-project**，然后点击**创建**。
+. Select the project **demo-project** from the drop-down list in the upper-left corner of the page, then click **Create**.
 
-. 在**基本信息**页签，输入保密字典的基本信息（例如，将**名称**设置为 **mysql-secret**），点击**下一步**。
+. On the **Basic Information** tab, enter the basic information for the Secret (e.g., set **Name** to **mysql-secret**), then click **Next**.
 
-. 在**数据配置**页签，点击**添加数据**添加键值对。
+. On the **Data Settings** tab, click **Add Data** to add a key-value pair.
 
-. 将**键**和**值**分别设置为 **MYSQL_ROOT_PASSWORD** 和 **123456**，在页面右下角点击image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18]保存设置。
+. Set **Key** and **Value** to **MYSQL_ROOT_PASSWORD** and **123456** respectively, then click image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18] in the lower-right corner of the page to save the settings.
 
-. 点击**创建**以创建保密字典，用于为 MySQL 提供 root 密码。
+. Click **Create** to create the Secret, which will provide the root password for MySQL.
 
-. 重复以上步骤创建一个名为 **wordpress-secret** 的保密字典，将**键**和**值**分别设置为 **WORDPRESS_DB_PASSWORD** 和 **123456**，用于为 WordPress 提供 root 密码。
-
-
-=== 2. 创建持久卷声明
-
-创建持久卷声明用于存储 WordPress 应用数据。
-
-. 在左侧导航栏，选择**存储** > **持久卷声明**，在页面右侧点击**创建**。
-
-. 在**基本信息**页签，输入持久卷声明的基本信息（例如，将**名称**设置为 **wordpress-pvc**），点击**下一步**。
-
-. 在**存储设置**页签，点击**下一步**。
-
-. 在**高级设置**页签，点击**创建**即可。
+. Repeat the above steps to create a Secret named **wordpress-secret**, setting **Key** and **Value** to **WORDPRESS_DB_PASSWORD** and **123456** respectively, to provide the root password for WordPress.
 
 
-=== 3. 创建 MySQL 应用
+=== 2. Create a PersistentVolumeClaim
 
-创建 MySQL 应用为 WordPress 提供数据库服务。
+Create a PersistentVolumeClaim to store WordPress application data.
 
-. 在左侧导航栏，选择**应用负载** > **自制应用**，在页面右侧点击**创建**。
+. In the left navigation pane, select **Storage** > **PersistentVolumeClaims**, then click **Create** on the right side of the page.
 
-. 在**基本信息**页面，输入应用基本信息（例如，将**名称**设置为 **wordpress**），点击**下一步**。
+. On the **Basic Information** tab, enter the basic information for the PersistentVolumeClaim (e.g., set **Name** to **wordpress-pvc**), then click **Next**.
 
-. 在**服务设置**页面，点击**创建服务**为自制应用创建一个服务。
+. On the **Storage Settings** tab, click **Next**.
 
-. 在**创建服务**对话框，点击**有状态服务**。
+. On the **Advanced Settings** tab, click **Create**.
 
-. 在弹出的**创建有状态服务**对话框，输入有状态服务的名称（例如 **mysql**）并点击**下一步**。
 
-. 在**容器组设置**页签，点击**添加容器**。
+=== 3. Create the MySQL Application
 
-. 在搜索框中输入 **mysql:5.6**，按下回车键，向下滚动鼠标，点击**使用默认镜像端口**。
+Create the MySQL application to provide database services for WordPress.
+
+. In the left navigation pane, select **Application Workloads** > **Composed Apps**, then click **Create** on the right side of the page.
+
+. On the **Basic Information** page, enter the basic information for the application (e.g., set **Name** to **wordpress**), then click **Next**.
+
+. On the **Service Settings** page, click **Create Service** to create a service for the composed app.
+
+. In the **Create Service** dialog box, click **Stateful Service**.
+
+. In the pop-up **Create Stateful Service** dialog box, enter the name for the stateful service (e.g., **mysql**) and click **Next**.
+
+. On the **Pod Settings** tab, click **Add Container**.
+
+. Enter **mysql:5.6** in the search box, press Enter, scroll down, and click **Use Default Port**.
 +
 --
 // Note
 include::../../../_ks_components/admonitions/note.adoc[]
 
-此时配置还未完成，请不要在页面右下角点击image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18]。
+The configuration is not yet complete. Please do not click image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18] in the lower-right corner at this time.
 
 include::../../../_ks_components/admonitions/admonEnd.adoc[]
---
 +
-. 在**容器组设置**页签的**高级设置**区域，将内存上限设置为 1000 Mi 或以上，否则 MySQL 可能因内存不足而无法启动。
+. In the **Advanced Settings** area of the **Pod Settings** tab, set the memory limit to 1000 Mi or higher; otherwise, MySQL may fail to start due to insufficient memory.
 
-. 向下滚动鼠标到**环境变量**区域，选择**环境变量**，在下拉框中选择**来自保密字典**。参数设置如下：
+. Scroll down to the **Environment Variables** area, select **Environment Variable**, and choose **From Secret** from the drop-down list. Set the parameters as follows:
 
-** **键**：设置为 **MYSQL_ROOT_PASSWORD**。
+** **Key**: Set to **MYSQL_ROOT_PASSWORD**.
 
-** **资源**：设置为 **mysql-secret**。
+** **Resource**: Set to **mysql-secret**.
 
-** **资源中的键**：设置为 **MYSQL_ROOT_PASSWORD**。
+** **Key in Resource**: Set to **MYSQL_ROOT_PASSWORD**.
 
-. 点击image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18]保存配置，然后点击**下一步**。
+. Click image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18] to save the configuration, then click **Next**.
 
-. 在**存储设置**页签，点击**添加持久卷声明模板**。
+. On the **Storage Settings** tab, click **Add PersistentVolumeClaim Template**.
 
-. 输入 PVC 名称前缀（例如，**mysql**），并指定挂载路径（模式：**读写**，路径：**/var/lib/mysql**）。
+. Enter a PVC name prefix (e.g., **mysql**), and specify the mount path (Mode: **ReadWriteOnce**, Path: **/var/lib/mysql**).
 
-. 点击image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18]保存配置，然后点击**下一步**。
+. Click image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18] to save the configuration, then click **Next**.
 
-. 在**高级设置**页签，点击**创建**以创建 MySQL 应用。
+. On the **Advanced Settings** tab, click **Create** to create the MySQL application.
 
 
-=== 4. 创建 WordPress 应用
+=== 4. Create the WordPress Application
 
-. 再次点击**创建服务**。在弹出的**创建服务**对话框，点击**无状态服务**。
+. Click **Create Service** again. In the pop-up **Create Service** dialog box, click **Stateless Service**.
 
-. 在弹出的**创建无状态服务**对话框，输入无状态服务的名称（例如，**wordpress**）并点击**下一步**。
+. In the pop-up **Create Stateless Service** dialog box, enter the name for the stateless service (e.g., **wordpress**) and click **Next**.
 
-. 在**容器组设置**页签，点击**添加容器**。
+. On the **Pod Settings** tab, click **Add Container**.
 
-. 在搜索框中输入 **wordpress:4.8-apache**，按下回车键，向下滚动鼠标，点击**使用默认镜像端口**。
-+
---
-// Note
-include::../../../_ks_components/admonitions/note.adoc[]
-
-此时配置还未完成，请不要在页面右下角点击image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18]。
-
-include::../../../_ks_components/admonitions/admonEnd.adoc[]
---
-
-. 向下滚动鼠标到**环境变量**区域，选择**环境变量**。此处需要添加两个环境变量，请按如下信息设置：
-
-** 在下拉框中选择**来自保密字典**，输入键名称 **WORDPRESS_DB_PASSWORD**，选择资源 **wordpress-secret** 和资源值 **WORDPRESS_DB_PASSWORD**。
-
-**  点击**添加环境变量**，分别输入键名称 **WORDPRESS_DB_HOST** 和值 **mysql**。
+. Enter **wordpress:4.8-apache** in the search box, press Enter, scroll down, and click **Use Default Port**.
 +
 --
 // Note
 include::../../../_ks_components/admonitions/note.adoc[]
 
-**WORDPRESS_DB_HOST** 环境变量的值必须与link:#_3_创建_mysql_应用[创建 MySQL 应用]中创建的 MySQL 有状态服务的名称完全相同。否则，WordPress 将无法连接到 MySQL 数据库。
+The configuration is not yet complete. Please do not click image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18] in the lower-right corner at this time.
 
 include::../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-. 点击image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18]保存配置，然后点击**下一步**。
+. Scroll down to the **Environment Variables** area, select **Environment Variable**. Two environment variables need to be added here. Please set them as follows:
 
-. 在**存储设置**页签，点击**挂载卷**。
+** In the drop-down list, select **From Secret**, enter the key name **WORDPRESS_DB_PASSWORD**, select the resource **wordpress-secret** and the resource value **WORDPRESS_DB_PASSWORD**.
 
-. 在**持久卷**页签，点击**选择持久卷声明**。
+** Click **Add Environment Variable**, and enter the key name **WORDPRESS_DB_HOST** and the value **mysql** respectively.
++
+--
+// Note
+include::../../../_ks_components/admonitions/note.adoc[]
 
-. 选择已创建的 **wordpress-pvc**，将模式设置为**读写**，并输入挂载路径 **/var/www/html**。
+The value of the **WORDPRESS_DB_HOST** environment variable must be exactly the same as the name of the MySQL stateful service created in link:#_3_创建_mysql_应用[Create the MySQL Application]. Otherwise, WordPress will not be able to connect to the MySQL database.
 
-. 点击image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18]保存配置，再点击**下一步**。
+include::../../../_ks_components/admonitions/admonEnd.adoc[]
+--
 
-. 在**高级设置**页签，点击**创建**。
+. Click image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18] to save the configuration, then click **Next**.
 
-. 在**服务**页面，点击**下一步**。
+. On the **Storage Settings** tab, click **Mount Volume**.
 
-. 在**路由设置**页面，点击**创建**以创建 WordPress。您可以在**自制应用**页面查看已创建的应用。
+. On the **PersistentVolume** tab, click **Select PersistentVolumeClaim**.
+
+. Select the previously created **wordpress-pvc**, set the mode to **ReadWriteOnce**, and enter the mount path **/var/www/html**.
+
+. Click image:/images/ks-qkcp/zh/icons/check-dark.svg[check,18,18] to save the configuration, then click **Next**.
+
+. On the **Advanced Settings** tab, click **Create**.
+
+. On the **Services** page, click **Next**.
+
+. On the **Routing Settings** page, click **Create** to create WordPress. You can view the created application on the **Composed Apps** page.
 
 
-=== 5. 验证 WordPress 是否创建成功
+=== 5. Verify if WordPress is Created Successfully
 
-. 在左侧导航栏，选择**应用负载** > **工作负载**。
+. In the left navigation pane, select **Application Workloads** > **Workloads**.
 
-. 分别检查**部署**页签和**有状态副本集**页签 **wordpress-v1** 和 **mysql-v1** 的运行状态，若两者状态都为**运行中**，则表明 WordPress 创建成功。
+. Check the running status of **wordpress-v1** and **mysql-v1** on the **Deployments** tab and the **StatefulSets** tab respectively. If both statuses are **Running**, it indicates that WordPress has been created successfully.
 
 
-=== 6. 通过 NodePort 访问 WordPress
+=== 6. Access WordPress via NodePort
 
-. 在左侧导航栏，选择**应用负载** > **服务**。
+. In the left navigation pane, select **Application Workloads** > **Services**.
 
-. 点击 `wordpress` 右侧的 image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**编辑外部访问**。
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of `wordpress` and select **Edit External Access**.
 
-. 在**访问模式**中选择 **NodePort**，点击**确定**。
+. Select **NodePort** in **Access Mode**, then click **OK**.
 
-. 点击 **wordpress** 进入详情页，在**资源状态**页签下的**端口**区域，您可以查看暴露的节点端口。
+. Click **wordpress** to enter its details page. On the **Resource Status** tab, in the **Ports** area, you can view the exposed node port.
 
-. 在浏览器中输入 `<节点 IP>:<节点端口>`，即可从集群的外部访问 WordPress，如下图所示。
+. Enter `<Node IP>:<Node Port>` in a browser to access WordPress from outside the cluster, as shown in the following figure.
 +
 --
 image:/images/ks-qkcp/zh/v4.1/wordpress-page.png[]
@@ -186,7 +185,7 @@ image:/images/ks-qkcp/zh/v4.1/wordpress-page.png[]
 // Note
 include::../../../_ks_components/admonitions/note.adoc[]
 
-取决于您的 Kubernetes 集群的部署环境，您可能需要在安全组中放行端口并配置相关的端口转发规则。
+Depending on your Kubernetes cluster deployment environment, you may need to open the port in the security group and configure related port forwarding rules.
 
 include::../../../_ks_components/admonitions/admonEnd.adoc[]
 --

@@ -1,6 +1,6 @@
 ---
-title: "配置高可用性"
-keywords: "Kubernetes, {ks_product}, 安装, 准备, 高可用"
-description: "介绍如何为 KubeSphere 集群配置高可用性。"
+title: "Configuring High Availability"
+keywords: "Kubernetes, {ks_product}, installation, preparation, high availability"
+description: "Describes how to configure high availability for a KubeSphere cluster."
 weight: 02
 ---

@@ -1,20 +1,20 @@
 ---
-title: "设置授权规则"
-description: "介绍如何如何为存储类设置授权规则。"
+title: "Set Authorization Rules"
+description: "Introduces how to set authorization rules for storage classes."
 weight: 01
 ---
 
-:ks_permission: **存储类访问规则管理**
-:ks_navigation: **存储 > 存储类**
+:ks_permission: **Storage Class Access Rule Management**
+:ks_navigation: **Storage > Storage Classes**
 
 
-本节介绍如何为存储类设置授权规则。
+This section describes how to set authorization rules for storage classes.
 
-设置并启用授权规则后，用户只能在特定项目和企业空间使用存储类。
+After setting and enabling authorization rules, users can only use the storage class within specific projects and workspaces.
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 存储**扩展组件。
+* The **KubeSphere Storage** extension needs to be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../
 * {empty}
@@ -23,7 +23,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -37,21 +37,21 @@ include::../../../../_custom/clusterManagement/storageClasses/systemClasses-oper
 
 +
 
-. 在存储类详情页面，点击**操作 > 设置授权规则**。
+. On the storage class details page, click **Operations > Set Authorization Rules**.
 
-. 在**设置授权规则**对话框，点击页面右侧的**已禁用**按钮启用授权规则。
+. In the **Set Authorization Rules** dialog box, click the **Disabled** button on the right side of the page to enable authorization rules.
 +
 --
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]
 
-若要禁用授权规则，在页面右侧点击**已启用**。
+To disable authorization rules, click **Enabled** on the right side of the page.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-. 在**授权规则**设置区域，设置在特定的项目和企业空间使用该存储类。
+. In the **Authorization Rules** setting area, configure the usage of this storage class within specific projects and workspaces.
 +
 image:/images/ks-qkcp/zh/v4.1/storage1.png[ rule,100%]
 
-. 设置完成后，点击**确定**。
+. After completing the configuration, click **OK**.

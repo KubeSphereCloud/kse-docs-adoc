@@ -1,23 +1,23 @@
 ---
-title: "编辑微服务实例权重"
-keywords: "Kubernetes, {ks_product}, 项目管理, Spring Cloud, 编辑微服务实例权重"
-description: "介绍编辑微服务实例权重。"
+title: "Edit Microservice Instance Weight"
+keywords: "Kubernetes, {ks_product}, Project Management, Spring Cloud, Edit Microservice Instance Weight"
+description: "Introduces how to edit microservice instance weight."
 weight: 03
 ---
 
 
-:ks_permission: ** Spring Cloud 微服务管理**
-:ks_navigation:  **Spring Cloud > 微服务**
+:ks_permission: ** Spring Cloud Microservice Management**
+:ks_navigation:  **Spring Cloud > Microservices**
 
 
-本节介绍如何编辑微服务实例权重。
+This section describes how to edit microservice instance weight.
 
-微服务实例的权重用于决定微服务实例的流量分配，发送给微服务的流量将根据微服务实例的权重分配给微服务实例。
+The weight of a microservice instance is used to determine the traffic distribution for that instance. Traffic sent to the microservice will be allocated to its instances based on their respective weights.
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **KubeSphere Spring Cloud** 扩展组件。
+* The **KubeSphere Spring Cloud** extension must be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../
 * {empty}
@@ -26,7 +26,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -44,6 +44,6 @@ include::../../../../_custom/projectManagement/microservices/microservices-oper-
 
 +
 
-. 在需要操作的微服务实例右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**编辑权重**。
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the microservice instance you want to operate on, then select **Edit Weight** from the dropdown list.
 
-. 在**编辑权重**对话框，设置微服务实例的权重，然后点击**确定**。
+. In the **Edit Weight** dialog box, set the weight for the microservice instance, then click **OK**.

@@ -1,18 +1,16 @@
 ---
-title: "将应用版本发布到应用商店"
-keywords: "Kubernetes, {ks_product}, 企业空间, 应用模板, 将应用版本发布到应用商店"
-description: "介绍如何将应用模板发布到应用商店。"
+title: "Publish an App Version to the App Store"
+keywords: "Kubernetes, {ks_product}, workspace, app template, publish app version to app store"
+description: "Describes how to publish an app template to the App Store."
 weight: 10
 ---
 
-:ks_permission: **应用/应用版本/应用实例管理**
-:ks_navigation: **应用管理 > 应用模板**
+:ks_permission: **App/App Version/App Instance Management**
+:ks_navigation: **App Management > App Templates**
 
+This section describes how to publish an app version to the App Store.
 
-本节介绍如何将应用版本发布到应用商店。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,10 +18,9 @@ include::../../../../../_custom/workspaceManagement/workspaceManagement-prer-req
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The **KubeSphere App Store Management** extension must be installed and enabled on the KubeSphere platform.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -37,17 +34,17 @@ include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-op
 
 +
 
-. 在应用模板详情页面的**版本**页签，点击需要发布的应用版本，然后在展开的区域中点击**提交审核**。
+. On the **Versions** tab of the app template details page, click the app version you want to publish, then click **Submit for Review** in the expanded area.
 
-. 待应用商店管理员审核通过并将其上架后，点击**应用商店**，即可在应用商店中查看已上架的应用版本。
+. After the App Store administrator approves and lists it, click **App Store** to view the listed app version in the App Store.
 +
 --
 // Note
 include::../../../../../../_ks_components/admonitions/note.adoc[]
 
-* 审核通过后，应用版本的状态将变为**已发布**，表示可以被应用商店管理员上架到应用商店。上架后，所有项目成员才可以从应用商店将应用版本安装到项目中。
+* After approval, the app version's status will change to **Published**, indicating it can be listed in the App Store by the App Store administrator. Once listed, all project members can install the app version from the App Store into their projects.
 
-* 有关应用审核和上架的更多信息，请参阅link:../../../03-app-store-management/[应用商店管理]。
+* For more information about app review and listing, refer to link:../../../03-app-store-management/[App Store Management].
 
 include::../../../../../../_ks_components/admonitions/admonEnd.adoc[]
 --

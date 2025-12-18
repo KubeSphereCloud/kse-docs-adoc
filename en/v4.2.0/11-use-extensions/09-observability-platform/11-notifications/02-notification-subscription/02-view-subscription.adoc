@@ -1,24 +1,23 @@
 ---
-title: "查看通知订阅"
-description: "介绍如何查看通知订阅。"
+title: "View Notification Subscriptions"
+description: "Describes how to view notification subscriptions."
 weight: 02
 ---
 
-:ks_navigation: **通知 > 通知订阅**
-// :ks_permission: **平台设置管理**
+:ks_navigation: **Notification > Notification Subscriptions**
+// :ks_permission: **Platform Settings Management**
 
 
 
-本节介绍如何查看通知订阅。
+This section describes how to view notification subscriptions.
 
-== 前提条件
+== Prerequisites
 
-* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
+* You need to have the **platform-admin** role in the KubeSphere platform. For more information, refer to link:../../../../../05-users-and-roles/01-users/[Users] and link:../../../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 通知**扩展组件。
+* The **WizTelemetry Notification** extension needs to be installed and enabled on the KubeSphere platform.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
@@ -28,31 +27,31 @@ include::../../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
 +
 include::../../../../../../_ks_components/oper-navigate.adoc[]
 +
-. 在**通知订阅**页面的**邮箱**页签，查看已创建的通知订阅列表。
+. On the **Notification Subscriptions** page, under the **Email** tab, view the list of created notification subscriptions.
 +
 --
-通知订阅列表提供以下信息：
+The notification subscription list provides the following information:
 [%header,cols="1a,4a"]
 |===
-|参数|描述
+|Parameter|Description
 
-|名称
-|通知订阅的名称。
+|Name
+|The name of the notification subscription.
 
-|通知接收状态
-|通知订阅是否被启用。
+|Notification Receiving Status
+|Whether the notification subscription is enabled.
 
-|通知订阅账号数量
-|接收通知的账号数量。
+|Number of Notification Subscription Accounts
+|The number of accounts receiving notifications.
 
-|创建时间
-|通知订阅的创建时间。
+|Creation Time
+|The creation time of the notification subscription.
 |===
 
-* 在列表上方点击搜索框并输入关键字，可按名称搜索通知订阅。
+* Click the search box above the list and enter a keyword to search for notification subscriptions by name.
 
 include::../../../../../../_ks_components/oper-refreshListData.adoc[]
 
 include::../../../../../../_ks_components/oper-customizeColumns.adoc[]
 --
-. 点击通知订阅的名称，可查看详细信息，如订阅账号、过滤条件等。
+. Click the name of a notification subscription to view its details, such as subscribed accounts, filter conditions, etc.

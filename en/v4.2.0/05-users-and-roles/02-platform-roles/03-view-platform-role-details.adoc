@@ -1,32 +1,32 @@
 ---
-title: "查看平台角色详情"
-keywords: "Kubernetes, {ks_product}, 平台管理, 访问控制, 平台角色, 查看平台角色详情"
-description: "介绍如何查看平台角色详情。"
+title: "View Platform Role Details"
+keywords: "Kubernetes, {ks_product}, Platform Management, Access Control, Platform Roles, View Platform Role Details"
+description: "Describes how to view platform role details."
 weight: 03
 ---
 
-:ks_menu: **用户和角色管理**
-:ks_permission: **角色查看**
-:ks_navigation: **平台角色**
+:ks_menu: **User and Role Management**
+:ks_permission: **Role Viewing**
+:ks_navigation: **Platform Roles**
 
 
-本节介绍如何查看平台角色详情。
+This section describes how to view platform role details.
 
 
-== 前提条件
+== Prerequisites
 
-您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。有关更多信息，请参阅link:../../01-users/[用户]和link:../../02-platform-roles/[平台角色]。
+You need to have thepass:a,q[{ks_permission}] permission on the KubeSphere platform. For more information, refer to link:../../01-users/[Users] and link:../../02-platform-roles/[Platform Roles].
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**平台角色**。
-. 在平台角色列表点击一个平台角色的名称打开其详情页面。
-. 在平台角色详情页面的**属性**区域查看角色的创建者和创建时间。
-. 在平台角色详情页面的**权限**页签，查看当前角色拥有的权限。
-. 在平台角色详情页面点击**授权用户**页签，查看具有当前平台角色的用户。
+. Clickpass:a,q[{ks_menu}].
+. In the left navigation pane, select **Platform Roles**.
+. In the platform roles list, click the name of a platform role to open its details page.
+. On the platform role details page, view the role's creator and creation time in the **Attributes** area.
+. On the platform role details page, click the **Permissions** tab to view the permissions held by the current role.
+. On the platform role details page, click the **Authorized Users** tab to view users assigned the current platform role.
 +
 --
 include::../../../_custom/clusterManagement/clusterRoles/clusterRoles-para-authorizedUsers.adoc[]

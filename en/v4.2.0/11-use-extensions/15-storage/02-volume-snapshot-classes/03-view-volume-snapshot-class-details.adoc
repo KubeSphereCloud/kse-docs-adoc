@@ -1,21 +1,21 @@
 ---
-title: "查看卷快照类详情"
-keywords: "Kubernetes, {ks_product}, 集群管理, 存储, 卷快照类, 查看卷快照类详情"
-description: "介绍如何查看卷快照类详情。"
+title: "View Volume Snapshot Class Details"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Storage, Volume Snapshot Class, View Volume Snapshot Class Details"
+description: "Describes how to view volume snapshot class details."
 weight: 03
 ---
 
-:ks_permission: **卷快照类查看**
-:ks_navigation: **存储 > 卷快照类**
+:ks_permission: **Volume Snapshot Class View**
+:ks_navigation: **Storage > Volume Snapshot Classes**
 
 
-本节介绍如何查看卷快照类详情。
+This section describes how to view volume snapshot class details.
 
 
-== 前提条件
+== Prerequisites
 
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 存储**扩展组件。
+* The **KubeSphere Storage** extension must be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../
 * {empty}
@@ -25,7 +25,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -35,49 +35,49 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在卷快照类列表中点击一个卷快照类的名称打开卷快照类详情页面。
+. In the volume snapshot class list, click the name of a volume snapshot class to open its details page.
 
-. 在卷快照类详情页面的**属性**区域查看卷快照类的资源属性。
+. On the volume snapshot class details page, view the resource attributes of the volume snapshot class in the **Attributes** area.
 +
 --
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|供应者
+|Provisioner
 |
-卷快照类对应的存储插件。
+The storage plugin corresponding to the volume snapshot class.
 
-|删除策略
+|Deletion Policy
 |
 include::../../../../_custom/clusterManagement/volumeSnapshotContents/volumeSnapshotContents-para-deletionPolicy.adoc[]
 
-|创建时间
-|卷快照类的创建时间。
+|Creation Time
+|The creation time of the volume snapshot class.
 |===
 --
 
-. 在卷快照类详情页面的**卷快照**区域查看使用卷快照类创建的卷快照。
+. On the volume snapshot class details page, view the volume snapshots created using this volume snapshot class in the **Volume Snapshots** area.
 +
 --
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|卷快照的名称。
+|Name
+|The name of the volume snapshot.
 
-|状态
+|Status
 |
 include::../../../../_custom/clusterManagement/volumeSnapshots/volumeSnapshots-para-volumeSnapshotStatus_v4.adoc[]
 
-|容量
+|Capacity
 |
 include::../../../../_custom/clusterManagement/volumeSnapshots/volumeSnapshots-para-capacity.adoc[]
 
-|创建时间
-|卷快照的创建时间。
+|Creation Time
+|The creation time of the volume snapshot.
 |===
 --

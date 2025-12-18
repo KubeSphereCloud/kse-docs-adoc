@@ -1,19 +1,19 @@
 ---
-title: "查看应用仓库列表"
-keywords: "Kubernetes, {ks_product}, 企业空间, 应用仓库, 查看应用仓库列表"
-description: "介绍如何查看应用仓库列表。"
+title: "View App Repository List"
+keywords: "Kubernetes, {ks_product}, workspace, App Repository, View App Repository List"
+description: "Describes how to view the app repository list."
 weight: 02
 ---
 
 
-:ks_permission: **应用仓库查看**
-:ks_navigation: **应用管理 > 应用仓库**
+:ks_permission: **App Repository View**
+:ks_navigation: **App Management > App Repositories**
 
 
-本节介绍如何查看企业空间中的应用仓库列表。
+This section describes how to view the list of app repositories in a workspace.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,7 +21,7 @@ include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requir
 
 :relfileprefix: ./
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -32,7 +32,7 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 ====
 include::../../../../_custom/workspaceManagement/appRepositories/appRepositories-para-viewRepositoryList.adoc[]
 
-* 在列表上方点击搜索框并输入关键字，可按名称搜索应用仓库。
+* Click the search box above the list and enter a keyword to search for app repositories by name.
 
 include::../../../../../_ks_components/oper-refreshListData.adoc[]
 

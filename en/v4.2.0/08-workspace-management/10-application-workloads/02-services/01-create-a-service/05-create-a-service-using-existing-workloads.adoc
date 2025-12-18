@@ -1,19 +1,19 @@
 ---
-title: "通过现有工作负载创建服务"
-keywords: "Kubernetes, {ks_product}, 项目管理, 工作负载, 服务, 创建服务, 通过现有工作负载创建服务"
-description: "介绍如何创建服务并使用现有工作负载作为后端的工作负载。"
+title: "Create a Service from an Existing Workload"
+keywords: "Kubernetes, {ks_product}, Project Management, Workload, Service, Create Service, Create a Service from an Existing Workload"
+description: "Describes how to create a service and use an existing workload as the backend workload."
 weight: 05
 ---
 
 // :ks_include_id: d0a59bd6df0241ea81fc1cb510b9156e
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 服务**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Services**
 
 
-本节介绍如何创建服务并使用现有工作负载作为后端的工作负载。
+This section describes how to create a service and use an existing workload as the backend workload.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -22,9 +22,9 @@ include::../../../../../_custom/projectManagement/projectManagement-prer-require
 :relfileprefix: ./
 
 
-* 您需要提前在项目创建工作负载。有关更多信息，请参阅link:../../../03-workloads/01-create-a-workload/[创建工作负载]。
+* You need to create a workload in the project in advance. For more information, see link:../../../03-workloads/01-create-a-workload/[Create a Workload].
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -42,7 +42,7 @@ include::../../../../../../_ks_components/oper-clickCreate.adoc[]
 
 +
 
-. 在**创建服务**对话框，选择**指定工作负载**。
+. In the **Create Service** dialog box, select **Specify Workload**.
 
 +
 
@@ -51,7 +51,7 @@ include::../../../../../_custom/projectManagement/services/services-oper-setBasi
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../../_custom/clusterManagement/services/services-para-serviceName.adoc[]
 

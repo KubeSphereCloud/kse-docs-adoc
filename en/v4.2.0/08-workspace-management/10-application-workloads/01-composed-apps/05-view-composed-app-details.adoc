@@ -1,18 +1,18 @@
 ---
-title: "查看自制应用详情"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用, 查看自制应用详情"
-description: "介绍如何查看自制应用详情。"
+title: "View Composed App Details"
+keywords: "Kubernetes, {ks_product}, Project Management, App, View Composed App Details"
+description: "Describes how to view composed app details."
 weight: 05
 ---
 
-:ks_permission: **应用实例查看**
-:ks_navigation: **应用负载 > 自制应用**
+:ks_permission: **App Instance View**
+:ks_navigation: **Application Workloads > Composed Apps**
 
 
-本节介绍如何查看自制应用详情。
+This section describes how to view composed app details.
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -37,23 +37,23 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 
-. 在**自制应用**页面，点击一个应用的名称打开其详情页面。
+. On the **Composed Apps** page, click the name of an app to open its details page.
 
-. 在应用详情页面的**属性**区域查看应用的资源属性。
+. In the **Attributes** area of the app details page, view the resource attributes of the app.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/projectManagement/apps/apps-para-details1.adoc[]
 
 include::../../../../_custom/projectManagement/apps/apps-para-details2.adoc[]
 
-|应用治理
-|应用是否已启用应用治理。应用治理启用后，您可以使用流量监控、灰度发布和链路追踪功能。
+|Application Governance
+|Whether application governance is enabled for the app. After application governance is enabled, you can use traffic monitoring, grayscale release, and tracing features.
 
-安装“KubeSphere 服务网格”扩展组件后，才能启用应用治理。
+You can enable application governance only after the "KubeSphere Service Mesh" extension is installed.
 |===
 --
 
@@ -63,69 +63,69 @@ include::../../../../_custom/projectManagement/apps/apps-oper-viewResourceStatus
 
 +
 
-// . 在应用详情页面点击**流量监控**查看应用的流量信息。
+// . On the app details page, click **Traffic Monitoring** to view the traffic information of the app.
 // +
 // --
-// 点击图形面板中的服务，在页面右侧，查看服务的流量监控信息、相关的容器组信息，并进行**流量管理**。
+// Click a service in the graph panel, and on the right side of the page, view the traffic monitoring information and related pod information of the service, and perform **Traffic Management**.
 
 // [%header,cols="1a,4a"]
 // |===
-// |参数 |描述
+// |Parameter |Description
 
-// |流量策略 > 负载均衡
-// |负载均衡算法
+// |Traffic Policy > Load Balancing
+// |Load balancing algorithm
 
-// * **轮询**：将客户端请求轮流发送给各个后端。
-// * **最少请求**：随机选择两个健康的后端，并将客户端请求发送给请求数较少的后端。
-// * **随机**：将客户端请求发送给一个随机的健康后端。
-// * **透传**：将连接直接转发给调用者请求的原始 IP 地址，而不进行任何形式的负载均衡。用于高级配置，请谨慎使用。
+// * **Round Robin**: Sends client requests to backends in turn.
+// * **Least Requests**: Randomly selects two healthy backends and sends client requests to the backend with fewer requests.
+// * **Random**: Sends client requests to a random healthy backend.
+// * **Pass Through**: Forwards connections directly to the original IP address requested by the caller without any form of load balancing. Used for advanced configuration. Use with caution.
 
-// |流量策略 > 会话保持
+// |Traffic Policy > Session Persistence
 // |
-// 根据特定的标识（例如 HTTP header、Cookie、查询参数等）将请求映射到后端服务器，以实现请求的均衡分发和负载分担。
+// Maps requests to backend servers based on specific identifiers (such as HTTP headers, cookies, query parameters, etc.) to achieve balanced distribution and load sharing of requests.
 
-// * **基于 HTTP Header 哈希**：基于特定的 HTTP header 进行哈希。
-// * **基于 HTTP Cookie 哈希**：基于 HTTP cookie 进行哈希。
-// * **基于 HTTP 查询参数哈希**：基于特定的 HTTP 查询参数进行哈希。
-// * **基于源 IP 地址哈希**：基于源 IP 地址进行哈希。适用于 TCP 和 HTTP 连接。
-// * **基于 ring/modulo 哈希**：ring/modulo 哈希负载均衡器使用一致性哈希算法对后端主机进行哈希。
-// * **基于 Maglev 哈希**：Maglev 哈希负载均衡器使用一致性哈希算法对后端主机进行哈希。
+// * **Hash based on HTTP Header**: Hashes based on a specific HTTP header.
+// * **Hash based on HTTP Cookie**: Hashes based on an HTTP cookie.
+// * **Hash based on HTTP Query Parameter**: Hashes based on a specific HTTP query parameter.
+// * **Hash based on Source IP Address**: Hashes based on the source IP address. Applicable to TCP and HTTP connections.
+// * **Hash based on ring/modulo**: The ring/modulo hash load balancer uses a consistent hashing algorithm to hash backend hosts.
+// * **Hash based on Maglev**: The Maglev hash load balancer uses a consistent hashing algorithm to hash backend hosts.
 
-// 有关更多信息，请参阅link:https://istio.io/v1.16/zh/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB[此文档]。
+// For more information, refer to link:https://istio.io/v1.16/zh/docs/reference/config/networking/destination-rule/#LoadBalancerSettings-ConsistentHashLB[this document].
 
-// |连接池
-// |为应用程序创建固定数量的连接对象， 并将其存储在一个连接池中供重复使用。每次请求都从连接池中获取连接对象，并在使用后将连接对象返还到连接池。
+// |Connection Pool
+// |Creates a fixed number of connection objects for the application and stores them in a connection pool for reuse. Each request obtains a connection object from the pool and returns it to the pool after use.
 
-// 启用后，需设置最大连接数、每个连接最大请求数、最大重试次数、连接超时、最大请求数量、最大等待请求数量。
+// After enabling, you need to set the maximum number of connections, maximum requests per connection, maximum retries, connection timeout, maximum request quantity, and maximum pending request quantity.
 
-// |熔断器
-// |如果服务无法访问并且符合指定的条件， 熔断器会将服务标记为不可用，并在指定时间范围内直接向返回客户端错误响应。
+// |Circuit Breaker
+// |If a service is inaccessible and meets specified conditions, the circuit breaker marks the service as unavailable and directly returns an error response to the client within a specified time period.
 
-// 启用后，需设置连续 5XX 错误数量、检查间隔（秒）、最大排除比例（%）、排除时间（秒）。
+// After enabling, you need to set the consecutive 5XX error count, check interval (seconds), maximum ejection percentage (%), and ejection time (seconds).
 // |===
 
 // --
 
-// . 在应用详情页面点击**灰度发布**查看应用的灰度发布信息。有关更多信息，请参阅link:../../02-grayscale-release/[灰度发布]。
+// . On the app details page, click **Grayscale Release** to view the grayscale release information of the app. For more information, refer to link:../../02-grayscale-release/[Grayscale Release].
 // +
 // --
 // // Note
 // include::../../../../../_ks_components/admonitions/note.adoc[]
 
-// 如需使用**流量监控**和**灰度发布**功能，您需要在创建自制应用时启用应用治理功能。有关更多信息，请参阅link:../03-manually-compose-an-app/[创建自制应用]。
+// To use the **Traffic Monitoring** and **Grayscale Release** features, you need to enable the application governance feature when creating the composed app. For more information, refer to link:../03-manually-compose-an-app/[Create a Composed App].
 
 // include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 // --
 
-// . 在应用详情页面点击**链路追踪**查看应用请求链路信息。
+// . On the app details page, click **Tracing** to view the request trace information of the app.
 // +
 // --
 // // Note
 // include::../../../../../_ks_components/admonitions/note.adoc[]
 
-// * 如需使用**链路追踪**功能，您需要在创建自制应用时启用应用治理功能。有关更多信息，请参阅link:../03-manually-compose-an-app/[创建自制应用]。
+// * To use the **Tracing** feature, you need to enable the application governance feature when creating the composed app. For more information, refer to link:../03-manually-compose-an-app/[Create a Composed App].
 
-// * 同时需要启用项目网关，并为项目网关启用**链路追踪**功能。有关更多信息，请参阅link:../../../12-gateway/01-project-gateway/01-enable-a-project-gateway[启用项目网关]。
+// * You also need to enable the project gateway and enable the **Tracing** feature for the project gateway. For more information, refer to link:../../../12-gateway/01-project-gateway/01-enable-a-project-gateway[Enable a Project Gateway].
 
 // include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 // --

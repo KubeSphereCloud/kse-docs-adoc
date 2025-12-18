@@ -1,7 +1,7 @@
 ---
-title: "服务帐户"
-keywords: "Kubernetes, {ks_product}, 集群管理, 服务帐户"
-description: "介绍如何管理服务帐户。"
+title: "Service Accounts"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Service Accounts"
+description: "Introduces how to manage service accounts."
 weight: 03
 layout: "second"
 ---

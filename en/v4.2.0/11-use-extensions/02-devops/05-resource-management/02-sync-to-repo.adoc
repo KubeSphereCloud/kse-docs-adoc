@@ -1,25 +1,25 @@
 ---
-title: "同步资源文件至代码仓库"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 资源管理"
-description: "介绍如何选择项目中的资源文件并同步到代码仓库。"
+title: "Synchronize Resource Files to Code Repository"
+keywords: "Kubernetes, {ks_product}, DevOps Project, Resource Management"
+description: "Describes how to select resource files in a project and synchronize them to a code repository."
 weight: 01
 ---
 
-:ks_navigation:  **DevOps > 资源管理**
+:ks_navigation:  **DevOps > Resource Management**
 
 
-本节介绍如何同步项目中的资源文件到代码仓库。同步完成后，您可以在代码仓库中管理项目的资源文件。
+This section describes how to synchronize resource files in a project to a code repository. After synchronization, you can manage the project's resource files in the code repository.
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **DevOps** 扩展组件。
+* The **DevOps** extension must be installed and enabled on the KubeSphere platform.
 
-* 已创建一个企业空间、一个 DevOps 项目和一个用户（例如 **project-regular**），并已邀请该用户至 DevOps 项目且授予 **operator** 角色。请参阅link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[邀请用户加入 DevOps 项目]。
+* A workspace, a DevOps project, and a user (for example, **project-regular**) have been created. The user has been invited to the DevOps project and granted the **operator** role. Refer to link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[Invite a User to a DevOps Project].
 
-* 已link:../../06-code-repositories/01-import-code-repositories/[导入代码仓库]。
+* A code repository has been link:../../06-code-repositories/01-import-code-repositories/[imported].
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/devops/project-regular-oper-logIn.adoc[]
 
@@ -31,12 +31,12 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
 
-. 点击**自定义资源清单**按钮，在目录树或右侧列表中，勾选待同步到代码仓库的资源文件。也可在文件内容详情页点击**加入清单**。选中的文件将显示在右侧的待同步资源清单下。
+. Click the **Custom Resource List** button. In the directory tree or the list on the right, select the resource files to be synchronized to the code repository. You can also click **Add to List** on the file content details page. The selected files will be displayed in the Pending Synchronization Resource List on the right.
 
-. 在待同步资源清单下，点击**同步至代码仓库**。
+. Under the Pending Synchronization Resource List, click **Sync to Code Repository**.
 
-. 在**基本信息**页签，确认待同步的资源，然后点击**下一步**。
+. On the **Basic Information** tab, confirm the resources to be synchronized, then click **Next**.
 +
-点击image:/images/ks-qkcp/zh/icons/pen-light.svg[pen-light,18,18]可编辑资源文件。编辑完成后，点击最下方的image:/images/ks-qkcp/zh/icons/check-dark.svg[check-dark,18,18]保存。
+Click image:/images/ks-qkcp/zh/icons/pen-light.svg[pen-light,18,18] to edit the resource file. After editing, click image:/images/ks-qkcp/zh/icons/check-dark.svg[check-dark,18,18] at the bottom to save.
 
-. 在**应用设置**页签，选择集群、DevOps 项目、代码仓库、分支，设置存放目录和 commit 等信息。点击**确定**开始同步。
+. On the **Application Settings** tab, select the cluster, DevOps project, code repository, and branch. Set the storage directory, commit information, etc. Click **OK** to start the synchronization.

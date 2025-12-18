@@ -1,23 +1,22 @@
 ---
-title: "删除配置字典"
-keywords: "Kubernetes, {ks_product}, 集群管理, 配置字典, 删除配置字典"
-description: "介绍如何删除配置字典。"
+title: "Delete a ConfigMap"
+keywords: "Kubernetes, {ks_product}, Cluster Management, ConfigMap, Delete a ConfigMap"
+description: "Describes how to delete a ConfigMap."
 weight: 06
 ---
 
-// :ks_permission: **项目资源管理**
-:ks_navigation: **配置 > 配置字典**
+// :ks_permission: **Project Resource Management**
+:ks_navigation: **Configurations > ConfigMaps**
 
 include::../../../../_custom/clusterManagement/configmaps/configmaps-desc-deleteConfigmaps.adoc[]
 
-== 前提条件
+== Prerequisites
 
-您需要加入一个集群并在集群中具有 **cluster-admin** 角色。
+You need to be a member of a cluster with the **cluster-admin** role.
 
+== Delete a Single ConfigMap
 
-== 删除单个配置字典
-
-. 以具有 **cluster-admin** 角色的用户登录 KubeSphere Web 控制台并进入您的集群。
+. Log in to the KubeSphere web console as a user with the **cluster-admin** role and go to your cluster.
 
 +
 
@@ -27,10 +26,9 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 include::../../../../_custom/clusterManagement/configmaps/configmaps-oper-deleteASingleConfigmap.adoc[]
 
+== Delete Multiple ConfigMaps in Batches
 
-== 批量删除配置字典
-
-. 以具有 **cluster-admin** 角色的用户登录 KubeSphere Web 控制台并进入您的集群。
+. Log in to the KubeSphere web console as a user with the **cluster-admin** role and go to your cluster.
 
 +
 

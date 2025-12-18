@@ -1,28 +1,27 @@
 ---
-title: "删除定制资源"
-keywords: "Kubernetes, {ks_product}, 集群管理, 定制资源定义, 删除定制资源"
-description: "介绍如何删除定制资源。"
+title: "Delete Custom Resources"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Custom Resource Definition, Delete Custom Resources"
+description: "Describes how to delete custom resources."
 weight: 04
 ---
 
-:ks_permission: **定制资源定义管理**
-:ks_navigation: **定制资源定义**
+:ks_permission: **Custom Resource Definition Management**
+:ks_navigation: **Custom Resource Definitions**
 
-
-本节介绍如何删除定制资源。
+This section describes how to delete custom resources.
 
 //warning
 [.admon.warning,cols="a"]
 |===
-|警告
+|Warning
 
 |
-删除自定义资源可能会导致相关业务中断，请谨慎执行此操作。
+Deleting custom resources may cause related business interruptions. Please perform this operation with caution.
 
 |===
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../
@@ -33,7 +32,7 @@ include::../../../_custom/clusterManagement/clusterManagement-prer-requiredPermi
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -47,7 +46,6 @@ include::../../../_custom/clusterManagement/crds/crds-oper-openDetailsPage.adoc[
 
 +
 
-. 在**定制资源定义**页签，在需要删除的定制资源右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**删除**。
+. On the **Custom Resource Definitions** tab, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the custom resource you want to delete, and then select **Delete** from the dropdown list.
 
-. 在**删除定制资源定义**对话框，输入自定义资源的名称，然后点击**确定**。
-
+. In the **Delete Custom Resource Definition** dialog box, enter the name of the custom resource, and then click **OK**.

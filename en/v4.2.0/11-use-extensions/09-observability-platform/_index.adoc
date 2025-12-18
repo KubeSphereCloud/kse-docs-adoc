@@ -1,13 +1,13 @@
 ---
-title: "WizTelemetry 可观测平台"
-keywords: "Kubernetes, {ks_product}, 可观测中心, 监控, 告警, 事件, 通知, 日志, 审计, 事件, 数据流水线, OpenSearch"
-description: "介绍如何使用 WizTelemetry 可观测平台。"
+title: "WizTelemetry Observability Platform"
+keywords: "Kubernetes, {ks_product}, Observability Center, Monitoring, Alerting, Events, Notification, Logging, Auditing, Events, Data Pipeline, OpenSearch"
+description: "Introduction on how to use the WizTelemetry Observability Platform."
 weight: 09
 layout: "second"
 ---
 
-WizTelemetry 可观测平台是一款企业级多集群监控告警产品，专注于提供一体化的云原生可观测性服务。该平台提供了从基础设施到应用的多层级、多维度、多租户的指标监控和告警功能。
+The WizTelemetry Observability Platform is an enterprise-level multi-cluster monitoring and alerting product, dedicated to providing integrated cloud-native observability services. The platform offers multi-level, multi-dimensional, multi-tenant metric monitoring and alerting capabilities, spanning from infrastructure to applications.
 
-WizTelemetry 可观测平台由以下扩展组件构成：
+The WizTelemetry Observability Platform consists of the following extensions:
 
 include::../../../_custom/extensionIntro/WizTelemetry-intro-kse_v420.adoc[]

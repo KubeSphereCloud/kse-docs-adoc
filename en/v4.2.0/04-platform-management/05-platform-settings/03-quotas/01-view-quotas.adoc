@@ -1,32 +1,30 @@
 ---
-title: "查看资源配额"
+title: "View Resource Quotas"
 weight:  01
 ---
 
-:ks_navigation: **配额**
-:ks_permission: **平台设置管理**
+:ks_navigation: **Quotas**
+:ks_permission: **Platform Settings Management**
 
-
-本节介绍如何查看当前 KubeSphere 版本的资源配额。当已使用的资源数量达到配额限制时，将无法创建相应资源。
+This section describes how to view the resource quotas for the current KubeSphere version. When the amount of used resources reaches the quota limit, the corresponding resources cannot be created.
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
 // |
 // ifeval::["{file_output_type}" == "html"]
-// link:../../../../01-intro/04-editions/[点击此处]查看 KubeSphere 各个版本的资源配额。
+// link:../../../../01-intro/04-editions/[click here] to view the resource quotas for different KubeSphere editions.
 
 // endif::[]
 
 // ifeval::["{file_output_type}" == "pdf"]
-// 请参阅《KubeSphere 产品介绍》查看 KubeSphere 各个版本的资源配额。
+// Please refer to *KubeSphere Product Introduction* to view the resource quotas for different KubeSphere editions.
 
 // endif::[]
 // |===
 
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -34,19 +32,18 @@ include::../../../../_custom/platformManagement/platformManagement-prer-required
 
 :relfileprefix: ./
 
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
-. 在页面右上角点击**组件坞 > 平台设置**。
+. In the upper right corner of the page, click **Component Dock > Platform Settings**.
 
 +
 
 include::../../../../../_ks_components/oper-navigate.adoc[]
 
-. 查看 KubeSphere 的资源配额，及已使用资源的数量和百分比。
+. View the KubeSphere resource quotas, as well as the quantity and percentage of used resources.
 
-. 在企业空间配额、集群配额和项目配额的右上角，从下拉列表中进行选择，查看特定企业空间、集群或项目的资源配额及已使用情况。
+. In the upper right corner of the workspace quota, cluster quota, or project quota, select from the drop-down list to view the resource quota and usage for a specific workspace, cluster, or project.
 +
-点击image:/images/ks-qkcp/zh/icons/chevron-up.svg[chevron-up,18,18]或image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18]可折叠/展开配额区域。
+Click image:/images/ks-qkcp/zh/icons/chevron-up.svg[chevron-up,18,18] or image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18] to collapse/expand the quota area.

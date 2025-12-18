@@ -1,57 +1,58 @@
 ---
-title: "通过代理连接添加成员集群"
-keywords: "Kubernetes, {ks_product}, 多集群管理, 集群, 添加成员集群, 通过代理连接添加成员集群"
-description: "介绍如何通过代理连接添加成员集群。"
+title: "Adding Member Clusters via Proxy Connection"
+keywords: "Kubernetes, {ks_product}, Multi-cluster Management, Cluster, Add Member Cluster, Add Member Cluster via Proxy Connection"
+description: "Describes how to add a member cluster via proxy connection."
 weight: 02
 ---
 
 
-本节介绍如何通过代理连接添加成员集群。
+This section describes how to add a member cluster via proxy connection.
 
-如果主集群无法访问成员集群的 Kubernetes API 服务，您可以设置成员集群连接到主集群对外暴露的 **tower** 服务从而添加成员集群。
+If the host cluster cannot access the Kubernetes API service of the member cluster, you can set up the member cluster to connect to the **tower** service exposed by the host cluster to add the member cluster.
 
 
-== 前提条件
+== Prerequisites
 
-* 您需要在主集群中具有 **platform-admin** 角色。
+* You need to have the **platform-admin** role in the host cluster.
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 多集群代理连接**扩展组件。
+* The **KubeSphere Multi-cluster Proxy Connection** extension needs to be installed and enabled on the KubeSphere platform.
 
-* 成员集群所有节点必须能访问主集群 **tower** 服务的外部访问地址。取决于您的网络环境，您可能需要配置防火墙和流量转发规则。
+* All nodes of the member cluster must be able to access the external access address of the host cluster's **tower** service. Depending on your network environment, you may need to configure firewall and traffic forwarding rules.
 
-== 步骤 1：设置代理服务地址
+== Step 1: Set the Proxy Service Address
 
-在主集群安装“KubeSphere 多集群代理连接”扩展组件后，将在系统项目 kubesphere-system 中自动创建一个名为 tower 的服务，服务类型为 LoadBalancer。
+After installing the "KubeSphere Multi-cluster Proxy Connection" extension in the host cluster, a service named `tower` of type LoadBalancer will be automatically created in the system project `kubesphere-system`.
 
-=== 集群中有可用的 LoadBalancer
+=== LoadBalancer is Available in the Cluster
 
-在主集群节点执行以下命令。
+Execute the following command on a host cluster node.
 
 [,bash]
 ----
 kubectl -n kubesphere-system get svc
 ----
 
-若主集群中有可用的 LoadBalancer，其输出结果可能如下所示。
+If a LoadBalancer is available in the host cluster, the output may look like the following.
 
 [,bash]
 ----
 NAME       TYPE            CLUSTER-IP      EXTERNAL-IP     PORT(S)              AGE
 tower      LoadBalancer    10.233.63.191   139.198.110.23  8080:30721/TCP       16h
 ----
-tower 服务有相应的 `EXTERNAL-IP` 地址。该地址将由 KubeSphere 自动获取并配置代理服务地址，这意味着您可以跳过设置代理服务地址这一步。
+
+The `tower` service has a corresponding `EXTERNAL-IP` address. This address will be automatically obtained and configured as the proxy service address by KubeSphere, which means you can skip the step of setting the proxy service address.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-主流公网云厂商一般会提供 LoadBalancer 解决方案，并且负载均衡器可以自动分配外部 IP。如果您的集群运行在本地环境中，尤其是在裸机环境中，可以使用 link:https://github.com/kubesphere/openelb[OpenELB] 作为负载均衡器解决方案。
+Mainstream public cloud providers generally offer LoadBalancer solutions, and the load balancer can automatically assign an external IP. If your cluster runs in an on-premises environment, especially a bare-metal environment, you can use link:https://github.com/kubesphere/openelb[OpenELB] as a load balancer solution.
 |===
 
-=== 集群中没有可用的 LoadBalancer
+=== LoadBalancer is Not Available in the Cluster
 
-. 在主集群节点执行以下命令。
+. Execute the following command on a host cluster node.
 +
 --
 [,bash]
@@ -59,7 +60,7 @@ tower 服务有相应的 `EXTERNAL-IP` 地址。该地址将由 KubeSphere 自�
 kubectl -n kubesphere-system get svc
 ----
 
-若主集群中没有可用的 LoadBalancer，其输出结果可能如下所示。在此示例中，可以看出 NodePort 为 `30721`。
+If a LoadBalancer is not available in the host cluster, the output may look like the following. In this example, the NodePort is `30721`.
 
 [,bash]
 ----
@@ -68,9 +69,9 @@ tower      LoadBalancer    10.233.63.191   <none>       8080:30721/TCP       16h
 ----
 --
 
-. 由于 `EXTERNAL-IP`  为 `none`，您需要手动设置代理地址。例如，如果您主集群的公网 IP 地址为 `139.198.120.120`，需要配置端口转发规则，将公网 IP 的某一端口（如 30000）转发到 {NodeIP}:{NodePort}，如 `172.31.17.xx:30721`。
+. Since the `EXTERNAL-IP` is `<none>`, you need to manually set the proxy address. For example, if the public IP address of your host cluster is `139.198.120.120`, you need to configure a port forwarding rule to forward a port (e.g., 30000) of the public IP to {NodeIP}:{NodePort}, such as `172.31.17.xx:30721`.
 
-. 将 `proxyPublishAddress` 添加到 `tower` 保密字典中，以便访问 Tower。
+. Add `proxyPublishAddress` to the `tower` Secret to access Tower.
 +
 --
 [source,bash]
@@ -78,24 +79,24 @@ tower      LoadBalancer    10.233.63.191   <none>       8080:30721/TCP       16h
 kubectl -n kubesphere-system edit secret tower
 ----
 
-在保密字典中，添加以下内容：
+In the Secret, add the following content:
 
 [source,yaml]
 ----
 stringData:
   configuration.yaml: |
-    proxyPublishAddress: http://{主集群的公网 IP 地址}:{port}
+    proxyPublishAddress: http://{Public IP address of the host cluster}:{port}
 ----
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|{port} 为您在步骤 2 中指定的公网 IP 的端口。
+|{port} is the port of the public IP you specified in step 2.
 
 |===
 
-完整配置示例如下：
+A complete configuration example is as follows:
 
 [source,yaml]
 ----
@@ -118,52 +119,52 @@ stringData:   # <========  stringData
     proxyPublishAddress: http://139.198.120.120:30000
 ----
 
-保存保密字典后，`stringData` 下的内容将自动转换为
+After saving the Secret, the content under `stringData` will be automatically converted to
 
 [source,yaml]
 ----
 data:
-  configuration.yaml: <base64 编码后的内容>
+  configuration.yaml: <base64 encoded content>
 ----
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|如果在 KubeSphere 多集群代理连接 之前的版本中配置了 `proxyPublishAddress`，若在升级到新版本后想要修改配置，您需要按照扩展中心中该扩展组件详情页的说明，用 base64 查看之前的配置，在保密字典中添加原有配置，并添加新的 `proxyPublishAddress` 配置。
+|If `proxyPublishAddress` was configured in a previous version of the KubeSphere Multi-cluster Proxy Connection extension, and you want to modify the configuration after upgrading to the new version, you need to follow the instructions on the extension details page in the Extensions Center, view the previous configuration in base64, add the original configuration to the Secret, and add the new `proxyPublishAddress` configuration.
 
 |===
 --
 
 
 
-== 步骤 2：添加成员集群
+== Step 2: Add a Member Cluster
 
 include::../../../_custom/platformManagement/multiclusterManagement/clusters/clusters-oper-logInToHost.adoc[]
 
 +
 
-. 点击**集群管理**。
+. Click **Cluster Management**.
 +
 include::../../../_custom/platformManagement/multiclusterManagement/clusters/clusters-oper-addClusterBasicInfo.adoc[]
 +
-在**高级设置**下，设置集群的用途标识。
+Under **Advanced Settings**, set the cluster's usage identifier.
 
-. 在**连接设置**页签，将**连接方式**设置为 **tower**，点击**下一步**。
+. On the **Connection Settings** tab, set the **Connection Method** to **tower**, and click **Next**.
 
-. 在**集群配置**页签，根据需要设置集群配置，然后点击**创建**。您将看到“等待集群加入”页面。
+. On the **Cluster Configuration** tab, configure the cluster settings as needed, then click **Create**. You will see a "Waiting for cluster to join" page.
 
-. 根据页面提示，在成员集群的节点上创建 `agent.yaml` 文件。
+. Follow the instructions on the page to create an `agent.yaml` file on a node of the member cluster.
 
-. 复制页面提供的信息到 `agent.yaml` 文件中，然后保存。其内容根据以上配置的代理服务地址自动生成。
+. Copy the information provided on the page into the `agent.yaml` file, then save it. Its content is automatically generated based on the proxy service address configured above.
 
-. 在成员集群节点上，执行以下命令添加集群。
+. On the member cluster node, execute the following command to add the cluster.
 +
 --
 [source,bash]
 ----
-kubectl create -f agent.yaml 
+kubectl create -f agent.yaml
 ----
 
-等待一段时间，成员集群添加完成后将显示在**集群管理**页面的集群列表中。
+Wait for a while. After the member cluster is added, it will appear in the cluster list on the **Cluster Management** page.
 --

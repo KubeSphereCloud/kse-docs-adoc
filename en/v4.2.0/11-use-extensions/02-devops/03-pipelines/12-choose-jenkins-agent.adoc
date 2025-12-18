@@ -1,19 +1,19 @@
 ---
-title: "选择 Jenkins Agent"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 使用 DevOps, 流水线"
-description: "介绍如何选择 Jenkins Agent。"
+title: "Select Jenkins Agent"
+keywords: "Kubernetes, {ks_product}, DevOps Project, Using DevOps, Pipeline"
+description: "Introduces how to select a Jenkins Agent."
 weight: 12
 ---
 
 
-**agent** 部分指定整个流水线或特定阶段 (Stage) 将在 Jenkins 环境中执行的位置，具体取决于该 **agent** 部分的放置位置。该部分必须在 **pipeline** 块的顶层进行定义，但是阶段级别的使用是可选的。有关更多信息，请参阅 link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/#代理[Jenkins 官方文档]。
+The **agent** section specifies where the entire pipeline or a specific stage will be executed within the Jenkins environment, depending on where this **agent** section is placed. This section must be defined at the top level of the **pipeline** block, but its use at the stage level is optional. For more information, please refer to the link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/#代理[Jenkins official documentation].
 
 
-== 内置 podTemplate
+== Built-in podTemplate
 
-podTemplate 是一种 Pod 模板，用于创建 Agent。您可以定义在 Kubernetes 插件中使用的 podTemplate。
+A podTemplate is a Pod template used to create an Agent. You can define a podTemplate for use with the Kubernetes plugin.
 
-在流水线运行期间，每个 Jenkins Agent Pod 必须具有一个名为 **jnlp** 的容器，以便实现 Jenkins Controller 与 Jenkins Agent 之间的通信。此外，您可以在 podTemplate 中添加容器，以满足个性化需求。可选择使用自定义的 Pod YAML 来灵活控制运行时环境（Runtime），并通过 **container** 命令来切换容器。以下是相关示例。
+During pipeline execution, each Jenkins Agent Pod must have a container named **jnlp** to enable communication between the Jenkins Controller and the Jenkins Agent. Additionally, you can add containers to the podTemplate to meet personalized requirements. You can optionally use a custom Pod YAML to flexibly control the runtime environment and switch containers using the **container** command. Here is a related example.
 
 [,json]
 ----
@@ -46,9 +46,9 @@ spec:
 }
 ----
 
-在当前版本中，KubeSphere 内置了一类 podTemplate：**base**，并且在 Pod 中提供隔离的 Docker 环境。
+In the current version, KubeSphere has a built-in podTemplate: **base**, which provides an isolated Docker environment within the Pod.
 
-您可以通过指定 Agent 的标签来使用内置 podTemplate。例如，要使用 nodejs 的 podTemplate，在创建流水线时指定标签为 **nodejs** 即可，具体参阅以下示例。
+You can use the built-in podTemplate by specifying the Agent's label. For example, to use the podTemplate for nodejs, specify the label as **nodejs** when creating the pipeline. Please refer to the following example.
 
 [,json]
 ----
@@ -80,27 +80,27 @@ pipeline {
 --
 [%header,cols="1a,4a"]
 |===
-|名称 |类型/版本
+|Name |Type/Version
 
-|Jenkins Agent 标签
-|base, go, java, jdk, maven, nodejs 等
+|Jenkins Agent Label
+|base, go, java, jdk, maven, nodejs, etc.
 
-|容器名称
+|Container Name
 |base
 
-|操作系统
+|Operating System
 |Ubuntu 24.04
 
 |Docker
-|最新稳定版
+|Latest stable version
 
 |Helm
-|最新稳定版
+|Latest stable version
 
 |Kubectl
-|最新稳定版
+|Latest stable version
 
-|内置工具
-|unzip、which、make、wget、zip、bzip2、git
+|Built-in Tools
+|unzip, which, make, wget, zip, bzip2, git
 |===
 --

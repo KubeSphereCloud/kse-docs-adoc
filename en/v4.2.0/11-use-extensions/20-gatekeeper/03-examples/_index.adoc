@@ -1,6 +1,6 @@
 ---
-title: "操作示例"
-description: "介绍如何使用 Gatekeeper 配置安全准入策略。"
+title: "Example Operations"
+description: "Describes how to configure security admission policies using Gatekeeper."
 weight: 03
 layout: "second"
 ---

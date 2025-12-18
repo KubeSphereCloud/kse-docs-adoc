@@ -1,21 +1,21 @@
 ---
-title: "查看网关信息"
-keywords: "Kubernetes, {ks_product}, 集群管理, 集群设置, 网关设置, 查看网关信息"
-description: "介绍如何查看网关信息。"
+title: "View Gateway Information"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Cluster Settings, Gateway Settings, View Gateway Information"
+description: "Describes how to view gateway information."
 weight: 02
 ---
 
 :ks_permission: ** cluster-admin **
-:ks_navigation: **集群设置 > 网关设置**
+:ks_navigation: **Cluster Settings > Gateway Settings**
 :gateway-overall:
 
 
-本节介绍如何查看网关信息。
+This section describes how to view gateway information.
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 网关**扩展组件。
+* The **KubeSphere Gateway** extension must be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../
 * {empty}
@@ -23,7 +23,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -33,7 +33,7 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**集群网关**页签，查看集群网关的信息。
+. On the **Cluster Gateway** tab, view the information of the cluster gateway.
 +
 --
 include::../../../../_custom/clusterManagement/gatewaySettings/gatewaySettings-para-gatewayCard_v42.adoc[]

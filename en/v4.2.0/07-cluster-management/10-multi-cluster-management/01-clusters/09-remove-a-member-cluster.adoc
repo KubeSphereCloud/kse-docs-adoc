@@ -1,51 +1,50 @@
 ---
-title: "移除成员集群"
-keywords: "Kubernetes, {ks_product}, 多集群管理, 集群, 移除成员集群"
-description: "介绍如何移除成员集群。"
+title: "Remove Member Cluster"
+keywords: "Kubernetes, {ks_product}, Multi-cluster Management, Cluster, Remove Member Cluster"
+description: "Describes how to remove a member cluster."
 weight: 09
 ---
 
-:ks_menu: **集群管理**
+:ks_menu: **Cluster Management**
 
-
-本节介绍如何移除成员集群。
+This section describes how to remove a member cluster.
 
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]
 
-* 主集群无法移除。
+* The host cluster cannot be removed.
 
-* 成员集群移除后，KubeSphere 将无法管理该集群。集群中原有的 Kubernetes 资源将不会被删除。
+* After a member cluster is removed, KubeSphere will no longer be able to manage that cluster. The existing Kubernetes resources in the cluster will not be deleted.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 // Warning
 include::../../../../../_ks_components/admonitions/warning.adoc[]
 
-集群被移除后，集群中原有的多集群配置数据不会被自动清除，卸载 KubeSphere 或删除关联资源时可能会导致用户数据丢失。请务必在被移除的集群上执行link:#_清理多集群配置数据[清理多集群配置数据]步骤。
+After a cluster is removed, the existing multi-cluster configuration data in the cluster will not be automatically cleaned up. Uninstalling KubeSphere or deleting associated resources may lead to user data loss. Be sure to perform the link:#_clean-up-multi-cluster-configuration-data[Clean Up Multi-cluster Configuration Data] steps on the removed cluster.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
-您需要在主集群和需要移除的成员集群都具有 **platform-admin** 角色。
+You need to have the **platform-admin** role in both the host cluster and the member cluster to be removed.
 
 
 
-== 通过 Web 控制台移除集群
+== Remove Cluster via Web Console
 
 include::../../../../_custom/platformManagement/multiclusterManagement/clusters/clusters-oper-logInToHost.adoc[]
 
-. 点击**集群管理**。
+. Click **Cluster Management**.
 
-. 在需要操作的集群右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**移除集群**。
+. On the right side of the cluster you want to operate on, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], then select **Remove Cluster** from the dropdown list.
 
-. 在**移除集群**对话框，确认需要移除的集群的信息，将滑块拖动到右侧，输入需要移除的集群的名称，然后点击**移除**。
+. In the **Remove Cluster** dialog box, confirm the information of the cluster to be removed, drag the slider to the right, enter the name of the cluster to be removed, and then click **Remove**.
 
-== 通过命令行移除集群
+== Remove Cluster via Command Line
 
-某些情况下可能无法从 Web 控制台移除成员集群。例如，成员集群的凭证存在错误。在此情况下，您可以执行以下步骤通过命令行移除不健康的成员集群：
+In some cases, it may not be possible to remove a member cluster from the web console. For example, if the member cluster's credentials are incorrect. In such cases, you can perform the following steps to remove an unhealthy member cluster via the command line:
 
 include::../../../../_custom/platformManagement/multiclusterManagement/clusters/clusters-oper-logInToHost.adoc[]
 
@@ -55,7 +54,7 @@ include::../../../../_custom/platformManagement/extensionManagement/extensionMan
 
 +
 
-. 在 **kubectl** 对话框，执行以下命令移除成员集群（将 <cluster name> 替换为成员集群的名称）：
+. In the **kubectl** dialog box, execute the following command to remove the member cluster (replace `<cluster name>` with the name of the member cluster):
 +
 --
 // Bash
@@ -66,9 +65,9 @@ kubectl delete cluster <cluster name>
 --
 
 
-== 清理多集群配置数据
+== Clean Up Multi-cluster Configuration Data
 
-登录被移除的成员集群节点，执行以下命令清理集群中的多集群配置数据：
+Log in to the node of the removed member cluster and execute the following command to clean up the multi-cluster configuration data in the cluster:
 
 [,bash]
 ----

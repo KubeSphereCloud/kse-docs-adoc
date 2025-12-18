@@ -1,27 +1,27 @@
 ---
-title: "编辑静默条件"
-keywords: "Kubernetes, {ks_product}, 平台设置, 通知管理, 通知设置, 静默策略, 编辑静默条件"
-description: "本节介绍如何编辑通知静默条件。"
+title: "Edit Silence Conditions"
+keywords: "Kubernetes, {ks_product}, Platform Settings, Notification Management, Notification Settings, Silence Policy, Edit Silence Conditions"
+description: "This section describes how to edit notification silence conditions."
 weight: 03
 ---
 
 
-:ks_navigation: **通知 > 通知设置**
-// :ks_permission: **平台设置管理**
+:ks_navigation: **Notification > Notification Settings**
+// :ks_permission: **Platform Settings Management**
 
 
-本节介绍如何编辑通知静默条件。
+This section describes how to edit notification silence conditions.
 
 
-== 前提条件
+== Prerequisites
 
-* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
+* You need to have the **platform-admin** role in the KubeSphere platform. For more information, see link:../../../../../05-users-and-roles/01-users/[Users] and link:../../../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 通知**扩展组件。
+* The **WizTelemetry Notification** extension needs to be installed and enabled on the KubeSphere platform.
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
@@ -35,9 +35,9 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在需要操作的静默策略右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**编辑静默条件**。
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the silence policy you want to operate on, and then select **Edit Silence Conditions** from the drop-down list.
 
-. 在**编辑静默条件**对话框，设置静默条件，然后点击**确定**。
+. In the **Edit Silence Conditions** dialog box, set the silence conditions, and then click **OK**.
 +
 ====
 include::../../../../../_custom/platformManagement/platformSettings/platformSettings/platformSettings-para-silenceConditions_new.adoc[]

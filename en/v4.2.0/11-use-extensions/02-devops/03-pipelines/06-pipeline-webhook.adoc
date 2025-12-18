@@ -1,29 +1,27 @@
 ---
-title: "使用 Webhook 触发流水线"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 使用 DevOps, 流水线"
-description: "介绍如何在 GitHub 仓库中用 webhook 触发流水线。"
+title: "Triggering a Pipeline Using Webhook"
+keywords: "Kubernetes, {ks_product}, DevOps Project, Using DevOps, Pipeline"
+description: "Describes how to trigger a pipeline using a webhook in a GitHub repository."
 weight: 06
 ---
 
-:ks_navigation:  **DevOps > 流水线**
+:ks_navigation:  **DevOps > Pipeline**
 
+To create a Jenkinsfile-based pipeline from a remote code repository, you can configure a webhook in the remote repository so that the pipeline is automatically triggered when the remote repository changes.
 
-若要通过远程代码仓库创建基于 Jenkinsfile 的流水线，可以在远程仓库中配置 webhook，以便在远程仓库变更时，自动触发流水线。
+This document demonstrates how to trigger a pipeline using a webhook in a GitHub repository.
 
-本文档演示如何在 GitHub 仓库中用 webhook 触发流水线。
+== Prerequisites
 
+* The **DevOps** extension must be installed and enabled on the KubeSphere platform.
 
-== 前提条件
+* You have created a workspace, a DevOps project, and a user (for example, **project-regular**), and have invited this user to the DevOps project and granted the **operator** role. Refer to link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[Invite a User to a DevOps Project].
 
-* KubeSphere 平台需要安装并启用 **DevOps** 扩展组件。
+* You have created a Jenkinsfile-based pipeline from a remote code repository. For more information, refer to link:../02-create-a-pipeline-using-jenkinsfile/[Create a Pipeline Using Jenkinsfile].
 
-* 已创建一个企业空间、一个 DevOps 项目和一个用户（例如 **project-regular**），并已邀请该用户至 DevOps 项目且授予 **operator** 角色。请参阅link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[邀请用户加入 DevOps 项目]。
+== Configure Webhook
 
-* 已通过远程代码仓库创建一个基于 Jenkinsfile 的流水线。有关更多信息，请参阅link:../02-create-a-pipeline-using-jenkinsfile/[使用 Jenkinsfile 创建流水线]。
-
-== 配置 Webhook
-
-=== 获取 webhook URL
+=== Obtain the Webhook URL
 
 include::../../../../_custom/devops/project-regular-oper-logIn.adoc[]
 
@@ -35,45 +33,43 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
 
-. 在**流水线**页面，点击一个流水线（例如 **jenkins-in-scm**）以查看其详情页面。
+. On the **Pipeline** page, click a pipeline (for example, **jenkins-in-scm**) to view its details page.
 
-. 点击**操作**，在下拉菜单中选择**编辑设置**。
+. Click **Operation**, and select **Edit Settings** from the drop-down menu.
 
-. 在弹出的会话框中，滚动至 **Webhook** 以获得 Webhook push URL。
+. In the dialog box that appears, scroll to **Webhook** to obtain the Webhook push URL.
 
-=== 在 GitHub 仓库中设置 webhook
+=== Set Up the Webhook in the GitHub Repository
 
-. 登录您的 GitHub，并进入 **devops-maven-sample** 仓库。
+. Log in to your GitHub account and go to the **devops-maven-sample** repository.
 
-. 点击 **Settings** > **Webhooks**，然后点击 **Add webhook**。
+. Click **Settings** > **Webhooks**, and then click **Add webhook**.
 
-. 在 **Payload URL** 中输入流水线中的 Webhook push URL，然后点击 **Add webhook**。
-本教程选择默认的 **Just the push event**，请根据实际需要进行配置。有关更多信息，请参阅 link:https://docs.github.com/en/developers/webhooks-and-events/webhooks/creating-webhooks[GitHub 文档]。
+. In **Payload URL**, enter the Webhook push URL from the pipeline, and then click **Add webhook**.
+This tutorial selects the default **Just the push event**. Configure it according to your actual needs. For more information, refer to link:https://docs.github.com/en/developers/webhooks-and-events/webhooks/creating-webhooks[GitHub Documentation].
 
-. 配置好的 webhook 会展示在 **Webhooks** 页面。
+. The configured webhook will be displayed on the **Webhooks** page.
 
+== Trigger the Pipeline Using Webhook
 
-== 使用 Webhook 触发流水线
+=== Submit a Pull Request to the Repository
 
-=== 提交拉取请求到仓库
+. On the **Code** page of the devops-maven-sample repository, click **master** and then select the **v4.1.0-sonarqube** branch.
 
-. 在 devops-maven-sample 仓库的 **Code** 页面，点击 **master** 然后选择 **v4.1.0-sonarqube** 分支。
+. Go to **/deploy/dev-ol** and click the file **devops-sample.yaml**.
 
-. 转到 **/deploy/dev-ol** 然后点击文件 **devops-sample.yaml**。
+. Click image:/images/ks-qkcp/zh/icons/pen-light.svg[pen-light,18,18] to edit the file. For example, change the value of **spec.replicas** to **3**.
 
-. 点击image:/images/ks-qkcp/zh/icons/pen-light.svg[pen-light,18,18]编辑文件。 例如，将 **spec.replicas** 的值改变为 **3**。
+. Click **Commit changes**.
 
-. 点击 **Commit changes**。
+=== Check the Webhook Delivery
 
-=== 检查 webhook 交付
+. On the **Settings** > **Webhooks** page of the devops-maven-sample repository, click the created webhook.
 
-. 在 devops-maven-sample 仓库的 **Settings** > **Webhooks** 页面，点击创建的 webhook。
+. Click **Recent Deliveries**, and then click a specific delivery record to view its details.
 
-. 点击 **Recent Deliveries**，然后点击一个具体交付记录查看详情。
+== Check the Pipeline Status
 
+. On the **Run Records** tab of the pipeline details page, check whether a new run has been triggered by the pull request submitted to the **v4.1.0-sonarqube** branch of the remote repository.
 
-== 检查流水线状态
-
-. 在流水线详情页面的**运行记录**页签，检查提交到远程仓库 **v4.1.0-sonarqube** 分支的拉取请求是否触发了新的运行。
-
-. 转到 **kubesphere-sample-dev** 项目的 **工作负载 > 容器组** 页面，检查 3 个 Pods 的状态。如果 3 个 Pods 为运行状态，表示流水线运行正常。
+. Go to the **Workloads > Pods** page of the **kubesphere-sample-dev** project and check the status of the 3 pods. If the 3 pods are in the running state, it indicates that the pipeline is running normally.

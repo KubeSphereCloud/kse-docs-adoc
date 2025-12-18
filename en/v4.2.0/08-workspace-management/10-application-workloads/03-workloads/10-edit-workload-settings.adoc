@@ -1,18 +1,18 @@
 ---
-title: "编辑工作负载设置"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 工作负载, 编辑工作负载设置"
-description: "介绍如何编辑工作负载设置。"
+title: "Edit Workload Settings"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Workload, Edit Workload Settings"
+description: "Describes how to edit workload settings."
 weight: 10
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 工作负载**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Workloads**
 
 
 include::../../../../_custom/clusterManagement/workloads/workloads-desc-editWorkloadSettings.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,9 +23,9 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
-请参阅link:#_参数描述[参数描述]设置工作负载的参数。
+Refer to the link:#_parameter_description[Parameter Description] to set the workload parameters.
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -47,37 +47,37 @@ include::../../../../_custom/clusterManagement/workloads/workloads-oper-editWork
 
 +
 
-. 在**编辑设置**对话框，分别设置工作负载的更新策略、容器、存储、容器组调度规则（对守护进程集不可用）、容器组优雅终止，然后点击**确定**。
+. In the **Edit Settings** dialog box, set the workload's update policy, containers, storage, pod scheduling rules (not available for DaemonSets), and pod graceful termination respectively, then click **OK**.
 
 
-== 参数描述
+== Parameter Description
 
-* 更新策略
+* Update Policy
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-updatePolicy.adoc[]
 --
 
-* 更新策略 > 滚动更新设置
+* Update Policy > Rolling Update Settings
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-rollingUpdate.adoc[]
 --
 
-* 容器 > 添加容器
+* Containers > Add Container
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-addContainer.adoc[]
 --
 
-* 容器 > 容器设置
+* Containers > Container Settings
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-desc-setImageNameTypeResource.adoc[]
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-containerImage.adoc[]
 
@@ -89,62 +89,62 @@ include::../../../../_custom/clusterManagement/projects/projects-para-containerQ
 |===
 --
 
-* 容器 > 容器设置 > 端口设置
+* Containers > Container Settings > Port Settings
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-Port.adoc[]
 --
 
-* 容器 > 容器设置 > 镜像拉取策略
+* Containers > Container Settings > Image Pull Policy
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-imagePullPolicy.adoc[]
 --
 
-* 容器 > 容器设置 > 健康检查
+* Containers > Container Settings > Health Check
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-healthCheck.adoc[]
 --
 
-* 容器 > 容器设置 > 生命周期管理
+* Containers > Container Settings > Lifecycle Management
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-lifecycleManagement.adoc[]
 --
 
-* 容器 > 容器设置 > 启动命令
+* Containers > Container Settings > Startup Command
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-startCommand.adoc[]
 --
 
-* 容器 > 容器设置 > 环境变量
+* Containers > Container Settings > Environment Variables
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-environmentVariables.adoc[]
 --
 
-* 容器 > 容器设置 > 容器安全上下文
+* Containers > Container Settings > Container Security Context
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-containerSecurityContext.adoc[]
 --
 
-* 容器 > 容器设置 > 同步主机时区
+* Containers > Container Settings > Sync Host Timezone
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-syncTimeZone.adoc[]
 --
 
-* 存储
+* Storage
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-desc-mountVolume.adoc[]
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 // include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-collectLogsOnVolume.adoc[]
 
@@ -160,56 +160,56 @@ include::../../../../_custom/clusterManagement/workloads/createWorkload/workload
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-oper-editDeleteVolume_new.adoc[]
 --
 
-// * 存储 > 添加持久卷声明模板
+// * Storage > Add Persistent Volume Claim Template
 // +
 // --
 // include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-volumeTemplate.adoc[]
 // --
 
-* 存储 > 挂载卷 > 持久卷
+* Storage > Mount Volume > Persistent Volume
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-persistentVolume.adoc[]
 --
 
-* 存储 > 挂载卷 > 临时卷
+* Storage > Mount Volume > Temporary Volume
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-temporaryVolume_new.adoc[]
 --
 
-* 存储 > 挂载卷 > HostPath 卷
+* Storage > Mount Volume > HostPath Volume
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-hostpathVolume.adoc[]
 --
 
-* 存储 > 挂载配置字典或保密字典
+* Storage > Mount ConfigMap or Secret
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-mountConfigmapSecret.adoc[]
 --
 
-* 容器组调度规则
+* Pod Scheduling Rules
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-podSchedulingRules.adoc[]
 --
 
-* 容器组调度规则 > 自定义规则
+* Pod Scheduling Rules > Custom Rules
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-customRules.adoc[]
 --
 
-* 容器组优雅终止
+* Pod Graceful Termination
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-PodGracePeriod.adoc[]
 --
 
-// * 容器组 IP 池
+// * Pod IP Pool
 // +
 // --
-// 选择后将为容器组分配 IP 地址。
+// After selection, IP addresses will be allocated to the pods.
 // --

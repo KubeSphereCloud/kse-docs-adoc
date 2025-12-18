@@ -1,25 +1,25 @@
 ---
-title: "禁用扩展组件"
-keywords: "Kubernetes, {ks_product},启用,禁用,扩展组件"
-description: "介绍如何禁用扩展组件。"
+title: "Disable an Extension"
+keywords: "Kubernetes, {ks_product}, Enable, Disable, Extension"
+description: "Describes how to disable an extension."
 weight: 04
 ---
 
-本节介绍如何禁用扩展组件。
+This section describes how to disable an extension.
 
-组件安装完成后，会自动启用。您可以在扩展中心的组件详情页中禁用扩展组件。
+After an extension is installed, it is automatically enabled. You can disable an extension on its details page in the Extensions Center.
 
-禁用后，再次启用，即可在集群、企业空间、项目中继续使用该组件。
+After disabling, you can enable it again to continue using the extension in clusters, workspaces, and projects.
 
-== 前提条件
+== Prerequisites
 
-您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../05-users-and-roles/01-users/[用户]和link:../../../05-users-and-roles/02-platform-roles/[平台角色]。
+You need to have the **platform-admin** role in the KubeSphere platform. For more information, see link:../../../05-users-and-roles/01-users/[Users] and link:../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
-. 点击**扩展中心**，进入扩展中心页面。
-. 点击已安装的组件名称，进入组件详情页。
-. 点击组件图标下的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**禁用**。
-. 禁用后，再次点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**启用**即可继续使用该组件。
+. Click **Extensions Center** to go to the Extensions Center page.
+. Click the name of an installed extension to go to its details page.
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] under the extension icon and select **Disable**.
+. After disabling, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] again and select **Enable** to continue using the extension.

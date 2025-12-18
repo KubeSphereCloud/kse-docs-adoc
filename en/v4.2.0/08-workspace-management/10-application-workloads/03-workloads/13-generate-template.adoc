@@ -1,18 +1,16 @@
 ---
-title: "生成工作负载模板"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 工作负载模板, 生成模板"
-description: "介绍如何基于现有工作负载生成模板。"
+title: "Generate Workload Template"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Workload Template, Generate Template"
+description: "Describes how to generate a template based on an existing workload."
 weight: 13
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 工作负载**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Workloads**
 
+This section describes how to generate a template based on an existing workload.
 
-本节介绍如何基于现有工作负载生成模板。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -20,8 +18,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -39,7 +36,6 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 
-. 在需要操作的工作负载右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**生成模板**。
+. On the right side of the workload you want to operate, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], then select **Generate Template** from the dropdown list.
 
-. 在**生成模板**对话框，输入模板名称，选择模板所属的项目，然后点击**确定**。
-
+. In the **Generate Template** dialog box, enter a template name, select the project to which the template belongs, and then click **OK**.

@@ -1,18 +1,18 @@
 ---
-title: "查看企业空间角色详情"
-keywords: "Kubernetes, {ks_product}, 企业空间, 企业空间设置, 企业空间角色, 查看企业空间角色详情"
-description: "介绍如何查看企业空间角色列表。"
+title: "View Workspace Role Details"
+keywords: "Kubernetes, {ks_product}, Workspace, Workspace Settings, Workspace Role, View Workspace Role Details"
+description: "Describes how to view the workspace role list."
 weight: 03
 ---
 
-:ks_permission: **角色查看**
-:ks_navigation: **企业空间设置 > 企业空间角色**
+:ks_permission: **Role View**
+:ks_navigation: **Workspace Settings > Workspace Roles**
 
 
-本节介绍如何查看企业空间角色详情。
+This section describes how to view workspace role details.
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requir
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -33,29 +33,29 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在企业空间角色列表点击一个企业空间角色的名称打开其详情页面。
+. In the workspace role list, click the name of a workspace role to open its details page.
 
-. 在企业空间角色详情页面的**权限**页签查看企业空间角色具有的权限。
+. On the **Permissions** tab of the workspace role details page, view the permissions granted to the workspace role.
 +
 ====
 include::../../../../_custom/workspaceManagement/workspaceRoles/workspaceRoles-para-permissions_v4.adoc[]
 
-* 企业空间设置
+* Workspace Settings
 +
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|企业空间设置管理
-|编辑企业空间信息、删除企业空间、编辑企业空间配额。
+|Workspace Settings Management
+|Edit workspace information, delete workspace, edit workspace quotas.
 
-|企业空间设置查看
-|查看企业空间配额。
-// 查看集群资源用量、查看项目资源用量排行、查看企业空间资源用量、查看企业空间配额。
+|Workspace Settings View
+|View workspace quotas.
+// View cluster resource usage, view project resource usage ranking, view workspace resource usage, view workspace quotas.
 |===
 ====
 
-. 在企业空间角色详情页面点击**授权用户**页签具有当前企业空间角色的用户。
+. On the workspace role details page, click the **Authorized Users** tab to view users who have the current workspace role.
 +
 --
 include::../../../../_custom/clusterManagement/clusterRoles/clusterRoles-para-authorizedUsers.adoc[]

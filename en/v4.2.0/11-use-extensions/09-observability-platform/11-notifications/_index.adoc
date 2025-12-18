@@ -1,29 +1,29 @@
 ---
-title: "WizTelemetry 通知"
-keywords: "Kubernetes, {ks_product}, 平台设置, 通知管理"
-description: "介绍如何使用“WizTelemetry 通知”扩展组件。"
+title: "WizTelemetry Notification"
+keywords: "Kubernetes, {ks_product}, Platform Settings, Notification Management"
+description: "Introduces how to use the 'WizTelemetry Notification' extension."
 weight: 10
 layout: "second"
 ---
 
 
-本节介绍如何使用“WizTelemetry 通知”扩展组件。
+This section introduces how to use the "WizTelemetry Notification" extension.
 
-该扩展组件用于管理多租户 Kubernetes 环境中的通知。它能够接收来自不同发送者的告警、云事件以及其他类型的事件（例如审计和 Kubernetes 事件），并根据租户标签（如命名空间或用户）将通知发送给相应的租户。支持邮件、飞书、钉钉、企业微信、Slack、Webhook 等多种通知渠道。
+This extension is used to manage notifications in a multi-tenant Kubernetes environment. It can receive alerts, cloud events, and other types of events (such as auditing and Kubernetes events) from different senders, and send notifications to the corresponding tenants based on tenant labels (such as namespace or user). It supports various notification channels such as email, Feishu, DingTalk, WeCom, Slack, and Webhook.
 
-安装“WizTelemetry 通知”扩展组件后，
+After installing the "WizTelemetry Notification" extension,
 
-* 组件坞中的 WizTelemetry 可观测平台将显示**通知**菜单。
-* 集群左侧导航栏将显示**日志**菜单，**日志**菜单下将显示**日志接收器**。**日志接收器**页面将显示**通知历史**页签，支持添加多种类型的日志接收器。有关更多信息，请参阅link:../02-logging/02-log-receivers/[日志接收器]。
-* 当前登录用户的下拉列表中将显示**通知设置**。
+* The **Notification** menu will be displayed in the WizTelemetry Observability Platform within the Component Dock.
+* The **Logging** menu will be displayed in the cluster's left navigation pane. Under the **Logging** menu, **Log Receivers** will be displayed. The **Log Receivers** page will display the **Notification History** tab, supporting the addition of various types of log receivers. For more information, please refer to link:../02-logging/02-log-receivers/[Log Receivers].
+* **Notification Settings** will be displayed in the dropdown list of the currently logged-in user.
 
 //attention
 [.admon.attention,cols="a"]
 |===
-| 注意
+| Note
 
 |
-- WizTelemetry 通知只需在 host 集群部署。在 host 集群添加了 `alertmanager proxy`，并且以 NodePort 形式（默认 31093）暴露。配置 WizTelemetry 告警和 WizTelemetry 事件告警时，若使用 WizTelemetry 通知扩展组件发送告警消息，需要进行相应配置。有关更多信息，请参阅扩展中心“WizTelemetry 告警”和“WizTelemetry 事件告警”扩展组件的详情页说明。
+- WizTelemetry Notification only needs to be deployed in the host cluster. An `alertmanager proxy` is added to the host cluster and exposed as a NodePort (default 31093). When configuring WizTelemetry Alerting and WizTelemetry Events Alerting, if you use the WizTelemetry Notification extension to send alert messages, corresponding configurations are required. For more information, please refer to the description on the details page of the "WizTelemetry Alerting" and "WizTelemetry Events Alerting" extensions in the Extensions Center.
 
-- WizTelemetry 通知依赖  WizTelemetry 平台服务和  WizTelemetry 数据流水线，因此在安装  WizTelemetry 通知之前必须先安装并配置好  WizTelemetry 平台服务和  WizTelemetry 数据流水线这两个扩展组件，否则通知相关功能无法正常使用！
+- WizTelemetry Notification depends on WizTelemetry Platform Service and WizTelemetry Data Pipeline. Therefore, before installing WizTelemetry Notification, you must first install and configure these two extensions: WizTelemetry Platform Service and WizTelemetry Data Pipeline. Otherwise, notification-related functions will not work properly!
 |===

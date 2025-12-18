@@ -1,19 +1,16 @@
 ---
-title: "添加许可证"
-keywords: "Kubernetes, {ks_product}, 平台设置, 许可证, 管理许可证"
-description: "介绍如何管理许可证。"
+title: "Add License"
+keywords: "Kubernetes, {ks_product}, Platform Settings, License, Manage License"
+description: "Describes how to manage licenses."
 weight: 03
 ---
 
-:ks_navigation: **许可证**
-:ks_permission: **平台设置管理**
+:ks_navigation: **License**
+:ks_permission: **Platform Settings Management**
 
+This section describes how to add a KubeSphere license. To update a license, follow the same steps below to add a new one.
 
-本节介绍如何添加 KubeSphere 许可证。若要更新许可证，同样按照下文步骤添加即可。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,23 +18,22 @@ include::../../../../_custom/platformManagement/platformManagement-prer-required
 
 :relfileprefix: ./
 
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
-. 在页面右上角点击**组件坞 > 平台设置**。
+. In the upper right corner of the page, click **Component Dock > Platform Settings**.
 
 +
 
 include::../../../../../_ks_components/oper-navigate.adoc[]
 
-. 点击**添加许可证**，输入激活码，点击**确定**完成添加。
+. Click **Add License**, enter the activation code, and click **OK** to complete the addition.
 +
 --
-// * 许可证添加完成后将显示在许可证管理列表中。
+// * After the license is added, it will be displayed in the license management list.
 
-* 在列表上方点击搜索框并设置搜索条件，可按组件名称搜索组件的许可证信息。
+* Click the search box at the top of the list and set search criteria to search for license information of extensions by extension name.
 
 include::../../../../../_ks_components/oper-refreshListData.adoc[]
 

@@ -1,18 +1,18 @@
 ---
-title: "查看应用模板列表"
-keywords: "Kubernetes, {ks_product}, 应用商店管理, 应用, 查看应用模板列表"
-description: "介绍如何查看应用模板列表。"
+title: "View App Template List"
+keywords: "Kubernetes, {ks_product}, App Store Management, App, View App Template List"
+description: "Introduces how to view the app template list."
 weight: 01
 ---
 
-:ks_permission: **应用商店管理**
-:ks_navigation: **应用**
+:ks_permission: **App Store Management**
+:ks_navigation: **Apps**
 
 
-本节介绍如何查看应用商店中的应用模板列表。
+This section describes how to view the list of app templates in the App Store.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,10 +20,10 @@ include::../../../../../_custom/platformManagement/platformManagement-prer-requi
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 应用商店管理**扩展组件。
+* The KubeSphere platform must have the **KubeSphere App Store Management** extension installed and enabled.
 
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 
@@ -36,12 +36,12 @@ include::../../../../../_custom/appStore/accessStoreManagement.adoc[]
 include::../../../../../../_ks_components/oper-navigate.adoc[]
 +
 ====
-* **应用**页面显示应用商店中的应用模板，并提供以下信息：
+* The **Apps** page displays the app templates in the App Store and provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-para-appTemplateName.adoc[]
 
@@ -51,15 +51,15 @@ include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-pa
 
 include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-para-latestVersion_v4.adoc[]
 
-// |分类
-// |应用模板所属的分类。将应用模板分配到一个分类中以便于管理。有关更多信息，请参阅link:../../02-app-categories/[应用分类]。
+// |Category
+// |The category to which the app template belongs. Assigning an app template to a category facilitates management. For more information, please refer to link:../../02-app-categories/[App Categories].
 
-|应用模板
-|应用模板的类型，如 **HELM 应用**、**YAML 应用** 或 **operator 应用**。
+|App Template
+|The type of the app template, such as **HELM App**, **YAML App**, or **operator App**.
 // include::../../../../../_custom/workspaceManagement/appTemplates/appTemplates-para-type_v42.adoc[]
 
-|更新时间
-|应用模板的更新时间。
+|Update Time
+|The last update time of the app template.
 |===
 --
 

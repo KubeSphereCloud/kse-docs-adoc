@@ -1,8 +1,8 @@
 ---
-title: "术语表"
+title: "Glossary"
 weight: 01
-keywords: 'Kubernetes, KubeSphere, 术语表, 词汇表'
-description: 'KubeSphere 中使用的术语表。'
+keywords: 'Kubernetes, KubeSphere, Glossary, Terminology'
+description: 'Glossary of terms used in KubeSphere.'
 ---
 
 include::../../_custom/glossary.adoc[]

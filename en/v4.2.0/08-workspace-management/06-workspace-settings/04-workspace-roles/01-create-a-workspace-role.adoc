@@ -1,25 +1,25 @@
 ---
-title: "创建企业空间角色"
-keywords: "Kubernetes, {ks_product}, 企业空间, 企业空间设置, 企业空间角色, 创建企业空间角色"
-description: "介绍如何如何创建企业空间角色。"
+title: "Create Workspace Role"
+keywords: "Kubernetes, {ks_product}, workspace, Workspace Settings, workspace role, create workspace role"
+description: "Introduces how to create a workspace role."
 weight: 01
 ---
 
-:ks_permission: **角色管理**
-:ks_navigation: **企业空间设置 > 企业空间角色**
+:ks_permission: **Role Management**
+:ks_navigation: **Workspace Settings > Workspace Roles**
 
 
-本节介绍如何创建企业空间角色。
+This section describes how to create a workspace role.
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
-// |此功能仅在 KubeSphere ``标准版、高级版和旗舰版``中提供。
+// |This feature is only available in KubeSphere ``Standard, Advanced, and Ultimate Editions``.
 
 // |===
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -30,7 +30,7 @@ include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requir
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -44,21 +44,21 @@ include::../../../../../_ks_components/oper-clickCreate.adoc[]
 
 +
 
-. 在**创建企业空间角色**对话框，设置企业空间角色的名称、别名和描述，然后点击**编辑权限**。
+. In the **Create Workspace Role** dialog box, set the name, alias, and description for the workspace role, then click **Edit Permissions**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|企业空间角色的名称。名称只能包含小写字母、数字和连字符（-），必须以小写字母或数字开头和结尾，最长 63 个字符。
+|Name
+|The name of the workspace role. The name can only contain lowercase letters, numbers, and hyphens (-), must start and end with a lowercase letter or number, and can be up to 63 characters long.
 
 include::../../../../_custom/workspaceManagement/workspaceRoles/workspaceRoles-para-aliasAndDescription.adoc[]
 |===
 --
 
-. 在**编辑权限**对话框，设置企业空间角色的权限，然后点击**确定**。
+. In the **Edit Permissions** dialog box, set the permissions for the workspace role, then click **OK**.
 +
 ====
 include::../../../../_custom/workspaceManagement/workspaceRoles/workspaceRoles-para-permissions_v4.adoc[]

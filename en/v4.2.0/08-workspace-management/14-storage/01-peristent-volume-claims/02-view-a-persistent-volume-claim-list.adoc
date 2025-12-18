@@ -1,18 +1,18 @@
 ---
-title: "查看持久卷声明列表"
-keywords: "Kubernetes, {ks_product}, 项目管理, 存储, 持久卷声明, 查看持久卷声明列表"
-description: "介绍如何查看持久卷声明列表。"
+title: "View Persistent Volume Claim List"
+keywords: "Kubernetes, {ks_product}, Project Management, Storage, Persistent Volume Claim, View Persistent Volume Claim List"
+description: "Describes how to view the persistent volume claim list."
 weight: 02
 ---
 
-:ks_permission: **持久卷声明查看**
-:ks_navigation: **存储 > 持久卷声明**
+:ks_permission: **Persistent Volume Claim View**
+:ks_navigation: **Storage > Persistent Volume Claims**
 
 
 include::../../../../_custom/clusterManagement/pods/pods-desc-viewAPersistentVolumeList.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,7 +23,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

@@ -1,18 +1,18 @@
 ---
-title: "创建任务"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 任务, 创建任务"
-description: "介绍如何创建任务。"
+title: "Create a Job"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Job, Create a Job"
+description: "Describes how to create a Job."
 weight: 01
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 任务**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Jobs**
 :project:
 
 include::../../../../_custom/clusterManagement/jobs/jobs-desc-createAJob.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -23,9 +23,9 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
-请参阅link:#_参数描述[参数描述]设置任务的参数。
+Refer to link:#_parameter-description[Parameter Description] to set the parameters for the Job.
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -50,7 +50,7 @@ include::../../../../../_ks_components/oper-clickCreate.adoc[]
 include::../../../../_custom/clusterManagement/jobs/jobs-oper-createAJob.adoc[]
 
 
-== 参数描述
+== Parameter Description
 
 include::../../../../_custom/clusterManagement/jobs/jobs-para-basicInformation.adoc[]
 
@@ -58,20 +58,20 @@ include::../../../../_custom/clusterManagement/jobs/jobs-para-strategySettings.a
 
 include::../../../../_custom/clusterManagement/jobs/jobs-para-restartPolicy.adoc[]
 
-* 容器组设置 > 添加容器
+* Pod Settings > Add Container
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-addContainer.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 容器设置
+* Pod Settings > Add Container > Container Settings
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-desc-setImageNameTypeResource.adoc[]
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-containerImage.adoc[]
 
@@ -83,74 +83,74 @@ include::../../../../_custom/clusterManagement/projects/projects-para-containerQ
 |===
 --
 
-* 容器组设置 > 添加容器 > 端口设置
+* Pod Settings > Add Container > Port Settings
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-Port.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 镜像拉取策略
+* Pod Settings > Add Container > Image Pull Policy
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-imagePullPolicy.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 健康检查
+* Pod Settings > Add Container > Health Check
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-healthCheck.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 健康检查 > 添加探针
+* Pod Settings > Add Container > Health Check > Add Probe
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-addProbe.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 生命周期管理
+* Pod Settings > Add Container > Lifecycle Management
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-lifecycleManagement.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 生命周期管理 > 添加动作
+* Pod Settings > Add Container > Lifecycle Management > Add Action
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-addAction.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 启动命令
+* Pod Settings > Add Container > Startup Command
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-startCommand.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 环境变量
+* Pod Settings > Add Container > Environment Variables
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-environmentVariables.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 容器组安全上下文
+* Pod Settings > Add Container > Pod Security Context
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-containerSecurityContext.adoc[]
 --
 
-* 容器组设置 > 添加容器 > 同步主机时区
+* Pod Settings > Add Container > Sync Host Timezone
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-syncTimeZone.adoc[]
 --
 
-* 存储设置
+* Storage Settings
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-desc-mountVolume.adoc[]
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 // include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-collectLogsOnVolume.adoc[]
 
@@ -164,44 +164,44 @@ include::../../../../_custom/clusterManagement/workloads/createWorkload/workload
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-oper-editDeleteVolume_new.adoc[]
 --
 
-* 存储设置 > 挂载卷 > 持久卷
+* Storage Settings > Mount Volume > Persistent Volume
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-persistentVolume.adoc[]
 --
 
-* 存储设置 > 挂载卷 > 临时卷
+* Storage Settings > Mount Volume > Temporary Volume
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-temporaryVolume_new.adoc[]
 --
 
-* 存储设置 > 挂载卷 > HostPath 卷
+* Storage Settings > Mount Volume > HostPath Volume
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-hostpathVolume.adoc[]
 --
 
-* 存储设置 > 挂载配置字典或保密字典
+* Storage Settings > Mount ConfigMap or Secret
 +
 --
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-mountConfigmapSecret.adoc[]
 --
 
-* 高级设置
+* Advanced Settings
 +
 --
-为任务管理的容器组指定节点，并设置任务的元数据。
+Specify nodes for the pods managed by the Job, and set the metadata for the Job.
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 // include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-podIpPool.adoc[]
 
 include::../../../../_custom/clusterManagement/workloads/createWorkload/workloads-para-selectNode.adoc[]
 
-|添加元数据
+|Add Metadata
 |
 include::../../../../_custom/clusterManagement/jobs/jobs-desc-setJobMetadata.adoc[]
 

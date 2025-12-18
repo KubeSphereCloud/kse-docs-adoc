@@ -1,19 +1,18 @@
 ---
-title: "查看应用路由列表"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 应用路由, 查看应用路由列表"
-description: "介绍如何查看应用路由列表。"
+title: "Viewing Application Route List"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Application Route, View Application Route List"
+description: "Describes how to view the application route list."
 weight: 02
 ---
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 应用路由**
+:ks_permission: **Application Workloads Viewing**
+:ks_navigation: **Application Workloads > Application Route**
 :project:
 
 include::../../../../_custom/clusterManagement/routes/routes-desc-viewARouteList.adoc[]
 
 
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -22,8 +21,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

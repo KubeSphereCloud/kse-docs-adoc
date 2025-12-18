@@ -1,33 +1,31 @@
 ---
-title: "从 KubeSphere 企业版 v4.1.x 离线升级到 v4.2.0"
-keywords: "Kubernetes, {ks_product}, 安装, 升级 KubeSphere "
-description: "介绍如何升级 KubeSphere。"
+title: "Offline Upgrade from KubeSphere Enterprise v4.1.x to v4.2.0"
+keywords: "Kubernetes, {ks_product}, Installation, Upgrade KubeSphere"
+description: "Describes how to upgrade KubeSphere."
 weight: 04
 ---
 
-本节介绍如何在无法访问 Internet 的情况下从 KubeSphere 企业版 v4.1.2 离线升级到 KubeSphere 企业版 v4.2.0。
+This section describes how to perform an offline upgrade from KubeSphere Enterprise v4.1.2 to KubeSphere Enterprise v4.2.0 when Internet access is unavailable.
 
+== Prerequisites
 
-== 前提条件
+* Contact KubeSphere Delivery Service experts to obtain the KubeSphere v4.2.0 installation package.
 
-* 联系 KubeSphere 交付服务专家获取 KubeSphere v4.2.0 安装包。
+* Ensure the current KubeSphere version is v4.1.2 or v4.1.3.
 
-* 请确保当前 KubeSphere 版本为 v4.1.2 或 v4.1.3。
+* Ensure the current Kubernetes version is v1.23.x ~ v1.32.x.
 
-* 请确保当前 Kubernetes 版本为 v1.23.x ~ v1.32.x。
-
-* 若扩展组件有特殊配置，需备份扩展组件配置。在“扩展组件配置”对话框中，下载文件备份。
+* If any extensions have special configurations, back up the extension configurations. In the "Extension Configuration" dialog box, download the file for backup.
 
 * {empty}
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-prer-backUpData.adoc[]
 
+== Notes
 
-== 注意事项
-
-. 如果已在 4.1.x 版本中自定义配置过 nodeShell 镜像，升级时注意在升级配置文件 `kse-v4.2.0-host-custom-values.yaml` 中按照如下方式指定 nodeShell 镜像。示例如下：
+. If you have customized the nodeShell image configuration in version 4.1.x, pay attention to specifying the nodeShell image in the upgrade configuration file `kse-v4.2.0-host-custom-values.yaml` as follows during the upgrade. Example:
 +
 --
-若在 v4.1.x 中配置为：
+If configured in v4.1.x as:
 
 [source,yaml]
 ----
@@ -39,7 +37,7 @@ nodeShell:
     pullPolicy: IfNotPresent
 ----
 
-需在 `kse-v4.2.0-host-custom-values.yaml` 中配置为：
+It needs to be configured in `kse-v4.2.0-host-custom-values.yaml` as:
 
 [source,bash]
 ----
@@ -66,18 +64,18 @@ terminal:
 ----
 --
 
-. 自 v4.1.3 起，ks-core chart 中集群角色与主集群名称配置有变更，因此从 v4.1.2 升级时注意按升级配置文件中的说明进行配置（v4.1.3 不受影响）。
+. Starting from v4.1.3, there are changes to the cluster role and host cluster name configuration in the ks-core chart. Therefore, when upgrading from v4.1.2, pay attention to configuring according to the instructions in the upgrade configuration file (v4.1.3 is not affected).
 +
 [source,bash]
 ----
 multicluster:
-  # 集群角色名称
+  # Cluster role name
   role: ""
-  # 主集群名称（优先级：直接指定 > 从 kubesphere-config 读取 > 默认名称 host）
+  # Host cluster name (Priority: direct specification > read from kubesphere-config > default name host)
   hostClusterName: ""
 ----
 
-. 自 v4.1.3 起，以下参数已废弃，升级时注意在升级配置文件 `kse-v4.2.0-host-custom-values.yaml` 中删除该参数或者设置为 `false`。
+. Starting from v4.1.3, the following parameter is deprecated. During the upgrade, pay attention to deleting this parameter or setting it to `false` in the upgrade configuration file `kse-v4.2.0-host-custom-values.yaml`.
 +
 [source,bash]
 ----
@@ -85,14 +83,13 @@ upgrade:
   enabled: false
 ----
 
+== Preparation
 
-== 准备工作
+=== 1. Extract the Installation Package
 
-=== 1. 解压安装包
+. Transfer the KubeSphere installation package to the node of the cluster to be upgraded and log in to that cluster node.
 
-. 将 KubeSphere 安装包传输到待升级集群的节点，并登录该集群节点。
-
-. 执行以下命令解压 v4.2.0 安装包（将 <package name> 替换为安装包的实际名称）。
+. Execute the following command to extract the v4.2.0 installation package (replace `<package name>` with the actual name of the installation package).
 +
 --
 [source,bash]
@@ -102,14 +99,14 @@ tar -zxvf <package name>
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|请确保操作目录有足够的可用空间，建议大于 100 GB。
+|Ensure the operation directory has sufficient free space, recommended to be greater than 100 GB.
 
 |===
 --
 
-. 进入安装包解压后生成的目录（将 <directory> 替换为安装包解压后生成的目录）。
+. Enter the directory generated after extracting the installation package (replace `<directory>` with the directory generated after extracting the installation package).
 +
 --
 [source,bash]
@@ -119,66 +116,66 @@ cd <directory>
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
 // |
-// 若想了解安装包各个文件的作用，请参阅link:../../02-install-kubesphere/02-install-kubernetes-and-kubesphere/#_查看安装包内容[查看安装包内容]。
+// To understand the role of each file in the installation package, please refer to link:../../02-install-kubesphere/02-install-kubernetes-and-kubesphere/#_view-installation-package-contents[View Installation Package Contents].
 // |===
 --
 
-=== 2. 推送镜像
+=== 2. Push Images
 
-. 在 v4.2.0 目录下，编辑安装 KubeSphere 时创建的 **config-sample.yaml **文件，修改其中的 **registry** 部分。
+. In the v4.2.0 directory, edit the **config-sample.yaml** file created during KubeSphere installation and modify the **registry** section.
 +
 --
 [source,yaml]
 ----
-    privateRegistry: "dockerhub.kubekey.local/kse" # 替换为实际镜像仓库地址
+    privateRegistry: "dockerhub.kubekey.local/kse" # Replace with the actual image registry address
     auths:
-      "dockerhub.kubekey.local":  # 替换为实际镜像仓库地址
-        username: admin           # 替换为镜像仓库的用户名
-        password: Harbor12345     # 替换为镜像仓库的密码
+      "dockerhub.kubekey.local":  # Replace with the actual image registry address
+        username: admin           # Replace with the image registry username
+        password: Harbor12345     # Replace with the image registry password
         skipTLSVerify: true
-        plainHTTP: true   # 如果镜像仓库使用 http，该参数设置为 true
+        plainHTTP: true   # If the image registry uses http, set this parameter to true
 ----
 --
 
-. 推送镜像到所使用的镜像仓库。
+. Push images to the image registry in use.
 +
 [source,bash]
 ----
 ./kk artifact images push -f config-sample.yaml -a kubekey-artifact.tar.gz
 ----
 
-== 升级 KubeSphere 
+== Upgrade KubeSphere
 
-KubeSphere v4.1 及后续版本采用 helm chart 方式升级 ks-core。
+KubeSphere v4.1 and later versions use the helm chart method to upgrade ks-core.
 
-=== 升级 host 集群
+=== Upgrade the Host Cluster
 
-. 确认当前集群为待升级集群。
+. Confirm the current cluster is the cluster to be upgraded.
 +
 [source,bash]
 ----
 kubectl get node -o wide
 ----
 
-. KubeSphere v4.1.3 移除了 `kse-extensions-publish`，将其整合到了 `ks-core` 的 chart 中，因此在 v4.1.2 升级至 v4.2.0 之前，应该对 KubeSphere 历史版本创建的扩展组件资源进行补丁操作。
+. KubeSphere v4.1.3 removed `kse-extensions-publish`, integrating it into the `ks-core` chart. Therefore, before upgrading from v4.1.2 to v4.2.0, a patch operation should be performed on the extension resources created by the historical KubeSphere version.
 +
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|该步骤仅用于 v4.1.2 -> v4.2.0 的升级场景，v4.1.3 -> v4.2.0 可略过该步骤。
+|This step is only for the upgrade scenario v4.1.2 -> v4.2.0. It can be skipped for v4.1.3 -> v4.2.0.
 |===
 +
 [source,bash]
 ----
-# 使用安装包中 tools 目录下的 extension-resources-patch.sh 处理
+# Use the extension-resources-patch.sh script in the tools directory of the installation package
 bash tools/extension-resources-patch.sh
 ----
 
-. 检查当前集群的 ks-core 配置。
+. Check the current cluster's ks-core configuration.
 +
 --
 [source,bash]
@@ -187,40 +184,40 @@ helm get values -n kubesphere-system ks-core
 ----
 --
 
-. 创建升级配置文件，输入以下内容。
+. Create the upgrade configuration file and input the following content.
 +
 --
-如果上一步中有除镜像仓库、镜像版本、cloud 和 upgrade 之外的其它参数，请一并添加至以下配置文件中。
+If there are parameters other than image registry, image version, cloud, and upgrade in the previous step, please also add them to the following configuration file.
 
 [source,bash]
 ----
 cat <<EOF > kse-v4.2.0-host-custom-values.yaml
 
-# 以下参数分别用来指定 ks-core 所使用镜像以及扩展组件所使用镜像的镜像仓库地址
-# 请根据环境实际信息修改
+# The following parameters are used to specify the image registry for ks-core and the images used by extensions
+# Please modify according to the actual environment information
 global:
   imageRegistry: dockerhub.kubekey.local/kse
 extension:
   imageRegistry: dockerhub.kubekey.local/kse
 
-# 注意集群角色参数由 role 变更为 multicluster.role
+# Note: The cluster role parameter has changed from role to multicluster.role
 multicluster:
   role: host
 
-# 开启 ks-core 组件（ks-apiserver、ks-controller-manager、ks-console）的高可用
-# 请根据集群实际情况配置
+# Enable high availability for ks-core components (ks-apiserver, ks-controller-manager, ks-console)
+# Configure according to the actual cluster situation
 ha:
   enabled: false
 
-# 开启 redis 高可用，ks-apiserver 高可用依赖 redis
-# 如该参数为 false，默认 kubesphere-system 下的 redis 为单副本，请根据集群实际情况配置
+# Enable Redis high availability. ks-apiserver high availability depends on Redis.
+# If this parameter is false, the default redis in kubesphere-system is single-replica. Configure according to the actual cluster situation.
 redisHA:
   enabled: false
 EOF
 ----
 --
 
-. 执行以下命令开始升级。
+. Execute the following command to start the upgrade.
 +
 --
 [source,bash]
@@ -230,17 +227,17 @@ helm upgrade --install ks-core charts/ks-core -n kubesphere-system -f kse-v4.2.0
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-替换 `charts/ks-core` 为当前环境下 ks-core chart 的真实路径。
+Replace `charts/ks-core` with the real path of the ks-core chart in the current environment.
 |===
 --
 
-. 检查 host 集群是否升级成功。
+. Check if the host cluster upgrade was successful.
 +
 --
-执行以下命令，pod 应该为 running 状态，如下所示。
+Execute the following command. The pods should be in the running state, as shown below.
 
 [source,bash]
 ----
@@ -255,22 +252,22 @@ ks-controller-manager-5f69675d48-qnxv7       1/1     Running     0          16h
 ----
 --
 
-. 使用原有的 Web 控制台的 IP 地址、管理员用户名和管理员密码，并使用网页浏览器登录 v4.2.0 的 KubeSphere Web 控制台。
+. Use the original web console IP address, administrator username, and administrator password to log in to the KubeSphere v4.2.0 web console using a web browser.
 
-. 检查 host 集群各项功能和数据是否正常。
+. Check if all functions and data of the host cluster are normal.
 
-=== 升级 member 集群
+=== Upgrade Member Clusters
 
-升级 member 集群与升级 host 集群的步骤基本一致，但需注意 member 集群中的特殊参数配置。
+The steps for upgrading member clusters are basically the same as upgrading the host cluster, but special attention should be paid to the parameter configuration in member clusters.
 
-. 确认当前 member 集群为待升级集群。
+. Confirm the current member cluster is the cluster to be upgraded.
 +
 [source,bash]
 ----
 kubectl get node -o wide
 ----
 
-. 检查 member 集群的 ks-core 配置。
+. Check the member cluster's ks-core configuration.
 +
 --
 [source,bash]
@@ -279,40 +276,40 @@ helm get values -n kubesphere-system ks-core
 ----
 --
 
-. 获取 member 集群的 jwtSecret 值。
+. Get the jwtSecret value of the member cluster.
 +
 [source,bash]
 ----
 kubectl -n kubesphere-system get cm kubesphere-config -o yaml | grep -v "apiVersion" | grep jwtSecret
 ----
 
-. 创建升级配置文件，输入以下内容。
+. Create the upgrade configuration file and input the following content.
 +
 ====
-如果上一步中有除镜像仓库、镜像版本、cloud 和 upgrade 之外的其它参数，请一并添加至以下配置文件中。
+If there are parameters other than image registry, image version, cloud, and upgrade in the previous step, please also add them to the following configuration file.
 
 [source,bash]
 ----
 cat <<EOF > kse-v4.2.0-member-custom-values.yaml
 
-# 以下参数用来指定 ks-core 所使用镜像的镜像仓库地址
-# 请根据环境实际信息修改
+# The following parameter is used to specify the image registry for ks-core
+# Please modify according to the actual environment information
 global:
   imageRegistry: dockerhub.kubekey.local/kse
 
-# 替换为 member 集群的 jwtSecret 值
+# Replace with the member cluster's jwtSecret value
 authentication:
   issuer:
     jwtSecret: <REPLACE_ME>
 
-# 注意集群角色参数由 role 变更为 multicluster.role
+# Note: The cluster role parameter has changed from role to multicluster.role
 multicluster:
   role: member
 EOF
 ----
 ====
 
-. 执行以下命令开始升级。
+. Execute the following command to start the upgrade.
 +
 --
 [source,bash]
@@ -322,17 +319,17 @@ helm upgrade --install ks-core charts/ks-core -n kubesphere-system -f kse-v4.2.0
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-替换 `charts/ks-core` 为当前环境下 ks-core chart 的真实路径。
+Replace `charts/ks-core` with the real path of the ks-core chart in the current environment.
 |===
 --
 
-. 检查 member 集群是否升级成功。
+. Check if the member cluster upgrade was successful.
 +
 --
-执行以下命令，ks-agent pod 应该为 running 状态，如下所示。
+Execute the following command. The ks-agent pod should be in the running state, as shown below.
 
 [source,bash]
 ----
@@ -342,24 +339,21 @@ ks-agent-5dc5b57977-4x6mf     2/2     Running     0               59m
 ----
 --
 
-. 如果您在以上升级命令中增加了自定义配置（如，--set a=b），需在 Web 控制台同步添加 member 集群的自定义配置。
+. If you added custom configurations (e.g., --set a=b) in the above upgrade command, you need to synchronize the custom configurations for the member cluster in the web console.
 +
 --
-方法：在**集群管理**页面，在需要操作的集群右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**编辑配置**。在弹窗中，输入 `a: b`。
+Method: On the **Cluster Management** page, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the cluster you want to operate, then select **Edit Configuration** from the drop-down list. In the pop-up window, enter `a: b`.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|如果您在升级命令中未加入自定义的配置，则无需在 Web 控制台添加集群配置。
+|If you did not add custom configurations in the upgrade command, there is no need to add cluster configurations in the web console.
 |===
 --
 
-=== 升级扩展组件
+=== Upgrade Extensions
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-updateExtensions.adoc[]
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-updateExtensionList_v420.adoc[]
-
-
-

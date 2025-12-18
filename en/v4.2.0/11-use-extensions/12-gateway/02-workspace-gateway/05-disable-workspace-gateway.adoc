@@ -1,22 +1,21 @@
 ---
-title: "禁用企业空间网关"
-keywords: "Kubernetes, {ks_product}, 企业空间管理, 企业空间设置, 网关设置,禁用企业空间网关"
-description: "介绍如何禁用企业空间网关。"
+title: "Disable Workspace Gateway"
+keywords: "Kubernetes, {ks_product}, Workspace Management, Workspace Settings, Gateway Settings, Disable Workspace Gateway"
+description: "Describe how to disable a workspace gateway."
 weight: 05
 ---
 
-:ks_permission: **企业空间网关管理**
-:ks_navigation: **企业空间设置 > 网关设置**
+:ks_permission: **Workspace Gateway Management**
+:ks_navigation: **Workspace Settings > Gateway Settings**
 
-
-本节介绍如何禁用企业空间网关。
+This section describes how to disable a workspace gateway.
 
 include::../../../../_custom/clusterManagement/gatewaySettings/gatewaySettings-warn-disableGateway.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 网关**扩展组件。
+* The **KubeSphere Gateway** extension needs to be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../
 * {empty}
@@ -25,8 +24,7 @@ include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requir
 :relfileprefix: ./
 
 
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 

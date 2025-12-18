@@ -1,34 +1,34 @@
 ---
-title: "添加持续部署白名单"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 使用 DevOps"
-description: "介绍如何添加持续部署白名单。"
+title: "Add Continuous Deployment Whitelist"
+keywords: "Kubernetes, {ks_product}, DevOps Project, Use DevOps"
+description: "Introduces how to add a continuous deployment whitelist."
 weight: 03
 ---
 
-:ks_navigation:  **DevOps > 持续部署**
+:ks_navigation:  **DevOps > Continuous Deployment**
 
-KubeSphere 支持通过设置白名单，限制资源持续部署的代码仓库和目标位置。
+KubeSphere supports restricting the code repositories and target locations for resource continuous deployment by setting up a whitelist.
 
-本文档介绍如何添加持续部署白名单。
+This document describes how to add a continuous deployment whitelist.
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **DevOps** 扩展组件。
+* The **DevOps** extension must be installed and enabled on the KubeSphere platform.
 
-* 已创建一个企业空间、一个 DevOps 项目和一个用户（例如 **project-regular**），并已邀请该用户至 DevOps 项目且授予 **operator** 角色。请参阅link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[邀请用户加入 DevOps 项目]。
+* A workspace, a DevOps project, and a user (e.g., **project-regular**) have been created. The user has been invited to the DevOps project and granted the **operator** role. Please refer to link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[Invite a User to a DevOps Project].
 
-* 已link:../../06-code-repositories/01-import-code-repositories/[导入代码仓库]。
+* Code repositories have been link:../../06-code-repositories/01-import-code-repositories/[imported].
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/devops/project-regular-oper-logIn.adoc[]
 
 +
 
-. 在左侧导航栏，选择 **DevOps > 持续部署**。
+. In the left navigation pane, select **DevOps > Continuous Deployment**.
 
-. 在**持续部署白名单**页面，点击**编辑白名单**。
+. On the **Continuous Deployment Whitelist** page, click **Edit Whitelist**.
 
-. 在弹出的**编辑白名单**对话框，选择代码仓库、部署集群和项目，点击**确定**。
+. In the **Edit Whitelist** dialog box that appears, select the code repository, deployment cluster, and project, then click **OK**.
 +
-点击**添加**可添加多个代码仓库和部署位置。
+Click **Add** to add multiple code repositories and deployment locations.

@@ -1,18 +1,18 @@
 ---
-title: "查看项目列表"
-keywords: "Kuberentes, {ks_product}, 企业空间管理, 项目, 介绍如何查看项目列表"
-description: "介绍如何查看项目列表。"
+title: "View Project List"
+keywords: "Kubernetes, {ks_product}, Workspace Management, Project, Introduction on how to view the project list"
+description: "Introduction on how to view the project list."
 weight: 02
 ---
 
-:ks_permission: **项目查看**
-:ks_navigation: **项目管理 > 项目列表**
+:ks_permission: **Project View**
+:ks_navigation: **Project Management > Project List**
 
 
 include::../../../../_custom/workspaceManagement/projects/projects-desc-viewProjectList.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,7 +21,7 @@ include::../../../../_custom/workspaceManagement/workspaceManagement-prer-requir
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -31,28 +31,28 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 ====
-* 项目列表提供以下信息：
+* The project list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|项目的名称和描述信息。
+|Name
+|The name and description of the project.
 
-|状态
-|项目当前所处的状态。
+|Status
+|The current status of the project.
 
-* **活跃**：项目状态正常。
-* **删除中**：项目正在删除中。
+* **Active**: The project status is normal.
+* **Terminating**: The project is being deleted.
 
-|创建时间
-|项目的创建时间。
+|Creation Time
+|The creation time of the project.
 |===
 --
 
-* 在列表左上角的下拉列表中选择一个集群，可以查看特定集群中的项目列表。
+* Select a cluster from the drop-down list in the upper left corner of the list to view the project list in a specific cluster.
 
 include::../../../../_custom/workspaceManagement/projects/projects-oper-searchForProjects.adoc[]
 

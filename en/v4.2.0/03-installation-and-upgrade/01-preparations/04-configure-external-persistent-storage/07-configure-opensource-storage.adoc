@@ -1,11 +1,11 @@
 ---
-title: "配置开源存储系统"
-keywords: "Kubernetes, KubeSphere, 安装, 准备, 持久化存储, 开源存储, Ceph, GlusterFS, OpenEBS, Longhorn"
-description: "介绍如何在生产环境中为 KubeSphere 集群配置开源存储系统。"
+title: "Configuring Open Source Storage Systems"
+keywords: "Kubernetes, KubeSphere, Installation, Preparation, Persistent Storage, Open Source Storage, Ceph, GlusterFS, OpenEBS, Longhorn"
+description: "Introduces how to configure open source storage systems for a KubeSphere cluster in a production environment."
 weight: 07
 ---
 
-KubeSphere 支持众多第三方开源存储系统，**包括但不限于**：
+KubeSphere supports numerous third-party open source storage systems, **including but not limited to**:
 
 * link:https://github.com/ceph/ceph-csi[Ceph CSI]
 
@@ -15,4 +15,4 @@ KubeSphere 支持众多第三方开源存储系统，**包括但不限于**：
 
 * link:https://longhorn.io/[Longhorn]
 
-KubeSphere 不提供第三方开源存储系统的安装包，请到存储系统的官方网站下载安装。
+KubeSphere does not provide installation packages for third-party open source storage systems. Please download and install them from the official websites of the respective storage systems.

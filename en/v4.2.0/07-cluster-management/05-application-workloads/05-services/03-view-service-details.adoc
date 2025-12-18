@@ -1,19 +1,19 @@
 ---
-title: "查看服务详情"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 服务, 查看服务详情"
-description: "介绍如何查看服务详情。"
+title: "View Service Details"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Service, View Service Details"
+description: "Describes how to view service details."
 weight: 03
 ---
 
 
-:ks_permission: **应用负载查看**
-:ks_navigation: **应用负载 > 服务**
+:ks_permission: **Application Workloads View**
+:ks_navigation: **Application Workloads > Service**
 
 
 include::../../../../_custom/clusterManagement/services/services-desc-viewServiceDetails.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -24,7 +24,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 

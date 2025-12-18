@@ -1,27 +1,27 @@
 ---
-title: "创建 NAS 类型的持久卷声明"
-keywords: "Kubernetes, {ks_product}, 集群管理, 存储, 持久卷声明, 持久卷, 创建持久卷声明, NAS"
-description: "介绍如何创建 NAS 类型的持久卷声明。"
+title: "Create a NAS-Type PersistentVolumeClaim"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Storage, PersistentVolumeClaim, PersistentVolume, Create a PersistentVolumeClaim, NAS"
+description: "Describes how to create a NAS-type PersistentVolumeClaim."
 weight: 01
 ---
 
-:ks_permission: **持久卷声明管理**
-:ks_navigation: **存储 > 持久卷声明**
+:ks_permission: **PersistentVolumeClaim Management**
+:ks_navigation: **Storage > PersistentVolumeClaims**
 :nas:
 
 
-本节介绍如何创建 NAS 类型的持久卷声明。持久卷声明创建后，后端存储系统将自动创建对应的持久卷与其绑定。
+This section describes how to create a NAS-type PersistentVolumeClaim. After the PersistentVolumeClaim is created, the backend storage system will automatically create a corresponding PersistentVolume and bind it.
 
 ifeval::["{file_output_type}" == "html"]
-有关持久卷声明的其他创建方式，请参阅link:../../../../07-cluster-management/08-storage/01-persistent-volume-claims/01-create-a-persistent-volume-claim/[创建持久卷声明]。
+For other methods of creating a PersistentVolumeClaim, please refer to link:../../../../07-cluster-management/08-storage/01-persistent-volume-claims/01-create-a-persistent-volume-claim/[Create a PersistentVolumeClaim].
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-有关持久卷声明的其他创建方式，请参阅《KubeSphere 集群管理指南》的“持久卷声明”章节。
+For other methods of creating a PersistentVolumeClaim, please refer to the "PersistentVolumeClaims" chapter in the *KubeSphere Cluster Management Guide*.
 endif::[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../../
@@ -32,9 +32,9 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 
 
-== 操作步骤
+== Steps
 
-. 以具有pass:a,q[{ks_permission}]权限的用户登录 KubeSphere Web 控制台并进入您的集群或企业空间。
+. Log in to the KubeSphere web console as a user with pass:a,q[{ks_permission}] permissions and enter your cluster or workspace.
 +
 
 include::../../../../../_ks_components/oper-navigate.adoc[]

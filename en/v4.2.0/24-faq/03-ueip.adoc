@@ -1,48 +1,48 @@
 ---
-title: "用户体验改进计划"
+title: "User Experience Improvement Program"
 weight: 03
 ---
 
-// == 什么是改进计划？
+// == What is the Improvement Program?
 
-// 改进计划会收集关于 KubeSphere 安装、使用功能的汇总信息。这些信息将仅被 KubeSphere 用于改进产品，并且不与任何第三方分享。
+// The Improvement Program collects aggregated information about KubeSphere installation and feature usage. This information will be used by KubeSphere solely for product improvement and will not be shared with any third parties.
 
-== 目的与内容
+== Purpose and Content
 
-为了持续改进 KubeSphere 产品的质量、性能与用户体验，我们设立了用户体验改进计划（User Experience Improvement Program, 以下简称“UEIP”）。参与 UEIP 将帮助我们分析使用情况、诊断问题并确定未来产品功能的开发优先级。本计划可能收集的信息均为非个人身份的、聚合性的数据，主要包括：
+To continuously improve the quality, performance, and user experience of the KubeSphere product, we have established the User Experience Improvement Program (hereinafter referred to as "UEIP"). Participating in the UEIP will help us analyze usage patterns, diagnose issues, and prioritize the development of future product features. The information that may be collected under this program is non-personally identifiable, aggregated data, primarily including:
 
-**功能使用情况**：各功能模块的使用频率与时长。
+**Feature Usage**: The frequency and duration of usage for various functional modules.
 
-**性能数据**：页面加载时间、操作响应速度等性能指标。
+**Performance Data**: Performance metrics such as page load times and operation response speeds.
 
-**硬件配置**：操作系统类型、CPU 架构、内存及磁盘大小等（无法识别具体型号）。
+**Hardware Configuration**: Operating system type, CPU architecture, memory and disk size, etc. (specific models cannot be identified).
 
-== 隐私保护承诺
+== Privacy Protection Commitment
 
-我们郑重承诺：
+We solemnly commit to:
 
-**不收集个人身份信息（PII）**：UEIP 不会有意收集任何可识别个人身份的信息，如您的姓名、邮箱、IP 地址、服务器 IP、业务数据或任何其他敏感信息。
+**Not Collecting Personally Identifiable Information (PII)**: The UEIP will not intentionally collect any information that can identify an individual, such as your name, email address, IP address, server IP, business data, or any other sensitive information.
 
-**数据匿名化**：所有收集的数据都将经过严格的匿名化和聚合处理，无法追溯到任何特定的个人或组织。
+**Data Anonymization**: All collected data will undergo strict anonymization and aggregation processes, making it impossible to trace back to any specific individual or organization.
 
-**数据用途限制**：这些数据将仅用于 KubeSphere 项目内部的统计分析、产品改进和趋势研究，绝不会出售给任何第三方。
+**Restriction of Data Use**: This data will be used solely for internal statistical analysis, product improvement, and trend research within the KubeSphere project, and will never be sold to any third party.
 
-== 参与方式与用户控制
+== Participation Method and User Control
 
-**自愿参与**：参与 UEIP 是完全自愿的。在您首次安装或使用本产品时，系统会明确提示您选择是否加入。
+**Voluntary Participation**: Participation in the UEIP is completely voluntary. When you first install or use this product, the system will explicitly prompt you to choose whether to join.
 
-**随时 opting out（选择退出）**：您可以随时关闭此功能以退出计划，停止数据收集。您的选择不会影响本产品的核心功能或您享受的服务。
+**Opting Out at Any Time**: You can turn off this feature at any time to opt out of the program and stop data collection. Your choice will not affect the core functionality of this product or the services you enjoy.
 
-== 数据传输与安全
+== Data Transmission and Security
 
-收集的数据将通过加密通道安全地传输到我们的服务器。
+The collected data will be securely transmitted to our servers through encrypted channels.
 
-我们将采用符合行业标准的安全措施来存储和处理这些数据。
+We will employ security measures that comply with industry standards to store and process this data.
 
-== 用户承诺与认可
+== User Commitment and Acknowledgment
 
-您已充分理解上述用户体验改进计划，并同意平台方匿名收集集群性能数据以改进服务。
+You have fully understood the above User Experience Improvement Program and agree to allow the platform to anonymously collect cluster performance data to improve services.
 
-== 如何参与或退出改进计划？
+== How to Participate in or Opt Out of the Improvement Program?
 
-KubesSphere 安装或配置变更时，可以通过配置 `telemetry.enabled` 选择是否参与改进计划。更多信息，请参阅 link:../../03-installation-and-upgrade/02-install-kubesphere/05-appendix/#_高级选项[KubeSphere Core 高级配置]。
+During KubeSphere installation or configuration changes, you can choose whether to participate in the Improvement Program by configuring `telemetry.enabled`. For more information, please refer to link:../../03-installation-and-upgrade/02-install-kubesphere/05-appendix/#_advanced-options[KubeSphere Core Advanced Configuration].

@@ -1,7 +1,7 @@
 ---
-title: "创建服务"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用负载, 服务, 创建服务"
-description: "介绍如何创建服务。"
+title: "Create a Service"
+keywords: "Kubernetes, {ks_product}, Project Management, Application Workloads, Service, Create a Service"
+description: "Introduces how to create a service."
 weight: 01
 layout: "second"
 ---
@@ -10,16 +10,16 @@ layout: "second"
 
 include::../../../../../_custom/clusterManagement/services/services-desc-createAService.adoc[]
 
-KubeSphere 支持通过以下方式创建服务及服务后端的工作负载：
+KubeSphere supports creating services and their backend workloads in the following ways:
 
-* 创建有状态服务：创建内部访问模式为 Headless 的服务，同时创建有状态副本集作为服务后端的工作负载。
+* Create a stateful service: Create a service with the internal access mode set to Headless, and simultaneously create a StatefulSet as the backend workload for the service.
 
-* 创建无状态服务：创建内部访问模式为 VirtualIP 的服务，同时创建部署作为服务后端的工作负载。
+* Create a stateless service: Create a service with the internal access mode set to VirtualIP, and simultaneously create a Deployment as the backend workload for the service.
 
-* 创建外部服务：服务将业务流量转发给集群外部的其他服务。
+* Create an external service: The service forwards business traffic to other services outside the cluster.
 
-// * 通过源代码创建服务：创建内部访问模式为 Headless 或 VirtualIP 的服务，并使用 Java、Node.js 或 Python 源代码创建服务后端的工作负载。
+// * Create a service from source code: Create a service with the internal access mode set to Headless or VirtualIP, and use Java, Node.js, or Python source code to create the backend workload for the service.
 
-// * 通过制品创建服务：创建内部访问模式为 Headless 或 VirtualIP 的服务，并使用 JAR、WAR 或二进制制品文件创建服务后端的工作负载。
+// * Create a service from artifacts: Create a service with the internal access mode set to Headless or VirtualIP, and use JAR, WAR, or binary artifact files to create the backend workload for the service.
 
-* 指定工作负载：创建内部访问模式为 Headless 或 VirtualIP 的服务，并使用项目中现有的工作负载作为服务后端的工作负载。
+* Specify a workload: Create a service with the internal access mode set to Headless or VirtualIP, and use an existing workload in the project as the backend workload for the service.

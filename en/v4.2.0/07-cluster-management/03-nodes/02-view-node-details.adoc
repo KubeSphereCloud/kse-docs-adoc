@@ -1,18 +1,15 @@
 ---
-title: "查看节点详情"
-keywords: "Kubernetes, {ks_product}, 集群管理, 节点, 查看节点详情"
-description: "介绍如何查看节点详情。"
+title: "View Node Details"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Node, View Node Details"
+description: "Describes how to view node details."
 weight: 02
 ---
 
-:ks_permission: **节点查看**
+:ks_permission: **Node Viewing**
 
+This section describes how to view node details.
 
-本节介绍如何查看节点详情。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../
 
@@ -20,9 +17,7 @@ include::../../../_custom/clusterManagement/clusterManagement-prer-requiredPermi
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -32,86 +27,86 @@ include::../../../_custom/clusterManagement/nodes/nodes-oper-openListPage_new.ad
 
 +
 
-. 在节点列表中点击一个节点的名称打开其详情页面。
+. In the node list, click the name of a node to open its details page.
 
-. 在节点详情页面的**属性**区域查看节点的资源属性。
+. On the node details page, view the node's resource attributes in the **Attributes** area.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|状态
+|Status
 |
 include::../../../_custom/clusterManagement/nodes/nodes-para-nodeStatus_new.adoc[]
 
-|IP 地址
-|节点的 IP 地址。
+|IP Address
+|The IP address of the node.
 
-|角色
+|Role
 |
 include::../../../_custom/clusterManagement/nodes/nodes-para-nodeRole_new.adoc[]
 
-|操作系统版本
-|节点的操作系统发行版和版本。
+|OS Version
+|The operating system distribution and version of the node.
 
-|操作系统类型
-|节点的操作系统类型。
+|OS Type
+|The operating system type of the node.
 
-|内核版本
-|节点的内核版本。
+|Kernel Version
+|The kernel version of the node.
 
-|容器运行时
-|节点使用的容器运行时类型和版本。
+|Container Runtime
+|The type and version of the container runtime used by the node.
 
-|kubelet 版本
-|节点上运行的 kubelet 版本。
+|Kubelet Version
+|The version of kubelet running on the node.
 
-|kube-proxy 版本
-|节点上运行的 kube-proxy 版本。
+|Kube-proxy Version
+|The version of kube-proxy running on the node.
 
-|系统架构
-|节点的 CPU 架构。
+|System Architecture
+|The CPU architecture of the node.
 
-|创建时间
-|节点加入当前集群的时间。
+|Creation Time
+|The time when the node joined the current cluster.
 |===
 --
 
-. 在**运行状态**页签查看节点的健康状态和污点。
+. On the **Running Status** tab, view the node's health status and taints.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|功能区 |描述
+|Area |Description
 
-|健康状态
-|显示节点的网络、内存、磁盘、进程压力和就绪状态。如果显示image:/images/ks-qkcp/zh/icons/check-healthy.svg["healthy",15px,15px] 则表明状态正常，如果显示image:/images/ks-qkcp/zh/icons/substract-unhealthy.svg["unhealthy",15px,15px] 则表明出现告警。
+|Health Status
+|Displays the node's network, memory, disk, process pressure, and readiness status. If image:/images/ks-qkcp/zh/icons/check-healthy.svg["healthy",15px,15px] is displayed, the status is normal. If image:/images/ks-qkcp/zh/icons/substract-unhealthy.svg["unhealthy",15px,15px] is displayed, an alert has been triggered.
 
-* **网络可用性**：节点的网络配置是否正确。
+* **Network Availability**: Whether the node's network configuration is correct.
 
-* **内存压力**：节点剩余内存是否小于阈值，默认阈值为 100 MiB。
+* **Memory Pressure**: Whether the node's remaining memory is less than the threshold. The default threshold is 100 MiB.
 
-* **磁盘压力**：节点剩余磁盘空间或 inode 数量是否小于阈值，默认磁盘空间阈值为磁盘空间总量的 10%，默认 inode 数量阈值为 inode 最大数量的 5%。
+* **Disk Pressure**: Whether the node's remaining disk space or number of inodes is less than the threshold. The default disk space threshold is 10% of the total disk space, and the default inode threshold is 5% of the maximum number of inodes.
 
-* **进程压力**：节点上可创建的进程数量是否小于阈值。新安装的 KubeSphere 集群默认未设置进程数量阈值。
+* **Process Pressure**: Whether the number of processes that can be created on the node is less than the threshold. Newly installed KubeSphere clusters do not have a process count threshold set by default.
 
-* **就绪状态**：节点是否已经准备好接收容器组。
+* **Readiness Status**: Whether the node is ready to receive pods.
 
-|污点
-|当前节点上已配置的污点。有关更多信息，请参阅link:../05-edit-node-taints/[编辑节点污点]。
+|Taints
+|The taints currently configured on this node. For more information, please refer to link:../05-edit-node-taints/[Edit Node Taints].
 |===
 --
 
-. 点击**容器组**页签查看节点上运行的所有容器组。
+. Click the **Pods** tab to view all pods running on the node.
 +
 --
 include::../../../_custom/clusterManagement/nodes/nodes-para-podList.adoc[]
 --
 
-. 点击**元数据**页签查看节点的标签和注解。
+. Click the **Metadata** tab to view the node's labels and annotations.
 
-. 点击**事件**页签查看节点的事件记录。
+. Click the **Events** tab to view the node's event records.
 +
 --
 include::../../../_custom/clusterManagement/clusterManagement-para-eventsTab.adoc[]

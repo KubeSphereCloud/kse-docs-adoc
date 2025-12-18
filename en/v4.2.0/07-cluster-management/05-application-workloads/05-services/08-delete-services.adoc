@@ -1,19 +1,16 @@
 ---
-title: "删除服务"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用负载, 服务, 删除服务"
-description: "介绍如何删除服务。"
+title: "Delete Services"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Workloads, Service, Delete Service"
+description: "Introduces how to delete a service."
 weight: 08
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 服务**
-
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Services**
 
 include::../../../../_custom/clusterManagement/services/services-desc-deleteServices.adoc[]
 
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,9 +18,7 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-
-
-== 删除单个服务
+== Delete a Single Service
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -37,10 +32,9 @@ include::../../../../_custom/clusterManagement/services/services-oper-deleteASin
 
 +
 
-. 在**删除服务**对话框，确认并选择要删除的相关资源，然后点击**确定**。
+. In the **Delete Service** dialog box, confirm and select the related resources to delete, then click **OK**.
 
-
-== 批量删除服务
+== Delete Multiple Services in Batch
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 

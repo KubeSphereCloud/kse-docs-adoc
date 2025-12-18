@@ -1,16 +1,16 @@
 ---
-title: "平台角色"
-keywords: "Kubernetes, {ks_product}, 访问控制, 用户, 平台角色"
-description: "介绍如何管理平台角色。"
+title: "Platform Roles"
+keywords: "Kubernetes, {ks_product}, Access Control, User, Platform Role"
+description: "Introduces how to manage platform roles."
 weight: 03
 layout: "second"
 ---
 
 
-本节介绍如何管理平台角色。
+This section introduces how to manage platform roles.
 
-平台角色包含特定的平台管理或查看权限。您可以将包含特定权限的角色授权给用户，以控制用户在 KubeSphere 平台的权限。
+Platform roles contain specific platform management or viewing permissions. You can assign roles containing specific permissions to users to control their permissions within the KubeSphere platform.
 
 include::../../../../_ks_components/admonitions/note.adoc[]
-默认管理员用户 **admin** 在 KubeSphere 平台具有所有权限。
+The default administrator user **admin** has all permissions in the KubeSphere platform.
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]

@@ -1,32 +1,32 @@
 ---
-title: "删除平台角色"
-keywords: "Kubernetes, {ks_product}, 平台管理, 访问控制, 平台角色, 删除平台角色"
-description: "介绍如何删除平台角色。"
+title: "Delete Platform Roles"
+keywords: "Kubernetes, {ks_product}, Platform Management, Access Control, Platform Roles, Delete Platform Roles"
+description: "Describes how to delete platform roles."
 weight: 06
 ---
 
-:ks_menu: **用户和角色管理**
-:ks_permission: **角色管理**
-:ks_navigation: **平台角色**
+:ks_menu: **Users and Roles Management**
+:ks_permission: **Role Management**
+:ks_navigation: **Platform Roles**
 
 
-本节介绍如何删除平台角色。
+This section describes how to delete platform roles.
 
-您可以删除用户创建的平台角色。预置平台角色无法删除。
-
-
-== 前提条件
-
-* 您需要在 KubeSphere 平台具有pass:a,q[{ks_permission}]权限。有关更多信息，请参阅link:../../01-users/[用户]和link:../../02-platform-roles/[平台角色]。
-
-* 如果需要删除的平台角色已经分配给用户，您需要删除用户或修改其角色。
+You can delete platform roles created by users. Pre-configured platform roles cannot be deleted.
 
 
-== 操作步骤
+== Prerequisites
+
+* You need to have the pass:a,q[{ks_permission}] permission on the KubeSphere platform. For more information, refer to link:../../01-users/[Users] and link:../../02-platform-roles/[Platform Roles].
+
+* If the platform role you want to delete has already been assigned to users, you need to delete the users or modify their roles.
+
+
+== Steps
 
 include::../../../_custom/platformManagement/platformManagement-oper-logIn.adoc[]
 +
-. 点击pass:a,q[{ks_menu}]。
-. 在左侧导航栏选择**平台角色**。
-. 在需要删除的平台角色右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**删除**。
-. 在**删除角色**对话框点击**确定**。
+. Click pass:a,q[{ks_menu}].
+. In the left navigation pane, select **Platform Roles**.
+. On the right side of the platform role you want to delete, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], and then select **Delete** from the dropdown list.
+. In the **Delete Role** dialog box, click **OK**.

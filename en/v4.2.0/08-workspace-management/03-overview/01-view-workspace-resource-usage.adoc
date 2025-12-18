@@ -1,19 +1,16 @@
 ---
-title: "查看资源用量"
-keywords: "Kubernetes, {ks_product}, 企业空间管理, 概览, 查看企业空间资源用量"
-description: "介绍如何查看企业空间资源用量。"
+title: "View Resource Usage"
+keywords: "Kubernetes, {ks_product}, Workspace Management, Overview, View Workspace Resource Usage"
+description: "Describes how to view workspace resource usage."
 weight: 01
 ---
 
-:ks_permission: **企业空间设置查看**
-:ks_navigation: **概览 > 资源用量**
+:ks_permission: **Workspace Settings View**
+:ks_navigation: **Overview > Resource Usage**
 
+This section describes how to view workspace resource usage.
 
-本节介绍如何查看企业空间资源用量。
-
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../
 
@@ -21,9 +18,7 @@ include::../../../_custom/workspaceManagement/workspaceManagement-prer-requiredP
 
 :relfileprefix: ./
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -31,21 +26,21 @@ include::../../../_custom/workspaceManagement/workspaceManagement-oper-openWorks
 
 include::../../../../_ks_components/oper-navigate.adoc[]
 +
-查看企业空间角色、企业空间成员的数量。
+View the number of workspace roles and workspace members.
 
 // ====
-// * **概览**页面的**资源用量**页签提供以下信息：
+// * The **Resource Usage** tab on the **Overview** page provides the following information:
 // +
 // --
 // [%header,cols="1a,4a"]
 // |===
-// |参数 |描述
+// |Parameter |Description
 
-// |物理资源
-// |企业空间在指定集群中的 CPU 和内存使用情况。
+// |Physical Resources
+// |CPU and memory usage of the workspace in the specified cluster.
 
-// |应用资源
-// |企业空间在指定集群中创建的部署、有状态副本集、守护进程集、任务、定时任务和持久卷声明的数量。
+// |Application Resources
+// |The number of Deployments, StatefulSets, DaemonSets, Jobs, CronJobs, and PersistentVolumeClaims created by the workspace in the specified cluster.
 // |===
 // --
 
@@ -55,5 +50,5 @@ include::../../../../_ks_components/oper-navigate.adoc[]
 
 // include::../../../../_ks_components/oper-refreshData.adoc[]
 
-// * 在右上角点击**集群**下拉列表可查看特定集群中的数据。
+// * Click the **Cluster** dropdown in the upper right corner to view data for a specific cluster.
 // ====

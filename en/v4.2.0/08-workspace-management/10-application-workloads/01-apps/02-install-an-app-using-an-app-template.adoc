@@ -1,28 +1,28 @@
 ---
-title: "从应用模板安装应用"
-keywords: "Kubernetes, {ks_product}, 项目管理, 应用, 从应用模板安装应用"
-description: "介绍如何从应用模板安装应用。"
+title: "Install an App from an App Template"
+keywords: "Kubernetes, {ks_product}, Project Management, App, Install an App from an App Template"
+description: "Describes how to install an app from an app template."
 weight: 02
 ---
 
 
-:ks_permission: **应用实例创建**
-:ks_navigation: **应用负载 > 应用**
+:ks_permission: **App Instance Creation**
+:ks_navigation: **Application Workloads > Apps**
 
 
-本节介绍如何从企业空间或第三方应用仓库中的应用模板安装应用。
+This section describes how to install an app from an app template in a workspace or a third-party app repository.
 
 //note
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-若要使用企业空间的应用模板，需要安装并启用“KubeSphere 应用商店管理”扩展组件。安装后，企业空间的**应用管理**菜单下将显示**应用模板**选项。然后由具有相关权限的企业空间成员创建企业空间的应用模板。
+To use app templates in a workspace, you need to install and enable the "KubeSphere App Store Management" extension. After installation, the **App Templates** option will appear under the **App Management** menu of the workspace. Then workspace members with relevant permissions can create app templates for the workspace.
 
 |===
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -31,7 +31,7 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -49,13 +49,13 @@ include::../../../../../_ks_components/oper-clickCreate.adoc[]
 
 +
 
-. 在**创建应用**对话框点击**从应用模板**。
+. In the **Create App** dialog box, click **From App Template**.
 
-. 在**应用模板**页面，点击**当前企业空间**下拉列表，选择**当前企业空间**或一个应用仓库。
+. On the **App Template** page, click the **Current Workspace** drop-down list and select **Current Workspace** or an app repository.
 
-. 点击需要使用的应用模板，然后点击**安装**。
+. Click the app template you want to use, and then click **Install**.
 
-. 选择应用的安装位置，然后点击**确定**。
+. Select the installation location for the app, and then click **OK**.
 
 +
 
@@ -65,11 +65,11 @@ include::../../../../_custom/projectManagement/apps/apps-oper-installApp.adoc[]
 // Note
 include::../../../../../_ks_components/admonitions/note.adoc[]
 
-应用模板和应用仓库由具有相关权限的企业空间成员创建。
+App templates and app repositories are created by workspace members with relevant permissions.
 
-有关应用功能参数的更多信息，请联系应用的提供方。
+For more information about app feature parameters, please contact the app provider.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]
 
-应用创建完成后将显示在所属项目的应用列表中。
+After the app is created, it will appear in the app list of the project it belongs to.
 --

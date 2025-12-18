@@ -1,60 +1,59 @@
 ---
-title: "卸载 Kubernetes 和 KubeSphere "
-keywords: "Kubernetes, {ks_product}, 卸载 Kubernetes 和 KubeSphere "
-description: "介绍如何卸载 Kubernetes 和 KubeSphere。"
+title: "Uninstalling Kubernetes and KubeSphere"
+keywords: "Kubernetes, {ks_product}, Uninstalling Kubernetes and KubeSphere"
+description: "Describes how to uninstall Kubernetes and KubeSphere."
 weight: 02
 ---
 
-
-本节介绍如何卸载 Kubernetes 和 KubeSphere。
+This section describes how to uninstall Kubernetes and KubeSphere.
 
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-本节介绍的 Kubernetes 卸载方式仅适用于 Kubernetes 通过 KubeKey 安装的场景。如果您的 Kubernetes 不是通过 KubeKey 安装，请参阅 link:https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-reset/[Kubernetes 官方文档]卸载 Kubernetes。
+The Kubernetes uninstallation method described in this section is only applicable to scenarios where Kubernetes was installed via KubeKey. If your Kubernetes was not installed via KubeKey, please refer to the link:https://kubernetes.io/zh/docs/reference/setup-tools/kubeadm/kubeadm-reset/[Kubernetes official documentation] to uninstall Kubernetes.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 
 [.admon.warning,cols="a"]
 |===
-|警告
+|Warning
 
 |
-* 此操作将导致 KubeSphere 集群业务中断，并且无法撤销，请谨慎执行此操作。
+* This operation will cause KubeSphere cluster business interruption and cannot be undone. Please perform this operation with caution.
 
 * {empty}
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-prer-backUpData.adoc[]
 |===
 
 
-== 若 KubeSphere 为在线安装
+== If KubeSphere was installed online
 
-若 KubeSphere 为link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[在线安装]，请按照以下步骤卸载 Kubernetes 和 KubeSphere。
+If KubeSphere was link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[installed online], please follow the steps below to uninstall Kubernetes and KubeSphere.
 
-=== 准备工作
+=== Prerequisites
 
-您需要获取安装配置文件 **config-sample.yaml** 并将其传输到用于执行本节操作的集群节点。
+You need to obtain the installation configuration file **config-sample.yaml** and transfer it to the cluster node used to perform the operations in this section.
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-如果您无法获取安装配置文件 **config-sample.yaml**，您需要参阅link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[在线安装 KubeSphere] 重新创建 **config-sample.yaml** 文件。重新创建该文件时，请务必确保文件中的集群信息与集群的当前实际情况一致。否则，卸载过程可能会出现错误。
+If you cannot obtain the installation configuration file **config-sample.yaml**, you need to refer to link:../../02-install-kubesphere/01-online-install-kubernetes-and-kubesphere/[Online Installation of KubeSphere] to recreate the **config-sample.yaml** file. When recreating this file, be sure that the cluster information in the file matches the actual current state of the cluster. Otherwise, errors may occur during the uninstallation process.
 |===
 
-=== 操作步骤
+=== Steps
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-downloadKubekey.adoc[]
-// https://get-kk.kubesphere.io 不加参数。是在线版默认使用的 kubekey v3.1.11
-// 离线版需要加参数：curl -sfL https://get-kk.kubesphere.io | VERSION=latest sh -
+// https://get-kk.kubesphere.io No parameters. This is the kubekey v3.1.11 used by default for the online version.
+// The offline version requires parameters: curl -sfL https://get-kk.kubesphere.io | VERSION=latest sh -
 
 +
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-transferConfig.adoc[]
 
 +
 
-. 执行以下命令开始卸载 KubeSphere：
+. Execute the following command to start uninstalling KubeSphere:
 +
 --
 // Bash
@@ -64,7 +63,7 @@ include::../../../../_ks_components/code/bash.adoc[]
 
 include::../../../../_ks_components/code/codeEnd.adoc[]
 
-如果显示如下信息，则表明卸载成功：
+If the following information is displayed, it indicates successful uninstallation:
 
 // Bash
 include::../../../../_ks_components/code/bash.adoc[]
@@ -75,31 +74,31 @@ include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
 
-== 若 KubeSphere 为离线安装
+== If KubeSphere was installed offline
 
-若 KubeSphere 使用 Web Installer link:../../02-install-kubesphere/02-offline-install-kubernetes-and-kubesphere/[离线安装]，请按照以下步骤卸载 Kubernetes 和 KubeSphere。
+If KubeSphere was link:../../02-install-kubesphere/02-offline-install-kubernetes-and-kubesphere/[installed offline] using the Web Installer, please follow the steps below to uninstall Kubernetes and KubeSphere.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|不支持单独卸载 Kubesphere。
+|Uninstalling Kubesphere alone is not supported.
 |===
 
 
-=== 方法一：初始化
+=== Method 1: Initialize
 
-在 Web Installer 页面点击**初始化**按钮卸载 Kubernetes 和 KubeSphere。
+On the Web Installer page, click the **Initialize** button to uninstall Kubernetes and KubeSphere.
 
-初始化任务完成后，会重新回到开始安装页面。
+After the initialization task is completed, you will return to the start installation page.
 
-=== 方法二：执行卸载命令
+=== Method 2: Execute the uninstall command
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-getInfoForOfflineInstall.adoc[]
 
-**三、卸载 Kubernetes 和 KubeSphere**
+**III. Uninstall Kubernetes and KubeSphere**
 
-. 使用 `kkv4-inventory.yaml` 和 `kkv4-config.json` 执行卸载命令。
+. Use `kkv4-inventory.yaml` and `kkv4-config.json` to execute the uninstall command.
 +
 --
 [source,bash]
@@ -107,9 +106,9 @@ include::../../../_custom/installationAndUpgrade/installationAndUpgrade-oper-get
 ./kk delete cluster -i kkv4-inventory.yaml -c kkv4-config.json --workdir=$(pwd)/operator
 ----
 
-如果显示如下信息，则表明卸载成功。
+If the following information is displayed, it indicates successful uninstallation.
 
-回显示例：
+Example output:
 
 // Bash
 include::../../../../_ks_components/code/bash.adoc[]
@@ -119,7 +118,7 @@ include::../../../../_ks_components/code/bash.adoc[]
 include::../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 命令成功执行后，Web Installer 页面并不会显示集群已卸载。继续执行以下命令以使 Web Installer 页面恢复到开始安装页面：
+. After the command is successfully executed, the Web Installer page will not show that the cluster has been uninstalled. Continue to execute the following command to restore the Web Installer page to the start installation page:
 +
 [source,bash]
 ----

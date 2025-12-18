@@ -1,17 +1,15 @@
 ---
-title: "阻止和允许容器组调度"
-keywords: "Kubernetes, {ks_product}, 集群管理, 节点, 集群节点, 阻止和允许容器组调度"
-description: "介绍如何阻止和允许容器组调度。"
+title: "Block and Allow Pod Scheduling"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Node, Cluster Node, Block and Allow Pod Scheduling"
+description: "Describes how to block and allow pod scheduling."
 weight: 03
 ---
 
-:ks_permission: **节点管理**
+:ks_permission: **Node Management**
 
+This section describes how to block and allow pods from being scheduled to a node.
 
-本节介绍如何阻止和允许容器组调度到节点。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../
 
@@ -19,7 +17,7 @@ include::../../../_custom/clusterManagement/clusterManagement-prer-requiredPermi
 
 :relfileprefix: ./
 
-== 操作步骤
+== Steps
 
 include::../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -29,13 +27,13 @@ include::../../../_custom/clusterManagement/nodes/nodes-oper-openListPage_new.ad
 
 +
 
-. 在需要操作的节点右侧点击image:/images/ks-qkcp/zh/icons/more.svg["more",18,18]，然后在下拉列表中选择**停止调度**。操作完成后节点状态将变为**无法调度**。
+. Click image:/images/ks-qkcp/zh/icons/more.svg["more",18,18] on the right side of the node you want to operate on, then select **Stop Scheduling** from the drop-down list. After the operation is complete, the node status will change to **Unschedulable**.
 
-. 在状态为**无法调度**的节点右侧点击image:/images/ks-qkcp/zh/icons/more.svg["more",18,18]，然后在下拉列表中选择**启用调度**可以允许容器组调度到该节点。
+. Click image:/images/ks-qkcp/zh/icons/more.svg["more",18,18] on the right side of a node with the status **Unschedulable**, then select **Enable Scheduling** from the drop-down list to allow pods to be scheduled to this node.
 
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-节点状态被设置为**无法调度**后，新创建的容器组将不再调度到该节点，节点上原本运行的容器组不受影响。
+After a node's status is set to **Unschedulable**, newly created pods will no longer be scheduled to this node. The pods originally running on the node are not affected.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]

@@ -1,58 +1,58 @@
 ---
-title: "平台介绍"
-keywords: "Kubernetes, KubeSphere, 平台, 模块"
-description: "介绍 KubeSphere Web 控制台的各个模块及功能。"
+title: "Platform Introduction"
+keywords: "Kubernetes, KubeSphere, Platform, Modules"
+description: "Introduces the modules and features of the KubeSphere web console."
 weight: 01
 ---
 
-KubeSphere 采用细粒度权限控制机制。根据登录用户的角色不同，KubeSphere Web 控制台也显示得有所不同。
+KubeSphere employs a fine-grained access control mechanism. The KubeSphere web console displays differently depending on the role of the logged-in user.
 
-本节以具有 platform-admin 角色的用户视角，介绍 KubeSphere Web 控制台的模块及功能。
+This section introduces the modules and features of the KubeSphere web console from the perspective of a user with the `platform-admin` role.
 
-image:/images/ks-qkcp/zh/v4.2.0/console.png[console,100%]
+image:/images/ks-qkcp/en/v4.2.0/console.png[console,100%]
 
 [%header,cols="1a,7a"]
 |===
-|模块 |功能
+|Module |Function
 
-|顶部导航栏
-|顶部导航栏默认展示集群和企业空间的管理入口。您也可以在组件坞中自定义组件入口，将组件添加至顶部导航栏进行快捷访问。
+|Top Navigation Bar
+|The top navigation bar displays the management entries for clusters and workspaces by default. You can also customize component entries in the Component Dock to add components to the top navigation bar for quick access.
 
-|组件坞
-|组件坞是扩展中心、平台设置、权限管理、应用商店、各个扩展组件、以及工具箱的全局访问入口。
+|Component Dock
+|The Component Dock is the global access point for the Extensions Center, Platform Settings, Access Control, App Store, various extensions, and the Toolbox.
 
-|快捷访问栏
-|顶部导航栏下方展示已添加到link:../03-navigation-and-access/03-quick-access/[快捷访问]的集群和企业空间。点击image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18]展开快捷访问栏。
+|Quick Access Bar
+|Below the top navigation bar, the clusters and workspaces added to the link:../03-navigation-and-access/03-quick-access/[Quick Access] are displayed. Click image:/images/ks-qkcp/en/icons/chevron-down.svg[chevron-down,18,18] to expand the Quick Access Bar.
 
-// |扩展市场
-// |扩展组件的商店，支持安装、卸载、配置、升级扩展组件等。
+// |KubeSphere Marketplace
+// |The store for extensions, supporting operations like installing, uninstalling, configuring, and upgrading extensions.
 
-// |应用商店
-// |应用商店提供了基于 Helm Chart 的应用模板，支持搜索、安装应用到某一项目。
+// |App Store
+// |The App Store provides application templates based on Helm Charts, supporting searching for and installing applications into a specific project.
 
-|工作台
+|Workspace
 |
-登录后进入的页面即为工作台，点击左上角的 logo 可返回到工作台页面。
+The page you land on after logging in is the Workspace. Click the logo in the top-left corner to return to the Workspace page.
 
-* **集群管理**：从基础设施视角管理资源，支持管理集群资源、添加移除成员集群等操作。
+* **Cluster Management**: Manages resources from an infrastructure perspective, supporting operations like managing cluster resources, adding/removing member clusters, etc.
 
-* **企业空间管理**：提供跨集群共享资源的能力，支持创建企业空间、管理企业空间和项目资源、删除企业空间等操作。
+* **Workspace Management**: Provides the capability to share resources across clusters, supporting operations like creating workspaces, managing workspace and project resources, deleting workspaces, etc.
 
-* **用户和角色管理**：创建用户/平台角色、编辑信息、启用和禁用用户、修改用户角色、编辑平台角色权限等。
+* **User and Role Management**: Create users/platform roles, edit information, enable/disable users, modify user roles, edit platform role permissions, etc.
 
-* **扩展中心**：管理扩展组件，如安装、卸载、配置、禁用、升级扩展组件等。
+* **Extensions Center**: Manage extensions, such as installing, uninstalling, configuring, disabling, and upgrading extensions.
 
-* **快捷访问**：支持对集群和企业空间的快速访问。
+* **Quick Access**: Supports quick access to clusters and workspaces.
 
-// |扩展组件
-// |平台级、多集群和多租户级扩展组件的全局访问入口，支持快捷访问已安装的扩展组件。
+// |Extensions
+// |Global access point for platform-level, multi-cluster, and multi-tenant extensions, supporting quick access to installed extensions.
 
-// |平台设置
-// |查看并自定义平台信息，管理许可证。
+// |Platform Settings
+// |View and customize platform information, manage licenses.
 |===
 
 include::../../../_ks_components/admonitions/note.adoc[]
 
-关于各个功能的详细介绍，请参照对应的管理指南。
+For detailed introductions to each feature, please refer to the corresponding management guides.
 
 include::../../../_ks_components/admonitions/admonEnd.adoc[]

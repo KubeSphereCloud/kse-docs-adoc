@@ -1,41 +1,41 @@
 ---
-title: "平台管理"
-keywords: "Kubernetes, {ks_product}, 平台管理"
-description: "介绍 KubeSphere 各模块的功能，以及如何对该平台进行设置。"
+title: "Platform Management"
+keywords: "Kubernetes, {ks_product}, Platform Management"
+description: "Introduces the functions of each module in KubeSphere and how to configure the platform."
 weight: 04
 icon: "/images/docs/common/docs.svg"
 layout: "second"
 ---
 
-本节简要介绍 KubeSphere 各模块，以及平台设置、许可证管理等功能，帮助您快速建立对 KubeSphere 平台的整体认知。
+This section briefly introduces the modules of KubeSphere, as well as features like platform settings and license management, helping you quickly build an overall understanding of the KubeSphere platform.
 
 ifeval::["{file_output_type}" == "pdf"]
-== 产品版本
+== Product Version
 
-本文档适用于 KubeSphere v4.2.0 版本。
+This document applies to KubeSphere v4.2.0.
 
-== 读者对象
+== Target Audience
 
-本文档主要适用于以下读者：
+This document is primarily intended for the following readers:
 
-* KubeSphere 用户
+* KubeSphere Users
 
-* 交付工程师
+* Delivery Engineers
 
-* 运维工程师
+* Operations Engineers
 
-* 售后工程师
+* After-sales Engineers
 
 
-== 修订记录
+== Revision History
 
 [%header,cols="1a,1a,3a"]
 |===
-|文档版本 |发布日期 |修改说明
+|Document Version |Release Date |Change Description
 
 |01
 |{pdf_releaseDate}
-|第一次正式发布。
+|First official release.
 
 |===
 endif::[]

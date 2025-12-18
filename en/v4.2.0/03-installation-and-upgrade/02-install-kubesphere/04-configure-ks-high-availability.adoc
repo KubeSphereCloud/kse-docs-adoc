@@ -1,39 +1,39 @@
 ---
-title: "配置 KubeSphere 高可用性"
-keywords: "Kubernetes, {ks_product}, 安装, 准备, 高可用"
-description: "介绍如何为 KubeSphere 配置高可用性。"
+title: "Configuring KubeSphere High Availability"
+keywords: "Kubernetes, {ks_product}, Installation, Preparation, High Availability"
+description: "Describes how to configure high availability for KubeSphere."
 weight: 04
 ---
 
 
-本节介绍如何配置 KubeSphere 的高可用性。
+This section describes how to configure high availability for KubeSphere.
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|KubeSphere 的高可用性建立在 Kubernetes 控制平面节点高可用的基础上，因此需先确保 Kubernetes 为高可用部署。
+|KubeSphere's high availability is built upon the high availability of the Kubernetes control plane nodes. Therefore, you must first ensure that Kubernetes is deployed in a high-availability configuration.
 
 |===
 
-== 1. 高可用架构概述
+== 1. High Availability Architecture Overview
 
-KubeSphere 支持高可用部署，可通过 `ha.enabled` 开启。
+KubeSphere supports high-availability deployment, which can be enabled via `ha.enabled`.
 
-在高可用模式下，Redis 支持两种部署方式：
+In high-availability mode, Redis supports two deployment modes:
 
-. Redis 单实例模式
-. Redis 高可用模式 (Redis HA)
+. Redis Single-Instance Mode
+. Redis High-Availability Mode (Redis HA)
 
-== 2. 版本兼容性
+== 2. Version Compatibility
 
-KubeSphere 高可用配置适用于 KubeSphere v4.1.2 及之后更新的版本。
+The KubeSphere high availability configuration is applicable to KubeSphere v4.1.2 and later versions.
 
-== 3. KubeSphere 高可用配置
+== 3. KubeSphere High Availability Configuration
 
-=== 3.1 启用高可用模式
+=== 3.1 Enabling High Availability Mode
 
-创建 `values.yaml` 文件，添加如下配置。
+Create a `values.yaml` file and add the following configuration.
 
 [source,yaml]
 ----
@@ -41,13 +41,13 @@ ha:
   enabled: true
 ----
 
-== 4. Redis 配置
+== 4. Redis Configuration
 
-根据需求选择 Redis 单实例模式或 Redis 高可用模式，在上一步创建的 `values.yaml` 文件中继续添加对应的配置。
+Based on your requirements, choose either Redis Single-Instance Mode or Redis High-Availability Mode, and continue adding the corresponding configuration to the `values.yaml` file created in the previous step.
 
-=== 4.1 Redis 单实例模式
+=== 4.1 Redis Single-Instance Mode
 
-适用于小型集群，配置简单，资源消耗较少。
+Suitable for small clusters, with simple configuration and lower resource consumption.
 
 [source,yaml]
 ----
@@ -63,9 +63,9 @@ redis:
     size: 2Gi
 ----
 
-=== 4.2 Redis 高可用模式
+=== 4.2 Redis High-Availability Mode
 
-适用于生产环境，提供完整的高可用性。
+Suitable for production environments, providing full high availability.
 
 [source,yaml]
 ----
@@ -82,20 +82,20 @@ redisHA:
     size: 2Gi
 ----
 
-=== 4.3 Redis HA 高级配置
+=== 4.3 Redis HA Advanced Configuration
 
 [source,yaml]
 ----
 redisHA:
   enabled: true
-  # Redis 节点配置
+  # Redis Node Configuration
   redis:
     port: 6379
-  # 持久化配置
+  # Persistence Configuration
   persistentVolume:
     enabled: true
     size: 2Gi
-  # 节点亲和性配置
+  # Node Affinity Configuration
   tolerations:
     - key: node-role.kubernetes.io/master
       effect: NoSchedule
@@ -103,7 +103,7 @@ redisHA:
       effect: NoSchedule
     - key: CriticalAddonsOnly
       operator: Exists
-  # 高可用配置
+  # High Availability Configuration
   hardAntiAffinity: false
   additionalAffinities:
     nodeAffinity:
@@ -115,7 +115,7 @@ redisHA:
                 operator: In
                 values:
                   - ""
-  # HAProxy 配置
+  # HAProxy Configuration
   haproxy:
     servicePort: 6379
     containerPort: 6379
@@ -125,76 +125,76 @@ redisHA:
       pullPolicy: IfNotPresent
 ----
 
-== 5. 高可用部署
+== 5. High Availability Deployment
 
-安装或升级 KubeSphere 时，请在安装或升级命令后添加 `-f values.yaml`。
+When installing or upgrading KubeSphere, please add `-f values.yaml` to the installation or upgrade command.
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|以下命令仅为示例。请在实际的安装或升级命令后添加 `-f values.yaml`。
+|The following commands are examples only. Please add `-f values.yaml` to your actual installation or upgrade command.
 
 |===
 
 // KubeSphere
 // [source,bash]
 // ----
-// # 安装
+// # Installation
 // helm upgrade --install -n kubesphere-system --create-namespace ks-core https://charts.kubesphere.io/main/ks-core-1.1.4.tgz -f values.yaml --debug --wait
 
-// # 升级
+// # Upgrade
 // helm upgrade -n kubesphere-system ks-core https://charts.kubesphere.io/main/ks-core-1.1.4.tgz -f values.yaml --debug --wait
 // ----
 
 // kse
 [source,bash]
 ----
-# 安装
+# Installation
 helm install -n kubesphere-system --create-namespace ks-core oci://hub.kubesphere.com.cn/kse/ks-core --version 1.1.0 -f values.yaml
 
-# 升级
+# Upgrade
 helm upgrade -n kubesphere-system ks-core oci://hub.kubesphere.com.cn/kse/ks-core --version 1.1.0 -f values.yaml
 ----
 
 
-== 6. 配置说明
+== 6. Configuration Description
 
-=== 6.1 Redis 单实例模式
-- 适用于小型集群
-- 使用单实例 Redis
-- 支持基本的故障转移
-- 配置简单，资源消耗较少
+=== 6.1 Redis Single-Instance Mode
+- Suitable for small clusters
+- Uses a single Redis instance
+- Supports basic failover
+- Simple configuration, lower resource consumption
 
-=== 6.2 Redis 高可用模式
-- 适用于生产环境
-- 使用 Redis 集群
-- 提供完整的高可用性
-- 支持自动故障转移
-- 数据持久化
-- 负载均衡
+=== 6.2 Redis High-Availability Mode
+- Suitable for production environments
+- Uses a Redis cluster
+- Provides full high availability
+- Supports automatic failover
+- Data persistence
+- Load balancing
 
-== 7. 可选配置
+== 7. Optional Configuration
 
-=== JWT 签名密钥配置
+=== JWT Signing Key Configuration
 
-在高可用环境中，为了确保所有副本使用相同的 JWT 签名密钥，可以配置自定义的 SignKey。
+In a high-availability environment, to ensure all replicas use the same JWT signing key, you can configure a custom SignKey.
 
-. 生成 RSA 私钥。
+. Generate an RSA private key.
 +
 [source,bash]
 ----
 openssl genrsa -out private_key.pem 2048
 ----
 
-. 查看 Base64 编码后的密钥内容。
+. View the Base64-encoded key content.
 +
 [source,bash]
 ----
 cat private_key.pem | base64 -w 0
 ----
 
-. 编辑 KubeSphere 配置。
+. Edit the KubeSphere configuration.
 +
 --
 [source,bash]
@@ -202,19 +202,19 @@ cat private_key.pem | base64 -w 0
 kubectl -n kubesphere-system edit cm kubesphere-config
 ----
 
-在 `authentication.issuer` 下添加或替换如下字段：
+Under `authentication.issuer`, add or replace the following field:
 
 [source,yaml]
 ----
-signKeyData: <Base64 编码的私钥内容>
+signKeyData: <Base64-encoded private key content>
 ----
 --
 
-. 重启 KubeSphere 组件。
+. Restart KubeSphere components.
 +
 [source,bash]
 ----
 kubectl -n kubesphere-system rollout restart deploy ks-apiserver ks-controller-manager
 ----
 
-. 验证配置。浏览器访问 `http://<ks-console-address>/oauth/keys`，访问多次，检查每个副本数据是否一致。
+. Verify the configuration. Access `http://<ks-console-address>/oauth/keys` in your browser multiple times and check if the data from each replica is consistent.

@@ -1,69 +1,69 @@
 ---
-title: "设置企业微信通知"
-keywords: "Kubernetes, {ks_product}, 平台设置, 通知管理, 通知设置, 设置企业微信通知"
-description: "介绍如何设置企业微信通知。"
+title: "Configure WeCom Notification"
+keywords: "Kubernetes, {ks_product}, Platform Settings, Notification Management, Notification Settings, Configure WeCom Notification"
+description: "Describes how to configure WeCom notification."
 weight: 04
 ---
 
 
-// :ks_navigation: **通知 > 通知渠道**
+// :ks_navigation: **Notification > Notification Channels**
 
 
-本节介绍如何设置企业微信通知。配置后，可通过企业微信会话或群机器人接收通知消息。
+This section describes how to configure WeCom notification. After configuration, you can receive notification messages via WeCom sessions or group bots.
 
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 通知**扩展组件。
+* The **WizTelemetry Notification** extension must be installed and enabled on the KubeSphere platform.
 
-* 您需要提前从企业微信平台获取应用或群机器人的访问参数。有关更多信息，请参阅link:https://developer.work.weixin.qq.com/document/path/90664[企业微信开发者文档]。
+* You need to obtain the access parameters for the application or group bot from the WeCom platform in advance. For more information, refer to the link:https://developer.work.weixin.qq.com/document/path/90664[WeCom Developer Documentation].
 
 
-== 操作步骤
+== Steps
 
-. 登录 KubeSphere Web 控制台。
+. Log in to the KubeSphere web console.
 
-. 在页面右上角点击当前用户名，然后在下拉列表中选择**通知设置**。
+. In the upper right corner of the page, click the current username, and then select **Notification Settings** from the dropdown list.
 
-. 在**通知设置**页面的**企业微信**页签，设置企业微信通知参数，然后点击**确定**。
+. On the **Notification Settings** page, under the **WeCom** tab, set the WeCom notification parameters, and then click **OK**.
 
 +
 ====
-// * 服务器设置
+// * Server Settings
 // +
 // --
 // [%header,cols="1a,4a"]
 // |===
-// |参数 |描述
+// |Parameter |Description
 
 // |Corp ID
-// |您的企业在企业微信上的 Corp ID。
+// |The Corp ID of your enterprise on WeCom.
 
 // |Agent ID
-// |企业微信应用的 Agent ID。
+// |The Agent ID of the WeCom application.
 
 // |Secret
-// |企业微信应用的 Secret。
+// |The Secret of the WeCom application.
 // |===
 // --
 
-* 会话设置 > 接收设置
+* Session Settings > Receiving Settings
 +
 --
-设置接收通知的 User ID、Department ID 或 Tag ID。点击**添加**可设置多个 ID。
+Set the User ID, Department ID, or Tag ID to receive notifications. Click **Add** to set multiple IDs.
 --
 
-* 群机器人设置 > 群机器人设置
+* Group Bot Settings > Group Bot Settings
 +
 --
-Webhook URL: 企业微信群机器人的 webhook 地址。
+Webhook URL: The webhook address of the WeCom group bot.
 --
 
-* 群机器人设置 > 接收设置
+* Group Bot Settings > Receiving Settings
 +
 --
-设置接收通知的 User ID 或 用户手机号。点击**添加**可设置多个 ID 和手机号。
+Set the User ID or user mobile phone number to receive notifications. Click **Add** to set multiple IDs and phone numbers.
 --
 
 include::../../../../../_custom/platformManagement/platformSettings/notificationChannels/notificationChannels-para-notificationConditions_new.adoc[]
@@ -71,4 +71,4 @@ include::../../../../../_custom/platformManagement/platformSettings/notification
 include::../../../../../_custom/platformManagement/platformSettings/notificationChannels/notificationChannels-para-sendTestInformation.adoc[]
 ====
 
-. 点击上方的**通知已禁用**开关，启用企业微信通知。
+. Click the **Notification Disabled** switch above to enable WeCom notification.
