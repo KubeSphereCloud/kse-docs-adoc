@@ -1,23 +1,21 @@
 ---
-title: "查看服务拓扑"
-keywords: "Kubernetes, {ks_product}, BPFConductor, 服务拓扑, 可观测"
-description: "介绍如何查看服务拓扑。"
+title: "View Service Topology"
+keywords: "Kubernetes, {ks_product}, BPFConductor, Service Topology, Observability"
+description: "Describes how to view service topology."
 weight: 01
 ---
 
-:ks_navigation: **网络 > 服务拓扑**
+:ks_navigation: **Network > Service Topology**
 
+This section describes how to view the service topology diagram and the HTTP traffic list of services.
 
-本节介绍如何查看服务拓扑图和服务的 HTTP 流量列表。
+== Prerequisites
 
+* You need to have the **platform-admin** role on the KubeSphere platform. For more information, refer to link:../../../../../05-users-and-roles/01-users/[Users] and link:../../../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
-== 前提条件
+* The **WizTelemetry Network Observability** extension needs to be installed and enabled on the KubeSphere platform.
 
-* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
-
-* KubeSphere 平台需要安装并启用 **WizTelemetry 网络可观测** 扩展组件。
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
@@ -29,64 +27,64 @@ include::../../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]
 
-. 在页面上方的下拉列表中选择集群、项目，查看特定集群特定项目中的服务拓扑图和服务的 HTTP 流量数据。
+. In the dropdown lists at the top of the page, select the cluster and project to view the service topology diagram and HTTP traffic data for services within that specific cluster and project.
 +
 --
 // include::../../../../../../_ks_components/oper-refreshListData.adoc[]
-* 在右上角点击image:/images/ks-qkcp/zh/icons/refresh-light.svg[refresh,18,18]可刷新页面信息。
+* Click image:/images/ks-qkcp/zh/icons/refresh-light.svg[refresh,18,18] in the upper right corner to refresh the page information.
 
 // include::../../../../../../_ks_components/oper-selectTimeRange.adoc[]
-* 在右上角点击image:/images/ks-qkcp/zh/icons/clock-2.svg[clock-2,18,18]可设置数据的时间范围。默认为**最近 30 分钟**。
+* Click image:/images/ks-qkcp/zh/icons/clock-2.svg[clock-2,18,18] in the upper right corner to set the time range for the data. The default is **Last 30 minutes**.
 --
 
-. **服务拓扑图**展示了各个拓扑节点的资源类型（容器组、集群节点或 IP 地址）、资源名称，以及拓扑节点之间的依赖关系。您还可通过以下操作获取更多信息。
+. The **Service Topology Diagram** displays the resource type (pod, cluster node, or IP address), resource name of each topology node, and the dependencies between topology nodes. You can also perform the following operations to get more information.
 +
 --
-* 将鼠标悬停在拓扑节点上，查看与该拓扑节点相互调用的节点以及调用方向。
+* Hover over a topology node to view the nodes that interact with it and the direction of the calls.
 
-* 点击拓扑节点，查看该拓扑节点的资源名称、所属项目。
+* Click a topology node to view its resource name and the project it belongs to.
 
-* 将鼠标悬停在拓扑连线上，查看连线两端的拓扑节点，并且可通过image:/images/ks-qkcp/zh/icons/left-right-button.svg[left-right-button,18,18]了解调用方向。
+* Hover over a topology connection line to view the topology nodes at both ends of the line, and use image:/images/ks-qkcp/zh/icons/left-right-button.svg[left-right-button,18,18] to understand the call direction.
 
-* 点击拓扑连线或其上的image:/images/ks-qkcp/zh/icons/left-right-button.svg[left-right-button,18,18]，查看服务调用的起点、终点，RPS（每秒请求数）和请求总耗时。
+* Click a topology connection line or the image:/images/ks-qkcp/zh/icons/left-right-button.svg[left-right-button,18,18] on it to view the start point, end point, RPS (Requests Per Second), and total request duration of the service call.
 
 include::../../../../../_custom/WizTelemetry/view-topology-tools.adoc[]
 --
 
-. 在**服务的 HTTP 流量**区域，查看选定项目在指定时间范围内的服务流量数据。
+. In the **Service HTTP Traffic** area, view the service traffic data for the selected project within the specified time range.
 +
 --
 include::../../../../../../_ks_components/oper-sortAscendingDescending.adoc.adoc[]
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|客户端
-|发起 HTTP 请求的源端点，显示其资源类型和资源名称。
+|Client
+|The source endpoint initiating the HTTP request, showing its resource type and resource name.
 
-|服务器端
-|接收 HTTP 请求的目标端点，显示其资源类型和资源名称。
+|Server
+|The target endpoint receiving the HTTP request, showing its resource type and resource name.
 
-|请求路径
-|HTTP 请求的 API 路径（如 /health）。
+|Request Path
+|The API path of the HTTP request (e.g., /health).
 
-|​​每秒请求数
-|每秒 HTTP 请求的次数。
+|​​Requests Per Second
+|The number of HTTP requests per second.
 
-|错误率
-|请求失败的比例（如 0% 表示全部成功）。
+|Error Rate
+|The proportion of failed requests (e.g., 0% means all succeeded).
 
-|P99 延迟
-|指定时间范围内所有请求的 99% 分位延迟，即 99% 的请求的延迟小于或等于该数值。
+|P99 Latency
+|The 99th percentile latency of all requests within the specified time range, meaning 99% of requests had a latency less than or equal to this value.
 
-|P95 延迟
-|指定时间范围内所有请求的 95% 分位延迟，即 95% 的请求的延迟小于或等于该数值。
+|P95 Latency
+|The 95th percentile latency of all requests within the specified time range, meaning 95% of requests had a latency less than or equal to this value.
 
-|入站吞吐量
-|服务器端每秒接收的数据量。
+|Inbound Throughput
+|The amount of data received per second by the server endpoint.
 
-|出站吞吐量
-|服务器端每秒返回的数据量。
+|Outbound Throughput
+|The amount of data returned per second by the server endpoint.
 |===
 --

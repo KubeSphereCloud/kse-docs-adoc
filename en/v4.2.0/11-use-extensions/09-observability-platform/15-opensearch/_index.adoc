@@ -1,7 +1,7 @@
 ---
-title: "OpenSearch 分布式检索与分析引擎"
-keywords: "Kubernetes, {ks_product}, opensearch, 日志, 可观测"
-description: "介绍如何使用“OpenSearch 分布式检索与分析引擎”扩展组件。"
+title: "OpenSearch Distributed Search and Analytics Engine"
+keywords: "Kubernetes, {ks_product}, opensearch, logs, observability"
+description: "Describes how to use the 'OpenSearch Distributed Search and Analytics Engine' extension."
 weight: 15
 layout: "second"
 ---

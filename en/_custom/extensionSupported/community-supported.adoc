@@ -1,33 +1,18 @@
-KubeSphere 社区版支持以下扩展组件，其他扩展组件在社区版中被限制使用。具体清单如下：
+KubeSphere Community Edition supports the following extensions, while other extensions are restricted in the community edition. The specific list is as follows:
 
-* WizTelemetry 平台服务
-
-* WizTelemetry 监控
-
-* WizTelemetry 告警
-
-* WizTelemetry 通知
-
-* WizTelemetry 数据流水线
-
+* WizTelemetry Platform Service
+* WizTelemetry Monitoring
+* WizTelemetry Alerting
+* WizTelemetry Notification
+* WizTelemetry Data Pipeline
 * Metrics Server
-
-* KubeSphere 网关
-
+* KubeSphere Gateway
 * DevOps
-
 * Gatekeeper
-
 * cert-manager
-
 * NVIDIA GPU Operator
-
 * DeepSeek
-
 * Higress
-
 * ob-operator
-
 * oceanbase-dashboard
-
 * Fluid

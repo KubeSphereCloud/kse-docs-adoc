@@ -1,13 +1,13 @@
 ---
-title: "Vector 日志 ETL 方案 - 从 Kafka 到 OpenSearch"
-keywords: "Kubernetes, {ks_product}, 平台设置, 通知管理"
-description: "介绍 Vector 日志 ETL 方案。"
+title: "Vector Log ETL Solution - From Kafka to OpenSearch"
+keywords: "Kubernetes, {ks_product}, Platform Settings, Notification Management"
+description: "Introduces the Vector log ETL solution."
 weight: 13
 layout: "second"
 ---
 
-== 总体方案
+== Overall Solution
 
 image:/images/ks-qkcp/zh/v4.1/vector-solution.png[vector, 100%]
 
-请按照以下文档的步骤执行 Vector 日志 ETL 方案。
+Please follow the steps in the following documentation to execute the Vector log ETL solution.

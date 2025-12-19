@@ -1,2 +1,1 @@
-// :ks_include_id: d6ed4db86bde40cbaa6d3dbebecda452
-* 在列表上方点击搜索框并设置搜索条件，可按名称、规则组状态和规则状态搜索规则组。
+* Click the search box above the list and set search criteria to search for rule groups by name, rule group status, and rule status.

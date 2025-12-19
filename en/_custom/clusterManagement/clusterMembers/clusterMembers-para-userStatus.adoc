@@ -1,8 +1,8 @@
 // :ks_include_id: 431b5c3a6af541aa9bf2e1607c05789d
-* **活跃**：用户当前状态正常。
+* **Active**: The user's current status is normal.
 
-* **等待中**：系统正在创建用户。
+* **Pending**: The system is creating the user.
 
-* **已禁用**：用户被平台管理员禁用，无法登录 KubeSphere Web 控制台。
+* **Disabled**: The user is disabled by the platform administrator and cannot log in to the KubeSphere web console.
 
-* **限制登录**：用户在 10 分钟内连续 10 次登录失败，在 10 分钟内被禁止登录 KubeSphere Web 控制台。
+* **Login Restricted**: The user has failed to log in 10 consecutive times within 10 minutes and is prohibited from logging in to the KubeSphere web console for 10 minutes.

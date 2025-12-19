@@ -1,6 +1,6 @@
 // :ks_include_id: 6c86123b72d442d2af494a87b1b826cf
-使用定制资源定义创建的定制资源的作用域。
+The scope of a custom resource created using a Custom Resource Definition.
 
-* **Namespaced**：使用定制资源定义创建的定制资源属于某一个项目。
+* **Namespaced**: The custom resource created using the Custom Resource Definition belongs to a specific project.
 
-* **Cluster**：使用定制资源定义创建的定制资源属于整个集群。
+* **Cluster**: The custom resource created using the Custom Resource Definition belongs to the entire cluster.

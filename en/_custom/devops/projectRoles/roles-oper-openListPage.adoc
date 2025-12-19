@@ -1,1 +1,1 @@
-. 点击 **DevOps 项目角色**打开项目角色列表。
+. Click **DevOps Project Roles** to open the project role list.

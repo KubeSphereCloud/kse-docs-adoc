@@ -1,21 +1,20 @@
 ---
-title: "配置白名单"
-keywords: "Kubernetes, {ks_product}, 项目管理, 项目设置, 网络隔离, 添加白名单"
-description: "介绍如何配置和管理白名单。"
+title: "Configure Whitelist"
+keywords: "Kubernetes, {ks_product}, Project Management, Project Settings, Network Isolation, Add Whitelist"
+description: "Describes how to configure and manage whitelists."
 weight: 04
 ---
 
-:ks_permission: **项目网络隔离管理**
-:ks_navigation: **服务网络 > 项目网络隔离**
+:ks_permission: **Project Network Isolation Management**
+:ks_navigation: **Service Network > Project Network Isolation**
 
+This section describes how to configure and manage whitelists.
 
-本节介绍如何配置和管理白名单。
+When "workspace network isolation" or "project network isolation" is enabled, configuring a whitelist in the selected project allows pods in the current project to access and be accessed by other specific projects, services, network segments, or ports.
 
-在启用“企业空间网络隔离”或“项目网络隔离”的情况下，通过在选定项目中配置白名单，可允许当前项目中的容器组与其他特定的项目、服务、网段或端口相互访问。
+Before configuring a whitelist, "workspace network isolation" or "project network isolation" must be enabled. Otherwise, configuration is not possible. After a whitelist is configured, if both "workspace network isolation" and "project network isolation" are disabled, the whitelist will be cleared; if either one remains enabled, the whitelist remains effective.
 
-配置白名单前，必须启用“企业空间网络隔离”或“项目网络隔离”。否则，无法配置。配置白名单后，如果“企业空间网络隔离”或“项目网络隔离”都被禁用，白名单也会被清理；如果两者之一启用，白名单仍有效。
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 * {empty}
@@ -23,11 +22,11 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-* 项目所属的集群需要安装 **KubeSphere 网络**扩展组件。
+* The **KubeSphere Network** extension must be installed in the cluster to which the project belongs.
 
-* 配置白名单前，必须启用“企业空间网络隔离”或“项目网络隔离”。否则，无法配置。
+* Before configuring a whitelist, "workspace network isolation" or "project network isolation" must be enabled. Otherwise, configuration is not possible.
 
-== 添加白名单
+== Add Whitelist
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -41,101 +40,101 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 
-. 在**基于项目/服务的白名单**或**基于网段/端口的白名单**页签下，点击**添加**。
+. Under the **Project/Service-based Whitelist** or **Segment/Port-based Whitelist** tab, click **Add**.
 
-. 在弹出的对话框中，设置白名单条目的基本信息，然后点击**下一步**。
+. In the dialog box that appears, set the basic information for the whitelist entry, then click **Next**.
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|白名单条目的名称。名称只能包含小写字母、数字和连字符（-），必须以小写字母或数字开头和结尾，最长 253 个字符。
+|Name
+|The name of the whitelist entry. The name can only contain lowercase letters, numbers, and hyphens (-), must start and end with a lowercase letter or number, and can be up to 253 characters long.
 
-|别名
-|白名单条目的别名。不同白名单条目的别名可以相同。
+|Alias
+|The alias of the whitelist entry. Different whitelist entries can have the same alias.
 
-|描述
-|白名单条目的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|The description of the whitelist entry. The description can contain any characters and can be up to 256 characters long.
 |===
 
-. 在对话框的**白名单设置**页签，设置白名单条目的参数，然后点击**创建**。
+. In the **Whitelist Settings** tab of the dialog box, set the parameters for the whitelist entry, then click **Create**.
 +
 ====
-* 对于基于项目/服务的白名单，请设置以下参数：
+* For a project/service-based whitelist, set the following parameters:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|流量方向
-|白名单条目放行的流量方向。
+|Traffic Direction
+|The traffic direction allowed by the whitelist entry.
 
-* **出站**：从当前项目到其他项目的方向。
+* **Egress**: The direction from the current project to other projects.
 
-* **入站**：其他项目到当前项目的方向。
+* **Ingress**: The direction from other projects to the current project.
 
-|白名单类型
-|白名单条目匹配其他项目容器组的方式。
+|Whitelist Type
+|How the whitelist entry matches pods from other projects.
 
-* **项目**：当前项目中的容器组可以与指定项目中的所有容器组通信。
+* **Project**: Pods in the current project can communicate with all pods in the specified project.
 +
-您可以直接指定某一项目，或通过标签和表达式筛选项目，或指定某一企业空间。指定企业空间后，白名单将应用于所选企业空间下的所有项目。
+You can directly specify a project, or filter projects by labels and expressions, or specify a workspace. When a workspace is specified, the whitelist will apply to all projects under the selected workspace.
 
-* **服务**：当前项目中的容器组可以与指定服务的后端容器组通信。
+* **Service**: Pods in the current project can communicate with the backend pods of the specified service.
 |===
 --
 
-* 对于基于网段/端口的白名单，请设置以下参数：
+* For a segment/port-based whitelist, set the following parameters:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|流量方向
-|白名单条目放行的流量方向。
+|Traffic Direction
+|The traffic direction allowed by the whitelist entry.
 
-* **出站**：从当前项目到其他项目的方向。
+* **Egress**: The direction from the current project to other projects.
 
-* **入站**：其他项目到当前项目的方向。
+* **Ingress**: The direction from other projects to the current project.
 
-|网段
-|项目外部的网络地址和子网掩码。支持无类别域间路由（CIDR）。
+|Segment
+|The network address and subnet mask external to the project. Supports Classless Inter-Domain Routing (CIDR).
 
-* 在已添加的网段右侧点击image:/images/ks-qkcp/zh/icons/copy-light.svg[copy-light,18,18]可创建网段副本。
-* 在已添加的网段右侧点击image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18]可删除网段。
-* 点击**添加新网段**可设置多个网段。
+* Click image:/images/ks-qkcp/zh/icons/copy-light.svg[copy-light,18,18] to the right of an added segment to create a copy.
+* Click image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18] to the right of an added segment to delete it.
+* Click **Add New Segment** to set multiple segments.
 
-|端口
-|白名单条目放行的端口号。
+|Port
+|The port number allowed by the whitelist entry.
 
-* 对于出站白名单条目，此处的端口为项目外部地址的端口。
+* For an egress whitelist entry, this port refers to the port of the external address.
 
-* 对于入站白名单条目，此处的端口为当前项目容器组的端口。
+* For an ingress whitelist entry, this port refers to the port of the pods in the current project.
 
-* 在已添加的端口右侧点击image:/images/ks-qkcp/zh/icons/copy-light.svg[copy-light,18,18]可创建端口副本。
-* 在已添加的端口右侧点击image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18]可删除端口。
-* 点击**添加新端口范围**可设置多个端口范围，点击**添加新端口**可设置多个端口。
+* Click image:/images/ks-qkcp/zh/icons/copy-light.svg[copy-light,18,18] to the right of an added port to create a copy.
+* Click image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18] to the right of an added port to delete it.
+* Click **Add New Port Range** to set multiple port ranges, or click **Add New Port** to set multiple individual ports.
 |===
 --
 
-白名单条目创建完成后将显示在白名单列表中。
+After creation, the whitelist entry will be displayed in the whitelist list.
 ====
 
-== 管理白名单
+== Manage Whitelist
 
-* 在白名单列表中，点击白名单名称可查看条目详情。
+* In the whitelist list, click the whitelist name to view its details.
 
-* 在白名单列表右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **编辑信息**，可编辑白名单条目的别名和描述。
+* Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **Edit Info** to the right of a whitelist entry to edit its alias and description.
 
-* 在白名单列表右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **白名单设置**，可修改白名单条目的设置。
+* Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **Whitelist Settings** to the right of a whitelist entry to modify its settings.
 
-* 在白名单列表右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **删除**，可删除白名单条目。
+* Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **Delete** to the right of a whitelist entry to delete it.
 +
 include::../../../../../_ks_components/admonitions/warning.adoc[]
 
-删除白名单条目可能会导致当前项目中的容器组网络连接中断，请谨慎执行此操作。
+Deleting a whitelist entry may cause network connectivity interruptions for pods in the current project. Please perform this operation with caution.
 
 include::../../../../../_ks_components/admonitions/admonEnd.adoc[]

@@ -1,29 +1,29 @@
 // :ks_include_id: aaa01b3ba5d6460b9ee0d50de5a5def9
-* 基本信息
+* Basic Information
 +
 --
-设置工作负载的基本信息。
+Set basic information for the workload.
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|工作负载的名称。名称只能包含小写字母、数字和连字符（-），必须以小写字母或数字开头和结尾，最长 253 个字符。
+|Name
+|The name of the workload. The name can only contain lowercase letters, numbers, and hyphens (-), must start and end with a lowercase letter or number, and has a maximum length of 253 characters.
 
-|工作负载模板
-|预配置的工作负载模板，可直接用于创建工作负载。创建过程中，您可以根据需要进一步调整配置。
+|Workload Template
+|Pre-configured workload templates that can be used directly to create workloads. During the creation process, you can further adjust configurations as needed.
 
 ifndef::project[]
-|项目
-|将要创建资源的项目。
+|Project
+|The project in which the resource will be created.
 endif::[]
 
-|别名
-|工作负载的别名。不同工作负载的别名可以相同。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|The alias of the workload. Different workloads can have the same alias.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-), cannot start or end with a hyphen (-), and has a maximum length of 63 characters.
 
-|描述
-|工作负载的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|Descriptive information for the workload. The description can contain any characters and has a maximum length of 256 characters.
 |===
 --

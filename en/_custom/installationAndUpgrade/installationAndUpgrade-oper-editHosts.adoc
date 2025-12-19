@@ -1,5 +1,5 @@
 // :ks_include_id: bc97a1c3d087413bba734c07a3edb221
-. 登录所有集群节点，执行以下命令编辑 **/etc/hosts** 文件：
+. Log in to all cluster nodes and run the following command to edit the **/etc/hosts** file:
 +
 --
 // Bash
@@ -9,7 +9,7 @@ vi /etc/hosts
 
 include::../../../_ks_components/code/codeEnd.adoc[]
 
-在 **/etc/hosts** 文件中添加以下信息，从而为集群节点配置私有镜像服务的域名解析规则（将 <registry IP address> 替换成私有镜像服务的实际 IP 地址），然后保存文件：
+Add the following information in the **/etc/hosts** file to configure the domain name resolution rules for the private image service on the cluster nodes (replace `<registry IP address>` with the actual IP address of your private image service), and then save the file:
 
 // Bash
 include::../../../_ks_components/code/bash.adoc[]

@@ -1,101 +1,101 @@
 // :ks_include_id: b53ca408cc88447789f75df42c73bcc7
-所有企业空间成员都可以查看企业空间基本信息。其他操作所需的权限如下：
+All workspace members can view basic workspace information. The permissions required for other operations are as follows:
 
-* 项目
+* Projects
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|项目创建
-|创建项目，并成为所创建的项目的管理员。
+|Project Creation
+|Create projects and become the administrator of the created projects.
 
-|项目管理
-|创建、编辑和删除企业空间中的项目。
+|Project Management
+|Create, edit, and delete projects within the workspace.
 
-|项目查看
-|查看项目列表、查看项目中的所有资源。
+|Project Viewing
+|View the project list and view all resources within a project.
 |===
 --
 
-* DevOps 项目（需要安装 DevOps 扩展组件）
+* DevOps Projects (Requires installation of the DevOps extension)
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|DevOps 项目创建
-|创建 DevOps 项目，并成为所创建的 DevOps 项目的管理员。
+|DevOps Project Creation
+|Create DevOps projects and become the administrator of the created DevOps projects.
 
-|DevOps 项目管理
-|创建、编辑和删除企业空间中的 DevOps 项目。
+|DevOps Project Management
+|Create, edit, and delete DevOps projects within the workspace.
 
-|DevOps 项目查看
-|查看 DevOps 项目列表、查看 DevOps 项目中的所有资源。
+|DevOps Project Viewing
+|View the DevOps project list and view all resources within a DevOps project.
 |===
 --
 
-// * 应用
+// * Applications
 // +
 // --
 // [%header,cols="1a,4a"]
 // |===
-// |权限 |允许操作
+// |Permission |Allowed Operations
 
-// |应用仓库管理
-// |添加应用仓库、编辑应用仓库、使应用仓库和 Helm Chart 仓库同步、删除应用仓库。
+// |Application Repository Management
+// |Add application repositories, edit application repositories, synchronize application repositories and Helm Chart repositories, delete application repositories.
 
-// |应用仓库查看
-// |查看应用仓库列表。
+// |Application Repository Viewing
+// |View the application repository list.
 
-// |应用模板管理
-// |创建应用模板、编辑应用模板信息、使用应用模板安装应用、上传应用版本、替换应用版本、删除应用版本、将应用版本发布到应用商店、删除应用模板。
+// |Application Template Management
+// |Create application templates, edit application template information, install applications using application templates, upload application versions, replace application versions, delete application versions, publish application versions to the App Store, delete application templates.
 
-// |应用模板查看
-// |查看应用模板列表、查看应用模板详情、下载 Helm Chart 压缩包。
+// |Application Template Viewing
+// |View the application template list, view application template details, download Helm Chart archives.
 // |===
 // --
 
-* 访问控制
+* Access Control
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-// |部门管理
-// |设置部门组织结构、将用户分配到部门、移除部门成员。
+// |Department Management
+// |Set up department organizational structure, assign users to departments, remove department members.
 
-// |部门查看
-// |查看部门组织结构。
+// |Department Viewing
+// |View the department organizational structure.
 
-// |成员管理
-// |邀请用户加入企业空间、修改企业空间成员的角色、移除企业空间成员。
+// |Member Management
+// |Invite users to join the workspace, modify the roles of workspace members, remove workspace members.
 
-|成员查看
-|查看企业空间成员列表、查看企业空间成员详情。
+|Member Viewing
+|View the workspace member list, view workspace member details.
 
-// |角色管理
-// |创建企业空间角色、编辑企业空间角色信息、编辑企业空间角色权限、删除企业空间角色。
+// |Role Management
+// |Create workspace roles, edit workspace role information, edit workspace role permissions, delete workspace roles.
 
-|角色查看
-|查看企业空间角色列表、查看企业空间角色详情。
+|Role Viewing
+|View the workspace role list, view workspace role details.
 |===
 --
 
-// * 企业空间设置
+// * Workspace Settings
 // +
 // --
 // [%header,cols="1a,4a"]
 // |===
-// |权限 |允许操作
+// |Permission |Allowed Operations
 
-// |企业空间设置管理
-// |编辑企业空间信息、启用和禁用网络隔离、删除企业空间、编辑企业空间配额。
+// |Workspace Settings Management
+// |Edit workspace information, enable and disable network isolation, delete the workspace, edit workspace quotas.
 
-// |企业空间设置查看
-// |查看集群资源用量、查看项目资源用量排行、查看企业空间资源用量、查看企业空间配额。
+// |Workspace Settings Viewing
+// |View cluster resource usage, view project resource usage rankings, view workspace resource usage, view workspace quotas.
 // |===
 // --

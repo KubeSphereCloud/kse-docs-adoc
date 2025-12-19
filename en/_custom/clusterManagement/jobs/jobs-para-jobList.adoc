@@ -1,36 +1,36 @@
 // :ks_include_id: f4fbda985b234075830531d6835efefe
-* 任务列表提供以下信息：
+* The Job list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|任务的名称和描述信息。
+|Name
+|The name and description of the Job.
 
-|状态
+|Status
 |
-任务当前的状态。
+The current status of the Job.
 
-* **运行中**：任务正在运行中。
+* **Running**: The Job is currently running.
 
-* **已完成**：任务运行成功并且已完成。
+* **Completed**: The Job has run successfully and is completed.
 
-* **失败**：任务运行失败。
+* **Failed**: The Job has failed.
 
 ifndef::project[]
-|项目
-|任务所属的项目。
+|Project
+|The project to which the Job belongs.
 endif::[]
 
-|上次运行时间
-|任务上一次运行的时间。仅对**普通任务**显示。
+|Last Run Time
+|The time when the Job last ran. Displayed only for **regular Jobs**.
 
-|定时计划
-|定时任务的运行周期的 CRON 表达式。仅对**定时任务**显示。
+|Schedule
+|The CRON expression for the run cycle of the CronJob. Displayed only for **CronJobs**.
 
-|创建时间
-|定时任务的创建时间。仅对**定时任务**显示。
+|Creation Time
+|The creation time of the CronJob. Displayed only for **CronJobs**.
 |===
 --

@@ -1,7 +1,7 @@
 // :ks_include_id: fbdee05fed2d4021839cb2ec9bf19339
 ifeval::["{file_output_type}" == "html"]
-* KubeSphere 平台需要启用数据库管理平台扩展组件。
+* The KubeSphere platform needs to have the Database Management Platform extension enabled.
 endif::[]
 ifeval::["{file_output_type}" == "pdf"]
-* KubeSphere 平台需要启用数据库管理平台扩展组件。有关更多信息，请参阅《KubeSphere 平台管理指南》的“扩展组件管理”章节。
+* The KubeSphere platform needs to have the Database Management Platform extension enabled. For more information, please refer to the "Extension Management" chapter in the *KubeSphere Platform Management Guide*.
 endif::[]

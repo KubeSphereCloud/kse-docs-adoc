@@ -1,24 +1,24 @@
 ---
-title: "启用收集卷上日志"
-keywords: "Kubernetes, {ks_product}, 项目管理, 项目设置, 日志收集, 收集卷上的日志"
-description: "介绍如何启用收集卷上日志。"
+title: "Enable Collection of Logs on Volumes"
+keywords: "Kubernetes, {ks_product}, Project Management, Project Settings, Log Collection, Collect Logs on Volumes"
+description: "Introduces how to enable collection of logs on volumes."
 weight: 03
 ---
 
 
-:ks_permission: **应用负载管理**
+:ks_permission: **Application Workloads Management**
 
 ifeval::["{file_output_type}" == "html"]
-本节介绍如何在创建工作负载、服务或任务时启用收集卷上的日志。有关更多信息，请参阅link:../../../../../08-workspace-management/10-application-workloads/03-workloads/01-create-a-workload/[创建工作负载]、link:../../../../../08-workspace-management/10-application-workloads/02-services/01-create-a-service/01-create-a-stateful-or-stateless-service/[创建有状态或无状态服务]或link:../../../../../08-workspace-management/10-application-workloads/04-jobs/01-create-a-job/[创建任务]。
+This section describes how to enable the collection of logs on volumes when creating a workload, service, or job. For more information, see link:../../../../../08-workspace-management/10-application-workloads/03-workloads/01-create-a-workload/[Create a Workload], link:../../../../../08-workspace-management/10-application-workloads/02-services/01-create-a-service/01-create-a-stateful-or-stateless-service/[Create a Stateful or Stateless Service], or link:../../../../../08-workspace-management/10-application-workloads/04-jobs/01-create-a-job/[Create a Job].
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-本节介绍如何在创建工作负载、服务或任务时启用收集卷上的日志。有关更多信息，请参阅《KubeSphere 企业空间和项目管理指南》的“应用负载”章节，创建工作负载或创建任务。
+This section describes how to enable the collection of logs on volumes when creating a workload, service, or job. For more information, refer to the "Application Workloads" chapter in the *KubeSphere Workspace and Project Management Guide*, Create a Workload or Create a Job.
 endif::[]
 
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -26,27 +26,27 @@ include::../../../../../_custom/projectManagement/projectManagement-prer-require
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 日志**扩展组件，并已link:../02-enable-project-log-collection/[在项目中启用日志收集]。
+* The KubeSphere platform requires the **WizTelemetry Logging** extension to be installed and enabled, and you must have link:../02-enable-project-log-collection/[enabled log collection in the project].
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
-. 在左侧导航栏选择**应用负载 > 工作负载、服务**或**任务**。
+. In the left navigation pane, select **Application Workloads > Workloads**, **Services**, or **Jobs**.
 
-. 在工作负载页面，点击**部署**、**有状态副本集**或**守护进程集**打开工作负载列表，或在任务页面，点击**任务**或**定时任务**打开任务列表。
+. On the Workloads page, click **Deployments**, **StatefulSets**, or **DaemonSets** to open the workload list, or on the Jobs page, click **Jobs** or **CronJobs** to open the job list.
 +
 
 include::../../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 
-. 在页面点击**创建**。
+. On the page, click **Create**.
 
-. 在**存储设置**页签，点击**收集卷上日志**开关启用该功能。
+. On the **Storage Settings** tab, click the **Collect Logs on Volumes** toggle switch to enable the feature.
 
-. 点击**挂载卷**，为容器挂载**读写**模式的持久卷、临时卷或持久卷声明模板，并设置**容器日志路径**。
+. Click **Mount Volume** to mount a **Read-Write** mode persistent volume, temporary volume, or persistent volume claim template for the container, and set the **Container Log Path**.
 
-. 设置容器中的应用程序，将日志导出到卷挂载目录下的容器日志路径。
+. Configure the application in the container to export logs to the container log path under the volume mount directory.
 +
-日志收集完成后将打印到容器的标准输出，您可以使用日志查询工具搜索查看容器日志。有关更多信息，请参阅link:../../03-log-query/[日志查询]。
+Once log collection is complete, the logs will be printed to the container's standard output, and you can use the log query tool to search and view the container logs. For more information, see link:../../03-log-query/[Log Query].

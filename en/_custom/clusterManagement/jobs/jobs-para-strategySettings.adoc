@@ -1,23 +1,22 @@
 // :ks_include_id: fefe006cd58c414c825a62b8b3066867
-* 策略设置
+* Policy Settings
 +
 --
-设置每次运行任务的策略。
+Configure the policy for each run of the Job.
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|最大重试次数
-|任务中的容器组可以重启的最大次数。如果达到最大重试次数仍未满足任务完成条件，任务将被标记为失败。
+|Max Retries
+|The maximum number of times a pod in the Job can be restarted. If the maximum retry count is reached without meeting the Job completion conditions, the Job will be marked as failed.
 
-|容器组完成数量
-|将任务标记为完成所需成功完成的容器组数量。
+|Completions
+|The number of successfully completed pods required to mark the Job as complete.
 
-|并行容器组数量
-|任务中并行运行的容器组副本数量。
+|Parallelism
+|The number of pod replicas running in parallel within the Job.
 
-|最大运行时间
-|任务的最大运行时间，单位为秒。如果达到最大运行时间仍未满足任务完成条件，任务将被终止并被标记为失败。
+|Active Deadline Seconds
+|The maximum running time for the Job, in seconds. If the maximum running time is reached without meeting the Job completion conditions, the Job will be terminated and marked as failed.
 |===
---

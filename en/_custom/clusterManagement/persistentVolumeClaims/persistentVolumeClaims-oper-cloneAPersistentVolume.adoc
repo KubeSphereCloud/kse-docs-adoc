@@ -1,8 +1,8 @@
 // :ks_include_id: 63eda24d0c774987bc1076d5c1cc20c4
-. 在持久卷声明详情页面，点击**操作 > 克隆**。
+. On the Persistent Volume Claim details page, click **Operation > Clone**.
 
-. 在**克隆卷**对话框，设置新持久卷声明的名称，然后点击**确定**。
+. In the **Clone Volume** dialog box, set the name for the new Persistent Volume Claim, and then click **OK**.
 +
 --
-系统将为持久卷声明和对应持久卷分别创建相同副本。
+The system will create identical replicas for the Persistent Volume Claim and its corresponding Persistent Volume.
 --

@@ -1,150 +1,150 @@
 // :ks_include_id: f730ff7f032240069f81e1b59ff72366
-* 存储
+* Storage
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|持久卷声明查看
-|查看持久卷声明列表、查看持久卷声明详情。
+|Persistent Volume Claim View
+|View persistent volume claim list, view persistent volume claim details.
 
-|持久卷声明管理
-|创建持久卷声明、克隆持久卷、创建卷快照、扩展持久卷、编辑持久卷声明信息、删除持久卷声明。
+|Persistent Volume Claim Management
+|Create persistent volume claim, clone volume, create volume snapshot, expand persistent volume, edit persistent volume claim information, delete persistent volume claim.
 
-|卷快照查看
-|查看卷快照列表、查看卷快照详情。
+|Volume Snapshot View
+|View volume snapshot list, view volume snapshot details.
 
-|卷快照管理
-|创建卷快照、使用卷快照创建持久卷、删除卷快照。
+|Volume Snapshot Management
+|Create volume snapshot, create persistent volume from snapshot, delete volume snapshot.
 |===
 --
 
-* 配置
+* Configuration
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|服务帐户查看
-|查看服务帐户列表、查看服务帐户详情
+|Service Account View
+|View service account list, view service account details.
 
-|服务帐户管理
-|创建服务帐户、编辑服务帐户信息、修改服务帐户角色、删除服务帐户。
+|Service Account Management
+|Create service account, edit service account information, modify service account role, delete service account.
 
-|保密字典查看
-|查看保密字典列表、查看保密字典详情。
+|Secret View
+|View secret list, view secret details.
 
-|保密字典管理
-|创建保密字典、编辑保密字典信息、编辑保密字典设置、删除保密字典。
+|Secret Management
+|Create secret, edit secret information, edit secret settings, delete secret.
 
-|配置字典查看
-|查看配置字典列表、查看配置字典详情。
+|ConfigMap View
+|View ConfigMap list, view ConfigMap details.
 
-|配置字典管理
-|创建配置字典、编辑配置字典信息、编辑配置字典设置、删除配置字典。
+|ConfigMap Management
+|Create ConfigMap, edit ConfigMap information, edit ConfigMap settings, delete ConfigMap.
 |===
 --
 
-* 访问控制
+* Access Control
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|角色查看
-|查看项目角色列表、查看项目角色详情。
+|Role View
+|View project role list, view project role details.
 
-|角色管理
-|创建项目角色、编辑项目角色信息、编辑项目角色权限、删除项目角色。
+|Role Management
+|Create project role, edit project role information, edit project role permissions, delete project role.
 
-|成员查看
-|查看项目成员列表。
+|Member View
+|View project member list.
 
-|成员管理
-|邀请用户加入项目、修改项目成员角色、移除项目成员。
+|Member Management
+|Invite users to join project, modify project member role, remove project member.
 |===
 --
 
-* 监控告警
+* Monitoring & Alerting
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|自定义监控查看
-|查看自定义监控面板。
+|Custom Monitoring View
+|View custom monitoring dashboard.
 
-|自定义监控管理
-|创建自定义监控面板、编辑自定义监控面板信息、编辑自定义监控面板、删除自定义监控面板。
+|Custom Monitoring Management
+|Create custom monitoring dashboard, edit custom monitoring dashboard information, edit custom monitoring dashboard, delete custom monitoring dashboard.
 
-|规则组查看
-|查看规则组列表、查看规则组详情。
+|Rule Group View
+|View rule group list, view rule group details.
 
-|规则组管理
-|创建规则组、编辑规则组、删除规则组。
+|Rule Group Management
+|Create rule group, edit rule group, delete rule group.
 
-|告警查看
-|查看告警列表。
+|Alert View
+|View alert list.
 |===
 --
 
-* 应用负载
+* Application Workloads
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|应用负载查看
+|Application Workloads View
 |
-* 应用查看：查看应用列表、查看基于模板的应用详情、查看自制应用详情。
+* Application View: View application list, view template-based application details, view composed app details.
 
-* 服务查看：查看服务拓扑、查看服务列表、查看服务详情。
+* Service View: View service topology, view service list, view service details.
 
-* 工作负载查看：查看工作负载列表、查看工作负载详情。
+* Workload View: View workload list, view workload details.
 
-* 任务查看：查看任务列表、查看任务详情。
+* Job View: View Job list, view Job details.
 
-* 应用路由查看：查看应用路由列表、查看应用路由详情、访问应用路由的后端服务。
+* Ingress View: View Ingress list, view Ingress details, access backend services of Ingress.
 
-* 容器组查看：查看容器组列表、查看容器组详情、查看容器详情。
+* Pod View: View pod list, view pod details, view container details.
 
-* 灰度发布查看：查看灰度发布任务列表、查看灰度发布任务详情。
+* Grayscale Release View: View grayscale release task list, view grayscale release task details.
 
-* 镜像构建器查看：查看镜像构建器列表、查看镜像构建器详情。
+* Image Builder View: View image builder list, view image builder details.
 
-|应用负载管理
+|Application Workloads Management
 |
-* 应用管理：从应用模板安装应用、从应用商店安装应用、创建自制应用、删除应用。
+* Application Management: Install applications from template, install applications from App Store, create composed apps, delete applications.
 
-* 服务管理：创建有状态或无状态服务、创建外部服务、使用源代码创建服务、使用制品创建服务、通过现有工作负载创建服务、编辑服务信息、编辑服务设置、编辑服务外部访问设置、编辑监控导出器、删除服务。
+* Service Management: Create stateful or stateless services, create external services, create services from source code, create services from artifacts, create services from existing workloads, edit service information, edit service settings, edit service external access settings, edit monitoring exporters, delete services.
 
-* 工作负载管理：创建工作负载、编辑工作负载信息、重新创建工作负载、删除工作负载、调整容器组副本数量、停止工作负载、回退工作负载设置、编辑自动扩缩设置、编辑工作负载设置。
+* Workload Management: Create workloads, edit workload information, recreate workloads, delete workloads, adjust pod replica count, stop workloads, roll back workload settings, edit autoscaling settings, edit workload settings.
 
-* 任务管理：创建任务、编辑任务信息、删除任务、重新运行任务、暂停定时任务。
+* Job Management: Create Jobs, edit Job information, delete Jobs, rerun Jobs, suspend CronJobs.
 
-* 应用路由管理：创建应用路由、编辑应用路由信息、编辑路由规则、编辑应用路由注解、删除应用路由。
+* Ingress Management: Create Ingress, edit Ingress information, edit routing rules, edit Ingress annotations, delete Ingress.
 
-* 容器组管理：访问容器终端、删除容器组。
+* Pod Management: Access container terminal, delete pods.
 
-* 灰度发布管理：创建灰度发布任务、切换上线版本（蓝绿部署）、调整流量分配比例（金丝雀发布）、编辑灰度发布任务设置、删除灰度发布任务。
+* Grayscale Release Management: Create grayscale release tasks, switch active version (Blue-Green Deployment), adjust traffic distribution ratio (Canary Release), edit grayscale release task settings, delete grayscale release tasks.
 
-* 镜像构建器管理：使用源代码创建镜像构建器、使用制品创建镜像构建器、编辑镜像构建器信息、运行镜像构建器、删除镜像构建器。
+* Image Builder Management: Create image builder from source code, create image builder from artifacts, edit image builder information, run image builder, delete image builder.
 |===
 --
 
-* 项目设置
+* Project Settings
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|项目设置管理
-|查看项目概览信息、编辑项目信息、编辑项目配额、编辑默认容器配额、删除项目。
+|Project Settings Management
+|View project overview information, edit project information, edit project quota, edit default container quota, delete project.
 |===
 --

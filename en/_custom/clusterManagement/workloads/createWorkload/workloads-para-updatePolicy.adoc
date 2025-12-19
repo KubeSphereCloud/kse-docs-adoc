@@ -1,42 +1,42 @@
 // tag::onlydeploy[]
-设置容器组更新时采取的策略。
+Set the strategy for pod updates during deployment.
 
-部署：
+Deployment:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|滚动更新（推荐）
-|用新容器组副本逐步替换旧容器组副本。升级过程中业务流量会负载均衡到新旧容器组副本上，业务不会中断。如果您选择此策略，您需要进一步设置**最大不可用容器组数量**和**最大多余容器组数量**。
+|Rolling Update (Recommended)
+|Gradually replaces old pod replicas with new ones. During the upgrade, traffic is load-balanced between old and new pod replicas, ensuring no service interruption. If you choose this strategy, you need to further configure the **Maximum Unavailable Pods** and **Maximum Surge Pods**.
 
-|同时更新
-|删除全部旧容器组副本再创建新容器组副本。升级过程中业务会中断。
+|Recreate
+|Deletes all old pod replicas before creating new ones. Service will be interrupted during the upgrade.
 |===
 // end::onlydeploy[]
 
-有状态副本集：
+StatefulSet:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
-|滚动更新（推荐）
-|用新容器组副本逐步替换旧容器组副本。升级过程中业务流量会负载均衡到新旧容器组副本上，业务不会中断。如果您选择此策略，您需要进一步设置**容器组副本分组序号**。
+|Parameter |Description
+|Rolling Update (Recommended)
+|Gradually replaces old pod replicas with new ones. During the upgrade, traffic is load-balanced between old and new pod replicas, ensuring no service interruption. If you choose this strategy, you need to further configure the **Partition**.
 
-|删除容器组时更新
-|手动删除容器组副本才能对其进行更新。
+|On Delete
+|Pods must be manually deleted before they can be updated.
 |===
 
 ifndef::multicluster[]
-守护进程集：
+DaemonSet:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
-|滚动更新（推荐）
-|用新容器组副本逐步替换旧容器组副本。升级过程中业务流量会负载均衡到新旧容器组副本上，业务不会中断。如果您选择此策略，您需要进一步设置**最大不可用容器组数量**和**容器组就绪最短运行时长**。
+|Parameter |Description
+|Rolling Update (Recommended)
+|Gradually replaces old pod replicas with new ones. During the upgrade, traffic is load-balanced between old and new pod replicas, ensuring no service interruption. If you choose this strategy, you need to further configure the **Max Unavailable** and **Min Ready Seconds**.
 
-|删除容器组时更新
-|手动删除容器组副本才能对其进行更新。
+|On Delete
+|Pods must be manually deleted before they can be updated.
 |===
 endif::[]

@@ -1,26 +1,26 @@
 ---
-title: "创建配置字典"
-keywords: "Kubernetes, {ks_product}, 联邦项目, 配置, 配置字典, 创建配置字典"
-description: "介绍如何创建配置字典。"
+title: "Create a ConfigMap"
+keywords: "Kubernetes, {ks_product}, Federated Project, Configuration, ConfigMap, Create a ConfigMap"
+description: "Describes how to create a ConfigMap."
 weight: 01
 ---
 
-:ks_permission: **联邦项目管理**
-:ks_navigation: **配置 > 配置字典**
+:ks_permission: **Federated Project Management**
+:ks_navigation: **Configuration > ConfigMaps**
 
 
 include::../../../../../_custom/clusterManagement/configmaps/configmaps-desc-createAConfigmap.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用**联邦集群应用管理**扩展组件。
+* The **Federated Cluster Application Management** extension must be installed and enabled on the KubeSphere platform.
 
 * {empty}
 include::../../../../../_custom/multi-clusterProjectManagement/projectManagement-prer-requiredPermission_v4.adoc[]
 
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/multi-clusterProjectManagement/projectManagement-oper-openProjectPage_v4.adoc[]
 

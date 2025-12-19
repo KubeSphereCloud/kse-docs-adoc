@@ -1,35 +1,35 @@
 // :ks_include_id: 5ad1ed3919ae46abbe1b16d6a66d149c
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|CPU 上限
-|企业空间运行在单个集群中所有容器 CPU 上限总和的最大值。
+|CPU Limit
+|The maximum sum of CPU limits for all containers running in a single cluster within the workspace.
 
-|CPU 预留
-|企业空间运行在单个集群中所有容器 CPU 预留总和的最大值。
+|CPU Request
+|The maximum sum of CPU requests for all containers running in a single cluster within the workspace.
 
-|内存上限
-|企业空间运行在单个集群中所有容器内存上限总和的最大值。
+|Memory Limit
+|The maximum sum of memory limits for all containers running in a single cluster within the workspace.
 
-|内存预留
-|企业空间运行在单个集群中所有容器内存预留总和的最大值。
+|Memory Request
+|The maximum sum of memory requests for all containers running in a single cluster within the workspace.
 
-|持久卷声明限制
-// |持久卷声明总容量限制
-|企业空间中当前已创建的持久卷声明总容量，以及可以创建的持久卷声明的容量上限。
+|Persistent Volume Claim Limit
+// |Total Persistent Volume Claim Capacity Limit
+|The total capacity of Persistent Volume Claims currently created in the workspace, and the capacity limit for Persistent Volume Claims that can be created.
 
-|持久卷声明
-// |持久卷声明数量限制
-|企业空间中当前已创建的持久卷声明总数量，以及可以创建的持久卷声明的数量上限。
+|Persistent Volume Claim
+// |Persistent Volume Claim Quantity Limit
+|The total number of Persistent Volume Claims currently created in the workspace, and the quantity limit for Persistent Volume Claims that can be created.
 
-|存储类关联资源限制
-// |存储类关联持久卷声明总容量限制
-|存储类允许创建的持久卷声明的容量上限。
+|Storage Class Resource Limit
+// |Storage Class Associated Persistent Volume Claim Total Capacity Limit
+|The capacity limit for Persistent Volume Claims allowed to be created by the Storage Class.
 
-|存储类关联资源
-// |存储类关联持久卷声明数量限制
-|存储类允许创建的持久卷声明的数量上限。
+|Storage Class Resource
+// |Storage Class Associated Persistent Volume Claim Quantity Limit
+|The quantity limit for Persistent Volume Claims allowed to be created by the Storage Class.
 |===
 
-// 存储相关文案未修改 https://github.com/kubesphere/project/issues/6101
+// Storage-related text not modified https://github.com/kubesphere/project/issues/6101

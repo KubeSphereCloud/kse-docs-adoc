@@ -1,11 +1,10 @@
 ---
-title: "HTTP 流量"
-keywords: "Kubernetes, {ks_product}, BPFConductor, HTTP 流量, 可观测"
-description: "介绍如何查看 HTTP 流量。"
+title: "HTTP Traffic"
+keywords: "Kubernetes, {ks_product}, BPFConductor, HTTP Traffic, Observability"
+description: "Describes how to view HTTP traffic."
 weight: 03
 layout: "second"
 ---
 
 
-HTTP 流量页面提供对集群内 HTTP 流量数据的全方位观测能力，帮助您实时掌握 HTTP 请求的详细日志，以及每个服务和容器组的流量数据，快速定位性能瓶颈或异常流量。
-
+The HTTP Traffic page provides comprehensive observability capabilities for HTTP traffic data within the cluster, helping you grasp detailed logs of HTTP requests in real-time, as well as traffic data for each service and pod, enabling quick identification of performance bottlenecks or abnormal traffic.

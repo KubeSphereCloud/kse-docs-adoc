@@ -1,2 +1,3 @@
 // :ks_include_id: 941b85f6a2d149249751ac5843925f97
-设置任务的标签和注解。
+Set labels and annotations for a Job.
+    

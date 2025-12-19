@@ -1,29 +1,29 @@
 // :ks_include_id: 570405898db841389a0ce7ed42a9a8e3
-. 在**基本信息**页签，设置应用路由的基本信息，然后点击**下一步**。
+. On the **Basic Information** tab, set the basic information for the Ingress, then click **Next**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|应用路由的名称。名称只能包含小写字母、数字和连字符（-），必须以小写字母或数字开头和结尾，最长 253 个字符。
+|Name
+|The name of the Ingress. The name can only contain lowercase letters, numbers, and hyphens (-), must start and end with a lowercase letter or number, and can be up to 253 characters long.
 
-|别名
-|应用路由的别名。不同应用路由的别名可以相同。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|The alias of the Ingress. Different Ingresses can have the same alias.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-), must not start or end with a hyphen (-), and can be up to 63 characters long.
 
 ifndef::project[]
-|项目
-|应用路由所属的项目。系统项目通常用于管理系统资源，建议选择用户项目。
+|Project
+|The project to which the Ingress belongs. System projects are typically used for managing system resources. It is recommended to select a user project.
 endif::[]
 
-|描述
-|应用路由的描述。描述可包含任意字符，最长 256 个字符。
+|Description
+|The description of the Ingress. The description can contain any characters and can be up to 256 characters long.
 |===
 --
 
-. 在**路由规则**页签，点击**添加路由规则**，设置路由规则参数。
+. On the **Routing Rules** tab, click **Add Routing Rule** to set the routing rule parameters.
 +
 --
 ifdef::multicluster[]
@@ -33,24 +33,24 @@ endif::[]
 include::routes-para-routingRules_v42.adoc[]
 --
 
-. （可选）在**路由规则**页签，点击**路径重写**，通过正则表达式为当前路由规则配置重写路径，然后点击**下一步**。
+. (Optional) On the **Routing Rules** tab, click **Path Rewrite** to configure a rewrite path for the current routing rule using a regular expression, then click **Next**.
 +
 --
-* 路径重写指的是将客户端请求的 URL 路径在转发到后端服务之前进行修改。**重写路径**文本框中需填写发送给后端服务的路径。
+* Path rewrite refers to modifying the URL path of a client request before forwarding it to the backend service. The **Rewrite Path** text box should contain the path to be sent to the backend service.
 
-* 路径重写对当前应用路由下的所有路由规则生效。
+* Path rewrite applies to all routing rules under the current Ingress.
 
-* 若多个路径都需要路径重写，您可以创建多个应用路由来实现。
+* If multiple paths require path rewriting, you can create multiple Ingresses to achieve this.
 --
 
-. 在**高级设置**页签，为应用路由设置标签和注解，然后点击**创建**。
+. On the **Advanced Settings** tab, set labels and annotations for the Ingress, then click **Create**.
 +
 --
-* 点击**添加**可设置多条标签或注解。
+* Click **Add** to set multiple labels or annotations.
 
-* 在已创建的标签或注解右侧点击image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18]可删除标签或注解。
+* Click image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18] on the right side of a created label or annotation to delete it.
 
 include::routes-note-annotations.adoc[]
 
-应用路由创建完成后将显示在应用路由列表中。
+After creation, the Ingress will be displayed in the Ingress list.
 --

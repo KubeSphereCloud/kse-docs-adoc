@@ -1,26 +1,26 @@
 ---
-title: "添加项目集群"
-keywords: "Kubernetes, {ks_product}, 联邦项目, 项目设置, 基本信息,添加项目集群"
-description: "介绍如何添加项目集群。"
+title: "Add Project Clusters"
+keywords: "Kubernetes, {ks_product}, Federated Project, Project Settings, Basic Information, Add Project Clusters"
+description: "Describes how to add project clusters."
 weight: 04
 ---
 
-:ks_permission: **联邦项目管理**
-:ks_navigation: **项目设置 > 基本信息**
+:ks_permission: **Federated Project Management**
+:ks_navigation: **Project Settings > Basic Information**
 
 
-本节介绍如何添加项目到其他集群。添加后将自动在对应集群创建当前项目。
+This section describes how to add a project to other clusters. After adding, the current project will be automatically created in the corresponding cluster.
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用**联邦集群应用管理**扩展组件。
+* The **Federated Cluster Application Management** extension must be installed and enabled on the KubeSphere platform.
 
 * {empty}
 include::../../../../../_custom/multi-clusterProjectManagement/projectManagement-prer-requiredPermission_v4.adoc[]
 
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/multi-clusterProjectManagement/projectManagement-oper-openProjectPage_v4.adoc[]
 
@@ -30,12 +30,12 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**基本信息**页面，点击**管理**，然后在下拉列表中选择**添加集群**。
+. On the **Basic Information** page, click **Manage**, then select **Add Cluster** from the dropdown list.
 
-. 在弹出的对话框中，从下拉列表中选择想要添加当前项目的集群，然后点击**确定**。集群添加后将自动在对应集群创建当前项目。
+. In the dialog box that appears, select the cluster(s) you want to add the current project to from the dropdown list, then click **OK**. After the cluster is added, the current project will be automatically created in the corresponding cluster.
 +
 --
-* 点击**添加集群**可以将当前项目添加到一个或多个集群。
+* Click **Add Cluster** to add the current project to one or more clusters.
 
-* 点击 image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18] 可删除当前待添加的集群。
+* Click image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18] to delete the cluster currently pending addition.
 --

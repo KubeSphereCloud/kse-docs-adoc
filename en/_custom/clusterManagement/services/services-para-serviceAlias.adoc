@@ -1,4 +1,4 @@
 // :ks_include_id: f7106eed4381415e895021d16070780d
-|别名
-|服务的别名。不同服务的别名可以相同。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|The alias of the service. Different services can have the same alias.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-). It cannot start or end with a hyphen (-) and has a maximum length of 63 characters.

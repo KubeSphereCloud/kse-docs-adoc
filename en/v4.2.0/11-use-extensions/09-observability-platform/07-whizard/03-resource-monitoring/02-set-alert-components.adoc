@@ -1,20 +1,20 @@
 ---
-title: "设置组件"
-keywords: "Kubernetes, {ks_product}, 平台管理, WizTelemetry 全局监控, 设置组件"
-description: "介绍如何设置 Whizard 组件。"
+title: "Configure Extension"
+keywords: "Kubernetes, {ks_product}, Platform Management, WizTelemetry Global Monitoring, Configure Extension"
+description: "Describes how to configure Whizard extension."
 weight: 02
 ---
 
 
-本节介绍如何设置 WizTelemetry 全局监控的组件。
+This section describes how to configure the WizTelemetry Global Monitoring extension.
 
 
-== 前提条件
+== Prerequisites
 
-您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
+You need to have the **platform-admin** role in the KubeSphere platform. For more information, refer to link:../../../../../05-users-and-roles/01-users/[Users] and link:../../../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
@@ -24,123 +24,123 @@ include::../../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
 
 +
 
-. 在**全局概览**页面右侧，点击image:/images/ks-qkcp/zh/icons/cogwheel.svg[cogwheel,18,18]进入**组件设置**页面。
+. On the **Global Overview** page, click image:/images/ks-qkcp/zh/icons/cogwheel.svg[cogwheel,18,18] on the right to enter the **Extension Settings** page.
 
 
-. 在**数据接入**页签，设置以下参数。
+. On the **Data Ingestion** tab, configure the following parameters.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|网关设置
+|Gateway Settings
 |
 
-* 组件副本数量: 设置存储网关组件的副本数量，默认值为 2。
+* Extension Replicas: Set the number of replicas for the storage gateway extension. The default value is 2.
 
-* 容器配额: 设置 CPU 预留和限制以及内存预留和上限。
+* Container Quota: Set CPU requests and limits, and memory requests and limits.
 
-|数据路由
+|Data Routing
 |
 
-* 数据保留副本数量: 设置数据保留组件的副本数量，默认值为 1。
+* Data Retention Replicas: Set the number of replicas for the data retention extension. The default value is 1.
 
-* 组件副本数量: 设置数据路由组件的副本数量，默认值为 2。
+* Extension Replicas: Set the number of replicas for the data routing extension. The default value is 2.
 
-* 容器配额: 设置 CPU 预留和限制以及内存预留和上限。
+* Container Quota: Set CPU requests and limits, and memory requests and limits.
 
-|本地存储
+|Local Storage
 |
 
-* 本地数据存储时间: 设置本地数据的存储时间，最小时间至少 3 天，默认为 7 天。
+* Local Data Retention Period: Set the storage duration for local data. The minimum period is at least 3 days, default is 7 days.
 
-* 组件副本数量: 设置本地存储组件的副本数量，默认值为 2。
+* Extension Replicas: Set the number of replicas for the local storage extension. The default value is 2.
 
-* 容器配额: 设置 CPU 预留和限制以及内存预留和上限。
+* Container Quota: Set CPU requests and limits, and memory requests and limits.
 |===
 --
 
-. 在**数据查询**页签，设置以下参数。
+. On the **Data Query** tab, configure the following parameters.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|基础设置
+|Basic Settings
 |
 
-* 组件副本数量: 设置 Query 组件的副本数量，默认值为 2。
+* Extension Replicas: Set the number of replicas for the Query extension. The default value is 2.
 
-* 容器配额: 设置 CPU 预留和限制以及内存预留和上限。
+* Container Quota: Set CPU requests and limits, and memory requests and limits.
 
-|缓存设置
+|Cache Settings
 |
 
-* 组件副本数量: 设置 Cache 组件的副本数量，默认值为 2。
+* Extension Replicas: Set the number of replicas for the Cache extension. The default value is 2.
 
-* 容器配额: 设置 CPU 预留和限制以及内存预留和上限。
+* Container Quota: Set CPU requests and limits, and memory requests and limits.
 
 |===
 --
 
-. 在**长期存储**页签，点击**启用**启用长期存储组件。启用后，您可以配置对象存储、网关、保留周期与降采样的组件参数。
+. On the **Long-term Storage** tab, click **Enable** to enable the long-term storage extension. After enabling, you can configure parameters for object storage, gateway, retention period, and downsampling.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|对象存储
+|Object Storage
 |
 
-* Bucket 名称：S3 对象存储桶的名称。
+* Bucket Name: The name of the S3 object storage bucket.
 
-* 区域：您创建 Bucket 的地理区域。
+* Region: The geographical region where you created the Bucket.
 
-* 端点：要连接的 AWS S3 对象存储地址。
+* Endpoint: The AWS S3 object storage address to connect to.
 
-* Access Key：与 AWS 访问密钥 ID 相关联的密钥。
+* Access Key: The key associated with the AWS access key ID.
 
-* Secret Key：与 AWS Access Key ID 关联的密钥。
+* Secret Key: The secret key associated with the AWS Access Key ID.
 
-**高级设置**
+**Advanced Settings**
 
-* HTTP 协议：决定是否开启不安全的 HTTP 协议。
+* HTTP Protocol: Determines whether to enable the insecure HTTP protocol.
 
-* 添加存储类：为对象存储添加用户元数据。开启后需要为对象存储参数添加键值。
+* Add Storage Class: Add user metadata for object storage. When enabled, you need to add key-value pairs for the object storage parameters.
 
-* HTTP 配置：配置接收方用于与基于 HTTP 的 API 服务通信的 HTTP 客户端。
+* HTTP Configuration: Configure the HTTP client used by the receiver to communicate with HTTP-based API services.
 
-** TLS 证书：开启是否通过提交数字证书证明您的身份或表明您有权访问在线服务。
+** TLS Certificate: Enable to prove your identity or indicate your right to access online services by submitting a digital certificate.
 
-** TLS 连接
+** TLS Connection
 
-*** CA 证书：用于验证服务器证书的 CA 文件。
+*** CA Certificate: The CA file used to verify the server certificate.
 
-*** Cert 文件：用于向服务器进行客户端证书身份验证的证书文件。
+*** Cert File: The certificate file used for client certificate authentication to the server.
 
-*** 密钥：用于向服务器进行客户端证书身份验证的密钥文件。
+*** Key: The key file used for client certificate authentication to the server.
 
-*** 服务器名称：ServerName 扩展以指示服务器的名称。
+*** Server Name: The ServerName extension to indicate the server's name.
 
-*** 服务器证书验证：是否通过提交数字证书证明您的身份或表明您有权访问在线服务。
+*** Server Certificate Verification: Whether to prove your identity or indicate your right to access online services by submitting a digital certificate.
 
-|存储网关
-|设置 CPU 预留和限制以及内存预留和上限。
+|Storage Gateway
+|Set CPU requests and limits, and memory requests and limits.
 
-|压缩及降采样
+|Compression & Downsampling
 |
 
-* 原始数据存储时间：原始数据存储时间，超过此时间将删除原始数据。
+* Raw Data Retention Period: The storage period for raw data. Raw data will be deleted after this period.
 
-* 5m 降采样数据存储时间：指定降采样到数据点 5 分钟间隔的数据存储时间。
+* 5m Downsampled Data Retention Period: Specifies the storage period for data downsampled to a 5-minute interval.
 
-* 1h 降采样数据存储时间：指定降采样到数据点 5 分钟间隔的数据存储时间。
+* 1h Downsampled Data Retention Period: Specifies the storage period for data downsampled to a 1-hour interval.
 
-* 容器配额：设置 CPU 预留和限制以及内存预留和上限。
+* Container Quota: Set CPU requests and limits, and memory requests and limits.
 |===
 --
 
-. 在**规则计算**页签，设置容器配额。设置完成后，点击**确定**。
+. On the **Rule Calculation** tab, configure the container quota. After configuration, click **OK**.

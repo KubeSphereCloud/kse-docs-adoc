@@ -1,29 +1,29 @@
 // :ks_include_id: 011f0f1d835947cbb1b37e80036c0b2e
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 |name
-|用户自定义的服务器名称。
+|The user-defined server name.
 
 |address
-|服务器的 SSH 登录 IP 地址。
+|The SSH login IP address of the server.
 
 |internalAddress
-|服务器在子网内部的 IP 地址。
+|The internal IP address of the server within the subnet.
 
 |port
-|服务器的 SSH 端口号。如果使用默认端口 22 可不设置此参数。
+|The SSH port number of the server. If using the default port 22, this parameter can be omitted.
 
 |user
-|服务器的 SSH 登录用户名，该用户必须为 **root** 用户或其他具有 **sudo** 命令执行权限的用户。如果使用 **root** 用户可不设置此参数。
+|The SSH login username for the server. This user must be the **root** user or another user with **sudo** command execution privileges. If using the **root** user, this parameter can be omitted.
 
 |password
-|服务器的 SSH 登录密码。如果已经设置 **privateKeyPath** 可不设置此参数。
+|The SSH login password for the server. If **privateKeyPath** is already set, this parameter can be omitted.
 
 |privateKeyPath
-|服务器的 SSH 登录密钥的路径。如果已经设置 **password** 可不设置此参数。
+|The path to the SSH login private key for the server. If **password** is already set, this parameter can be omitted.
 
 |arch
-|服务器的硬件架构。如果服务器的硬件架构为 arm64，请将此参数设置为 **arm64**，否则请勿设置此参数。安装包默认仅支持所有集群节点都为 x86_64 或 arm64 架构的场景。如果某集群节点的硬件架构不完全相同，需针对具体情况进行技术评估，请咨询青云科技官方解决方案专家或交付服务专家。
+|The hardware architecture of the server. If the server's hardware architecture is arm64, set this parameter to **arm64**; otherwise, do not set it. The installation package by default only supports scenarios where all cluster nodes are of x86_64 or arm64 architecture. If the hardware architecture of cluster nodes is not identical, technical assessment is required for the specific situation. Please consult QingCloud official solution experts or delivery service experts.
 |===

@@ -1,14 +1,14 @@
-// 扩展组件升级说明
-image:/images/ks-qkcp/zh/icons/warning_fill.svg[attention,18,18] **注意事项**
+// Extension Upgrade Instructions
+image:/images/ks-qkcp/zh/icons/warning_fill.svg[attention,18,18] **Attention**
 
-在 KubeSphere v4.2.0 之前的版本中，在扩展组件安装时显式配置了镜像标签（image tag），而在 KubeSphere v4.2.0 及之后的版本中，镜像标签会跟随扩展组件的版本，优先使用默认值，无需您手动配置。
+In versions prior to KubeSphere v4.2.0, the image tag was explicitly configured during extension installation. However, starting from KubeSphere v4.2.0, the image tag follows the extension version, using the default value by default, and does not require manual configuration.
 
-因此，在升级扩展组件时，请务必确认镜像标签配置是否符合预期。新版本通常会使用新的镜像标签，如果您在配置中显式指定了旧的镜像标签，可能会导致升级后仍拉取旧版本镜像，无法获得最新功能或修复。
+Therefore, when upgrading an extension, it is crucial to confirm whether the image tag configuration meets expectations. New versions typically use new image tags. If you explicitly specify an old image tag in your configuration, it may result in pulling the old version image after the upgrade, preventing you from obtaining the latest features or fixes.
 
-为确保升级顺利进行，请遵循以下建议：
+To ensure a smooth upgrade, please follow these recommendations:
 
-. **检查并移除手动设置的镜像标签**，或将其更新为新版本所需的镜像标签。
+. **Check and remove manually set image tags**, or update them to the image tags required for the new version.
 
-. **推荐使用默认配置**，以自动获取与当前版本匹配的镜像标签。
+. **It is recommended to use the default configuration** to automatically obtain the image tag matching the current version.
 
-各个扩展组件的镜像标签的配置路径，请参阅扩展中心各扩展组件详情页的升级说明。
+For the configuration paths of image tags for each extension, please refer to the upgrade instructions on the details page of each extension in the Extensions Center.

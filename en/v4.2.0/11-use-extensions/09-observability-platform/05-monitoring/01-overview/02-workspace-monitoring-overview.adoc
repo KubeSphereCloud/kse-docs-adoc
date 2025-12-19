@@ -1,17 +1,15 @@
 ---
-title: "查看企业空间监控概览"
-description: "介绍如何查看企业空间概览页面的监控信息。"
+title: "View Workspace Monitoring Overview"
+description: "Describes how to view monitoring information on the workspace overview page."
 weight: 02
 ---
 
-:ks_permission: **监控查看**
-:ks_navigation: **概览**
+:ks_permission: **Monitoring Viewing**
+:ks_navigation: **Overview**
 
-本节介绍如何查看企业空间概览页面的监控信息。
+This section describes how to view monitoring information on the workspace overview page.
 
-
-== 前提条件
-
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -19,9 +17,9 @@ include::../../../../../_custom/workspaceManagement/workspaceManagement-prer-req
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 监控**扩展组件。
+* The **WizTelemetry Monitoring** extension must be installed and enabled on the KubeSphere platform.
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -29,18 +27,18 @@ include::../../../../../_custom/workspaceManagement/workspaceManagement-oper-ope
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]
 
-. 点击**资源用量**，查看企业空间中物理资源和应用资源的使用情况。
+. Click **Resource Usage** to view the usage of physical resources and application resources in the workspace.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|功能区 |描述
+|Area |Description
 
-|物理资源
-|企业空间在指定集群中的 CPU 和内存使用情况。
+|Physical Resources
+|CPU and memory usage of the workspace in the specified cluster.
 
-|应用资源
-|企业空间在指定集群中创建的部署、有状态副本集、守护进程集、任务、定时任务、持久卷声明等的数量。
+|Application Resources
+|The number of Deployments, StatefulSets, DaemonSets, Jobs, CronJobs, Persistent Volume Claims, etc., created by the workspace in the specified cluster.
 |===
 
 include::../../../../../../_ks_components/oper-selectTimeRange.adoc[]
@@ -49,30 +47,30 @@ include::../../../../../../_ks_components/oper-Autorefresh.adoc[]
 
 include::../../../../../../_ks_components/oper-refreshData.adoc[]
 
-* 在右上角点击**集群**下拉列表可查看特定集群中的数据。
+* Click the **Cluster** dropdown in the upper right corner to view data for a specific cluster.
 
-* 点击**物理资源**和**应用资源用量**中的折线图，查看资源用量随时间变化的详细信息。选择一个项目，点击确定，查看特定项目的资源用量信息。
+* Click the line charts in **Physical Resources** and **Application Resource Usage** to view detailed information about resource usage over time. Select a project, click OK to view resource usage information for a specific project.
 --
 
-. 点击**用量排行**，查看企业空间中的项目的资源使用情况。
+. Click **Usage Ranking** to view the resource usage of projects within the workspace.
 +
 --
-* 在列表左上角点击**集群**下拉列表可查看特定集群中的数据。
+* Click the **Cluster** dropdown in the upper left corner of the list to view data for a specific cluster.
 
-* 在列表上方点击下拉列表可选择按照 CPU 用量、内存用量、容器组数量、出站流量或入站流量对项目进行排序。
+* Click the dropdown above the list to sort projects by CPU usage, memory usage, pod count, outbound traffic, or inbound traffic.
 
-* 在列表上方点击image:/images/ks-qkcp/zh/icons/sort-ascending.svg[sort-ascending,18,18]/image:/images/ks-qkcp/zh/icons/sort-descending.svg[sort-descending,18,18] 可按升序/降序排序。
+* Click image:/images/ks-qkcp/zh/icons/sort-ascending.svg[sort-ascending,18,18]/image:/images/ks-qkcp/zh/icons/sort-descending.svg[sort-descending,18,18] above the list to sort in ascending/descending order.
 
 include::../../../../../_custom/clusterManagement/clusterStatus/clusterStatus-oper-exportJsonData.adoc[]
 --
 
-. 点击**集群信息**，查看授权给企业空间的集群的 CPU、内存、磁盘的总量和已使用量，以及集群上可创建容器组的总数和已创建容器组的数量。
+. Click **Cluster Information** to view the total and used amounts of CPU, memory, and disk for clusters authorized to the workspace, as well as the total number of pods that can be created and the number already created on the cluster.
 +
 --
 // Note
 include::../../../../../../_ks_components/admonitions/note.adoc[]
 
-默认情况下每个集群节点最多可以创建 110 个容器组。
+By default, a maximum of 110 pods can be created per cluster node.
 
 include::../../../../../../_ks_components/admonitions/admonEnd.adoc[]
 --

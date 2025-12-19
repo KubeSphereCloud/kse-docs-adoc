@@ -1,60 +1,60 @@
 // :ks_include_id: 8517e102a81e4402a8f9784a7931ff0c
-. 在容器组详情页面的**资源状态**页签，在**容器**区域点击一个容器的名称打开容器详情页面。
+. On the pod details page, under the **Resource Status** tab, in the **Containers** section, click the name of a container to open the container details page.
 
-. 在容器详情页面的**属性**区域查看容器的资源属性。
+. On the container details page, view the container's resource attributes in the **Properties** section.
 +
 --
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|集群
-|容器所属的集群。
+|Cluster
+|The cluster to which the container belongs.
 
-|项目
-|容器所属的项目。
+|Project
+|The project to which the container belongs.
 
-|应用
-|容器所属的应用。
+|Application
+|The application to which the container belongs.
 
-|状态
-|容器的状态。
+|Status
+|The status of the container.
 
 include::../workloads/workloads-para-containerStatus.adoc[]
 
-|镜像
-|容器使用的镜像。
+|Image
+|The image used by the container.
 
-|镜像 ID
-|容器使用的镜像的 ID。
+|Image ID
+|The ID of the image used by the container.
 
-|端口
-|容器的端口。
+|Port
+|The port of the container.
 
-|命令
-|容器启动时在容器内部执行的命令。
+|Command
+|The command executed inside the container when it starts.
 
-|资源预留
-|系统为容器预留的 CPU 和内存资源。
+|Resource Reservation
+|The CPU and memory resources reserved by the system for the container.
 
-|资源上限
-|容器可以使用的 CPU 和内存资源上限。
+|Resource Limit
+|The upper limit of CPU and memory resources that the container can use.
 
-|镜像拉取策略
-|容器的镜像拉取策略。
+|Image Pull Policy
+|The image pull policy of the container.
 
-* **优先使用本地镜像**：容器组创建或更新时，优先使用容器运行时存储在节点的镜像文件。
+* **IfNotPresent**: When the pod is created or updated, the image file stored on the node by the container runtime is used first.
 
-* **每次都拉取镜像**：容器组创建或更新时，每次都尝试从镜像服务拉取镜像。
+* **Always**: When the pod is created or updated, an attempt is made to pull the image from the image service every time.
 
-* **仅使用本地镜像**：容器组创建或更新时，仅使用容器运行时存储在节点的镜像。如果本地不存在所需的镜像，容器创建将出现异常。
+* **Never**: When the pod is created or updated, only the image stored on the node by the container runtime is used. If the required image does not exist locally, container creation will fail.
 
-|重启次数
-|容器的重启次数。
+|Restart Count
+|The number of times the container has been restarted.
 |===
 --
 
-. 在**资源状态**页签查看容器的健康检查配置、容器中挂载的卷、卷的挂载路径和访问模式。
+. Under the **Resource Status** tab, view the container's health check configuration, the volumes mounted in the container, the mount paths of the volumes, and the access modes.
 
-. 点击**环境变量**页签查看容器的环境变量。
+. Click the **Environment Variables** tab to view the container's environment variables.

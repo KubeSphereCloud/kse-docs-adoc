@@ -1,63 +1,63 @@
 // :ks_include_id: c4e995deeaff4c618dca0b53432cab70
-. 在工作负载详情页面的**属性**区域查看工作负载的资源属性。点击属性栏可折叠该区域。
+. On the workload details page, view the resource attributes of the workload in the **Attributes** area. Click the attribute bar to collapse this area.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|集群
-|工作负载所属的集群。
+|Cluster
+|The cluster to which the workload belongs.
 
-|项目
-|工作负载所属的项目。
+|Project
+|The project to which the workload belongs.
 
-|应用
-|工作负载所属的应用名称。您可以创建一个包含多个服务的应用，每个服务都对应一个工作负载。
+|Application
+|The name of the application to which the workload belongs. You can create an application that contains multiple services, each corresponding to a workload.
 
-|创建时间
-|工作负载的创建时间。
+|Creation Time
+|The creation time of the workload.
 
-|更新时间
-|工作负载的更新时间。
+|Update Time
+|The update time of the workload.
 
-|创建者
-|创建工作负载的用户。
+|Creator
+|The user who created the workload.
 |===
 --
 
-. 在工作负载详情页面点击**事件**查看工作负载相关的事件。
+. On the workload details page, click **Events** to view events related to the workload.
 +
 --
 include::../clusterManagement-para-eventsTab.adoc[]
 --
 
-. 在工作负载详情页面点击**配置编辑**修改工作负载的配置。有关更多信息，请参阅“编辑工作负载设置”。
+. On the workload details page, click **Edit Configuration** to modify the configuration of the workload. For more information, refer to "Editing Workload Settings".
 
-. 在工作负载详情页面点击**修改记录**查看工作负载的修改信息。
+. On the workload details page, click **Revision Records** to view the modification information of the workload.
 +
 --
-* 在下拉列表中选择一个修改记录可查看其序列号、创建时间和配置文件。KubeSphere 系统自动为每个修改记录创建一个序列号，最多可保留 10 条修改记录。
+* Select a revision record from the dropdown list to view its serial number, creation time, and configuration file. The KubeSphere system automatically assigns a serial number to each revision record and retains up to 10 records.
 
-* **配置文件**区域显示当前配置文件相比前一个修订记录的配置文件的差异。点击image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18]可以纵向显示配置文件差异，点击image:/images/ks-qkcp/zh/icons/chevron-right.svg[chevron-right,18,18]可以横向显示配置文件的差异。
+* The **Configuration File** area displays the differences between the current configuration file and the previous revision's configuration file. Click image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18] to display the configuration file differences vertically, and click image:/images/ks-qkcp/zh/icons/chevron-right.svg[chevron-right,18,18] to display them horizontally.
 --
 
-. 在**容器状态管理**区域查看工作负载中的容器信息和容器副本信息。
+. In the **Container Status Management** area, view the container information and container replica information within the workload.
 +
 ====
-* 若工作负载中有多个容器，点击容器名称，可在下拉列表中选择其他容器，然后在下方查看该容器的资源状态、容器副本等信息。
+* If the workload contains multiple containers, click the container name to select other containers from the dropdown list, then view the resource status, container replicas, and other information for that container below.
 
-* 在**容器资源状态**下，查看当前容器的环境变量、端口信息和挂载的卷。
+* Under **Container Resource Status**, view the current container's environment variables, port information, and mounted volumes.
 
-* 在**容器副本列表**下，查看容器副本的信息。
+* Under **Container Replica List**, view information about the container replicas.
 +
 --
-* 点击**容器日志**，查看当前容器的日志。
+* Click **Container Logs** to view the logs of the current container.
 
-* 点击 **Pod 事件**，查看当前容器所属容器组的相关事件。
+* Click **Pod Events** to view events related to the pod to which the current container belongs.
 
-* 点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **终端**，打开容器终端。您可以使用容器终端在容器内部执行命令。
+* Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **Terminal** to open the container terminal. You can use the container terminal to execute commands inside the container.
 
-* 点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **详情**，查看当前容器所属容器组的详细信息。
+* Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] > **Details** to view detailed information about the pod to which the current container belongs.
 --
 ====

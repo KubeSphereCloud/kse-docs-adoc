@@ -1,2 +1,2 @@
 // :ks_include_id: d8e84290faee432e8c4e286dd1fa707d
-是否允许用户在 KubeSphere Web 控制台对持久卷声明进行克隆。
+Whether to allow users to clone persistent volume claims in the KubeSphere web console.

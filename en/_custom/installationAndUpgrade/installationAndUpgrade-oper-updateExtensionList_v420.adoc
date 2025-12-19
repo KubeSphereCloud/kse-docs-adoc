@@ -1,20 +1,20 @@
-**附：可升级扩展组件列表**
+**Appendix: List of Upgradable Extensions**
 
 [%header,cols="1,1,1,1"]
 |===
-|扩展组件 |KSE v4.1.2 | KSE v4.1.3 | KSE v4.2.0
+|Extension |KSE v4.1.2 | KSE v4.1.3 | KSE v4.2.0
 
-| alloy | 不涉及 | 1.0.0 | 1.0.0
+| alloy | Not applicable | 1.0.0 | 1.0.0
 | cert-manager | 1.0.0 | 1.0.0 | 1.0.0
 | devops | 1.1.1 | 1.1.2 | 1.2.1
-| s2i | 不涉及 | 不涉及 | 0.1.0
+| s2i | Not applicable | Not applicable | 0.1.0
 | dmp | 2.1.3 | 2.1.4 | 2.2.0
-| edgewize | 不涉及 | 不涉及 | 3.1.0
+| edgewize | Not applicable | Not applicable | 3.1.0
 | gatekeeper | 1.0.1 | 1.0.3 | 1.0.3
 | gateway | 1.0.2 | 1.0.3 | 1.1.1
 | grafana | 10.4.3 | 10.4.14 | 10.4.14
 | ingress-utils | 1.0.0 | 1.0.0 | 1.0.1
-| kubeedge | 1.13.1 | 1.13.1 | 已移除（迁移至 EdgeWize）
+| kubeedge | 1.13.1 | 1.13.1 | Removed (Migrated to EdgeWize)
 | kubefed | 1.0.0 | 1.0.0 | 1.1.0
 | loki | 1.0.2 | 1.0.2 | 1.0.2
 | metrics-server | 0.7.0 | 0.7.0 | 0.7.2
@@ -23,23 +23,23 @@
 | oauth2-proxy | 7.6.2 | 7.6.2 | 7.6.2
 | openpitrix | 2.0.1 | 2.0.2 | 2.1.0
 | opensearch | 2.11.1 | 2.11.1 | 2.11.1
-| s2ibuilder | 不涉及 | 不涉及 | 0.1.0
+| s2ibuilder | Not applicable | Not applicable | 0.1.0
 | servicemesh | 1.0.0 | 1.0.1 | 1.0.2
 | springcloud | 1.0.1 | 1.0.1 | 1.0.2
 | storage-utils | 1.0.0 | 1.0.0 | 1.0.1
-| tempo | 不涉及 | 不涉及 | 1.0.0
+| tempo | Not applicable | Not applicable | 1.0.0
 | tower | 1.0.0 | 1.0.0 | 1.1.0
 | vector | 1.0.4 | 1.0.4 | 1.0.4
 | whizard-alerting | 1.0.3 | 1.0.4 | 1.0.5
 | whizard-auditing | 1.2.0 | 1.2.1 | 1.2.1
 | whizard-events | 1.2.0 | 1.2.1 | 1.2.2
 | whizard-logging | 1.2.2 | 1.2.3 | 1.2.3
-| whizard-monitoring-pro | 不涉及 | 不涉及 | 1.0.0
+| whizard-monitoring-pro | Not applicable | Not applicable | 1.0.0
 | whizard-monitoring | 1.1.0 | 1.1.0 | 1.2.0
 | whizard-notification | 2.5.9 | 2.6.0 | 2.6.1
 | whizard-telemetry-ruler | 1.2.0 | 1.2.0 | 1.2.0
 | whizard-telemetry | 1.2.2 | 1.3.0 | 2.0.0
-| wiztelemetry-bpfconductor | 不涉及 | 不涉及 | 1.0.3
-| wiztelemetry-tracing | 不涉及 | 不涉及 | 1.0.3
+| wiztelemetry-bpfconductor | Not applicable | Not applicable | 1.0.3
+| wiztelemetry-tracing | Not applicable | Not applicable | 1.0.3
 
 |===

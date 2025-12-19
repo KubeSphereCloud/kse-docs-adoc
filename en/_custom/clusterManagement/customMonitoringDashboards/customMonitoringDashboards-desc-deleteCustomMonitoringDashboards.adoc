@@ -1,9 +1,9 @@
 // :ks_include_id: ebf1355e06284d8a8c1f0d1c6ae2dcdf
-本节介绍如何删除自定义监控面板。
+This section describes how to delete a custom monitoring dashboard.
 
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-自定义监控面板删除后无法恢复，请谨慎执行此操作。
+A custom monitoring dashboard cannot be recovered after deletion. Please perform this operation with caution.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]

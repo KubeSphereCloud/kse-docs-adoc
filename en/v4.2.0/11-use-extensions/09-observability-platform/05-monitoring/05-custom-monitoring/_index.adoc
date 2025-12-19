@@ -1,7 +1,7 @@
 ---
-title: "自定义监控"
-keywords: "Kubernetes, {ks_product}, 集群管理, 自定义监控面板"
-description: "介绍如何使用自定义监控面板。"
+title: "Custom Monitoring"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Custom Monitoring Dashboard"
+description: "Introduces how to use the custom monitoring dashboard."
 weight: 05
 layout: "second"
 ---
@@ -11,9 +11,9 @@ include::../../../../../_custom/clusterManagement/customMonitoringDashboards/cus
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
-// |此功能仅在 KubeSphere ``标准版、高级版和旗舰版``中提供。
+// |This feature is only available in KubeSphere ``Standard, Advanced, and Enterprise editions``.
 
 // |===
 

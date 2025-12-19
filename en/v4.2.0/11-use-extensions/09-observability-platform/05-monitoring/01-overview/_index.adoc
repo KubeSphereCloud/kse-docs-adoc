@@ -1,8 +1,8 @@
 ---
-title: "概览"
-description: "介绍如何查看集群、企业空间、项目概览页面的监控信息。"
+title: "Overview"
+description: "Describes how to view monitoring information on the cluster, workspace, and project overview pages."
 weight: 01
 layout: "second"
 ---
 
-本节介绍安装“WizTelemetry 监控”扩展组件后，如何查看集群、企业空间的概览页面的监控信息。
+This section describes how to view monitoring information on the cluster and workspace overview pages after installing the "WizTelemetry Monitoring" extension.

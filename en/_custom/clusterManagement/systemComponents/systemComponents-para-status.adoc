@@ -1,8 +1,8 @@
 // :ks_include_id: d8bdf481c53743aca14f167808430d23
-系统组件的运行状态。
+The running status of system extensions.
 
-* **健康**：系统组件运行正常。
+* **Healthy**: The system extension is running normally.
 
-* **已停止**：系统组件的工作负载已停止运行。
+* **Stopped**: The workload of the system extension has stopped running.
 
-* **告警**：系统组件实际运行的容器组副本数小于期望的容器组副本数。
+* **Warning**: The actual number of running pod replicas for the system extension is less than the expected number of pod replicas.

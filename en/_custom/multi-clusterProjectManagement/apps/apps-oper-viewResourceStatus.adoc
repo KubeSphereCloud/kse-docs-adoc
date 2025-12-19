@@ -1,23 +1,22 @@
 // :ks_include_id: 0432dd129aa949c9b90b43831d5d0157
-. 在应用详情页面的**资源状态**页签查看组成应用的服务。
+. On the **Resource Status** tab of the application details page, view the services that compose the application.
 +
 --
-**服务**区域提供以下信息：
+The **Services** area provides the following information:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|有状态服务
-|组成该应用的有状态服务的名称。
+|Stateful Service
+|The name of the stateful service that composes the application.
 
-|无状态服务
-|组成该应用的无状态服务的名称。
+|Stateless Service
+|The name of the stateless service that composes the application.
 
-|内部域名
-|可通过 <service name>.<project name>.svc 格式的域名从集群内部访问服务。
+|Internal Domain Name
+|The service can be accessed from within the cluster using a domain name in the format <service name>.<project name>.svc.
 
-|虚拟 IP 地址
-|服务供集群内部访问的虚拟 IP 地址。
+|Virtual IP Address
+|The virtual IP address used for internal cluster access to the service.
 |===
---

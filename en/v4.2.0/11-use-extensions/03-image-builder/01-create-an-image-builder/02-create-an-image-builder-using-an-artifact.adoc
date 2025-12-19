@@ -1,15 +1,15 @@
 ---
-title: "使用制品创建镜像构建器"
-keywords: "Kubernetes, {ks_product}, 创建镜像构建器, 使用制品创建镜像构建器"
-description: "介绍如何创建镜像构建器将制品构建成容器镜像。"
+title: "Create an Image Builder Using Artifacts"
+keywords: "Kubernetes, {ks_product}, Create Image Builder, Create Image Builder Using Artifacts"
+description: "Describes how to create an image builder to build artifacts into container images."
 weight: 02
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **镜像构建器**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Image Builder**
 
 
-本节介绍如何将制品构建成容器镜像 (B2I)。
+This section describes how to build artifacts into container images (B2I).
 
 include::../../../../_custom/projectManagement/imageBuilders/imageBuilders-desc-imageBuilderCreated.adoc[]
 
@@ -20,13 +20,13 @@ include::../../../../_custom/projectManagement/services/services-oper-buildImage
 include::../../../../_custom/projectManagement/services/services-oper-pushPullImage.adoc[]
 
 
-== 示例制品
+== Example Artifacts
 
-以下是一些示例制品，用于演示和测试：
+The following are some example artifacts for demonstration and testing:
 
 [%header,cols="1a,1a"]
 |===
-|制品包 |GitHub 仓库
+|Artifact Package |GitHub Repository
 
 | link:https://github.com/kubesphere/tutorial/raw/master/tutorial%204%20-%20s2i-b2i/b2i-war-java8.war[b2i-war-java8.war]
 | link:https://github.com/spring-projects/spring-mvc-showcase[spring-mvc-showcase]
@@ -34,18 +34,18 @@ include::../../../../_custom/projectManagement/services/services-oper-pushPullIm
 | link:https://github.com/kubesphere/tutorial/raw/master/tutorial%204%20-%20s2i-b2i/b2i-war-java11.war[b2i-war-java11.war]
 | link:https://github.com/kubesphere/s2i-java-container/tree/master/tomcat/examples/springmvc5[springmvc5]
 
-| link:https://github.com/kubesphere/tutorial/raw/master/tutorial%204%20-%20s2i-b2i/b2i-binary[b2i-binary] 
+| link:https://github.com/kubesphere/tutorial/raw/master/tutorial%204%20-%20s2i-b2i/b2i-binary[b2i-binary]
 | link:https://github.com/runzexia/devops-go-sample[devops-go-sample]
 
-| link:https://github.com/kubesphere/tutorial/raw/master/tutorial%204%20-%20s2i-b2i/b2i-jar-java11.jar[b2i-jar-java11.jar] 
+| link:https://github.com/kubesphere/tutorial/raw/master/tutorial%204%20-%20s2i-b2i/b2i-jar-java11.jar[b2i-jar-java11.jar]
 | link:https://github.com/kubesphere/s2i-java-container/tree/master/java/examples/maven[java-maven-example]
 
-| link:https://github.com/kubesphere/tutorial/raw/master/tutorial%204%20-%20s2i-b2i/b2i-jar-java8.jar[b2i-jar-java8.jar] 
+| link:https://github.com/kubesphere/tutorial/raw/master/tutorial%204%20-%20s2i-b2i/b2i-jar-java8.jar[b2i-jar-java8.jar]
 | link:https://github.com/kubesphere/devops-maven-sample[devops-maven-sample]
 |===
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 * {empty}
@@ -62,7 +62,7 @@ include::../../../../_custom/projectManagement/services/services-prer-imageRegis
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -80,36 +80,36 @@ include::../../../../../_ks_components/oper-clickCreate.adoc[]
 
 +
 
-. 在**构建模式**页签，根据制品文件的类型选择 **JAR**、**WAR** 或**二进制**，然后点击**下一步**。
+. On the **Build Mode** tab, select **JAR**, **WAR**, or **Binary** based on the type of the artifact file, and then click **Next**.
 
 +
 
-. 在**构建设置**页签，设置构建环境、制品文件和镜像服务信息，然后点击**创建**。
+. On the **Build Settings** tab, configure the build environment, artifact file, and image service information, and then click **Create**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/projectManagement/services/services-para-artifactFile.adoc[]
 
 include::../../../../_custom/projectManagement/services/services-para-buildEnvironmentArtifact.adoc[]
 
-|镜像名称
-|构建生成的目标容器镜像名称。名称只能包含小写字母、数字、连字符（-）、句点（.）、斜钱（/）和冒号（:），并以小写字母或数字开头和结尾。
+|Image Name
+|The name of the target container image to be built. The name can only contain lowercase letters, numbers, hyphens (-), periods (.), slashes (/), and colons (:), and must start and end with a lowercase letter or number.
 
-镜像名称应包含镜像的命名空间，例如 **my-namespace/my-image**。如果未输入命名空间，系统将自动添加命名空间 **library**，实际镜像名称为**library/my-image**。
+The image name should include the image's namespace, for example, **my-namespace/my-image**. If no namespace is entered, the system will automatically add the namespace **library**, and the actual image name will be **library/my-image**.
 
-|镜像标签
-|构建生成的目标容器镜像标签。
+|Image Tag
+|The tag of the target container image to be built.
 
-|目标镜像服务
-|用于存放目标镜像的镜像服务。请选择包含镜像服务信息的保密字典。
+|Target Image Service
+|The image service used to store the target image. Please select a Secret containing the image service information.
 
-|触发令牌
-|客户端通过 Webhook 触发 KubeSphere 镜像构建时所使用的认证令牌。如果已设置的令牌，请求需要提供正确令牌才能触发镜像构建。令牌只能包含大写字母、小写字母和数字。
+|Trigger Token
+|The authentication token used by the client to trigger KubeSphere image builds via webhook. If a token is set, requests must provide the correct token to trigger the image build. The token can only contain uppercase letters, lowercase letters, and numbers.
 
-服务创建完成后，KubeSphere 将创建镜像构建器并提供 URL 可用于第三方应用程序触发镜像构建。您在可以镜像构建器的详情页面获取 URL。
+After the service is created, KubeSphere will create the image builder and provide a URL that can be used by third-party applications to trigger image builds. You can obtain the URL on the details page of the image builder.
 
 // include::../../../../_custom/projectManagement/services/services-para-buildSettings.adoc[]
 

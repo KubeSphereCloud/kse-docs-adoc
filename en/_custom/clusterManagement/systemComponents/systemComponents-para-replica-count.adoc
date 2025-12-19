@@ -1,2 +1,1 @@
-// :ks_include_id: 95e7a27324f142b3bce7699ae4ef06da
-系统组件实际运行的容器组副本数和期望的容器组副本数。
+The actual number of pod replicas running for the system extension and the expected number of pod replicas.

@@ -1,12 +1,12 @@
 // :ks_include_id: e37f1e1a226842e7b71cfc533a74d392
-|收集卷上日志
+|Collect Logs on Volumes
 |
-允许系统收集保存在卷上的容器日志。如需使用此功能，您需要进行以下操作：
+Allows the system to collect container logs saved on volumes. To use this feature, you need to perform the following operations:
 
-* 在容器所在的项目中启用**收集卷上日志**功能。
+* Enable the **Collect Logs on Volumes** feature in the project where the container resides.
 
-* 在**存储设置**页签启用**收集卷上日志**功能，为容器挂载读写模式的持久卷或临时卷，并设置**容器日志路径**。
+* On the **Storage Settings** tab, enable the **Collect Logs on Volumes** feature, mount a persistent volume or temporary volume in read-write mode for the container, and set the **Container Log Path**.
 
-* 设置容器中的应用程序将日志导出到卷挂载目录下的**容器日志路径**。
+* Configure the application in the container to export logs to the **Container Log Path** under the volume mount directory.
 
 include::workloads-desc-viewContainerLogsOnVolume.adoc[]

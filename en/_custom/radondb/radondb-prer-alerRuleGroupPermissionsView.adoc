@@ -1,2 +1,2 @@
 // :ks_include_id: 514e3f0143bd4c10842526fa9d3ecbcc
-* 您需要在 KubeSphere Web 控制台加入一个项目，并在项目中具有**应用负载查看**和**规则组查看**权限。
+* You need to join a project in the KubeSphere web console and have the **View Application Workloads** and **View Rule Groups** permissions within the project.

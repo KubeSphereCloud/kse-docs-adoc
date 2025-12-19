@@ -1,549 +1,548 @@
 ---
-title: "附录：KubeSphere Core 高级配置"
+title: "Appendix: KubeSphere Core Advanced Configuration"
 weight: 05
 ---
 
-// 来源：https://github.com/kubesphere/project/issues/6557#issuecomment-3060026514
-== KubeSphere Helm Chart 参数
+// Source: https://github.com/kubesphere/project/issues/6557#issuecomment-3060026514
+== KubeSphere Helm Chart Parameters
 
 [discrete]
-=== 全局配置
+=== Global Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `global.imageRegistry`    | 全局 Docker 镜像仓库地址                     | `registry.cn-beijing.aliyuncs.com`
-| `global.tag`              | 全局 Docker 镜像标签                     | `""`
-| `global.imagePullSecrets` | 全局 Docker 仓库密钥名称数组             | `[]`
+| `global.imageRegistry`    | Global Docker image registry address                     | `registry.cn-beijing.aliyuncs.com`
+| `global.tag`              | Global Docker image tag                     | `""`
+| `global.imagePullSecrets` | Global Docker registry secret name array             | `[]`
 |===
 
 [discrete]
-=== 通用参数
+=== Common Parameters
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `nameOverride`      | 部分覆盖 `common.names.fullname` 的字符串     | `""`
-| `fullnameOverride`  | 完全覆盖 `common.names.fullname` 的字符串     | `""`
-| `commonLabels`      | 添加到所有部署对象的标签                    | `{}`
-| `commonAnnotations` | 添加到所有部署对象的注解                    | `{}`
+| `nameOverride`      | String to partially override `common.names.fullname`     | `""`
+| `fullnameOverride`  | String to fully override `common.names.fullname`     | `""`
+| `commonLabels`      | Labels added to all deployed objects                    | `{}`
+| `commonAnnotations` | Annotations added to all deployed objects                    | `{}`
 |===
 
 [discrete]
-=== 多集群配置
+=== Multi-cluster Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `multicluster.role`            | 多集群角色 (host/member)   | `""`
-| `multicluster.hostClusterName` | 主集群名称                 | `""`
+| `multicluster.role`            | Multi-cluster role (host/member)   | `""`
+| `multicluster.hostClusterName` | Host cluster name                 | `""`
 |===
 
 [discrete]
-=== Portal 配置
+=== Portal Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `portal.hostname`  | `ks-console` 服务的公开入口域名或 IP 地址          | `ks-console.kubesphere-system.svc`
-| `portal.http.port` | `ks-console` 服务通过公开入口暴露的 HTTP 端口号                             | `30880`
+| `portal.hostname`  | Public ingress domain name or IP address for the `ks-console` service          | `ks-console.kubesphere-system.svc`
+| `portal.http.port` | HTTP port number exposed by the `ks-console` service through the public ingress                             | `30880`
 |===
 
 [discrete]
-=== S3 存储配置
+=== S3 Storage Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `s3.endpoint`        | S3 端点 URL      | `""`
-| `s3.region`          | S3 区域          | `us-east-1`
-| `s3.disableSSL`      | 禁用 S3 SSL      | `true`
-| `s3.forcePathStyle`  | 强制 S3 路径样式 | `true`
-| `s3.accessKeyID`     | S3 访问密钥 ID   | `admin`
-| `s3.secretAccessKey` | S3 访问密钥  | `admin`
-| `s3.bucket`          | S3 存储桶名称    | `uploads`
+| `s3.endpoint`        | S3 endpoint URL      | `""`
+| `s3.region`          | S3 region          | `us-east-1`
+| `s3.disableSSL`      | Disable S3 SSL      | `true`
+| `s3.forcePathStyle`  | Force S3 path style | `true`
+| `s3.accessKeyID`     | S3 access key ID   | `admin`
+| `s3.secretAccessKey` | S3 secret access key  | `admin`
+| `s3.bucket`          | S3 bucket name    | `uploads`
 |===
 
 [discrete]
-=== 认证配置
+=== Authentication Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `authentication.authenticateRateLimiterMaxTries`     | 认证最大尝试次数         | `10`
-| `authentication.authenticationRateLimiterDuration`   | 限流器持续时间           | `10m0s`
-| `authentication.loginHistoryRetentionPeriod`         | 登录历史保留期限         | `168h`
-| `authentication.enableMultiLogin`                    |  启用多点登录           | `true`
-| `authentication.maxInactivityDuration`               | 最大不活动持续时间       | `0s`
-| `authentication.adminPassword`                       | 管理员密码               | `""`
-| `authentication.issuer.maximumClockSkew`             | JWT 令牌验证时允许的最大时钟偏差         | `10s`
-| `authentication.issuer.jwtSecret`                    | 用于签发 JWT 的密钥                 | `""`
-| `authentication.issuer.accessTokenMaxAge`            | 访问令牌最大有效期       | `2h`
-| `authentication.issuer.accessTokenInactivityTimeout` | JWT 访问令牌的不活跃超时时间       | `30m`
+| `authentication.authenticateRateLimiterMaxTries`     | Maximum authentication attempts         | `10`
+| `authentication.authenticationRateLimiterDuration`   | Rate limiter duration           | `10m0s`
+| `authentication.loginHistoryRetentionPeriod`         | Login history retention period         | `168h`
+| `authentication.enableMultiLogin`                    |  Enable multi-point login           | `true`
+| `authentication.maxInactivityDuration`               | Maximum inactivity duration       | `0s`
+| `authentication.adminPassword`                       | Administrator password               | `""`
+| `authentication.issuer.maximumClockSkew`             | Maximum allowed clock skew during JWT token verification         | `10s`
+| `authentication.issuer.jwtSecret`                    | Secret key used to sign JWTs                 | `""`
+| `authentication.issuer.accessTokenMaxAge`            | Access token maximum validity period       | `2h`
+| `authentication.issuer.accessTokenInactivityTimeout` | Inactivity timeout for JWT access tokens       | `30m`
 |===
 
 [discrete]
-=== 安全配置
+=== Security Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `security.passwordPolicy.expireEnabled`       | 启用密码过期                                | `false`
-| `security.passwordPolicy.maxAgeDays`          | 密码最大有效期（天）                        | `90`
-| `security.passwordPolicy.reminderDays`        | 密码过期前提醒天数                          | `7`
-| `security.passwordPolicy.forceChangeOnExpire` | 密码过期时强制用户更改密码                  | `false`
+| `security.passwordPolicy.expireEnabled`       | Enable password expiration                                | `false`
+| `security.passwordPolicy.maxAgeDays`          | Maximum password validity period (days)                        | `90`
+| `security.passwordPolicy.reminderDays`        | Reminder days before password expiration                          | `7`
+| `security.passwordPolicy.forceChangeOnExpire` | Force user to change password upon expiration                  | `false`
 |===
 
 [discrete]
-=== 实验性功能
+=== Experimental Features
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `experimental.validationDirective`           | 资源验证模式（严格/忽略/警告）                 | `""`
-| `experimental.maintenance.enabled`           | 启用维护模式                            | `false`
-| `experimental.maintenance.platformMaintenance` | 启用平台维护                            | `false`
-| `experimental.maintenance.description`       | 平台维护时的描述信息                                | `""`
-| `experimental.openAPI.enabled`               | 启用 OpenAPI                           | `false`
-| `experimental.hnc.enabled`                   | 启用 HNC（分层命名空间控制器）           | `false`
+| `experimental.validationDirective`           | Resource validation mode (Strict/Ignore/Warn)                 | `""`
+| `experimental.maintenance.enabled`           | Enable maintenance mode                            | `false`
+| `experimental.maintenance.platformMaintenance` | Enable platform maintenance                            | `false`
+| `experimental.maintenance.description`       | Description information during platform maintenance                                | `""`
+| `experimental.openAPI.enabled`               | Enable OpenAPI                           | `false`
+| `experimental.hnc.enabled`                   | Enable HNC (Hierarchical Namespace Controller)           | `false`
 |===
 
 [discrete]
-=== 审计配置
+=== Auditing Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `auditing.enable`              | 启用审计                                | `false`
-| `auditing.auditLevel`          | 审计级别（元数据/请求/请求响应）         | `Metadata`
-| `auditing.logOptions.path`     | 审计日志路径                            | `/etc/audit/audit.log`
-| `auditing.logOptions.maxAge`   | 审计日志的最大保留天数                     | `7`
-| `auditing.logOptions.maxBackups` | 审计日志的最大备份数                      | `10`
-| `auditing.logOptions.maxSize`  | 审计日志文件的最大大小（MB）               | `100`
+| `auditing.enable`              | Enable auditing                                | `false`
+| `auditing.auditLevel`          | Audit level (Metadata/Request/RequestResponse)         | `Metadata`
+| `auditing.logOptions.path`     | Audit log path                            | `/etc/audit/audit.log`
+| `auditing.logOptions.maxAge`   | Maximum retention days for audit logs                     | `7`
+| `auditing.logOptions.maxBackups` | Maximum number of audit log backups                      | `10`
+| `auditing.logOptions.maxSize`  | Maximum size of audit log file (MB)               | `100`
 |===
 
 [discrete]
-=== 服务账户配置
+=== Service Account Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `serviceAccount.create`     | 创建服务账户         | `true`
-| `serviceAccount.annotations` | 服务账户注解         | `{}`
-| `serviceAccount.name`       | 服务账户名称         | `kubesphere`
+| `serviceAccount.create`     | Create service account         | `true`
+| `serviceAccount.annotations` | Service account annotations         | `{}`
+| `serviceAccount.name`       | Service account name         | `kubesphere`
 |===
 
 [discrete]
-=== Pod 配置
+=== Pod Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `tolerations` | Pod 容忍配置                            | `[]`
-| `affinity`    | Pod 亲和性配置                          | `{}`
-| `nodeSelector` | Pod 节点选择器                          | `{}`
-| `internalTLS` | 启用组件间 TLS 通信                      | `false`
+| `tolerations` | Pod toleration configuration                            | `[]`
+| `affinity`    | Pod affinity configuration                          | `{}`
+| `nodeSelector` | Pod node selector                          | `{}`
+| `internalTLS` | Enable inter-component TLS communication                      | `false`
 |===
 
 [discrete]
-=== API 服务器配置
+=== API Server Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `apiserver.image.registry`    | ks-apiserver 的镜像注册中心地址                                     | `""`
-| `apiserver.image.repository`  | ks-apiserver 的镜像仓库路径                            | `kse/ks-apiserver`
-| `apiserver.image.tag`         | ks-apiserver 的镜像标签                                     | `""`
-| `apiserver.image.digest`      | ks-apiserver 的镜像摘要                                    | `""`
-| `apiserver.image.pullPolicy`  | ks-apiserver 的镜像拉取策略                     | `IfNotPresent`
-| `apiserver.containerPorts`    | ks-apiserver 容器启用的端口列表                                   | `[]`
-| `apiserver.resources.limits`  | ks-apiserver 容器的资源限制                                       | `{}`
-| `apiserver.resources.requests` | ks-apiserver 容器的资源请求                                       | `{}`
-| `apiserver.command`           | 覆盖默认容器命令                                                 | `[]`
-| `apiserver.extraEnvVars`      | 额外环境变量列表                            | `[]`
-| `apiserver.extraVolumeMounts` | 额外 volumeMounts 列表                         | `[]`
-| `apiserver.extraVolumes`      | 额外 volumes 列表                              | `[]`
-| `apiserver.hardAntiAffinity`  | 是否启用强反亲和性调度                            | `false`
+| `apiserver.image.registry`    | Image registry address for ks-apiserver                                     | `""`
+| `apiserver.image.repository`  | Image repository path for ks-apiserver                            | `kse/ks-apiserver`
+| `apiserver.image.tag`         | Image tag for ks-apiserver                                     | `""`
+| `apiserver.image.digest`      | Image digest for ks-apiserver                                    | `""`
+| `apiserver.image.pullPolicy`  | Image pull policy for ks-apiserver                     | `IfNotPresent`
+| `apiserver.containerPorts`    | List of ports enabled for the ks-apiserver container                                   | `[]`
+| `apiserver.resources.limits`  | Resource limits for the ks-apiserver container                                       | `{}`
+| `apiserver.resources.requests` | Resource requests for the ks-apiserver container                                       | `{}`
+| `apiserver.command`           | Override default container command                                                 | `[]`
+| `apiserver.extraEnvVars`      | List of additional environment variables                            | `[]`
+| `apiserver.extraVolumeMounts` | List of additional volumeMounts                         | `[]`
+| `apiserver.extraVolumes`      | List of additional volumes                              | `[]`
+| `apiserver.hardAntiAffinity`  | Whether to enable hard anti-affinity scheduling                            | `false`
 |===
 
 [discrete]
-=== 控制台配置
+=== Console Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `console.image.registry`              |  console 镜像仓库地址                                                 | `""`
-| `console.image.repository`            | console 的镜像命名空间                                             | `kse/ks-console`
-| `console.image.tag`                   | console 镜像标签                                                 | `""`
-| `console.image.digest`                | console 镜像摘要                                                 | `""`
-| `console.image.pullPolicy`            | console 镜像拉取策略                                             | `IfNotPresent`
-| `console.config.enableKubeConfig`     | 在控制台中启用 kubeconfig                                       | `true`
-| `console.config.enenableNodeListTerminal` | 在控制台中启用节点列表终端                                     | `true`
-| `console.containerPorts`              | ks-console 容器启用的端口列表                                   | `[]`
-| `console.nodePort`                    | console 服务的节点端口                                           | `30880`
-| `console.resources.limits`            | ks-console 容器的资源限制                                       | `{}`
-| `console.resources.requests`          | ks-console 容器的资源请求                                       | `{}`
-| `console.command`                     | 覆盖默认容器命令                                               | `[]`
-| `console.extraEnvVars`                | 添加到 ks-console 的额外环境变量数组                             | `[]`
-| `console.extraVolumeMounts`           | ks-console 容器的额外 volumeMounts 列表                           | `[]`
-| `console.extraVolumes`                | ks-console Pod 的额外 volumes 列表                                | `[]`
-| `console.hardAntiAffinity`            | 是否强制 ks-console Pod 运行在不同节点上                         | `false`
+| `console.image.registry`              |  Console image registry address                                                 | `""`
+| `console.image.repository`            | Image namespace for console                                             | `kse/ks-console`
+| `console.image.tag`                   | Console image tag                                                 | `""`
+| `console.image.digest`                | Console image digest                                                 | `""`
+| `console.image.pullPolicy`            | Console image pull policy                                             | `IfNotPresent`
+| `console.config.enableKubeConfig`     | Enable kubeconfig in the console                                       | `true`
+| `console.config.enenableNodeListTerminal` | Enable node list terminal in the console                                     | `true`
+| `console.containerPorts`              | List of ports enabled for the ks-console container                                   | `[]`
+| `console.nodePort`                    | Node port for the console service                                           | `30880`
+| `console.resources.limits`            | Resource limits for the ks-console container                                       | `{}`
+| `console.resources.requests`          | Resource requests for the ks-console container                                       | `{}`
+| `console.command`                     | Override default container command                                               | `[]`
+| `console.extraEnvVars`                | Array of additional environment variables added to ks-console                             | `[]`
+| `console.extraVolumeMounts`           | List of additional volumeMounts for the ks-console container                           | `[]`
+| `console.extraVolumes`                | List of additional volumes for the ks-console Pod                                | `[]`
+| `console.hardAntiAffinity`            | Whether to force ks-console Pods to run on different nodes                         | `false`
 |===
 
 [discrete]
-=== 控制器配置
+=== Controller Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `controller.image.registry`   | 控制器镜像仓库地址                                                           | `""`
-| `controller.image.repository` | 控制器的镜像命名空间                                                       | `kse/ks-controller-manager`
-| `controller.image.tag`        | 控制器镜像标签                                                           | `""`
-| `controller.image.digest`     | 控制器镜像摘要                                                           | `""`
-| `controller.image.pullPolicy` | 控制器镜像拉取策略                                                       | `IfNotPresent`
-| `controller.containerPorts`   | ks-controller-manager 容器启用的端口列表                                   | `[]`
-| `controller.resources.limits` | ks-controller-manager 容器的资源限制                                       | `{}`
-| `controller.resources.requests` | ks-controller-manager 容器的资源请求                                       | `{}`
-| `controller.command`          | 覆盖默认容器命令                                                         | `[]`
-| `controller.extraEnvVars`     | 添加到 ks-controller-manager 的额外环境变量数组                            | `[]`
-| `controller.extraVolumeMounts` | ks-controller-manager 容器的额外 volumeMounts 列表                          | `[]`
-| `controller.extraVolumes`     | ks-controller-manager Pod 的额外 volumes 列表                               | `[]`
-| `controller.hardAntiAffinity` | 是否强制 ks-controller-manager Pod 运行在不同节点上                        | `false`
+| `controller.image.registry`   | Controller image registry address                                                           | `""`
+| `controller.image.repository` | Image namespace for controller                                                       | `kse/ks-controller-manager`
+| `controller.image.tag`        | Controller image tag                                                           | `""`
+| `controller.image.digest`     | Controller image digest                                                           | `""`
+| `controller.image.pullPolicy` | Controller image pull policy                                                       | `IfNotPresent`
+| `controller.containerPorts`   | List of ports enabled for the ks-controller-manager container                                   | `[]`
+| `controller.resources.limits` | Resource limits for the ks-controller-manager container                                       | `{}`
+| `controller.resources.requests` | Resource requests for the ks-controller-manager container                                       | `{}`
+| `controller.command`          | Override default container command                                                         | `[]`
+| `controller.extraEnvVars`     | Array of additional environment variables added to ks-controller-manager                            | `[]`
+| `controller.extraVolumeMounts` | List of additional volumeMounts for the ks-controller-manager container                          | `[]`
+| `controller.extraVolumes`     | List of additional volumes for the ks-controller-manager Pod                               | `[]`
+| `controller.hardAntiAffinity` | Whether to force ks-controller-manager Pods to run on different nodes                        | `false`
 |===
 
 [discrete]
-=== 代理配置
+=== Agent Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default
 
-| `agent.replicaCount` | 代理副本数量        | `1`
+| `agent.replicaCount` | Agent replica count        | `1`
 |===
 
 [discrete]
-=== Helm 执行器配置
+=== Helm Executor Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
-
-| `helmExecutor.timeout`           | Helm 执行器超时时间                | `10m`
-| `helmExecutor.historyMax`        | Helm 历史记录最大数量              | `2`
-| `helmExecutor.jobTTLAfterFinished` | 任务完成后的存活时间               | `0s`
-| `helmExecutor.image.registry`    | Helm 执行器的镜像仓库地址                | `""`
-| `helmExecutor.image.repository`  | Helm 执行器的镜像命名空间            | `kubesphereio/kubectl`
-| `helmExecutor.image.tag`         | Helm 执行器镜像标签                | `v1.33.1`
-| `helmExecutor.image.pullPolicy`  | Helm 执行器镜像拉取策略            | `IfNotPresent`
-| `helmExecutor.resources.limits`   | Helm 执行器的资源限制              | `{}`
-| `helmExecutor.resources.requests` | Helm 执行器的资源请求              | `{}`
-| `helmExecutor.affinity`           | Helm 执行器的亲和性配置            | `{}`
+|Parameter |Description |Default
+| `helmExecutor.timeout`           | Helm executor timeout                | `10m`
+| `helmExecutor.historyMax`        | Maximum number of Helm history records              | `2`
+| `helmExecutor.jobTTLAfterFinished` | Time-to-live after Job completion               | `0s`
+| `helmExecutor.image.registry`    | Helm executor image registry address                | `""`
+| `helmExecutor.image.repository`  | Helm executor image namespace            | `kubesphereio/kubectl`
+| `helmExecutor.image.tag`         | Helm executor image tag                | `v1.33.1`
+| `helmExecutor.image.pullPolicy`  | Helm executor image pull policy            | `IfNotPresent`
+| `helmExecutor.resources.limits`   | Helm executor resource limits              | `{}`
+| `helmExecutor.resources.requests` | Helm executor resource requests              | `{}`
+| `helmExecutor.affinity`           | Helm executor affinity configuration            | `{}`
 |===
 
 [discrete]
-=== 自制应用配置
+=== Composed App Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `composedApp.appSelector` | 用于筛选需要协调的 K8s 应用的选择器          | `""`
+| `composedApp.appSelector` | Selector for filtering K8s applications that need coordination          | `""`
 |===
 
 [discrete]
-=== Kubectl 配置
+=== Kubectl Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `kubectl.image.registry`   | Kubectl 镜像仓库地址    | `""`
-| `kubectl.image.repository` | Kubectl 的镜像命名空间 | `kubesphereio/kubectl`
-| `kubectl.image.tag`        | Kubectl 镜像标签     | `v1.33.1`
-| `kubectl.image.pullPolicy` | Kubectl 镜像拉取策略 | `IfNotPresent`
+| `kubectl.image.registry`   | Kubectl image registry address    | `""`
+| `kubectl.image.repository` | Kubectl image namespace | `kubesphereio/kubectl`
+| `kubectl.image.tag`        | Kubectl image tag     | `v1.33.1`
+| `kubectl.image.pullPolicy` | Kubectl image pull policy | `IfNotPresent`
 |===
 
 [discrete]
-=== Ingress 配置
+=== Ingress Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `ingress.enabled`          | 启用 Ingress                            | `false`
-| `ingress.ingressClassName` | Ingress 类名称                          | `""`
-| `ingress.tls.enabled`      | 启用 TLS                                | `true`
-| `ingress.tls.source`       | TLS 来源 (生成/导入/Let's Encrypt)       | `generation`
-| `ingress.tls.secretName`   | TLS 证书 Secret 名称                      | `kubesphere-tls-certs`
+| `ingress.enabled`          | Enable Ingress                            | `false`
+| `ingress.ingressClassName` | Ingress class name                          | `""`
+| `ingress.tls.enabled`      | Enable TLS                                | `true`
+| `ingress.tls.source`       | TLS source (generation/importation/Let's Encrypt)       | `generation`
+| `ingress.tls.secretName`   | TLS certificate Secret name                      | `kubesphere-tls-certs`
 |===
 
 [discrete]
-=== Let's Encrypt 配置
+=== Let's Encrypt Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `letsEncrypt.environment` | Let's Encrypt 环境 (生产/测试)          | `production`
+| `letsEncrypt.environment` | Let's Encrypt environment (production/staging)          | `production`
 |===
 
 [discrete]
-=== 证书管理器配置
+=== Certificate Manager Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `certmanager.duration`    | 证书有效期                     | `2160h`
-| `certmanager.renewBefore` | 证书到期前续订时间               | `360h`
+| `certmanager.duration`    | Certificate validity period                     | `2160h`
+| `certmanager.renewBefore` | Certificate renewal time before expiration               | `360h`
 |===
 
 [discrete]
-=== 终端配置
+=== Terminal Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `terminal.kubectl.enabled`          | 启用 kubectl 终端              | `true`
-| `terminal.kubectl.image.registry`   | kubectl 终端的镜像仓库地址          | `""`
-| `terminal.kubectl.image.repository` | kubectl 终端的镜像命名空间      | `kubesphereio/kubectl`
-| `terminal.kubectl.image.tag`        | kubectl 终端的镜像标签          | `v1.33.1`
-| `terminal.kubectl.image.pullPolicy` | kubectl 终端镜像拉取策略      | `IfNotPresent`
-| `terminal.node.enabled`             | 启用节点终端                 | `true`
-| `terminal.node.image.registry`      | 节点终端的镜像仓库地址             | `""`
-| `terminal.node.image.repository`    | 节点终端的镜像命名空间         | `kubesphereio/kubectl`
-| `terminal.node.image.tag`           | 节点终端的镜像标签             | `v1.33.1`
-| `terminal.node.image.pullPolicy`    | 节点终端镜像拉取策略         | `IfNotPresent`
-| `terminal.pod.enabled`              | 启用 Pod 终端                 | `true`
-| `terminal.pod.uploadFileLimit`      | Pod 终端文件上传限制          | `100Mi`
-| `terminal.pod.uploadFileEnabled`    | 启用 Pod 终端的文件上传功能      | `true`
-| `terminal.pod.downloadFileEnabled`  | 启用 Pod 终端的文件下载功能      | `true`
+| `terminal.kubectl.enabled`          | Enable kubectl terminal              | `true`
+| `terminal.kubectl.image.registry`   | kubectl terminal image registry address          | `""`
+| `terminal.kubectl.image.repository` | kubectl terminal image namespace      | `kubesphereio/kubectl`
+| `terminal.kubectl.image.tag`        | kubectl terminal image tag          | `v1.33.1`
+| `terminal.kubectl.image.pullPolicy` | kubectl terminal image pull policy      | `IfNotPresent`
+| `terminal.node.enabled`             | Enable node terminal                 | `true`
+| `terminal.node.image.registry`      | Node terminal image registry address             | `""`
+| `terminal.node.image.repository`    | Node terminal image namespace         | `kubesphereio/kubectl`
+| `terminal.node.image.tag`           | Node terminal image tag             | `v1.33.1`
+| `terminal.node.image.pullPolicy`    | Node terminal image pull policy         | `IfNotPresent`
+| `terminal.pod.enabled`              | Enable pod terminal                 | `true`
+| `terminal.pod.uploadFileLimit`      | Pod terminal file upload limit          | `100Mi`
+| `terminal.pod.uploadFileEnabled`    | Enable file upload for pod terminal      | `true`
+| `terminal.pod.downloadFileEnabled`  | Enable file download for pod terminal      | `true`
 |===
 
 [discrete]
-=== 云配置
+=== Cloud Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `cloud.enabled`   | 启用云功能                     | `false`
-| `cloud.env`       | 云环境                         | `kubesphere.cloud`
-| `cloud.customEnv` | 自定义云环境配置                | `{}`
+| `cloud.enabled`   | Enable cloud features                     | `false`
+| `cloud.env`       | Cloud environment                         | `kubesphere.cloud`
+| `cloud.customEnv` | Custom cloud environment configuration                | `{}`
 |===
 
 [discrete]
-=== 扩展配置
+=== Extension Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `extension.imageRegistry`            | 扩展组件的镜像注册中心地址                  | `""`
-| `extension.nodeSelector`             | 扩展组件的节点选择器              | `{}`
-| `extension.ingress.ingressClassName` | 扩展组件的 Ingress Class 名称           | `""`
-| `extension.ingress.domainSuffix`     | 为扩展组件自动分配的域名后缀             | `""`
-| `extension.ingress.httpPort`         | 为扩展组件自动分配的 HTTP 端口               | `80`
-| `extension.ingress.httpsPort`        | 为扩展组件自动分配的 HTTPS 端口                | `443`
+| `extension.imageRegistry`            | Image registry address for extensions                  | `""`
+| `extension.nodeSelector`             | Node selector for extensions              | `{}`
+| `extension.ingress.ingressClassName` | Ingress class name for extensions           | `""`
+| `extension.ingress.domainSuffix`     | Domain suffix automatically assigned to extensions             | `""`
+| `extension.ingress.httpPort`         | HTTP port automatically assigned to extensions               | `80`
+| `extension.ingress.httpsPort`        | HTTPS port automatically assigned to extensions                | `443`
 |===
 
 [discrete]
-=== 高可用配置
+=== High Availability Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `ha.enabled` | 启用高可用模式      | `false`
+| `ha.enabled` | Enable high availability mode      | `false`
 |===
 
 [discrete]
-=== Redis 配置
+=== Redis Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `redis.port`                     | Redis 服务端口           | `6379`
-| `redis.replicaCount`             | Redis 副本数量           | `1`
-| `redis.image.registry`           | Redis 镜像仓库地址        | `""`
-| `redis.image.repository`         | Redis 的镜像命名空间        | `kubesphereio/redis`
-| `redis.image.digest`             | Redis 镜像摘要            | `""`
-| `redis.image.tag`                | Redis 镜像标签            | `7.2.4-alpine`
-| `redis.image.pullPolicy`         | Redis 镜像拉取策略        | `IfNotPresent`
-| `redis.persistentVolume.enabled` | 启用 Redis 持久卷        | `true`
-| `redis.persistentVolume.size`    | Redis 持久卷大小        | `2Gi`
+| `redis.port`                     | Redis service port           | `6379`
+| `redis.replicaCount`             | Redis replica count           | `1`
+| `redis.image.registry`           | Redis image registry address        | `""`
+| `redis.image.repository`         | Redis image namespace        | `kubesphereio/redis`
+| `redis.image.digest`             | Redis image digest            | `""`
+| `redis.image.tag`                | Redis image tag            | `7.2.4-alpine`
+| `redis.image.pullPolicy`         | Redis image pull policy        | `IfNotPresent`
+| `redis.persistentVolume.enabled` | Enable Redis persistent volume        | `true`
+| `redis.persistentVolume.size`    | Redis persistent volume size        | `2Gi`
 |===
 
 [discrete]
-=== Redis 高可用配置
+=== Redis High Availability Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `redisHA.enabled`                      | 启用 Redis 高可用            | `false`
-| `redisHA.redis.port`                   | Redis 高可用端口            | `6379`
-| `redisHA.image.registry`               | Redis 高可用的镜像仓库地址      | `""`
-| `redisHA.image.repository`             | Redis 高可用的镜像命名空间      | `kubesphereio/redis`
-| `redisHA.image.tag`                    | Redis 高可用的镜像标签          | `7.2.8-alpine`
-| `redisHA.image.pullPolicy`             | Redis 高可用的镜像拉取策略      | `IfNotPresent`
-| `redisHA.persistentVolume.enabled`     | 启用 Redis 高可用持久卷      | `true`
-| `redisHA.persistentVolume.size`        | Redis 高可用持久卷大小      | `2Gi`
-| `redisHA.auth`                         | 启用 Redis 高可用认证         | `true`
-| `redisHA.existingSecret`               | Redis 高可用现有密钥名称      | `redis-secret`
-| `redisHA.tolerations`                  | Redis 高可用容忍设置         | `[]`
-| `redisHA.hardAntiAffinity`             | Redis 高可用硬反亲和性        | `false`
-| `redisHA.additionalAffinities`         | Redis 高可用额外亲和性设置    | `{}`
-| `redisHA.haproxy.servicePort`          | HAProxy 服务端口            | `6379`
-| `redisHA.haproxy.containerPort`        | HAProxy 容器端口            | `6379`
-| `redisHA.haproxy.image.registry`       | HAProxy 镜像仓库地址         | `""`
-| `redisHA.haproxy.image.repository`     | HAProxy 镜像命名空间         | `kubesphereio/haproxy`
-| `redisHA.haproxy.image.tag`            | HAProxy 镜像标签             | `3.0.8-alpine`
-| `redisHA.haproxy.image.digest`         | HAProxy 镜像摘要             | `""`
-| `redisHA.haproxy.image.pullPolicy`     | HAProxy 镜像拉取策略         | `IfNotPresent`
-| `redisHA.haproxy.hardAntiAffinity`     | HAProxy 硬反亲和性设置        | `false`
-| `redisHA.haproxy.additionalAffinities` | HAProxy 额外亲和性配置        | `{}`
+| `redisHA.enabled`                      | Enable Redis high availability            | `false`
+| `redisHA.redis.port`                   | Redis high availability port            | `6379`
+| `redisHA.image.registry`               | Redis high availability image registry address      | `""`
+| `redisHA.image.repository`             | Redis high availability image namespace      | `kubesphereio/redis`
+| `redisHA.image.tag`                    | Redis high availability image tag          | `7.2.8-alpine`
+| `redisHA.image.pullPolicy`             | Redis high availability image pull policy      | `IfNotPresent`
+| `redisHA.persistentVolume.enabled`     | Enable Redis high availability persistent volume      | `true`
+| `redisHA.persistentVolume.size`        | Redis high availability persistent volume size      | `2Gi`
+| `redisHA.auth`                         | Enable Redis high availability authentication         | `true`
+| `redisHA.existingSecret`               | Redis high availability existing secret name      | `redis-secret`
+| `redisHA.tolerations`                  | Redis high availability tolerations         | `[]`
+| `redisHA.hardAntiAffinity`             | Redis high availability hard anti-affinity        | `false`
+| `redisHA.additionalAffinities`         | Redis high availability additional affinity settings    | `{}`
+| `redisHA.haproxy.servicePort`          | HAProxy service port            | `6379`
+| `redisHA.haproxy.containerPort`        | HAProxy container port            | `6379`
+| `redisHA.haproxy.image.registry`       | HAProxy image registry address         | `""`
+| `redisHA.haproxy.image.repository`     | HAProxy image namespace         | `kubesphereio/haproxy`
+| `redisHA.haproxy.image.tag`            | HAProxy image tag             | `3.0.8-alpine`
+| `redisHA.haproxy.image.digest`         | HAProxy image digest             | `""`
+| `redisHA.haproxy.image.pullPolicy`     | HAProxy image pull policy         | `IfNotPresent`
+| `redisHA.haproxy.hardAntiAffinity`     | HAProxy hard anti-affinity settings        | `false`
+| `redisHA.haproxy.additionalAffinities` | HAProxy additional affinity configuration        | `{}`
 |===
 
 [discrete]
-=== KubeSphere CRDs 配置  
+=== KubeSphere CRDs Configuration  
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `ksCRDs.kubectl.image.registry`   | CRDs 使用的 kubectl 镜像仓库地址 | `""`
-| `ksCRDs.kubectl.image.repository` | CRDs 使用的 kubectl 镜像命名空间 | `kubesphereio/kubectl`
-| `ksCRDs.kubectl.image.tag`        | CRDs 使用的 kubectl 镜像标签    | `v1.33.1`
-| `ksCRDs.kubectl.image.pullPolicy` | CRDs 使用的 kubectl 镜像拉取策略 | `IfNotPresent`
+| `ksCRDs.kubectl.image.registry`   | kubectl image registry address used for CRDs | `""`
+| `ksCRDs.kubectl.image.repository` | kubectl image namespace used for CRDs | `kubesphereio/kubectl`
+| `ksCRDs.kubectl.image.tag`        | kubectl image tag used for CRDs    | `v1.33.1`
+| `ksCRDs.kubectl.image.pullPolicy` | kubectl image pull policy used for CRDs | `IfNotPresent`
 |===
 
 [discrete]
-=== KSE 扩展仓库配置
+=== KSE Extension Repository Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `kseExtensionRepository.enabled`          | 启用 KSE 扩展组件仓库            | `true`
-| `kseExtensionRepository.image.registry`   | 扩展仓库的镜像仓库地址              | `""`
-| `kseExtensionRepository.image.repository` | 扩展仓库的镜像命名空间              | `kse/extensions-museum`
-| `kseExtensionRepository.image.tag`        | 扩展仓库镜像标签                 | `v11.0.0`
-| `kseExtensionRepository.image.pullPolicy` | 扩展仓库镜像拉取策略              | `IfNotPresent`
+| `kseExtensionRepository.enabled`          | Enable KSE extension repository            | `true`
+| `kseExtensionRepository.image.registry`   | Extension repository image registry address              | `""`
+| `kseExtensionRepository.image.repository` | Extension repository image namespace              | `kse/extensions-museum`
+| `kseExtensionRepository.image.tag`        | Extension repository image tag                 | `v11.0.0`
+| `kseExtensionRepository.image.pullPolicy` | Extension repository image pull policy              | `IfNotPresent`
 |===
 
 [discrete]
-=== KubeSphere 控制台嵌入配置
+=== KubeSphere Console Embed Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `ksConsoleEmbed.image.repository` | 控制台嵌入镜像的命名空间      | `kse/ks-console-embed`
-| `ksConsoleEmbed.image.tag`        | 控制台嵌入镜像的标签          | `""`
-| `ksConsoleEmbed.image.pullPolicy` | 控制台嵌入镜像的拉取策略      | `IfNotPresent`
+| `ksConsoleEmbed.image.repository` | Console embed image namespace      | `kse/ks-console-embed`
+| `ksConsoleEmbed.image.tag`        | Console embed image tag          | `""`
+| `ksConsoleEmbed.image.pullPolicy` | Console embed image pull policy      | `IfNotPresent`
 |===
 
 [discrete]
-=== 应用配置
+=== Application Configuration
 
 [%header,cols="1a,3a,1a"]
 |===
-|参数 |描述 |默认值
+|Parameter |Description |Default Value
 
-| `application.builtinRepo.enabled` | 启用内置仓库      | `true`
+| `application.builtinRepo.enabled` | Enable built-in repository      | `true`
 |===
 
 
-== TLS 配置
+== TLS Configuration
 
-. 选择 SSL 配置
+. Select SSL Configuration
 +
 --
-KubeSphere 安全配置分为**网关 SSL 配置**以及**内部服务 SSL 配置**两个部分。其中**网关 SSL 配置**默认支持以下三种模式来启用 SSL/TLS，以保证访问的安全性。
+KubeSphere security configuration is divided into two parts: **Gateway SSL Configuration** and **Internal Service SSL Configuration**. The **Gateway SSL Configuration** supports the following three modes by default to enable SSL/TLS for secure access.
 --
 
-.. 网关 SSL 配置
+.. Gateway SSL Configuration
 +
 --
 [%header,cols="1,2,1"]
 |===
-|配置	
-|Helm Chart 选项	
-|是否需要 cert-manager
+|Configuration
+|Helm Chart Option
+|Requires cert-manager
 
-|KubeSphere 生成的 TLS 证书	|ingress.tls.source=generation	|否
-|Let’s Encrypt	|ingress.tls.source=letsEncrypt	|是
-|导入已有的证书	|ingress.tls.source=importation	|否
+|TLS certificate generated by KubeSphere |ingress.tls.source=generation |No
+|Let’s Encrypt |ingress.tls.source=letsEncrypt |Yes
+|Import existing certificate |ingress.tls.source=importation |No
 
 |===
 
-* KubeSphere 生成的 TLS 证书：支持 cert-manager 和 helm 两种方式。
+* TLS certificate generated by KubeSphere: Supports both cert-manager and helm methods.
 
-** 如果 Kubernetes 集群中已安装 cert-manager，则首选使用 cert-manager 生成证书。KubeSphere 使用 cert-manager 签发并维护证书。KubeSphere 会生成自己的 CA 证书，并用该 CA 签署证书，然后由 cert-manager 管理该证书。
+** If cert-manager is already installed in the Kubernetes cluster, cert-manager is preferred for generating certificates. KubeSphere uses cert-manager to issue and manage certificates. KubeSphere generates its own CA certificate, uses that CA to sign the certificate, and then cert-manager manages that certificate.
 
-** 如果未安装 cert-manager，则使用 helm 生成证书。在使用 helm 安装的过程中，KubeSphere 会根据设置的 `hostname` 生成 CA 和 TLS 证书。在此选项下，证书不支持自动过期轮转。
+** If cert-manager is not installed, helm is used to generate the certificate. During the helm installation process, KubeSphere generates a CA and TLS certificate based on the configured `hostname`. Under this option, certificates do not support automatic expiration rotation.
 
 * Let's Encrypt
 +
-使用 Let's Encrypt 选项必须使用 cert-manager。但是，在这种情况下，cert-manager 与 Let's Encrypt 的特殊颁发者相结合，该颁发者执行获取 Let's Encrypt 颁发证书所需的所有操作，包括请求和验证。此配置使用 HTTP 验证（HTTP-01），因此负载均衡器必须具有可以从互联网访问的公共 DNS 记录。
+Using the Let's Encrypt option requires cert-manager. However, in this case, cert-manager is combined with a special issuer for Let's Encrypt that performs all the operations required to obtain a certificate issued by Let's Encrypt, including request and validation. This configuration uses HTTP validation (HTTP-01), so the load balancer must have a public DNS record accessible from the internet.
 
-* 导入已有的证书
+* Import existing certificate
 +
-使用已有的 CA 颁发的公有或私有证书。KubeSphere 将使用该证书来保护 WebSocket 和 HTTPS 流量。在这种情况下，您必须上传名称分别为 tls.crt 和 tls.key 的 PEM 格式的证书以及相关的密钥。如果您使用私有 CA，则还必须上传该 CA 证书。这是由于您的节点可能不信任此私有 CA。
+Use an existing public or private certificate issued by a CA. KubeSphere will use this certificate to secure WebSocket and HTTPS traffic. In this case, you must upload the certificate and its associated key in PEM format named tls.crt and tls.key respectively. If you are using a private CA, you must also upload that CA certificate. This is because your nodes may not trust this private CA.
 --
 
-.. 内部服务 SSL 配置
+.. Internal Service SSL Configuration
 +
 --
-启用内部 SSL 配置之后，KubeSphere 中 Console UI 和 Apiserver 均会启用 HTTPS，内置支持 cert-manager 和 helm 生成证书。在 Kubernetes 集群已安装 cert-manager 的情况下优先使用 cert-manager 生成/管理证书，证书的 DNS 默认使用 Console UI 和 Apiserver 在 Kubernetes 集群内部的 Service DNS。
+After enabling internal SSL configuration, both the Console UI and Apiserver in KubeSphere will enable HTTPS, with built-in support for cert-manager and helm to generate certificates. If cert-manager is installed in the Kubernetes cluster, cert-manager is prioritized for generating/managing certificates. The certificate's DNS defaults to the internal Service DNS of the Console UI and Apiserver within the Kubernetes cluster.
 
 [%header,cols="1,1,1"]
 |===
-|配置	|Helm Chart 选项	|是否需要 cert-manager
-|启用内部 SSL	|internalTLS=true	|否
+|Configuration |Helm Chart Option |Requires cert-manager
+|Enable internal SSL |internalTLS=true |No
 
 |===
 --
 
-. 安装 cert-manager 
+. Install cert-manager 
 +
 --
-若使用自己的证书文件（ingress.tls.source=importation），您可以跳过此步骤。
+If using your own certificate file (ingress.tls.source=importation), you can skip this step.
 
-仅在使用 KubeSphere 生成的证书（ingress.tls.source=generation）或 Let's Encrypt 颁发的证书（ingress.tls.source=letsEncrypt）时，才需要安装 cert-manager。
+Installing cert-manager is only required when using certificates generated by KubeSphere (ingress.tls.source=generation) or certificates issued by Let's Encrypt (ingress.tls.source=letsEncrypt).
 
 [,bash]
 ----
-# 添加 Jetstack Helm 仓库
+# Add Jetstack Helm repository
 helm repo add jetstack https://charts.jetstack.io
 
-# 更新本地 Helm Chart 仓库缓存
+# Update local Helm Chart repository cache
 helm repo update
 
-# 安装 cert-manager Helm Chart
+# Install cert-manager Helm Chart
 helm install cert-manager jetstack/cert-manager -n cert-manager --create-namespace --set prometheus.enabled=false
-# 或
+# Or
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/<VERSION>/cert-manager.yaml
-
+    
 ----
-安装完 cert-manager 后，检查 cert-manager 命名空间中正在运行的 Pod 来验证它是否已正确部署：
+After installing cert-manager, check the running pods in the cert-manager namespace to verify it has been deployed correctly:
 
 [,bash]
 ----
@@ -551,12 +550,12 @@ kubectl get pods --namespace cert-manager
 ----
 --
 
-. 根据您选择的证书选项，通过 Helm 为 KubeSphere 开启 SSL 配置
+. Enable SSL configuration for KubeSphere via Helm based on your chosen certificate option.
 
-.. 启用网关 SSL 配置
+.. Enable Gateway SSL Configuration
 +
 --
-* KubeSphere 生成的证书
+* KubeSphere Generated Certificate
 +
 [,bash]
 ----
@@ -567,7 +566,7 @@ helm upgrade --install -n kubesphere-system --create-namespace ks-core $chart --
 
 * Let's Encrypt
 +
-此选项使用 cert-manager 来自动请求和续订 Let's Encrypt 证书。Let's Encrypt 是免费的，而且是受信的 CA，因此可以提供有效的证书。
+This option uses cert-manager to automatically request and renew Let's Encrypt certificates. Let's Encrypt is free and a trusted CA, thus providing valid certificates.
 +
 [,bash]
 ----
@@ -575,17 +574,17 @@ helm upgrade --install -n kubesphere-system --create-namespace ks-core $chart --
 --set hostname=kubesphere.my.org \
 --set ingress.enabled=true \
 --set ingress.tls.source=letsEncrypt \
---set letsEncrypt.email=me@example.org 
+--set letsEncrypt.email=me@example.org
 ----
 
-* 导入外部证书
+* Import External Certificate
 +
 [,bash]
 ----
-# 导入外部证书
+# Import external certificate
 kubectl create secret tls tls-ks-core-ingress --cert=tls.crt --key=tls.key -n kubesphere-system
 
-# 安装 KubeSphere
+# Install KubeSphere
 helm upgrade --install -n kubesphere-system --create-namespace ks-core
 $chart --version $version \
 --set ingress.enabled=true \
@@ -594,7 +593,7 @@ $chart --version $version \
 ----
 --
 
-.. 启用内部服务 SSL 配置
+.. Enable Internal Service SSL Configuration
 +
 [,bash]
 ----
@@ -603,20 +602,20 @@ $chart --version $version \
 --set internalTLS=true
 ----
 
-== 配置 ratelimit 限流器
+== Configure the ratelimit Rate Limiter
 
-启用限流器之后，限流器会对所有用户的请求独立限流，主要支持以下两种方式：
+After enabling the rate limiter, it will independently rate-limit requests for all users, primarily supporting the following two methods:
 
-* 对 KubeSphere 中的每个用户设置限流速率，暂不支持独立设置每个用户的限流速率；
+* Set a rate limit for each user in KubeSphere. Setting an independent rate limit for each user is not currently supported.
 
-* 对 KubeSphere 中的每个 ServiceAccount 独立设置限流速率。
+* Set an independent rate limit for each ServiceAccount in KubeSphere.
 
 [discrete]
-=== 启用限流器
+=== Enable the Rate Limiter
 
-启用限流器就是对 KubeSphere 中的每个用户设置限流速率。
+Enabling the rate limiter sets a rate limit for each user in KubeSphere.
 
-. 修改 kubesphere-system 配置文件。
+. Modify the kubesphere-system configuration file.
 +
 --
 [,bash]
@@ -624,18 +623,18 @@ $chart --version $version \
 kubectl -n kubesphere-system edit cm kubesphere-system
 ----
 
-新增以下内容：
+Add the following content:
 [,yaml]
 ----
 rateLimit:
-  enable: true   # 启用限流器
-  driver: memory # 内存模式
-  QPS: 40.0      # 令牌恢复速率
-  burst: 80      # 令牌桶容量
+  enable: true   # Enable the rate limiter
+  driver: memory # Memory mode
+  QPS: 40.0      # Token recovery rate
+  burst: 80      # Token bucket capacity
 ----
 --
 
-. 重启 ks-apiserver。
+. Restart ks-apiserver.
 +
 [,bash]
 ----
@@ -643,9 +642,9 @@ kubectl -n kubesphere-system rollout restart deploy ks-apiserver
 ----
 
 [discrete]
-=== 设置 ServiceAccount 限流器
+=== Set ServiceAccount Rate Limiter
 
-设置前，您需要按照上一步启用限流器。然后执行以下命令对 ServiceAccount 设置限流速率。
+Before setting, you need to enable the rate limiter as per the previous step. Then execute the following command to set the rate limit for a ServiceAccount.
 
 [,bash]
 ----
@@ -653,21 +652,20 @@ kubectl -n <Namespace> patch serviceaccounts.kubesphere.io <ServiceAccount> --ty
 ----
 
 [discrete]
-=== 参数说明
+=== Parameter Description
 
 [%header,cols="1,1,3a"]
 |===
-|选项	|默认值	|描述
-|rateLimit.enable	|false	|bool - 启用限流器。
-|rateLimit.driver	|memory	|string - 限流器存储类型，可选项："memory"。
-|rateLimit.QPS	|5.0	|float32 - 限流器令牌桶算法中每秒恢复的令牌数。
-|rateLimit.burst	|10	|int - 限流器令牌桶算法中令牌桶的最大容量。
+|Option |Default Value |Description
+|rateLimit.enable |false |bool - Enable the rate limiter.
+|rateLimit.driver |memory |string - Rate limiter storage type, options: "memory".
+|rateLimit.QPS |5.0 |float32 - Number of tokens restored per second in the rate limiter's token bucket algorithm.
+|rateLimit.burst |10 |int - Maximum capacity of the token bucket in the rate limiter's token bucket algorithm.
 |===
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|令牌的恢复速率 QPS 建议设置为桶容量 burst 的一半。
+|It is recommended to set the token recovery rate QPS to half of the bucket capacity burst.
 |===
-

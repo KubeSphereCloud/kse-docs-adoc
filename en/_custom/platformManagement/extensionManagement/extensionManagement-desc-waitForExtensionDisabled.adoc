@@ -1,2 +1,2 @@
 // :ks_include_id: c7f7a227d261492aa85e52060e0d8efc
-扩展组件禁用过程可能需要一定时间，请等待禁用完成。
+The process of disabling an extension may take some time. Please wait for the disabling to complete.

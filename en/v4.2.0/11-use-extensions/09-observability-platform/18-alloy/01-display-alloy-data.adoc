@@ -1,19 +1,19 @@
 ---
-title: "可视化 Alloy 收集的指标"
-keywords: "Kubernetes, {ks_product}, Grafana, alloy, dashboard, 可观测"
-description: "介绍如何在 Grafana 可视化 Alloy 收集的指标。"
+title: "Visualizing Metrics Collected by Alloy"
+keywords: "Kubernetes, {ks_product}, Grafana, alloy, dashboard, Observability"
+description: "Describes how to visualize metrics collected by Alloy in Grafana."
 weight: 01
 ---
 
-Alloy 内置了众多可以导出指标的 link:https://grafana.com/docs/alloy/latest/reference/components/prometheus/[Exporters]，例如 Blackbox Exporter、Elasticsearch Exporter、Kafka Exporter、Redis Exporter、Postgres Exporter 等。安装 Alloy 后用户无需再分别安装单独的 Exporter，使用  link:https://grafana.com/docs/alloy/latest/reference/components/prometheus/prometheus.remote_write/[prometheus.remote_write] 组件即可将上述 Exporters 暴露的指标写入 Prometheus 及其兼容的存储后端。然后借助 Grafana 控制台可视化 Alloy 收集的指标。
+Alloy has built-in link:https://grafana.com/docs/alloy/latest/reference/components/prometheus/[Exporters] that can export metrics, such as Blackbox Exporter, Elasticsearch Exporter, Kafka Exporter, Redis Exporter, Postgres Exporter, etc. After installing Alloy, users no longer need to install separate Exporters individually. Using the link:https://grafana.com/docs/alloy/latest/reference/components/prometheus/prometheus.remote_write/[prometheus.remote_write] component, metrics exposed by the aforementioned Exporters can be written to Prometheus and its compatible storage backends. Then, use the Grafana console to visualize the metrics collected by Alloy.
 
-下面是一个使用 Alloy 内置的 Blackbox Exporter 导出指标并写入 Prometheus 的示例。
+The following is an example of using Alloy's built-in Blackbox Exporter to export metrics and write them to Prometheus.
 
-== 步骤 1：创建配置字典
+== Steps 1: Create a ConfigMap
 
-在 Grafana Alloy for WizTelemetry 的扩展组件配置中，可以直接提供 Alloy 配置，也可以指定外部 ConfigMap 提供配置。建议先创建 ConfigMap，然后在扩展组件配置中指定。
+In the extension configuration for Grafana Alloy for WizTelemetry, you can directly provide the Alloy configuration or specify an external ConfigMap to provide the configuration. It is recommended to create a ConfigMap first and then specify it in the extension configuration.
 
-以 Blackbox Exporter 为例，在集群节点上，执行以下命令，创建配置字典 `blackbox-modules`。
+Taking Blackbox Exporter as an example, execute the following command on a cluster node to create the ConfigMap `blackbox-modules`.
 
 [source,bash]
 ----
@@ -32,21 +32,21 @@ data:
 EOF
 ----
 
-== 步骤 2：修改扩展组件配置
+== Steps 2: Modify the Extension Configuration
 
-// 配置还有问题
-修改 Grafana Alloy for WizTelemetry 的扩展组件配置，以抓取并导出 Blackbox Exporter 的指标并写入 Prometheus。
+// Configuration still has issues
+Modify the extension configuration for Grafana Alloy for WizTelemetry to scrape and export metrics from the Blackbox Exporter and write them to Prometheus.
 
 [source,yaml]
 ----
 alloy:
   alloy:
     configMap:
-      # 是否自动创建 configmap
+      # Whether to automatically create the configmap
       create: true
-      # 配置内容
+      # Configuration content
       content: |
-        // 指定 blackbox exporter 配置的 configmap。
+        // Specify the configmap for blackbox exporter configuration.
         remote.kubernetes.configmap "blackbox" {
           namespace = "kubesphere-monitoring-system"
           name = "blackbox-modules"
@@ -54,7 +54,7 @@ alloy:
 
         prometheus.exporter.blackbox "example" {
           config = remote.kubernetes.configmap.blackbox.data["blackbox_modules"]
-          // 指定 blackbox exporter 的目标配置，通过 labels 指定自定义的标签。
+          // Specify the target configuration for the blackbox exporter, using labels to specify custom tags.
           target {
             name    = "prometheus"
             address = "https://www.prometheus.io"              
@@ -65,27 +65,26 @@ alloy:
           }
         }
         
-        // 指标转发
+        // Metric forwarding
         prometheus.scrape "exporter" {
           targets    = prometheus.exporter.blackbox.example.targets
           forward_to = [prometheus.remote_write.default_storage_backend.receiver]
         }        
 
-        // 指定远程写入 Prometheus 配置
+        // Specify remote write configuration for Prometheus
         prometheus.remote_write "default_storage_backend" {
           endpoint {
             url = "http://prometheus-k8s.kubesphere-monitoring-system.svc:9090/api/v1/write"
           }
         }
-      # 当使用外部 configmap 时,需要指定 configmap 的名称，当 create 为 false 时启用
+      # When using an external configmap, specify the name of the configmap. Enabled when create is false.
       name: null
-      # 配置 map 的 key
+      # The key for the config map
       key: null
 ----
 
-== 步骤 3：查看 Blackbox Exporter 指标
+== Steps 3: View Blackbox Exporter Metrics
 
 image:/images/ks-qkcp/zh/v4.1.3/blackbox-exporter-dashboard.png[blackbox-exporter]
 
-登录 Grafana for WizTelemetry 扩展组件提供的 link:../../16-grafana/[Grafana 控制台]，访问内置的 Blackbox Exporter Dashboard，查看相应指标。
-
+Log in to the link:../../16-grafana/[Grafana console] provided by the Grafana for WizTelemetry extension, access the built-in Blackbox Exporter Dashboard, and view the corresponding metrics.

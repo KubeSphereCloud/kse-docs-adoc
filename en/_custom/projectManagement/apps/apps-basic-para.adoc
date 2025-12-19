@@ -2,17 +2,17 @@
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|应用的名称。名称只能包含小写字母、数字和连字符（-），必须以小写字母或数字开头和结尾，最长 63 个字符。
+|Name
+|The name of the application. The name can only contain lowercase letters, numbers, and hyphens (-), must start and end with a lowercase letter or number, and has a maximum length of 63 characters.
 
-|版本
-|用户自定义的应用版本。版本只能包含小写字母和数字，最长 16 个字符。
+|Version
+|The user-defined version of the application. The version can only contain lowercase letters and numbers, with a maximum length of 16 characters.
 
-|应用治理
-|是否为应用启用“应用治理”功能。开启应用治理后可以对应用使用流量监控、灰度发布和链路追踪功能。
+|Application Governance
+|Whether to enable the "Application Governance" feature for the application. After enabling application governance, you can use traffic monitoring, canary release, and tracing features for the application.
 
-|描述
-|应用的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|The description information of the application. The description can contain any characters, with a maximum length of 256 characters.
 |===

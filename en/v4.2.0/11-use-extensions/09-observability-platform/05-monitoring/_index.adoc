@@ -1,51 +1,51 @@
 ---
-title: "WizTelemetry 监控"
-keywords: "Kubernetes, {ks_product}, 平台管理, Whizard 可观测中心"
-description: "介绍如何使用“WizTelemetry 监控”扩展组件。"
+title: "WizTelemetry Monitoring"
+keywords: "Kubernetes, {ks_product}, Platform Management, Whizard Observability Center"
+description: "Introduces how to use the 'WizTelemetry Monitoring' extension."
 weight: 05
 layout: "second"
 ---
 
 
-本节介绍如何使用“WizTelemetry 监控”扩展组件。
+This section introduces how to use the "WizTelemetry Monitoring" extension.
 
-WizTelemetry 监控是 WizTelemetry 可观测平台中提供监控功能的扩展组件。可提供多租户视角的云原生资源监控能力, 包括针对多集群、节点、工作负载、GPU、K8s 控制面等对象的核心监控指标实时和历史数据展示等功能。
+WizTelemetry Monitoring is an extension within the WizTelemetry Observability Platform that provides monitoring capabilities. It offers multi-tenant, cloud-native resource monitoring, including real-time and historical data display of core monitoring metrics for objects such as multi-clusters, nodes, workloads, GPUs, and the K8s control plane.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-WizTelemetry 监控不再包含 Whizard 可观测中心。扩展组件 WizTelemetry 全局监控将包含原有 Whizard 可观测中心的功能。
+WizTelemetry Monitoring no longer includes the Whizard Observability Center. The WizTelemetry Global Monitoring extension will encompass the functionalities of the original Whizard Observability Center.
 |===
 
-本节仅介绍单集群环境下的监控功能。有关单集群的告警功能，请参阅 link:../06-alerting[WizTelemetry 告警]。有关多集群的监控和告警功能，请参阅 link:../07-whizard[WizTelemetry 全局监控]。
+This section only covers monitoring features in a single-cluster environment. For alerting features in a single cluster, please refer to link:../06-alerting[WizTelemetry Alerting]. For monitoring and alerting features in multi-cluster environments, please refer to link:../07-whizard[WizTelemetry Global Monitoring].
 
-安装“WizTelemetry 监控”扩展组件后，集群和企业空间的左侧导航栏将显示**监控告警**选项，集群和企业空间中应用负载下的服务将支持**编辑监控导出器**，以下页面也将显示相关监控指标的数据：
+After installing the "WizTelemetry Monitoring" extension, the **Monitoring & Alerting** option will appear in the left navigation pane for both clusters and workspaces. Services under application workloads in clusters and workspaces will support **Edit Monitoring Exporter**. The following pages will also display relevant monitoring metric data:
 
 [%header,cols="1a,3a"]
 |===
-|模块
-|页面
+|Module
+|Pages
 
-|集群
+|Cluster
 |
-* 概览页面；
-* 集群节点、项目的列表和详情页；
-* 工作负载、任务、容器组、服务、持久卷声明的详情页；
-* 集群设置的基本信息页面。
+* Overview page;
+* List and detail pages for cluster nodes and projects;
+* Detail pages for workloads, Jobs, pods, services, and persistent volume claims;
+* Basic Information page under Cluster Settings.
 
-|企业空间
+|Workspace
 |
-* 概览页面；
-* 项目列表；
-* 工作负载、任务、容器组、服务、持久卷声明的详情页。
+* Overview page;
+* Project list;
+* Detail pages for workloads, Jobs, pods, services, and persistent volume claims.
 |===
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-有关组件配置的更多信息，请参阅扩展中心“WizTelemetry 监控”扩展组件的详情页说明。
+For more information about extension configuration, please refer to the description on the detail page of the "WizTelemetry Monitoring" extension in the Extensions Center.
 |===

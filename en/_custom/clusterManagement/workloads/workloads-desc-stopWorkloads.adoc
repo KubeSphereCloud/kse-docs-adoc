@@ -1,9 +1,9 @@
 // :ks_include_id: e824d7c6552945beaedf6ace7863defa
-本节介绍如何停止工作负载。
+This section describes how to stop a workload.
 
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-此操作将把工作负载中运行的容器组副本数量调整到 0，工作负载中运行的业务将中断。请谨慎执以操作。
+This operation will scale the number of running pod replicas in the workload to 0, which will interrupt the business running in the workload. Please perform this operation with caution.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]

@@ -1,24 +1,24 @@
 ---
-title: "配置 Kubernetes 高可用性"
-keywords: "Kubernetes, {ks_product}, 安装, 准备, 高可用"
-description: "介绍如何在生产环境中为 KubeSphere 集群配置多个控制平面节点。"
+title: "Configuring Kubernetes High Availability"
+keywords: "Kubernetes, {ks_product}, Installation, Preparation, High Availability"
+description: "Describes how to configure multiple control plane nodes for a KubeSphere cluster in a production environment."
 weight: 02
 ---
 
 
-本节介绍如何在生产环境中为 KubeSphere 集群配置多个控制平面节点，以防止单个控制平面节点故障时集群服务中断，从而实现高可用性。如果您的 KubeSphere 集群没有高可用性需求，您可以跳过本节。
+This section describes how to configure multiple control plane nodes for a KubeSphere cluster in a production environment to prevent cluster service interruption in case of a single control plane node failure, thereby achieving high availability. If your KubeSphere cluster does not have high availability requirements, you can skip this section.
 
-本节介绍以下高可用性配置方式：
+This section introduces the following high availability configuration methods:
 
-* 使用本地负载均衡配置。您可以在安装 KubeSphere 的过程中，设置 KubeKey 工具在工作节点上安装 HAProxy 作为各控制平面节点的反向代理，所有工作节点的 Kubernetes 组件将通过 HAProxy 连接各控制平面节点。这种方式需要额外的健康检查机制，所以相较其他方式运行效率有所降低，但可以用于没有专用负载均衡器且服务器数量有限的场景。
+* Using local load balancing configuration. During the installation of KubeSphere, you can configure the KubeKey tool to install HAProxy on the worker nodes as a reverse proxy for each control plane node. All Kubernetes components on the worker nodes will connect to each control plane node through HAProxy. This method requires additional health check mechanisms, so its operational efficiency is somewhat reduced compared to other methods, but it can be used in scenarios without a dedicated load balancer and with a limited number of servers.
 
-* 使用专用负载均衡器。您可以使用云环境提供的负载均衡器作为各控制平面节点的反向代理。这种方式要求 KubeSphere 集群安装在云环境中，并且云环境可以提供专用负载均衡器。
+* Using a dedicated load balancer. You can use a load balancer provided by the cloud environment as a reverse proxy for each control plane node. This method requires the KubeSphere cluster to be installed in a cloud environment, and the cloud environment must be able to provide a dedicated load balancer.
 
-* 使用通用服务器作为负载均衡器。您可以在集群节点以外的 Linux 服务器上安装 Keepalived 和 HAProxy 作为负载均衡器。这种方式需要至少 2 台额外的 Linux 服务器。
+* Using general-purpose servers as load balancers. You can install Keepalived and HAProxy on Linux servers outside the cluster nodes as load balancers. This method requires at least 2 additional Linux servers.
 
-== 使用本地负载均衡配置
+== Using Local Load Balancing Configuration
 
-如需使用 HAProxy 实现高可用性，只需要在安装 KubeSphere 时在安装配置文件 **config-sample.yaml** 中设置以下参数：
+To achieve high availability using HAProxy, you only need to set the following parameters in the installation configuration file **config-sample.yaml** when installing KubeSphere:
 
 // YAML
 [source,yaml]
@@ -31,33 +31,33 @@ spec:
     port: 6443
 ----
 
-KubeKey 将自动在工作节点上安装 HAProxy 并完成高可用配置，您无需进行其他操作。有关更多信息请参阅link:../../../02-install-kubesphere/[安装 KubeSphere] 。
+KubeKey will automatically install HAProxy on the worker nodes and complete the high availability configuration. You do not need to perform any other operations. For more information, please refer to link:../../../02-install-kubesphere/[Installing KubeSphere].
 
-== 使用专用负载均衡器
-如需使用云环境提供的专用负载均衡器实现高可用性，您需要在云环境中进行以下操作：
+== Using a Dedicated Load Balancer
+To achieve high availability using a dedicated load balancer provided by the cloud environment, you need to perform the following operations in the cloud environment:
 
-. 在云环境中创建一台至少包含两个副本的负载均衡器。
+. Create a load balancer with at least two replicas in the cloud environment.
 
-. 设置负载均衡器监听 KubeSphere 集群各控制平面节点的 6443 端口。
+. Configure the load balancer to listen on port 6443 of each control plane node in the KubeSphere cluster.
 
-. 获取负载均衡器的 IP 地址，供后续安装 KubeSphere 时使用。
+. Obtain the IP address of the load balancer for use during the subsequent installation of KubeSphere.
 
-有关具体操作，请参阅云环境的用户指南或联系您的云服务提供商。
+For specific operations, please refer to the user guide of your cloud environment or contact your cloud service provider.
 
-== 使用通用服务器作为负载均衡器
-以下介绍如何使用 Keepalived 和 HAProxy 将通用服务器配置成负载均衡器。
-
-
-=== 前提条件
-
-* 您需要准备 2 台与集群节点属于同一私有网络的 Linux 服务器，用作负载均衡器。
-
-* 您需要准备一个虚拟 IP 地址（VIP）用作 2 台负载均衡器服务器的浮动 IP 地址。该地址不应被其他设备或组件占用以免出现地址冲突。
+== Using General-Purpose Servers as Load Balancers
+The following describes how to configure general-purpose servers as load balancers using Keepalived and HAProxy.
 
 
-=== 配置高可用性
+=== Prerequisites
 
-. 登录用作负载均衡器的服务器，执行以下命令安装 HAProxy 和 Keepalived（以下以 Ubuntu 操作系统为例，在其他操作系统中请将 **apt** 替换为操作系统对应的软件包管理工具）：
+* You need to prepare 2 Linux servers that belong to the same private network as the cluster nodes to be used as load balancers.
+
+* You need to prepare a virtual IP address (VIP) to be used as the floating IP address for the 2 load balancer servers. This address should not be occupied by other devices or components to avoid address conflicts.
+
+
+=== Configuring High Availability
+
+. Log in to the server to be used as a load balancer and execute the following command to install HAProxy and Keepalived (the following uses the Ubuntu operating system as an example; for other operating systems, replace **apt** with the corresponding package management tool):
 +
 --
 [source,bash]
@@ -66,7 +66,7 @@ apt install keepalived haproxy psmisc -y
 ----
 --
 
-. 执行以下命令编辑 HAProxy 的配置文件：
+. Execute the following command to edit the HAProxy configuration file:
 +
 --
 // Bash
@@ -76,27 +76,27 @@ vi /etc/haproxy/haproxy.cfg
 ----
 --
 
-. 在 HAProxy 的配置文件中添加以下信息并保存文件（将 <IP address> 替换为 KubeSphere 集群各控制平面节点的私网 IP 地址）：
+. Add the following information to the HAProxy configuration file and save the file (replace <IP address> with the private IP addresses of each control plane node in the KubeSphere cluster):
 +
 --
 // Bash
 [source,bash]
 ----
 global
-    log /dev/log  local0 warning
-    chroot      /var/lib/haproxy
-    pidfile     /var/run/haproxy.pid
-    maxconn     4000
-    user        haproxy
-    group       haproxy
+    log /dev/log  local0 warning
+    chroot      /var/lib/haproxy
+    pidfile     /var/run/haproxy.pid
+    maxconn     4000
+    user        haproxy
+    group       haproxy
     daemon
    
    stats socket /var/lib/haproxy/stats
    
 defaults
   log global
-  option  httplog
-  option  dontlognull
+  option  httplog
+  option  dontlognull
         timeout connect 5000
         timeout client 50000
         timeout server 50000
@@ -119,7 +119,7 @@ backend kube-apiserver
 ----
 --
 
-. 执行以下命令重启 HAProxy：
+. Execute the following command to restart HAProxy:
 +
 --
 // Bash
@@ -129,7 +129,7 @@ systemctl restart haproxy
 ----
 --
 
-. 执行以下命令设置 HAProxy 开机后自动运行：
+. Execute the following command to set HAProxy to start automatically after boot:
 +
 --
 // Bash
@@ -139,7 +139,7 @@ systemctl enable haproxy
 ----
 --
 
-. 执行以下命令编辑 Keepalived 的配置文件：
+. Execute the following command to edit the Keepalived configuration file:
 +
 --
 // Bash
@@ -149,7 +149,7 @@ vi /etc/keepalived/keepalived.conf
 ----
 --
 
-. 在 Keepalived 的配置文件中添加以下信息并保存文件：
+. Add the following information to the Keepalived configuration file and save the file:
 +
 --
 // Bash
@@ -195,27 +195,27 @@ vrrp_instance haproxy-vip {
 }
 ----
 
-将以下参数替换为实际值：
+Replace the following parameters with actual values:
 
 [%header,cols="1a,2a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 |<NIC>
-|当前负载均衡器的网卡名称。
+|The network interface card name of the current load balancer.
 
 |<source IP address>
-|当前负载均衡器的 IP 地址。
+|The IP address of the current load balancer.
 
 |<peer IP address>
-|另一台负载均衡器的 IP 地址。
+|The IP address of the other load balancer.
 
 |<floating IP address>
-|用作浮动 IP 地址的虚拟 IP 地址。
+|The virtual IP address to be used as the floating IP address.
 |===
 --
 
-. 执行以下命令重启 Keepalived：
+. Execute the following command to restart Keepalived:
 +
 --
 // Bash
@@ -225,7 +225,7 @@ systemctl restart keepalived
 ----
 --
 
-. 执行以下命令设置 Keepalived 开机后自动运行：
+. Execute the following command to set Keepalived to start automatically after boot:
 +
 --
 // Bash
@@ -235,14 +235,14 @@ systemctl enable keepalived
 ----
 --
 
-. 重复以上步骤在另一台负载均衡器服务器上安装、配置 HAProxy 和 Keepalived。
+. Repeat the above steps to install and configure HAProxy and Keepalived on the other load balancer server.
 
-. 记录浮动 IP 地址，供后续安装 KubeSphere 时使用。
+. Record the floating IP address for use during the subsequent installation of KubeSphere.
 
 
-=== 验证高可用性
+=== Verifying High Availability
 
-. 登录第一台负载均衡器服务器并执行以下命令查看浮动 IP 地址：
+. Log in to the first load balancer server and execute the following command to view the floating IP address:
 +
 --
 // Bash
@@ -251,7 +251,7 @@ systemctl enable keepalived
 ip a s
 ----
 
-如果系统高可用性正常，命令回显中将显示已配置的浮动 IP 地址。例如，在以下命令回显中，**inet 172.16.0.10/24 scope global secondary eth0** 表明浮动 IP 地址已与 eth0 网卡绑定：
+If the system high availability is functioning normally, the configured floating IP address will be displayed in the command output. For example, in the following command output, **inet 172.16.0.10/24 scope global secondary eth0** indicates that the floating IP address is bound to the eth0 network interface card:
 
 // Bash
 [source,bash]
@@ -273,7 +273,7 @@ ip a s
 ----
 --
 
-. 执行以下命令模拟当前负载均衡器服务器故障：
+. Execute the following command to simulate a failure of the current load balancer server:
 +
 --
 // Bash
@@ -283,7 +283,7 @@ systemctl stop haproxy
 ----
 --
 
-. 执行以下命令再次检查浮动 IP 地址：
+. Execute the following command to check the floating IP address again:
 +
 --
 // Bash
@@ -292,7 +292,7 @@ systemctl stop haproxy
 ip a s
 ----
 
-如果系统高可用性正常，命令回显中将不再显示浮动 IP 地址，如以下命令回显所示：
+If the system high availability is functioning normally, the floating IP address will no longer be displayed in the command output, as shown in the following command output:
 
 // Bash
 [source,bash]
@@ -312,7 +312,7 @@ ip a s
 ----
 --
 
-. 登录另一台负载均衡器服务器，执行以下命令查看浮动 IP 地址：
+. Log in to the other load balancer server and execute the following command to view the floating IP address:
 +
 --
 // Bash
@@ -321,7 +321,7 @@ ip a s
 ip a s
 ----
 
-如果系统高可用性正常，命令回显中将显示已配置的浮动 IP 地址。例如，在以下命令回显中，**inet 172.16.0.10/24 scope global secondary eth0** 表明浮动 IP 地址已与 eth0 网卡绑定：
+If the system high availability is functioning normally, the configured floating IP address will be displayed in the command output. For example, in the following command output, **inet 172.16.0.10/24 scope global secondary eth0** indicates that the floating IP address is bound to the eth0 network interface card:
 
 // Bash
 [source,bash]
@@ -343,7 +343,7 @@ ip a s
 ----
 --
 
-. 在第一台负载均衡器服务器上执行以下命令恢复运行 HAProxy：
+. Execute the following command on the first load balancer server to restore HAProxy operation:
 +
 --
 // Bash

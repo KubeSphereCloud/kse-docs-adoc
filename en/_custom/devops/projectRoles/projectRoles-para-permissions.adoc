@@ -1,98 +1,98 @@
-* 项目设置
+* Project Settings
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|项目设置管理
-|更新和删除此 DevOps 项目。
+|Project Settings Management
+|Update and delete this DevOps project.
 |===
 --
 
-* 流水线
+* Pipelines
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|流水线运行管理
-|在 DevOps 项目中管理流水线运行和下载制品。
+|Pipeline Run Management
+|Manage pipeline runs and download artifacts in the DevOps project.
 
-|流水线运行记录查看
-|查看 DevOps 项目中的流水线运行记录。
+|Pipeline Run Record Viewing
+|View pipeline run records in the DevOps project.
 
-|流水线管理
-|创建、编辑和删除 DevOps 项目中的流水线。
+|Pipeline Management
+|Create, edit, and delete pipelines in the DevOps project.
 
-|流水线查看
-|查看 DevOps 项目中的流水线。
+|Pipeline Viewing
+|View pipelines in the DevOps project.
 |===
 --
 
-* 凭证
+* Credentials
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|凭证管理
-|创建、编辑和删除 DevOps 项目中的凭证。
+|Credential Management
+|Create, edit, and delete credentials in the DevOps project.
 
-|凭证查看
-|查看和使用 DevOps 项目中的凭证。
+|Credential Viewing
+|View and use credentials in the DevOps project.
 |===
 --
 
-* 持续部署
+* Continuous Deployment
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|持续部署管理
-|创建、编辑和删除 DevOps 项目中的持续部署。
+|Continuous Deployment Management
+|Create, edit, and delete continuous deployments in the DevOps project.
 
-|持续部署查看
-|查看 DevOps 项目中的持续部署。
+|Continuous Deployment Viewing
+|View continuous deployments in the DevOps project.
 |===
 --
 
-* 代码仓库
+* Code Repositories
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|代码仓库管理
-|管理 DevOps 项目中的代码仓库。
+|Code Repository Management
+|Manage code repositories in the DevOps project.
 
-|代码仓库查看
-|查看 DevOps 项目中的代码仓库。
+|Code Repository Viewing
+|View code repositories in the DevOps project.
 |===
 --
 
-* 访问控制
+* Access Control
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|项目角色管理
-|创建项目角色、编辑项目角色信息、编辑项目角色权限、删除项目角色。
+|Project Role Management
+|Create project roles, edit project role information, edit project role permissions, delete project roles.
 
-|项目角色查看
-|查看项目角色列表、查看项目角色详情。
+|Project Role Viewing
+|View the project role list, view project role details.
 
-|项目成员管理
-|邀请用户加入项目、修改项目成员角色、移除项目成员。
+|Project Member Management
+|Invite users to join the project, modify project member roles, remove project members.
 
-|项目成员查看
-|查看项目成员列表。
+|Project Member Viewing
+|View the project member list.
 |===
 --

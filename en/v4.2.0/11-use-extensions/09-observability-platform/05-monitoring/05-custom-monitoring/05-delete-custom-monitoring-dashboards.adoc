@@ -1,18 +1,18 @@
 ---
-title: "删除自定义监控面板"
-keywords: "Kubernetes, {ks_product}, 集群管理, 自定义监控面板, 删除自定义监控面板"
-description: "介绍如何删除自定义监控面板。"
+title: "Delete Custom Monitoring Dashboard"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Custom Monitoring Dashboard, Delete Custom Monitoring Dashboard"
+description: "Describes how to delete a custom monitoring dashboard."
 weight: 05
 ---
 
-:ks_permission: **监控管理**
-:ks_navigation: **监控告警 > 自定义监控**
+:ks_permission: **Monitoring Management**
+:ks_navigation: **Monitoring & Alerting > Custom Monitoring**
 
 
 include::../../../../../_custom/clusterManagement/customMonitoringDashboards/customMonitoringDashboards-desc-deleteCustomMonitoringDashboards.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 
@@ -20,9 +20,9 @@ include::../../../../../_custom/clusterManagement/clusterManagement-prer-require
 
 :relfileprefix: ./
 
-== 删除单个自定义监控面板
+== Delete a Single Custom Monitoring Dashboard
 
-. 以具有pass:a,q[{ks_permission}]权限的用户登录 KubeSphere Web 控制台并进入您的集群或企业空间。
+. Log in to the KubeSphere web console with a user who has pass:a,q[{ks_permission}] permissions and enter your cluster or workspace.
 +
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]
@@ -36,9 +36,9 @@ include::../../../../../_custom/projectManagement/projects-oper-dropdownList.ado
 include::../../../../../_custom/clusterManagement/customMonitoringDashboards/customMonitoringDashboards-oper-deleteASingleCustomMonitoringDashboard.adoc[]
 
 
-== 批量删除自定义监控面板
+== Delete Multiple Custom Monitoring Dashboards in Batch
 
-. 以具有pass:a,q[{ks_permission}]权限的用户登录 KubeSphere Web 控制台并进入您的集群或企业空间。
+. Log in to the KubeSphere web console with a user who has pass:a,q[{ks_permission}] permissions and enter your cluster or workspace.
 +
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]

@@ -1,4 +1,4 @@
-登录部署节点，进入离线包目录，获取节点信息和安装配置文件，用于后续执行 kk 命令。
+Log in to the deployment node, navigate to the offline package directory, and obtain the node information and installation configuration files for subsequent execution of the `kk` command.
 
 [source,bash]
 ----
@@ -7,16 +7,16 @@ cd offline
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|后续步骤必须在离线包解压后的目录（如 `offline`）中执行，否则会导致操作失败。
+|The subsequent steps must be executed within the directory where the offline package is extracted (e.g., `offline`), otherwise the operation will fail.
 |===
 
 
-**一、获取节点信息: kkv4-inventory.yaml**
+**1. Obtain Node Information: kkv4-inventory.yaml**
 
 
-. 获取节点信息文件。
+. Obtain the node information file.
 +
 ====
 [source,bash]
@@ -24,7 +24,7 @@ cd offline
 cp kubekey/runtime/kubekey.kubesphere.io/v1/inventories/default/default.yaml kkv4-inventory.yaml
 ----
 
-节点信息示例如下：
+Example node information:
 [source,yaml]
 ----
 apiVersion: kubekey.kubesphere.io/v1
@@ -73,29 +73,29 @@ status: {}
 ----
 ====
 
-**二、获取安装配置文件: kkv4-config.json**
+**2. Obtain Installation Configuration File: kkv4-config.json**
 
-. 安装 `jq`。
+. Install `jq`.
 +
 --
-在 Ubuntu 操作系统上，执行以下安装命令：
+On Ubuntu operating system, execute the following installation command:
 
 [source,bash]
 ----
 sudo apt install jq
 ----
 
-如果部署节点使用其他操作系统，请将 **apt** 替换为操作系统对应的软件包管理工具。
+If the deployment node uses a different operating system, replace **apt** with the package management tool corresponding to that operating system.
 --
 
-. 获取安装集群时的配置文件 `kkv4-config.json`。
+. Obtain the configuration file `kkv4-config.json` used during cluster installation.
 +
 ====
 [source,bash]
 ----
 cd schema/config.json | jq '{spec: .["kubernetes.json"]}' > kkv4-config.json
 ----
-配置信息示例：
+Example configuration information:
 
 [source,yaml]
 ----

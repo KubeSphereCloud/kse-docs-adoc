@@ -1,1 +1,1 @@
-. 在页面右上角点击image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18]图标，选择**应用商店管理**。
+. In the upper right corner of the page, click the image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18] icon and select **App Store Management**.

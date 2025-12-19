@@ -1,18 +1,18 @@
 // :ks_include_id: 1137d62e09344a798e172ba55bf7a205
-. 在需要操作的服务右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**编辑信息**。
+. On the right side of the service you need to operate, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], then select **Edit Information** from the dropdown list.
 
-. 在**编辑信息**对话框，设置服务的别名和描述，然后点击**确定**。
+. In the **Edit Information** dialog box, set the alias and description for the service, then click **OK**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|别名
-|服务的别名。不同服务的别名可以相同。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|The alias of the service. Different services can have the same alias.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-). It must not start or end with a hyphen (-) and can be up to 63 characters long.
 
-|描述
-|服务的描述信息。描述可包含任意字符，最多包含 256 个字符。
+|Description
+|The description of the service. The description can contain any characters, up to a maximum of 256 characters.
 |===
 --

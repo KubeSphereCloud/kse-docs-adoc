@@ -1,22 +1,19 @@
 ---
-title: "查看节点的监控详情"
-keywords: "Kubernetes, {ks_product}, WizTelemetry 全局监控, 节点, 资源用量排行"
-description: "介绍如何查看节点的资源用量详情。"
+title: "View Node Monitoring Details"
+keywords: "Kubernetes, {ks_product}, WizTelemetry Global Monitoring, Node, Resource Usage Ranking"
+description: "Describes how to view the resource usage details of a node."
 weight: 07
 ---
 
-:ks_navigation: **全局监控 > 节点**
+:ks_navigation: **Global Monitoring > Nodes**
 
+This section describes how to view the monitoring details of a single node.
 
-本节介绍如何查看单个节点的监控详情。
+== Prerequisites
 
+You need to have the **platform-admin** role on the KubeSphere platform. For more information, see link:../../../../../05-users-and-roles/01-users/[Users] and link:../../../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
-== 前提条件
-
-您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
-
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
@@ -28,80 +25,80 @@ include::../../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]
 
-. 在节点列表中点击一个节点的名称打开其详情页面。
+. In the node list, click the name of a node to open its details page.
 
-. 在详情页面的上方区域，查看当前节点的基本信息。
+. In the upper area of the details page, view the basic information of the current node.
 +
 --
-* 点击**管理节点**可进入节点详情页面。
-* 点击image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18]可隐藏该区域。
+* Click **Manage Node** to go to the node details page.
+* Click image:/images/ks-qkcp/zh/icons/chevron-down.svg[chevron-down,18,18] to hide this area.
 --
 
-. 在详情页面的**概览**页签下，查看节点的概览信息。
+. Under the **Overview** tab of the details page, view the overview information of the node.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|功能区 |描述
+|Area |Description
 
-|节点健康
-|显示节点的调度状态、就绪状态、以及网络、内存、磁盘、进程压力。如果显示image:/images/ks-qkcp/zh/icons/check-healthy.svg["healthy",15px,15px] 则表明状态正常，如果显示image:/images/ks-qkcp/zh/icons/substract-unhealthy.svg["unhealthy",15px,15px] 则表明出现告警。
+|Node Health
+|Displays the node's scheduling status, ready status, and network, memory, disk, and process pressure. If image:/images/ks-qkcp/zh/icons/check-healthy.svg["healthy",15px,15px] is displayed, the status is normal. If image:/images/ks-qkcp/zh/icons/substract-unhealthy.svg["unhealthy",15px,15px] is displayed, an alert is present.
 
-* **调度状态**：节点是否被正常调度。
+* **Scheduling Status**: Whether the node is scheduled normally.
 
-* **就绪状态**：节点是否已经准备好接收容器组。
+* **Ready Status**: Whether the node is ready to receive pods.
 
-* **网络可用性**：节点的网络配置是否正确。
+* **Network Availability**: Whether the node's network configuration is correct.
 
-* **内存压力**：节点剩余内存是否小于阈值，默认阈值为 100 MiB。
+* **Memory Pressure**: Whether the node's remaining memory is less than the threshold. The default threshold is 100 MiB.
 
-* **磁盘压力**：节点剩余磁盘空间或 inode 数量是否小于阈值，默认磁盘空间阈值为磁盘空间总量的 10%，默认 inode 数量阈值为 inode 最大数量的 5%。
+* **Disk Pressure**: Whether the node's remaining disk space or number of inodes is less than the threshold. The default disk space threshold is 10% of the total disk space, and the default inode count threshold is 5% of the maximum number of inodes.
 
-* **进程压力**：节点上可创建的进程数量是否小于阈值。新安装的 KubeSphere 集群默认未设置进程数量阈值。
+* **Process Pressure**: Whether the number of processes that can be created on the node is less than the threshold. A newly installed KubeSphere cluster does not have a process count threshold set by default.
 
-|实时资源用量
-|当前节点的 CPU、内存、磁盘的实时用量和总量。
+|Real-time Resource Usage
+|The real-time usage and total amount of CPU, memory, and disk for the current node.
 
-点击相应区域，可查看该资源的实时用量百分比。
+Click the corresponding area to view the real-time usage percentage of that resource.
 
-|节点配额统计
-|当前节点的 CPU 配额、内存配额和临时存储配额，包含预留数量、上限数量和总量。
+|Node Quota Statistics
+|The CPU quota, memory quota, and ephemeral storage quota for the current node, including reserved amount, limit amount, and total amount.
 
-|容器组
-|当前节点上各种类型容器组的数量。
+|Pods
+|The number of various types of pods on the current node.
 
-容器组状态类型包括：
+Pod status types include:
 
 include::../../../../../_custom/clusterManagement/pods/pods-para-podStatus_overview.adoc[]
 
-容器组 QoS（服务质量）类型包括：
+Pod QoS (Quality of Service) types include:
 
 include::../../../../../_custom/clusterManagement/pods/pods-para-qosTypes.adoc[]
 
 include::../../../../../_custom/clusterManagement/pods/pods-para-oomTypes.adoc[]
 
-|Kubelet 的健康状况
+|Kubelet Health Status
 |
-* **容器组启动时间**：Pod 从创建到进入运行状态所需的时间。  
-* **容器状态同步周期耗时（PLEG Relist Duration）**：Kubelet 周期性检查容器状态（如存活/就绪）的耗时。  
-* **容器运行时操作耗时（Runtime Operator Duration）**：容器运行时执行操作的耗时（如启停容器）。  
-* **存储操作耗时（Storage Operator Duration）**：Kubelet 处理存储相关操作（如挂载卷）的耗时。
+* **Pod Startup Latency**: The time required for a pod to transition from creation to the running state.
+* **PLEG Relist Duration**: The time taken by Kubelet to periodically check container status (e.g., liveness/readiness).
+* **Runtime Operator Duration**: The time taken by the container runtime to perform operations (e.g., starting/stopping containers).
+* **Storage Operator Duration**: The time taken by Kubelet to handle storage-related operations (e.g., mounting volumes).
 |===
 --
 
-. 点击详情页面的**容器组**页签，查看节点上所有容器组的监控信息。
+. Click the **Pods** tab on the details page to view monitoring information for all pods on the node.
 +
 --
 include::../../../../../_custom/WizTelemetry/sort-by-fields-and-order.adoc[]
 
-* 在列表上方点击搜索框并输入关键字，可按名称搜索容器组。
+* Click the search box above the list and enter keywords to search for pods by name.
 
 include::../../../../../../_ks_components/oper-refreshListData.adoc[]
 
 include::../../../../../../_ks_components/oper-customizeColumns.adoc[]
 --
 
-. 点击详情页面的**监控**页签，查看监控指标在指定时间范围内的详细信息。
+. Click the **Monitoring** tab on the details page to view detailed information about monitoring metrics within a specified time range.
 +
 --
 include::../../../../../../_ks_components/oper-selectTimeRange.adoc[]

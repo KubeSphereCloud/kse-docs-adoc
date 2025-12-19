@@ -1,1 +1,1 @@
-安装“KubeSphere 服务网格”扩展组件后，企业空间中的“应用负载 > 自制应用”菜单将不再显示，但您可使用该扩展组件继续管理已创建的自制应用。
+After installing the "KubeSphere Service Mesh" extension, the "Application Workloads > Composed App" menu in the workspace will no longer be displayed, but you can continue to manage the created composed apps using this extension.

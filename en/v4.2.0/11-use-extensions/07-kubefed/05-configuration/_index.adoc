@@ -1,7 +1,7 @@
 ---
-title: "配置"
-keywords: "Kubernetes, {ks_product}, 联邦项目, 配置"
-description: "介绍如何管理保密字典、配置字典和服务帐户。"
+title: "Configuration"
+keywords: "Kubernetes, {ks_product}, Federated Project, Configuration"
+description: "Introduces how to manage Secrets, ConfigMaps, and Service Accounts."
 weight: 05
 layout: "second"
 ---

@@ -1,18 +1,18 @@
 ---
-title: "创建自定义监控面板"
-keywords: "Kubernetes, {ks_product}, 集群管理, 自定义监控面板, 创建自定义监控面板"
-description: "介绍如何创建自定义监控面板。"
+title: "Create a Custom Monitoring Dashboard"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Custom Monitoring Dashboard, Create a Custom Monitoring Dashboard"
+description: "Describes how to create a custom monitoring dashboard."
 weight: 01
 ---
 
-:ks_permission: **监控管理**
-:ks_navigation: **监控告警 > 自定义监控**
+:ks_permission: **Monitoring Management**
+:ks_navigation: **Monitoring & Alerting > Custom Monitoring**
 
 
 include::../../../../../_custom/clusterManagement/customMonitoringDashboards/customMonitoringDashboards-desc-createACustomMonitoringDashboard.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 
@@ -23,11 +23,11 @@ include::../../../../../_custom/clusterManagement/clusterManagement-prer-require
 
 include::../../../../../_custom/clusterManagement/customMonitoringDashboards/customMonitoringDashboards-prer-exposeMetrics.adoc[]
 
-* 您需要在用于暴露工作负载的服务上设置监控导出器以声明提供应用程序监控指标的路径。KubeSphere 将根据监控导出器的相关参数获取应用程序的监控指标。有关更多信息，请参阅link:../../08-edit-a-metrics-exporter/[编辑监控导出器]。
+* You need to set up a metrics exporter on the service used to expose the workload to declare the path that provides application monitoring metrics. KubeSphere will obtain the application's monitoring metrics based on the relevant parameters of the metrics exporter. For more information, please refer to link:../../08-edit-a-metrics-exporter/[Edit a Metrics Exporter].
 
-== 操作步骤
+== Steps
 
-. 以具有pass:a,q[{ks_permission}]权限的用户登录 KubeSphere Web 控制台并进入您的集群或企业空间。
+. Log in to the KubeSphere web console as a user with pass:a,q[{ks_permission}] permissions and enter your cluster or workspace.
 +
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]

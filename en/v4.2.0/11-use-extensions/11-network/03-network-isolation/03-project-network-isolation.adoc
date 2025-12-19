@@ -1,25 +1,24 @@
 ---
-title: "启用项目网络隔离"
-keywords: "Kubernetes, {ks_product}, 项目管理, 项目设置, 网络隔离, 启用网络隔离"
-description: "介绍如何启用项目网络隔离。"
+title: "Enable Project Network Isolation"
+keywords: "Kubernetes, {ks_product}, Project Management, Project Settings, Network Isolation, Enable Network Isolation"
+description: "Describes how to enable project network isolation."
 weight: 03
 ---
 
-:ks_permission: **项目网络隔离管理**
-:ks_navigation: **服务网络 > 项目网络隔离**
+:ks_permission: **Project Network Isolation Management**
+:ks_navigation: **Service Network > Project Network Isolation**
 
+This section describes how to enable project network isolation.
 
-本节介绍如何启用项目网络隔离。
+After enabling project network isolation, pods in the current project cannot be accessed by pods from other projects, other node host environments, or any network segments outside the cluster.
 
-启用项目网络隔离后，当前项目中的容器组将不能被其他项目的容器组、其他节点主机环境以及集群外部的所有网段访问。
+// By default, there are no restrictions on egress traffic. That is, without setting whitelist entries, pods in the current project can communicate with pods from other projects, other node host environments, and all network segments outside the cluster. After adding whitelist entries, only communication between pods in the current project and pods from specific projects, other node host environments, and external network segments is allowed.
 
-// 默认对出站没有限制，即在未设置白名单条目的情况下，当前项目中的容器组可以与其他项目的容器组、其他节点主机环境以及集群外部的所有网段通信。添加白名单条目后，仅允许当前项目中的容器组与特定项目中的容器组、其他节点主机环境和集群外部网段通信。
+Enabling project network isolation does not restrict egress traffic by default, but you can choose whether to restrict it. After restricting egress traffic, pods in the current project will not be able to access other projects and can only access resources within the current project.
 
-启用项目网络隔离默认不限制出站流量，但您可以选择是否限制出站流量。限制出站流量后，当前项目中的容器组将不能访问其他项目，只能访问当前项目内的资源。
+However, when project network isolation (including egress traffic restriction) is enabled, you can link:../04-set-whitelist/[add a whitelist] to allow specific projects, services, network segments, or ports to communicate with pods in the current project.
 
-但是，在启用项目网络隔离（含出站流量限制）的情况下，您可以通过link:../04-set-whitelist/[添加白名单]，放行特定的项目、服务、网段或端口，以便与当前项目中的容器组相互通信。
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 * {empty}
@@ -27,9 +26,9 @@ include::../../../../_custom/projectManagement/projectManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-* 项目所属的集群需要安装 **KubeSphere 网络**扩展组件。
+* The **KubeSphere Network** extension must be installed in the cluster to which the project belongs.
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -43,13 +42,13 @@ include::../../../../_custom/projectManagement/projects-oper-dropdownList.adoc[]
 
 +
 
-. （可选）勾选**出站流量限制**后，该项目将不能访问其他项目。
+. (Optional) After checking **Egress Traffic Restriction**, the project will not be able to access other projects.
 
-. 点击右侧的开关启用或禁用项目网络隔离。
+. Click the switch on the right to enable or disable project network isolation.
 +
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|启用“项目网络隔离”后，不支持开启或禁用“出站流量限制”。您需要禁用“项目网络隔离”，再行勾选/取消勾选“出站流量限制”。
+|After enabling "Project Network Isolation", you cannot enable or disable "Egress Traffic Restriction". You need to disable "Project Network Isolation" first, then check/uncheck "Egress Traffic Restriction".
 |===

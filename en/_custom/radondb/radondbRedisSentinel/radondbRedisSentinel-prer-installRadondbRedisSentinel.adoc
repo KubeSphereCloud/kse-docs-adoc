@@ -1,2 +1,2 @@
 // :ks_include_id: 0a2015d3292a407c98953d8a046038bf
-* 您需要获取 RadonDB Redis Sentinel 应用授权，并已安装 RadonDB Redis Sentinel。有关更多信息，请参阅xref:19-radondb/06-radondb-redis-sentinel/02-install-radondb-redis-sentinel.adoc[安装 RadonDB Redis Sentinel]。
+* You need to obtain the RadonDB Redis Sentinel application authorization and have installed RadonDB Redis Sentinel. For more information, please refer to xref:19-radondb/06-radondb-redis-sentinel/02-install-radondb-redis-sentinel.adoc[Install RadonDB Redis Sentinel].

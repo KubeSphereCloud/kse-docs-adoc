@@ -1,23 +1,23 @@
 // :ks_include_id: e1fc48dace834fd9b24c37503267b870
-* 通用参数
+* General Parameters
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|规则名称
-|告警规则的名称。规则名称可包含任意字符，最长 63 个字符。
+|Rule Name
+|The name of the alerting rule. The rule name can contain any characters, with a maximum length of 63 characters.
 
-|标签设置
-|为告警规则设置键值对标签，以便在通知订阅中通过标签过滤，发送标签符合特定条件的告警通知。
+|Label Settings
+|Set key-value pair labels for the alerting rule. This allows filtering by labels in notification subscriptions to send alert notifications that meet specific label conditions.
 
-告警规则创建后，会自动生成一个键为 rule_id 的标签。
+After the alerting rule is created, a label with the key `rule_id` is automatically generated.
 
-|概要
-|告警消息的内容概要。消息概要可包含任意字符，最长 63 个字符。
+|Summary
+|The content summary of the alert message. The message summary can contain any characters, with a maximum length of 63 characters.
 
-|详情
-|告警消息的详细描述。消息详情可包含任意字符，最长 256 个字符。
+|Details
+|The detailed description of the alert message. The message details can contain any characters, with a maximum length of 256 characters.
 |===
 --

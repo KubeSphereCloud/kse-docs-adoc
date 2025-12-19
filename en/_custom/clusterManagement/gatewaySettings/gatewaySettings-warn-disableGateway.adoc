@@ -2,6 +2,6 @@
 // Warning
 include::../../../../_ks_components/admonitions/warning.adoc[]
 
-网关禁用后，客户端将无法访问由网关反向代理的服务，相关业务可能会中断，请谨慎执行此操作。
+After the gateway is disabled, clients will be unable to access services reverse-proxied by the gateway, which may interrupt related business operations. Please perform this operation with caution.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]

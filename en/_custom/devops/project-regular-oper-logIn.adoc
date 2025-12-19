@@ -1,1 +1,1 @@
-. 以 **project-regular** 用户登录 KubeSphere 控制台并进入您的企业空间。
+. Log in to the KubeSphere console as the **project-regular** user and enter your workspace.

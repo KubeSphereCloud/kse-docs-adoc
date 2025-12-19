@@ -1,24 +1,24 @@
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|事件
+|Events
 |
-* **PodPending**：Pod 正在等待创建。
-* **PodRunning**：Pod 正在运行。
-* **PodFailed**：Pod 运行失败。
-* **PodEvicted**：Pod 被驱逐。
-* **Unknown**：Pod 状态未知。
-* **TaskCompleted**：Task 中已成功完成的 Pod 数量达到了该 Task 预设的完成要求。
+* **PodPending**: Pod is waiting to be created.
+* **PodRunning**: Pod is running.
+* **PodFailed**: Pod failed to run.
+* **PodEvicted**: Pod was evicted.
+* **Unknown**: Pod status is unknown.
+* **TaskCompleted**: The number of Pods that have successfully completed in the Task has reached the preset completion requirements for that Task.
 
-|动作
+|Actions
 
 |
-* **RestartJob**：重启整个作业。
-* **RestartTask**：重启 Task。
-* **RestartPod**：重启 Pod。
-* **AbortJob**：暂停该作业，不会清理已创建的 Pod 资源。
-* **TerminateJob**：终止作业运行，并清理删除所有相关的 Pod。
-* **CompleteJob**：强制将作业状态标记为“已完成”，来结束整个作业。
-* **ResumeJob**：恢复被暂停的作业。
+* **RestartJob**: Restart the entire Job.
+* **RestartTask**: Restart the Task.
+* **RestartPod**: Restart the Pod.
+* **AbortJob**: Pause the Job; it will not clean up the created Pod resources.
+* **TerminateJob**: Terminate the Job and clean up/delete all related Pods.
+* **CompleteJob**: Forcefully mark the Job status as "Completed" to end the entire Job.
+* **ResumeJob**: Resume a paused Job.
 |===

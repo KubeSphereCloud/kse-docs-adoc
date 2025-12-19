@@ -1,18 +1,16 @@
 ---
-title: "查看 Kubernetes API 服务器状态"
-keywords: "Kubernetes, {ks_product}, 监控告警, 集群状态，API 服务器状态"
-description: "介绍如何查看 Kubernetes API 服务器监控数据。"
+title: "View Kubernetes API Server Status"
+keywords: "Kubernetes, {ks_product}, Monitoring and Alerting, Cluster Status, API Server Status"
+description: "Describes how to view Kubernetes API server monitoring data."
 weight: 04
 ---
 
-:ks_permission: **监控查看**
-:ks_navigation: **监控告警 > 集群监控**
+:ks_permission: **Monitoring View**
+:ks_navigation: **Monitoring and Alerting > Cluster Monitoring**
 
+This section describes how to view the Kubernetes API server status.
 
-本节介绍如何查看 Kubernetes API 服务器状态。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,11 +18,9 @@ include::../../../../../_custom/clusterManagement/clusterManagement-prer-require
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 监控**扩展组件。
+* The **WizTelemetry Monitoring** extension must be installed and enabled on the KubeSphere platform.
 
-
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -34,21 +30,21 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**集群监控**页面，点击 **API Server 监控**页签查看 API 服务器的运行状态。
+. On the **Cluster Monitoring** page, click the **API Server Monitoring** tab to view the operational status of the API server.
 +
 ====
-* **API Server 监控**页签提供以下信息：
+* The **API Server Monitoring** tab provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|指标 |描述
+|Metric |Description
 
-|请求延迟
-|指定时间范围内 API 服务器的请求延迟。
+|Request Latency
+|The request latency of the API server within the specified time range.
 
-|每秒请求次数
-|指定时间范围内 API 服务器每秒接受的请求数。
+|Requests per Second
+|The number of requests per second accepted by the API server within the specified time range.
 |===
 --
 

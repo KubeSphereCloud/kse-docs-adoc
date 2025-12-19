@@ -1,4 +1,4 @@
 // :ks_include_id: ce297be1cce74ddb87c80bdb65fde7e4
-本节介绍如何管理 RadonDB {ks_db_product} 数据库应用。
+This section introduces how to manage the RadonDB {ks_db_product} database application.
 
-RadonDB {ks_db_product} 是基于 {ks_db_product} 的企业级数据库产品，现已上架到 KubeSphere 应用商店。您可以在 KubeSphere Web 控制台安装 RadonDB {ks_db_product} 应用，从而以容器化的方式部署 {ks_db_product} 数据库并通过图形界面对 {ks_db_product} 数据库进行管理。
+RadonDB {ks_db_product} is an enterprise-level database product based on {ks_db_product}, now available in the KubeSphere App Store. You can install the RadonDB {ks_db_product} application in the KubeSphere web console, thereby deploying the {ks_db_product} database in a containerized manner and managing the {ks_db_product} database through a graphical interface.

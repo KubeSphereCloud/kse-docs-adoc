@@ -1,30 +1,30 @@
 ---
-title: "创建自制应用"
-keywords: "Kubernetes, {ks_product}, 联邦项目, 应用, 创建应用"
-description: "介绍如何在联邦项目中创建应用。"
+title: "Create a Composed App"
+keywords: "Kubernetes, {ks_product}, Federated Project, App, Create App"
+description: "Describes how to create an app in a federated project."
 weight: 01
 ---
 
-:ks_permission: **联邦项目管理**
-:ks_navigation: **应用负载 > 应用**
+:ks_permission: **Federated Project Management**
+:ks_navigation: **Application Workloads > Apps**
 
 
-本节介绍如何在联邦项目中创建自制应用。
+This section describes how to create a composed app in a federated project.
 
 include::../../../../../_custom/projectManagement/apps/apps-compose-description.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用**联邦集群应用管理**扩展组件。
+* The **Federated Cluster App Management** extension must be installed and enabled on the KubeSphere platform.
 
-* 如需为应⽤启⽤应⽤治理功能，KubeSphere 平台需要安装并启用 **KubeSphere 服务网格**扩展组件。
+* To enable application governance features for the app, the **KubeSphere Service Mesh** extension must be installed and enabled on the KubeSphere platform.
 
 * {empty}
 include::../../../../../_custom/multi-clusterProjectManagement/projectManagement-prer-requiredPermission_v4.adoc[]
 
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/multi-clusterProjectManagement/projectManagement-oper-openProjectPage_v4.adoc[]
 
@@ -34,34 +34,34 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**应用**页面，点击**创建**。
+. On the **Apps** page, click **Create**.
 
-. 在**基本信息**页签，设置应用的基本信息，然后点击**下一步**。
+. On the **Basic Information** tab, configure the basic information for the app, then click **Next**.
 +
 --
 include::../../../../../_custom/projectManagement/apps/apps-basic-para.adoc[]
 --
 
-. 在**服务设置**页签，点击**创建服务**，选择**有状态服务**或**无状态服务**为应用创建服务，然后点击**下一步**。
+. On the **Service Settings** tab, click **Create Service**, select **Stateful Service** or **Stateless Service** to create a service for the app, then click **Next**.
 +
 --
 include::../../../../../_custom/clusterManagement/services/services-para-statelessStatefulExternal.adoc[]
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-有关更多信息，请参阅link:../../02-services/01-create-a-stateful-or-stateless-service[创建有状态或无状态服务]。
+For more information, please refer to link:../../02-services/01-create-a-stateful-or-stateless-service[Create a Stateful or Stateless Service].
 |===
 --
 
-. 在**路由设置**页签，点击**添加路由规则**为应用创建路由规则，然后点击**创建**。
+. On the **Routing Settings** tab, click **Add Routing Rule** to create a routing rule for the app, then click **Create**.
 +
 --
 include::../../../../../_custom/multi-clusterProjectManagement/routes/routes-create-ClusterDiff.adoc[]
 
 include::../../../../../_custom/clusterManagement/routes/routes-para-routingRules.adoc[]
 
-应用创建完成后将显示在应用列表页面。
+After the app is created, it will be displayed on the app list page.
 --

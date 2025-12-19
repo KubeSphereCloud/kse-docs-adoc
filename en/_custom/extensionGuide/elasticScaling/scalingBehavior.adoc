@@ -1,34 +1,34 @@
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|策略偏好
-|当扩容策略/缩容策略下存在多条策略时，伸缩器将根据策略偏好从这些策略的计算结果中选择最终值​​。
+|Policy Preference
+|When multiple policies exist under the scaling up/down policy, the scaler will select the final value from the calculation results of these policies based on the policy preference.
 
-* 倾向于大幅度伸缩：按照副本数变化最大的策略执行伸缩。
+* Prefer large-scale scaling: Execute scaling according to the policy with the largest change in replica count.
 
-* 倾向于小幅度伸缩：按照副本数变化最小的策略执行伸缩。
+* Prefer small-scale scaling: Execute scaling according to the policy with the smallest change in replica count.
 
-* 禁止伸缩：禁用该方向的扩缩。
+* Disable scaling: Disable scaling in that direction.
 
-|稳定窗口时间
-|伸缩器会在设定的时间窗口内收集所有建议副本数，并基于规则选择一个最终值，以防止指标短暂波动造成的副本数量频繁变化。
+|Stabilization Window
+|The scaler will collect all suggested replica counts within the set time window and select a final value based on rules to prevent frequent changes in replica count caused by short-term metric fluctuations.
 
-// 缩容时，KEDA 会从所有建议副本数中选择最大值；扩容时，KEDA 则会选择最小值。该规则仅适用于稳定窗口时间内副本数的选择。
+// When scaling down, KEDA selects the maximum value from all suggested replica counts; when scaling up, KEDA selects the minimum value. This rule only applies to the selection of replica counts within the stabilization window.
 
-|策略类型
-|扩缩容计算所依据的基准。
+|Policy Type
+|The basis for scaling calculation.
 
-* 百分比​​：以当前副本数量的百分比进行扩缩容。
-* ​容器组​​：以固定的 Pod 数量进行扩缩容。
+* Percentage: Scale based on a percentage of the current replica count.
+* Pod: Scale by a fixed number of pods.
 
-|扩容值/缩容值
-|当前策略中，单次扩缩操作所允许的最大变化量。​​
+|Scaling Up/Down Value
+|The maximum allowable change per scaling operation under the current policy.
 
-|激活时间
-|策略生效前，其关联的指标规则必须持续满足的最短时间窗口。单位为秒。
+|Activation Time
+|The minimum time window during which the associated metric rule must be continuously satisfied before the policy takes effect. Unit: seconds.
 |===
 
-* 点击**添加**可设置多条扩缩策略。
+* Click **Add** to set multiple scaling policies.
 
-* 在已创建的策略右侧点击image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18]可删除策略。
+* Click image:/images/ks-qkcp/zh/icons/trash-light.svg[trash-light,18,18] on the right side of a created policy to delete it.

@@ -1,30 +1,30 @@
 ---
-title: "OpenSearch 概述"
-keywords: "Kubernetes, {ks_product}, opensearch, 日志, 可观测"
-description: "介绍 “OpenSearch 分布式检索与分析引擎”扩展组件。"
+title: "OpenSearch Overview"
+keywords: "Kubernetes, {ks_product}, opensearch, logging, observability"
+description: "Introduces the 'OpenSearch Distributed Search and Analytics Engine' extension."
 weight: 01
 ---
 
-“OpenSearch 分布式检索与分析引擎”扩展组件提供的 OpenSearch 服务为 KubeSphere 默认使用的日志接收器，用于存储日志、审计、事件、通知历史等可观测数据。
+The OpenSearch service provided by the "OpenSearch Distributed Search and Analytics Engine" extension serves as the default log receiver for KubeSphere, used for storing observability data such as logs, audits, events, and notification history.
 
-除支持部署 OpenSearch 外，该扩展组件还支持部署 OpenSearch Dashboard 和 OpenSearch Curator。
+In addition to supporting the deployment of OpenSearch, this extension also supports the deployment of OpenSearch Dashboard and OpenSearch Curator.
 
-* **OpenSearch Dashboard** 用于可视化 OpenSearch 数据以及管理 OpenSearch 集群的用户界面。默认禁用，若要启用，将 `opensearch-dashboards.enabled` 字段设置为 true。
+* **OpenSearch Dashboard** is a user interface for visualizing OpenSearch data and managing the OpenSearch cluster. It is disabled by default. To enable it, set the `opensearch-dashboards.enabled` field to true.
 
-* **OpenSearch Curator** 是一个定时任务，定期清理超过配置日期（默认为 7 天）的 Kubernetes 事件日志、Kubernetes 审计日志、Kubernetes 应用程序日志以及通知历史日志。默认启用，若要禁用，将 `opensearch-curator.enabled` 字段设置为 false。
+* **OpenSearch Curator** is a CronJob that periodically cleans up Kubernetes event logs, Kubernetes audit logs, Kubernetes application logs, and notification history logs older than the configured number of days (default is 7 days). It is enabled by default. To disable it, set the `opensearch-curator.enabled` field to false.
 +
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-OpenSearch Curator 功能已被废弃，并将在未来版本中删除。建议采用日志、审计、事件和通知组件中的 ISM（Index State Management）功能进行索引管理。
+The OpenSearch Curator feature is deprecated and will be removed in a future release. It is recommended to use the ISM (Index State Management) feature within the Logging, Auditing, Events, and Notification extensions for index management.
 |===
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Info
 
 |
-有关组件配置的更多信息，请参阅扩展中心“WizTelemetry 数据流水线”和“OpenSearch 分布式检索与分析引擎”扩展组件的详情页说明。
+For more information on extension configuration, please refer to the description pages for the "WizTelemetry Data Pipeline" and "OpenSearch Distributed Search and Analytics Engine" extensions in the Extensions Center.
 |===

@@ -1,8 +1,8 @@
 // :ks_include_id: 09fe14af1fd747b8aad60c34a228e54e
-集群网关或项目网关的 IP 地址。
+The IP address of the cluster gateway or project gateway.
 
 // tag::bullets[]
-* 如果网关的外部访问模式为 NodePort，网关地址为某一个集群节点的 IP 地址。客户端可以通过任意集群节点的 IP 地址和端口访问应用路由的后端服务。
+* If the external access mode of the gateway is NodePort, the gateway address is the IP address of a cluster node. Clients can access the backend service of the Ingress through the IP address and port of any cluster node.
 
-* 如果网关的外部访问模式为 LoadBalancer，网关地址为负载均衡器的地址。
+* If the external access mode of the gateway is LoadBalancer, the gateway address is the address of the load balancer.
 // end::bullets[]

@@ -1,1 +1,1 @@
-. 点击 **DevOps 项目成员**打开项目成员列表。
+. Click **DevOps Project Members** to open the project member list.

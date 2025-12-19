@@ -1,25 +1,24 @@
 ---
-title: "查看 etcd 数据库状态"
-keywords: "Kubernetes, {ks_product}, 监控告警, 集群状态，etcd 状态"
-description: "介绍如何查看 etcd 数据库状态。"
+title: "View etcd Database Status"
+keywords: "Kubernetes, {ks_product}, Monitoring and Alerting, Cluster Status, etcd Status"
+description: "Describes how to view the etcd database status."
 weight: 03
 ---
 
-:ks_permission: **监控查看**
-:ks_navigation: **监控告警 > 集群监控**
+:ks_permission: **Monitoring View**
+:ks_navigation: **Monitoring and Alerting > Cluster Monitoring**
 
-
-本节介绍如何查看 etcd 数据库状态。
+This section describes how to view the etcd database status.
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
 // |
-// 查看 etcd 监控信息需要提前启用 etcd 监控。有关更多信息，请参阅扩展中心 **WizTelemetry 监控**扩展组件的详情页说明。
+// To view etcd monitoring information, you need to enable etcd monitoring in advance. For more information, refer to the description on the details page of the **WizTelemetry Monitoring** extension in the Extensions Center.
 // |===
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -27,10 +26,9 @@ include::../../../../../_custom/clusterManagement/clusterManagement-prer-require
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 监控**扩展组件。
+* The **WizTelemetry Monitoring** extension must be installed and enabled on the KubeSphere platform.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -40,48 +38,48 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**集群监控**页面，点击 **etcd 监控**页签查看 etcd 数据库的运行状态。
+. On the **Cluster Monitoring** page, click the **etcd Monitoring** tab to view the running status of the etcd database.
 +
 ====
-* **etcd 监控**页签提供以下信息：
+* The **etcd Monitoring** tab provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|服务状态
-|显示 etcd 集群的 Leader 节点、每个节点的 IP 地址和 1 小时内 Leader 变更次数。
+|Service Status
+|Displays the Leader node of the etcd cluster, the IP address of each node, and the number of Leader changes within the last hour.
 
-|数据库大小
-|指定时间范围内 etcd 数据库的大小。
+|Database Size
+|The size of the etcd database within the specified time range.
 
-|客户端流量
-|显示发送给 gRPC 客户端和从 gRPC 客户端接收的数据流量。
+|Client Traffic
+|Displays the data traffic sent to and received from gRPC clients.
 
-|gRPC 流式消息
-|显示服务端的 gRPC 流式消息每秒接收次数和发送次数。
+|gRPC Stream Messages
+|Displays the number of gRPC stream messages received and sent per second on the server side.
 
-|WAL 日志同步时间
-|显示 WAL 调用 fsync 的延迟。在应用日志条目之前，etcd 会在持久化日志条目到磁盘时调用 **wal_fsync**。
+|WAL Fsync Duration
+|Displays the latency of WAL calling fsync. Before applying log entries, etcd calls **wal_fsync** when persisting log entries to disk.
 
-|数据库同步时间
-|显示后端调用提交延迟的分布。当 etcd 将其最新的增量快照提交到磁盘时，会调用 **backend_commit**。磁盘操作延迟较大（WAL 日志同步时间或库同步时间较长）通常表示磁盘存在问题，这可能会导致请求延迟过高或集群不稳定。
+|DB Fsync Duration
+|Displays the distribution of backend commit latency. When etcd commits its latest incremental snapshot to disk, it calls **backend_commit**. High disk operation latency (long WAL fsync duration or DB fsync duration) usually indicates a disk problem, which may lead to high request latency or cluster instability.
 
-|Raft 提议
+|Raft Proposals
 |
-显示当前 etcd 每秒的 Raft 提议次数。将鼠标悬停在折线图上即可查看具体某个时间点的提议数据。
+Displays the current number of Raft proposals per second for etcd. Hover over the line chart to view the proposal data at a specific point in time.
 
-* **提议提交速率**：协商一致提议的提交速率。如果集群运行状况良好，则该指标应随着时间的推移而增加。etcd 集群的几个健康成员可以同时具有不同的一般提议。单个成员与其 Leader 之间的持续较大滞后表示该成员缓慢或不健康。
+* **Proposal Commit Rate**: The commit rate of consensus proposals. If the cluster is healthy, this metric should increase over time. Several healthy members of an etcd cluster can have different general proposals simultaneously. A sustained large lag between a single member and its Leader indicates that the member is slow or unhealthy.
 
-* **提议应用速率**：协商一致提议的总应用率。etcd 服务器异步地应用每个提交的提议。提议提交速率和提议应用速率的差异应该很小（即使在高负载下也只有几千）。如果它们之间的差异持续增大，则表明 etcd 服务器过载。当使用大范围查询或大量 txn 操作等大规模查询时，可能会出现这种情况。
+* **Proposal Apply Rate**: The total application rate of consensus proposals. The etcd server applies each committed proposal asynchronously. The difference between the proposal commit rate and the proposal apply rate should be small (only a few thousand even under high load). If the difference between them continues to increase, it indicates that the etcd server is overloaded. This may occur when using large-scale queries such as large range queries or a large number of txn operations.
 
-* **提议失败速率**：提议失败的总速率。该值受两个因素影响：与 Leader 选举相关的临时失败；集群成员数目达不到规定数目而导致长时间停机。
+* **Proposal Failure Rate**: The total rate of proposal failures. This value is affected by two factors: temporary failures related to Leader elections; and prolonged downtime due to the number of cluster members falling below the required number.
 
-* **排队提议数**：当前待处理提议的数量。待处理提议的增加表明客户端负载较高或成员无法提交提议。
+* **Proposals Pending**: The current number of pending proposals. An increase in pending proposals indicates high client load or that members are unable to commit proposals.
 |===
 
-有关 etcd 数据库参数的更多信息，请参阅 link:https://etcd.io/docs/v3.5/metrics/[etcd 官方文档]。
+For more information about etcd database parameters, refer to the link:https://etcd.io/docs/v3.5/metrics/[etcd official documentation].
 --
 
 include::../../../../../../_ks_components/oper-selectTimeRange.adoc[]

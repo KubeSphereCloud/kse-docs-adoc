@@ -1,39 +1,39 @@
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|状态
+|Status
 |
 include::nodes-para-computingNodeStatus.adoc[]
 
-|IP 地址
-|节点的 IP 地址。
+|IP Address
+|The IP address of the node.
 
-|角色
+|Role
 |
 include::../nodes/nodes-para-nodeRole_new.adoc[]
 
-|显卡型号
-|节点上安装的显卡型号。
+|GPU Model
+|The model of the GPU installed on the node.
 
-|显存
-|显卡的显存容量大小。
+|Video Memory
+|The capacity of the GPU's video memory.
 
-|类型
-|显卡类型。
+|Type
+|The type of GPU.
 
-|调度策略
+|Scheduling Policy
 |
-* **显卡独占**：一个任务独享整张物理显卡的所有计算和显存资源，从而获得最佳且稳定的性能。
+* **Exclusive GPU**: A task exclusively occupies all computing and video memory resources of a physical GPU, thereby achieving optimal and stable performance.
 
-* **隔离共享**：将一张物理显卡通过虚拟化技术分割成多个 vGPU，允许多个任务同时共享该显卡，并在任务间提供资源隔离。
+* **Isolated Sharing**: A physical GPU is partitioned into multiple vGPUs through virtualization technology, allowing multiple tasks to share the GPU simultaneously while providing resource isolation between tasks.
 
-|显卡数量
-|节点上安装的显卡数量。
+|GPU Count
+|The number of GPUs installed on the node.
 
-|显卡状态
-|​正常和异常状态的显卡数量。
+|GPU Status
+|The number of GPUs in normal and abnormal status.
 
-|创建时间
-|节点加入当前集群的时间。
+|Creation Time
+|The time when the node joined the current cluster.
 |===

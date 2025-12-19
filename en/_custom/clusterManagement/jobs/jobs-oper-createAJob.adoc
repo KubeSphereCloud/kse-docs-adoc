@@ -1,10 +1,10 @@
 // :ks_include_id: ade6d86d1f0d4f1db635fb9dd96b2348
-. 在**基本信息**页签，设置任务的基本信息，以及定时任务策略，然后点击**下一步**。
+. On the **Basic Information** tab, set the basic information and scheduling policy for the Job, then click **Next**.
 
-. 在**策略设置**页签，设置单次任务的策略，然后点击**下一步**。
+. On the **Policy Settings** tab, set the policy for a single Job, then click **Next**.
 
-. 在**容器组设置**页签，为任务管理的容器组设置重启策略和容器，然后点击**下一步**。
+. On the **Pod Settings** tab, set the restart policy and containers for the pods managed by the Job, then click **Next**.
 
-. 在**存储设置**页签，为任务管理的容器挂载卷，然后点击**下一步**。
+. On the **Storage Settings** tab, mount volumes for the containers managed by the Job, then click **Next**.
 
-. 在**高级设置**页签，为任务管理的容器组指定节点，并设置任务的元数据，然后点击**创建**。任务创建完成后将显示在任务列表中。
+. On the **Advanced Settings** tab, specify nodes for the pods managed by the Job, and set the metadata for the Job, then click **Create**. Once created, the Job will appear in the Job list.

@@ -1,5 +1,5 @@
 // :ks_include_id: 3c4ccff9b03e44d9bc09a0d109039463
-* 如需使用外部 Elasticsearch 服务，将 **externalElasticsearchHost** 和 **externalElasticsearchPort** 参数分别设置为 Elasticsearch 服务的地址和端口号。
+* To use an external Elasticsearch service, set the **externalElasticsearchHost** and **externalElasticsearchPort** parameters to the address and port number of the Elasticsearch service, respectively.
 +
 --
 // YAML
@@ -16,7 +16,7 @@ include::../../../../_ks_components/code/codeEnd.adoc[]
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-如果您不设置外部 Elasticsearch 服务的地址和端口号，KubeSphere 将安装并使用内置 Elasticsearch 服务。
+If you do not set the address and port number for the external Elasticsearch service, KubeSphere will install and use the built-in Elasticsearch service.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 --

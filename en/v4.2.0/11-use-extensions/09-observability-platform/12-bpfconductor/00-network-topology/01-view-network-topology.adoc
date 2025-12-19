@@ -1,23 +1,21 @@
 ---
-title: "查看网络拓扑"
-keywords: "Kubernetes, {ks_product}, BPFConductor, 网络拓扑, 可观测"
-description: "介绍如何查看网络拓扑。"
+title: "View Network Topology"
+keywords: "Kubernetes, {ks_product}, BPFConductor, Network Topology, Observability"
+description: "Describes how to view the network topology."
 weight: 01
 ---
 
-:ks_navigation: **网络 > 网络拓扑**
+:ks_navigation: **Network > Network Topology**
 
+This section describes how to view the network topology diagram and the network traffic list.
 
-本节介绍如何查看网络拓扑图和网络流量列表。
+== Prerequisites
 
+* You need to have the **platform-admin** role on the KubeSphere platform. For more information, see link:../../../../../05-users-and-roles/01-users/[Users] and link:../../../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
-== 前提条件
+* The **WizTelemetry Network Observability** extension must be installed and enabled on the KubeSphere platform.
 
-* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
-
-* KubeSphere 平台需要安装并启用 **WizTelemetry 网络可观测** 扩展组件。
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
@@ -29,73 +27,73 @@ include::../../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]
 
-. 在页面上方的下拉列表中选择集群、源项目、目标项目，查看特定集群中特定项目之间的网络拓扑图和网络流量数据。
+. On the page, use the dropdown menus at the top to select the cluster, source project, and target project to view the network topology diagram and network traffic data between specific projects within a specific cluster.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|源项目
-|数据发送方所在的项目，也就是数据流的起点。
+|Source Project
+|The project where the data sender is located, i.e., the starting point of the data flow.
 
-|目标项目
-|数据接收方所在的项目，也就是数据流的终点。
+|Target Project
+|The project where the data receiver is located, i.e., the ending point of the data flow.
 |===
 
 // include::../../../../../../_ks_components/oper-refreshListData.adoc[]
-* 在右上角点击image:/images/ks-qkcp/zh/icons/refresh-light.svg[refresh,18,18]可刷新页面信息。
+* Click image:/images/ks-qkcp/zh/icons/refresh-light.svg[refresh,18,18] in the upper right corner to refresh the page information.
 
 // include::../../../../../../_ks_components/oper-selectTimeRange.adoc[]
-* 在右上角点击image:/images/ks-qkcp/zh/icons/clock-2.svg[clock-2,18,18]可设置数据的时间范围。默认为**最近 30 分钟**。
+* Click image:/images/ks-qkcp/zh/icons/clock-2.svg[clock-2,18,18] in the upper right corner to set the time range for the data. The default is **Last 30 minutes**.
 --
 
-. **网络拓扑图**展示了各个拓扑节点的资源类型（容器组、服务、集群节点或 IP 地址）、资源名称和总传输速率，以及拓扑节点之间的交互关系。您还可通过以下操作获取更多信息。
+. The **Network Topology Diagram** displays the resource type (pod, service, cluster node, or IP address), resource name, and total transmission rate for each topology node, as well as the interaction relationships between topology nodes. You can also perform the following operations to get more information.
 +
 --
-* 将鼠标悬停在拓扑节点上，查看与该拓扑节点通信的相关节点以及数据流走向。
+* Hover the mouse over a topology node to view the related nodes communicating with it and the direction of data flow.
 
-* 点击拓扑节点，查看该拓扑节点的资源名称、所属项目、发送速率和接收速率。
+* Click a topology node to view its resource name, belonging project, send rate, and receive rate.
 
-* 将鼠标悬停在拓扑连线上，查看连线两端的拓扑节点，并且可通过image:/images/ks-qkcp/zh/icons/left-right-button.svg[left-right-button,18,18]了解数据流走向。
+* Hover the mouse over a topology connection line to view the topology nodes at both ends of the line, and use image:/images/ks-qkcp/zh/icons/left-right-button.svg[left-right-button,18,18] to understand the direction of data flow.
 
-* 点击拓扑连线或其上的image:/images/ks-qkcp/zh/icons/left-right-button.svg[left-right-button,18,18]，查看该段数据流的起点、终点，以及数据传输速率。
+* Click a topology connection line or the image:/images/ks-qkcp/zh/icons/left-right-button.svg[left-right-button,18,18] on it to view the start point, end point, and data transmission rate of that data flow segment.
 
 include::../../../../../_custom/WizTelemetry/view-topology-tools.adoc[]
 --
 
-. 在**网络流量**区域，查看选定项目在指定时间范围内的网络流量数据。
+. In the **Network Traffic** area, view the network traffic data for the selected project within the specified time range.
 +
 --
 include::../../../../../../_ks_components/oper-sortAscendingDescending.adoc.adoc[]
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|源端
-|发起通信请求的网络端点，显示该拓扑节点的资源类型和资源名称。
+|Source End
+|The network endpoint that initiates the communication request, displaying the resource type and resource name of this topology node.
 
-|目标端
-|接收通信请求的网络端点，显示该拓扑节点的资源类型和资源名称。
-	
-|发送速率
-|源端向目标端传输数据的速率。
+|Target End
+|The network endpoint that receives the communication request, displaying the resource type and resource name of this topology node.
 
-|接收速率
-|目标端从源端接收数据的速率。
+|Send Rate
+|The rate at which the source end transmits data to the target end.
 
-|总速率
-|发送速率和接收速率的总和。
+|Receive Rate
+|The rate at which the target end receives data from the source end.
 
-|TCP 丢弃
-|每秒钟 TCP 丢弃的数据包数量。
+|Total Rate
+|The sum of the send rate and receive rate.
 
-高丢弃率可能表明网络不稳定或设备过载，需优化网络配置或扩容资源。
+|TCP Drops
+|The number of TCP packets dropped per second.
 
-|TCP 重传
-|每秒钟 TCP 重传的数据包数量。
+A high drop rate may indicate network instability or device overload, requiring network configuration optimization or resource scaling.
 
-频繁重传通常意味着网络延迟或丢包，可能影响传输效率，需检查网络延迟或拥塞情况。
+|TCP Retransmissions
+|The number of TCP packets retransmitted per second.
+
+Frequent retransmissions usually indicate network latency or packet loss, which may affect transmission efficiency. It is necessary to check for network latency or congestion.
 |===
 --

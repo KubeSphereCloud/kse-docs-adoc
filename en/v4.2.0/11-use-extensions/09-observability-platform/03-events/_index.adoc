@@ -1,28 +1,28 @@
 ---
-title: "WizTelemetry 事件"
-keywords: "Kubernetes, {ks_product}, 事件"
-description: "介绍如何使用“WizTelemetry 事件”扩展组件。"
+title: "WizTelemetry Events"
+keywords: "Kubernetes, {ks_product}, Events"
+description: "Introduces how to use the 'WizTelemetry Events' extension."
 weight: 03
 layout: "second"
 ---
 
 
-本节介绍如何使用“WizTelemetry 事件”扩展组件。
+This section introduces how to use the 'WizTelemetry Events' extension.
 
-该组件可长期保存工作负载、任务、容器组、服务、应用路由等资源的事件，并提供多租户视角的事件检索和查看功能。
+This extension can persistently store events from resources such as workloads, Jobs, pods, Services, Ingresses, etc., and provides multi-tenant event search and viewing capabilities.
 
-安装“WizTelemetry 事件”扩展组件后，
+After installing the 'WizTelemetry Events' extension,
 
-* 组件坞中的 WizTelemetry 可观测平台将显示**日志**菜单，**日志**菜单下将显示**事件查询**选项。
+* The WizTelemetry Observability Platform in the Component Dock will display a **Logging** menu, and under the **Logging** menu, an **Event Query** option will appear.
 
-* 集群左侧导航栏将显示**日志**菜单，**日志**菜单下将显示**日志接收器**和**事件查询**选项。**日志接收器**页面将显示**资源事件**页签，支持添加多种类型的日志接收器。有关更多信息，请参阅link:../02-logging/02-log-receivers/[日志接收器]。**事件查询**页面支持用户查询自身权限范围内的资源事件。
+* The cluster's left navigation pane will display a **Logging** menu, and under the **Logging** menu, **Log Receivers** and **Event Query** options will appear. The **Log Receivers** page will display a **Resource Events** tab, supporting the addition of various types of log receivers. For more information, please refer to link:../02-logging/02-log-receivers/[Log Receivers]. The **Event Query** page allows users to query resource events within their permission scope.
 
 //attention
 [.admon.attention,cols="a"]
 |===
-| 注意
+| Note
 
 |
-WizTelemetry 事件依赖 WizTelemetry 平台服务和 WizTelemetry 数据流水线，因此在安装 WizTelemetry 事件之前必须先安装并配置好 WizTelemetry 平台服务和 WizTelemetry 数据流水线两个扩展组件，否则事件相关功能无法正常使用！
+WizTelemetry Events depends on the WizTelemetry Platform Service and the WizTelemetry Data Pipeline. Therefore, before installing WizTelemetry Events, you must first install and configure these two extensions. Otherwise, the event-related features will not function properly!
 
 |===

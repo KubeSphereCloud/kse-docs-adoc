@@ -1,33 +1,33 @@
 ---
-title: "可视化 Loki 中的数据"
-keywords: "Kubernetes, {ks_product}, Grafana, loki, dashboard, 可观测"
-description: "介绍如何在 Grafana 可视化 loki 中的日志、审计、事件及通知历史数据。"
+title: "Visualizing Data in Loki"
+keywords: "Kubernetes, {ks_product}, Grafana, loki, dashboard, Observability"
+description: "Introduces how to visualize logs, auditing, events, and notification history data stored in Loki in Grafana."
 weight: 01
 ---
 
 
-本节介绍如何在 Grafana 控制台可视化存储到 Loki 的 KubeSphere 日志、审计、事件及通知历史数据。
+This section describes how to visualize KubeSphere logs, auditing, events, and notification history data stored in Loki in the Grafana console.
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 平台服务**扩展组件。
-* 已通过 Grafana for WizTelemetry 扩展组件或其他方法部署一个 Grafana 控制台。
+* The **WizTelemetry Platform Service** extension must be installed and enabled on the KubeSphere platform.
+* A Grafana console has been deployed via the Grafana for WizTelemetry extension or by other methods.
 
-== 操作步骤
+== Steps
 
-. 安装 Grafana Loki for WizTelemetry 扩展组件。
+. Install the Grafana Loki for WizTelemetry extension.
 
-. 在集群的**应用负载 > 服务**页面，查找 `loki-agent-gateway`，**编辑外部访问**，开启 NodePort。
+. On the **Application Workloads > Services** page of the cluster, find `loki-agent-gateway`, **Edit External Access**, and enable NodePort.
 +
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-取决于您的网络环境，您可能需要配置流量转发规则并在防火墙中放行该 NodePort 端口。
+Depending on your network environment, you may need to configure traffic forwarding rules and allow this NodePort in the firewall.
 |===
 
-. 安装 WizTelemetry 数据流水线，并配置 Loki 信息。
+. Install the WizTelemetry Data Pipeline and configure Loki information.
 +
 --
 [,yaml]
@@ -37,7 +37,7 @@ weight: 01
         endpoint: http://<loki-gateway-ip>:<loki-gateway-port>
 ----
 
-示例如下：
+Example:
 
 [,yaml]
 ----
@@ -47,7 +47,7 @@ weight: 01
 ----
 --
 
-. 安装 WizTelemetry 日志、审计、事件、通知（按需安装），修改扩展组件配置，启用 Loki。
+. Install WizTelemetry Logging, Auditing, Events, and Notification (install as needed), modify the extension configuration, and enable Loki.
 +
 --
 [,yaml]
@@ -58,24 +58,24 @@ weight: 01
 ----
 --
 
-. 在 Grafana 控制台中配置 Loki 数据源。
+. Configure the Loki data source in the Grafana console.
 +
 --
-* 若 Grafana 控制台为 Grafana for WizTelemetry 扩展组件所部署，Grafana Loki for WizTelemetry 安装完成后，会自动在 Grafana 控制台为日志、审计、事件及通知历史添加 Loki 数据源。有关如何访问 Grafana 控制台，请参阅 link:../../16-grafana/[Grafana for WizTelemetry]。
+* If the Grafana console is deployed by the Grafana for WizTelemetry extension, after Grafana Loki for WizTelemetry is installed, Loki data sources for logs, auditing, events, and notification history will be automatically added to the Grafana console. For information on how to access the Grafana console, please refer to link:../../16-grafana/[Grafana for WizTelemetry].
 
-* 若 Grafana 控制台使用其他方法部署，您需要在 Grafana 控制台手动添加 loki 数据源。更多信息，请参阅扩展中心 Grafana Loki for WizTelemetry 扩展组件的详情页说明。
+* If the Grafana console is deployed using other methods, you need to manually add the Loki data source in the Grafana console. For more information, please refer to the description on the details page of the Grafana Loki for WizTelemetry extension in the Extensions Center.
 --
 
-. 访问 Grafana 控制台，即可在 Dashboards 下查看 KubeSphere 日志、审计、事件、通知历史的数据面板。
+. Access the Grafana console, and you can view the data dashboards for KubeSphere logs, auditing, events, and notification history under Dashboards.
 +
 --
 image:/images/ks-qkcp/zh/v4.1.2/loki-data.png[]
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|有关 Loki 的更多信息，请参阅 link:https://grafana.com/docs/loki/latest/[Grafana Loki 官方文档]。
+|For more information about Loki, please refer to the link:https://grafana.com/docs/loki/latest/[Grafana Loki official documentation].
 
 |===
 --

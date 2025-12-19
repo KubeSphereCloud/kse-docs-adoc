@@ -1,77 +1,77 @@
 // :ks_include_id: 4527bd133db04495b10cf1930a58d5f9
-. 在**基本信息**页签，设置持久卷声明的基本信息，然后点击**下一步**。
+. On the **Basic Information** tab, set the basic information for the PersistentVolumeClaim, then click **Next**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|持久卷声明的名称。名称只能包含小写字母、数字和连字符（-），必须以小写字母或数字开头和结尾，最长 253 个字符。
+|Name
+|The name of the PersistentVolumeClaim. The name can only contain lowercase letters, numbers, and hyphens (-), must start and end with a lowercase letter or number, and has a maximum length of 253 characters.
 
-|别名
-|持久卷声明的别名。不同持久卷声明的别名可以相同。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|The alias of the PersistentVolumeClaim. Different PersistentVolumeClaims can have the same alias.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-), must not start or end with a hyphen (-), and has a maximum length of 63 characters.
 
-|描述
-|持久卷声明的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|The description of the PersistentVolumeClaim. The description can contain any characters and has a maximum length of 256 characters.
 |===
 --
 
-. 在**存储设置**页签，设置存储空间需求，然后点击**下一步**。
+. On the **Storage Settings** tab, set the storage requirements, then click **Next**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-// |创建方式
-// |持久卷声明的创建方式。
+// |Creation Method
+// |The method for creating the PersistentVolumeClaim.
 
-// * **通过存储类创建**：选择当前项目中的存储类来创建持久卷声明。
+// * **Create via StorageClass**: Select a StorageClass in the current project to create the PersistentVolumeClaim.
 
-// * **通过卷快照创建**：选择当前项目中的卷快照来创建持久卷声明。
+// * **Create via VolumeSnapshot**: Select a VolumeSnapshot in the current project to create the PersistentVolumeClaim.
 
-// |存储类
-// |用于创建持久卷声明的存储类。仅在持久卷声明创建方式为**通过存储类创建**时可用。
+// |StorageClass
+// |The StorageClass used to create the PersistentVolumeClaim. Available only when the PersistentVolumeClaim creation method is **Create via StorageClass**.
 
-// |卷快照
-// |用于创建持久卷声明的卷快照。仅在持久卷声明创建方式为**通过卷快照创建**时可用。
+// |VolumeSnapshot
+// |The VolumeSnapshot used to create the PersistentVolumeClaim. Available only when the PersistentVolumeClaim creation method is **Create via VolumeSnapshot**.
 
-|访问模式
+|Access Mode
 |
 include::persistentVolumeClaims-para-accessMode.adoc[]
 
-取决于后端的存储系统，某些访问模式类型可能不可用。
+Depending on the backend storage system, some access mode types may not be available.
 
-|卷容量
-|持久卷声明的对应的卷容量大小。
+|Volume Capacity
+|The capacity of the volume corresponding to the PersistentVolumeClaim.
 |===
 --
 
-. 在**高级设置**页签，设置持久卷声明的标签和注解，然后点击**创建**。
+. On the **Advanced Settings** tab, set the labels and annotations for the PersistentVolumeClaim, then click **Create**.
 +
 --
 include::../workloads/createWorkload/workloads-para-Metadata.adoc[]
 --
 
-. 在**集群差异设置**页签，为不同集群中的持久卷声明使用不同的存储设置。
+. On the **Cluster Difference Settings** tab, configure different storage settings for the PersistentVolumeClaim in different clusters.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|存储类
-|用于创建持久卷声明的存储类。
+|StorageClass
+|The StorageClass used to create the PersistentVolumeClaim.
 
-|访问模式
+|Access Mode
 |
 include::persistentVolumeClaims-para-accessMode.adoc[]
 
-|卷容量
-|通过持久卷声明模板创建的每个持久卷的容量。
+|Volume Capacity
+|The capacity of each PersistentVolume created through the PersistentVolumeClaim template.
 |===
 
-持久卷声明创建完成后将显示在持久卷声明列表中。
+After the PersistentVolumeClaim is created, it will be displayed in the PersistentVolumeClaim list.
 --

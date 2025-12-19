@@ -1,11 +1,11 @@
 // :ks_include_id: d1f066141f214cd6839e0b1ff16062b0
 ifeval::["{file_output_type}" == "html"]
-* 如果您的集群节点无法连接互联网，您还需要准备一台 Linux 服务器用于创建私有镜像服务，该服务器必须与 KubeSphere 集群节点网络连通并且在 **/mnt/registry** 目录挂载至少 100 GB 磁盘空间。
+* If your cluster nodes cannot connect to the internet, you also need to prepare a Linux server to create a private image service. This server must be network-accessible to the KubeSphere cluster nodes and have at least 100 GB of disk space mounted at the **/mnt/registry** directory.
 
-// 除此之外，您需要提前创建离线安装包 **kubekey-artifact.tar.gz** 并将其传输到用于执行本节操作的集群节点。有关更多信息，请参阅 xref:03-installation-and-upgrade/01-preparations/02-create-an-offline-installation-package.adoc#f1b9272448bc43299a9e8cbd3b23cd1f[创建离线安装包]。
+// In addition, you need to create the offline installation package **kubekey-artifact.tar.gz** in advance and transfer it to the cluster node used to perform the operations in this section. For more information, please refer to xref:03-installation-and-upgrade/01-preparations/02-create-an-offline-installation-package.adoc#f1b9272448bc43299a9e8cbd3b23cd1f[Create an Offline Installation Package].
 
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
-* 除集群节点外，您还需要准备一台 Linux 服务器用于创建私有镜像服务，该服务器必须与 KubeSphere 集群节点网络连通，并且在 **/mnt/registry** 目录挂载至少 100 GB 磁盘空间。
+* In addition to the cluster nodes, you also need to prepare a Linux server to create a private image service. This server must be network-accessible to the KubeSphere cluster nodes and have at least 100 GB of disk space mounted at the **/mnt/registry** directory.
 endif::[]

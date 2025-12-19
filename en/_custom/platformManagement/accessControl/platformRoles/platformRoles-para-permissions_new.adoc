@@ -1,71 +1,71 @@
 // :ks_include_id: 175d7d7252294a048ca2f385318a9c7a
-平台角色可配置以下权限：
+Platform roles can be configured with the following permissions:
 
-* 访问控制
+* Access Control
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|企业空间查看
-|查看企业空间列表。
+|Workspace Viewing
+|View the workspace list.
 
-|企业空间管理
-|创建企业空间、编辑企业空间信息、删除企业空间。
+|Workspace Management
+|Create workspaces, edit workspace information, delete workspaces.
 
-|用户查看
-|查看用户列表、查看用户详情。
+|User Viewing
+|View the user list, view user details.
 
-|用户管理
-|创建用户、编辑用户信息、启用和禁用用户、修改用户角色、删除用户。
+|User Management
+|Create users, edit user information, enable and disable users, modify user roles, delete users.
 
-|角色查看
-|查看角色列表、查看角色详情。
+|Role Viewing
+|View the role list, view role details.
 
-|角色管理
-|创建平台角色、编辑平台角色信息、编辑平台角色权限、删除平台角色。
+|Role Management
+|Create platform roles, edit platform role information, edit platform role permissions, delete platform roles.
 |===
 --
 
-* 集群管理
+* Cluster Management
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|集群查看
-|查看集群列表。
+|Cluster Viewing
+|View the cluster list.
 
-|集群管理
-|添加成员集群、编辑集群信息、更新 kubeconfig、移除成员集群。
+|Cluster Management
+|Add member clusters, edit cluster information, update kubeconfig, remove member clusters.
 |===
 --
 
-* 应用管理
+* Application Management
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|应用查看
-|查看应用模板列表、查看应用模板详情、查看应用审核记录。
+|Application Viewing
+|View the application template list, view application template details, view application review records.
 
-|应用模板管理
-|下架和上架应用、下架和上架应用版本、管理应用分类、设置应用所属的分类、审核应用版本。
+|Application Template Management
+|Take down and publish applications, take down and publish application versions, manage application categories, set the category an application belongs to, review application versions.
 |===
 --
 
-* 平台设置管理
+* Platform Settings Management
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|平台设置管理
-|设置平台信息、通知等。
+|Platform Settings Management
+|Set platform information, notifications, etc.
 |===
 --

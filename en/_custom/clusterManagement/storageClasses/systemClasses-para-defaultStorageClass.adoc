@@ -1,2 +1,2 @@
 // :ks_include_id: 74c2d701d7a54e788036567ac9748872
-存储类是否为默认存储类。设置默认存储类后，如果没有特殊指定，系统将使用默认存储类创建持久卷声明。每个 KubeSphere 集群中仅允许设置一个默认存储类。
+Whether the storage class is the default storage class. After setting a default storage class, the system will use it to create persistent volume claims if no specific storage class is specified. Only one default storage class is allowed per KubeSphere cluster.

@@ -1,32 +1,32 @@
 ---
-title: "配置 NeonSAN CSI"
-keywords: "Kubernetes, {ks_product}, 安装, 准备, 持久化存储, 网络文件系统, NeonSAN CSI"
-description: "介绍如何在生产环境中为 KubeSphere 集群配置 NeonSAN CSI。"
+title: "Configuring NeonSAN CSI"
+keywords: "Kubernetes, {ks_product}, Installation, Preparation, Persistent Storage, Network File System, NeonSAN CSI"
+description: "Describes how to configure NeonSAN CSI for a KubeSphere cluster in a production environment."
 weight: 04
 ---
 
 
 
-NeonSAN 是青云的一款企业级分布式块存储系统，NeonSAN CSI 是 NeonSAN 团队面向 Kubernetes 提供的存储插件，具有在 Kubernetes 平台上动态创建持久存储卷的能力。
+NeonSAN is an enterprise-level distributed block storage system from QingCloud. NeonSAN CSI is a storage plugin provided by the NeonSAN team for Kubernetes, enabling dynamic creation of persistent volumes on the Kubernetes platform.
 
-本节介绍如何在生产环境中为 KubeSphere 集群配置 NeonSAN CSI。
-
-
-== 前提条件
-
-- 您已经成功部署 NeonSAN v2.2.0 及以上版本，且容器集群的每个节点都已安装 QBD 与 NeonSAN 连通。具体操作请咨询青云科技官方解决方案专家或交付服务专家。
-- 您已经安装 Kubernetes v1.16 及其以上版本。
-- 您已经在容器集群的 master 节点安装了 Helm。本节以 Helm 3 为例。
+This section describes how to configure NeonSAN CSI for a KubeSphere cluster in a production environment.
 
 
-== 操作步骤
+== Prerequisites
+
+- You have successfully deployed NeonSAN v2.2.0 or later, and the QBD is installed on each node of the container cluster to connect with NeonSAN. For specific operations, please consult QingCloud's official solution experts or delivery service experts.
+- You have installed Kubernetes v1.16 or later.
+- You have installed Helm on the master node of the container cluster. This section uses Helm 3 as an example.
 
 
-=== 在线安装 NeonSAN CSI
+== Steps
 
-在线安装适用于容器集群能够访问外网的情况。
 
-. 执行以下命令添加 Helm 仓库，如 https://charts.kubesphere.io/test。
+=== Installing NeonSAN CSI Online
+
+Online installation is suitable when the container cluster can access the external network.
+
+. Execute the following command to add a Helm repository, for example, https://charts.kubesphere.io/test.
 +
 --
 // Bash
@@ -38,7 +38,7 @@ $ helm repo add ks-test https://charts.kubesphere.io/test
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令查看仓库是否添加成功。
+. Execute the following command to check if the repository was added successfully.
 +
 --
 // Bash
@@ -51,7 +51,7 @@ ks-test     https://charts.kubesphere.io/test
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令更新仓库的 Chart 列表。
+. Execute the following command to update the Chart list in the repository.
 +
 --
 // Bash
@@ -62,7 +62,7 @@ $ helm repo update
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令在仓库中查找 NeonSAN CSI 的安装包。
+. Execute the following command to search for the NeonSAN CSI installation package in the repository.
 +
 --
 // Bash
@@ -75,7 +75,7 @@ ks-test/csi-neonsan 1.2.2           1.2.0       A Helm chart f
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 查看 Master 节点上安装的 qbd 版本。
+. Check the qbd version installed on the Master node.
 +
 --
 // Bash
@@ -90,7 +90,7 @@ NeonSAN Protocol Version: 1
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令安装 NeonSAN CSI。根据 Master 节点操作系统上安装的 qbd 版本，设置参数 **driver.repository**，例如如果查询到的 qbd 版本为 2.2.0，则命令里的参数为 **driver.repository="csiplugin/csi-neonsan-qbd2.2.0"**。
+. Execute the following command to install NeonSAN CSI. Based on the qbd version installed on the Master node's operating system, set the **driver.repository** parameter. For example, if the queried qbd version is 2.2.0, the parameter in the command should be **driver.repository="csiplugin/csi-neonsan-qbd2.2.0"**.
 +
 --
 // Bash
@@ -107,7 +107,7 @@ TEST SUITE: None
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令检查 NeonSAN CSI 是否安装成功。
+. Execute the following command to check if NeonSAN CSI was installed successfully.
 +
 --
 // Bash
@@ -120,7 +120,7 @@ csi-neonsan             kube-system 1           2020-11-
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 检查 pod 是否在 Running 状态。
+. Check if the pods are in the Running state.
 +
 --
 // Bash
@@ -135,10 +135,10 @@ $ kubectl get pod -n kube-system | grep csi-neonsan
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 检查是否所有 NeonSAN CSI 组件运行正常。
+. Check if all NeonSAN CSI components are running normally.
 +
 ====
-* 当 **READY** 取值等于 **AVAILABLE** 取值时，csi-neonsan-controller 正常。
+* When the **READY** value equals the **AVAILABLE** value, csi-neonsan-controller is normal.
 +
 --
 // Bash
@@ -151,7 +151,7 @@ csi-neonsan-controller   1/1     1            1      �
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-* 当 **DESIRED** 取值等于 **READY** 和 **AVAILABLE** 取值时，csi-neonsan-node 正常。
+* When the **DESIRED** value equals the **READY** and **AVAILABLE** values, csi-neonsan-node is normal.
 +
 --
 // Bash
@@ -165,7 +165,7 @@ include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 ====
 
-. 检查存储类是否安装。
+. Check if the StorageClass is installed.
 +
 --
 // Bash
@@ -178,7 +178,7 @@ csi-neonsan       neonsan.csi.qingstor.com               D
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 查看存储类所使用的存储池。此存储池必须在 NeonSAN 中存在, 否则无法使用此存储类创建存储卷。
+. View the storage pool used by the StorageClass. This storage pool must exist in NeonSAN; otherwise, you cannot use this StorageClass to create volumes.
 +
 --
 // Bash
@@ -190,7 +190,7 @@ pool_name: kube
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 登陆 NeonSAN 服务器, 查看存储类所使用的存储池是否存在，如不存在，请使用 **neonsan create_pool** 命令创建存储池。
+. Log in to the NeonSAN server and check if the storage pool used by the StorageClass exists. If it does not exist, use the **neonsan create_pool** command to create the storage pool.
 +
 --
 // Bash
@@ -208,11 +208,11 @@ include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
 
-=== 离线安装 NeonSAN CSI
+=== Installing NeonSAN CSI Offline
 
-离线安装适用于容器集群无法访问外网的情况。
+Offline installation is suitable when the container cluster cannot access the external network.
 
-. 在本机上，下载 NeonSAN CSI 安装包，并安装包拷贝至集群 Master 节点。
+. On your local machine, download the NeonSAN CSI installation package and copy it to the cluster's Master node.
 
 +
 --
@@ -228,7 +228,7 @@ $ ls -l csi-neonsan*.tgz
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令查看 NeonSAN CSI 所需要的所有镜像文件。
+. Execute the following command to view all the image files required by NeonSAN CSI.
 +
 --
 // Bash
@@ -261,7 +261,7 @@ registrar:
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 使用 Docker 将所有镜像下载到本地并打包，或上传至内网仓库（如 harbor）中。
+. Use Docker to download all images to your local machine and package them, or upload them to an internal repository (such as harbor).
 +
 --
 // Bash
@@ -294,7 +294,7 @@ docker save csiplugin/csi-neonsan:v1.2.0 \
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令将镜像包上传至集群所有节点的目录，如 **/tmp** 目录下，解压并安装。
+. Execute the following command to upload the image package to a directory on all nodes of the cluster, such as the **/tmp** directory, then extract and install it.
 +
 --
 // Bash
@@ -313,7 +313,7 @@ $ tar -xvf /tmp/neonsan-csi-images.tar -C /
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 执行以下命令检查安装是否完成。如果您看到所有的 NeonSAN CSI 镜像已经在列表中，那么说明安装成功。
+. Execute the following command to check if the installation is complete. If you see all NeonSAN CSI images in the list, the installation was successful.
 +
 --
 // Bash
@@ -324,8 +324,8 @@ $ docker images
 include::../../../../../_ks_components/code/codeEnd.adoc[]
 --
 
-. 参考link:#_在线安装_neonsan_csi[在线安装]中步骤 8 - 12 执行安装后检查。
+. Refer to steps 8 - 12 in link:#_在线安装_neonsan_csi[Online Installation] to perform post-installation checks.
 +
 --
-NeonSAN CSI 安装成功后，您可以在 KubeSphere 控制台上的**存储**区域查看。
+After NeonSAN CSI is successfully installed, you can view it in the **Storage** area on the KubeSphere web console.
 --

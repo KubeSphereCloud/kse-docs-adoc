@@ -1,2 +1,2 @@
 // :ks_include_id: 37c5f9735a854c9da9d6dae831f217d2
-* KubeSphere 平台需要启用多集群管理扩展组件。有关更多信息，请参阅xref:04-platform-management/01-extension-management/13-multi-cluster-management/01-enable-multi-cluster-management.adoc[启用多集群管理]。
+* The KubeSphere platform needs to have the multi-cluster management extension enabled. For more information, please refer to xref:04-platform-management/01-extension-management/13-multi-cluster-management/01-enable-multi-cluster-management.adoc[Enable Multi-cluster Management].

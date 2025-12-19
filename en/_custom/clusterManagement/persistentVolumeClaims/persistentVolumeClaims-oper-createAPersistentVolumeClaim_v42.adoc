@@ -1,132 +1,132 @@
 // :ks_include_id: 4527bd133db04495b10cf1930a58d5f9
-. 在**基本信息**页签，设置持久卷声明的基本信息，然后点击**下一步**。
+. On the **Basic Information** tab, set the basic information for the PersistentVolumeClaim, then click **Next**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|持久卷声明的名称。名称只能包含小写字母、数字和连字符（-），必须以小写字母或数字开头和结尾，最长 253 个字符。
+|Name
+|The name of the PersistentVolumeClaim. The name can only contain lowercase letters, numbers, and hyphens (-), must start and end with a lowercase letter or number, and is up to 253 characters long.
 
 ifndef::project[]
-|项目
-|持久卷声明所属的项目。
+|Project
+|The project to which the PersistentVolumeClaim belongs.
 endif::[]
 
-|别名
-|持久卷声明的别名。不同持久卷声明的别名可以相同。
-// 别名只能包含中文、字母、数字和连字符（-），不得以连字符（-）开头或结尾，最长 63 个字符。
+|Alias
+|An alias for the PersistentVolumeClaim. Different PersistentVolumeClaims can have the same alias.
+// The alias can only contain Chinese characters, letters, numbers, and hyphens (-), must not start or end with a hyphen (-), and is up to 63 characters long.
 
-|描述
-|持久卷声明的描述信息。描述可包含任意字符，最长 256 个字符。
+|Description
+|Descriptive information for the PersistentVolumeClaim. The description can contain any characters and is up to 256 characters long.
 |===
 --
 
-. 在**存储设置**页签，设置存储空间需求，然后点击**下一步**。
+. On the **Storage Settings** tab, set the storage requirements, then click **Next**.
 +
 --
 ifdef::default[]
-* 创建方式 > 通过存储类创建
+* Creation Method > Create via StorageClass
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|存储类
-|用于创建持久卷声明的存储类。
+|StorageClass
+|The StorageClass used to create the PersistentVolumeClaim.
 
-|访问模式
+|Access Mode
 |
 include::persistentVolumeClaims-para-accessMode.adoc[]
 
-取决于后端的存储系统，某些访问模式类型可能不可用。
+Depending on the backend storage system, some access mode types may not be available.
 
-|卷容量
-|持久卷声明的对应的卷容量大小。
+|Volume Capacity
+|The volume capacity corresponding to the PersistentVolumeClaim.
 |===
 
-* 创建方式 > 绑定已有持久卷创建
+* Creation Method > Bind to an Existing PersistentVolume
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|持久卷
-|选择已有的持久卷，用于创建持久卷声明。
+|PersistentVolume
+|Select an existing PersistentVolume to use for creating the PersistentVolumeClaim.
 |===
 endif::[]
 
 ifdef::snapshot[]
-* 创建方式 > 通过卷快照创建
+* Creation Method > Create via VolumeSnapshot
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|卷快照
-|用于创建持久卷声明的卷快照。
+|VolumeSnapshot
+|The VolumeSnapshot used to create the PersistentVolumeClaim.
 
-|访问模式
+|Access Mode
 |
 include::persistentVolumeClaims-para-accessMode.adoc[]
 
-取决于后端的存储系统，某些访问模式类型可能不可用。
+Depending on the backend storage system, some access mode types may not be available.
 |===
 endif::[]
 
 ifdef::nas[]
-* 创建方式 > 绑定已有 NAS 卷
+* Creation Method > Bind to an Existing NAS Volume
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|NFS 服务器主机名/ IP 地址
-|NFS 服务器的主机名或 IP 地址。
+|NFS Server Hostname / IP Address
+|The hostname or IP address of the NFS server.
 
-|NFS 卷路径
-|NFS 服务器上暴露的共享目录路径，如 `/mnt/data` 或 `/share/volume`。
+|NFS Volume Path
+|The path of the shared directory exposed on the NFS server, e.g., `/mnt/data` or `/share/volume`.
 
-|访问模式
+|Access Mode
 |
 include::persistentVolumeClaims-para-accessMode.adoc[]
 
-取决于后端的存储系统，某些访问模式类型可能不可用。
+Depending on the backend storage system, some access mode types may not be available.
 
-|回收机制
-|删除持久卷声明时对持久卷采取的策略。默认为 Delete。
+|Reclaim Policy
+|The policy applied to the PersistentVolume when the PersistentVolumeClaim is deleted. Default is Delete.
 
-* **Delete**：持久卷声明被删除后，系统自动删除持久卷。
+* **Delete**: After the PersistentVolumeClaim is deleted, the system automatically deletes the PersistentVolume.
 
-* **Retain**：持久卷声明被删除后，系统不自动删除持久卷。
+* **Retain**: After the PersistentVolumeClaim is deleted, the system does not automatically delete the PersistentVolume.
 
-|只读
-|持久卷声明是否以只读模式挂载。
+|Read Only
+|Whether the PersistentVolumeClaim is mounted in read-only mode.
 
-|挂载选项
-|定义 NFS 挂载时的参数，优化性能或控制行为，如 `hard`、`nfsvers=4`。
+|Mount Options
+|Defines parameters for NFS mounting to optimize performance or control behavior, such as `hard`, `nfsvers=4`.
 
-|卷容量
-|持久卷声明的对应的卷容量大小。
+|Volume Capacity
+|The volume capacity corresponding to the PersistentVolumeClaim.
 |===
 +
-有关参数的更多信息，请参阅 link:https://kubernetes.io/zh-cn/docs/concepts/storage/persistent-volumes/#persistent-volumes[Kubernetes 官方文档]。
+For more information on the parameters, please refer to the link:https://kubernetes.io/zh-cn/docs/concepts/storage/persistent-volumes/#persistent-volumes[Kubernetes Official Documentation].
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|持久卷声明对应的持久卷被创建后，您将无法修改 NFS 服务器主机名/ IP 地址、NFS 卷路径和卷容量。若要修改，请删除重建持久卷声明。
+|After the PersistentVolume corresponding to the PersistentVolumeClaim is created, you will not be able to modify the NFS server hostname/IP address, NFS volume path, and volume capacity. To modify them, please delete and recreate the PersistentVolumeClaim.
 
 |===
 endif::[]
 --
 
-. 在**高级设置**页签，设置持久卷声明的标签和注解，然后点击**创建**。
+. On the **Advanced Settings** tab, set the labels and annotations for the PersistentVolumeClaim, then click **Create**.
 +
 --
 include::../workloads/createWorkload/workloads-para-Metadata.adoc[]
 
-持久卷声明创建完成后将显示在持久卷声明列表中。
+Once created, the PersistentVolumeClaim will appear in the PersistentVolumeClaim list.
 --

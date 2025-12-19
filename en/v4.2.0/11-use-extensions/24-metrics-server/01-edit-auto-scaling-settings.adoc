@@ -1,18 +1,18 @@
 ---
-title: "编辑自动扩缩设置"
-keywords: "Kubernetes, {ks_product}, 应用负载, 工作负载, 编辑自动扩缩"
-description: "介绍如何编辑工作负载的自动扩缩设置。"
+title: "Edit Auto-scaling Settings"
+keywords: "Kubernetes, {ks_product}, Application Workloads, Workloads, Edit Auto-scaling"
+description: "Describes how to edit the auto-scaling settings for a workload."
 weight: 01
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **应用负载 > 工作负载**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Application Workloads > Workloads**
 
 
 include::../../../_custom/clusterManagement/workloads/workloads-desc-editAutoScaling.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 
 :relfileprefix: ../../../
@@ -21,12 +21,12 @@ include::../../../_custom/clusterManagement/clusterManagement-prer-requiredPermi
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **Metrics Server** 扩展组件。
+* The **Metrics Server** extension must be installed and enabled on the KubeSphere platform.
 
 
-== 操作步骤
+== Steps
 
-. 以具有pass:a,q[{ks_permission}]权限的用户登录 KubeSphere Web 控制台并进入您的集群或企业空间。
+. Log in to the KubeSphere web console as a user with pass:a,q[{ks_permission}] permissions and go to your cluster or workspace.
 
 +
 
@@ -34,7 +34,7 @@ include::../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**工作负载**页面，点击**部署**或**有状态副本集**，然后在列表中点击一个工作负载的名称打开其详情页面。
+. On the **Workloads** page, click **Deployments** or **StatefulSets**, then click the name of a workload in the list to go to its details page.
 
 +
 
@@ -42,6 +42,6 @@ include::../../../_custom/clusterManagement/workloads/workloads-oper-editAutoSca
 
 +
 
-设置完成后，在部署或有状态副本集列表页的状态栏中，会出现image:/images/ks-qkcp/zh/icons/clock-2.svg[scaling,18,18]，表示已设置容器组水平自动扩缩策略。
+After the setup is complete, the image:/images/ks-qkcp/zh/icons/clock-2.svg[scaling,18,18] icon will appear in the status bar on the Deployments or StatefulSets list page, indicating that a pod horizontal auto-scaling policy has been set.
 
-. 在 **Pod 水平自动扩缩**页面，点击自动扩缩右侧的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，可编辑、删除自动扩缩设置。
+. On the **Pod Horizontal Auto-scaling** page, click the image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] icon to the right of the auto-scaling entry to edit or delete the auto-scaling settings.

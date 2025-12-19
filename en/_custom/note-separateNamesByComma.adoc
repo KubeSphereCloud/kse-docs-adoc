@@ -2,6 +2,6 @@
 // Note
 include::../../_ks_components/admonitions/note.adoc[]
 
-请使用半角逗号（,）和空格分隔多个名称。
+Use commas (,) and spaces to separate multiple names.
 
 include::../../_ks_components/admonitions/admonEnd.adoc[]

@@ -1,35 +1,35 @@
 ---
-title: "启用 WizTelemetry 全局监控"
-description: "介绍如何启用 WizTelemetry 全局监控。"
+title: "Enable WizTelemetry Global Monitoring"
+description: "Describes how to enable WizTelemetry Global Monitoring."
 weight: 01
 ---
 
-为了使用 WizTelemetry 全局监控的完整功能，您需要安装 WizTelemetry 平台服务、 WizTelemetry 监控、WizTelemetry 告警以及 WizTelemetry 全局监控扩展组件，并进行以下配置。
+To use the full functionality of WizTelemetry Global Monitoring, you need to install the WizTelemetry Platform Service, WizTelemetry Monitoring, WizTelemetry Alerting, and WizTelemetry Global Monitoring extensions, and perform the following configurations.
 
-== 前提条件
+== Prerequisites
 
-* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../05-users-and-roles/01-users/[用户]和link:../../../../05-users-and-roles/02-platform-roles/[平台角色]。
+* You need to have the **platform-admin** role in the KubeSphere platform. For more information, refer to link:../../../../05-users-and-roles/01-users/[Users] and link:../../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
-* 已安装 **WizTelemetry 平台服务**、 **WizTelemetry 监控**、**WizTelemetry 告警**以及 **WizTelemetry 全局监控**扩展组件。
+* The **WizTelemetry Platform Service**, **WizTelemetry Monitoring**, **WizTelemetry Alerting**, and **WizTelemetry Global Monitoring** extensions have been installed.
 
-// * 已在**平台设置 > 许可证**页面导入 WizTelemetry 可观测平台 Pro 版或 WizTelemetry 全局监控的 license，否则，无法使用 WizTelemetry 全局监控的功能。
+// * A WizTelemetry Observability Platform Pro or WizTelemetry Global Monitoring license has been imported on the **Platform Settings > License** page. Otherwise, the WizTelemetry Global Monitoring features cannot be used.
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
-. 点击**扩展中心**。
-. 点击已安装的组件名称，进入组件详情页。
-. 点击组件图标下的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**扩展组件配置**。
+. Click **Extensions Center**.
+. Click the name of the installed extension to enter its details page.
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] under the extension icon and select **Extension Configuration**.
 +
 --
-**WizTelemetry 全局监控**
+**WizTelemetry Global Monitoring**
 
-将扩展组件配置中的 `whizard-agent-proxy.config.gatewayUrl` 参数设置为 `http://{host_cluster_node_ip}:30990`，然后点击**确定**。
+Set the `whizard-agent-proxy.config.gatewayUrl` parameter in the extension configuration to `http://{host_cluster_node_ip}:30990`, then click **OK**.
 
-`gatewayUrl` 是 WizTelemetry 全局监控中 `whizard` Gateway 组件的对外访问地址，默认使用 NodePort 30990 端口暴露，可以使用 host 集群任一节点 IP 及 30990 端口进行配置。
+`gatewayUrl` is the external access address for the `whizard` Gateway component in WizTelemetry Global Monitoring. It is exposed by default using NodePort 30990. You can configure it using any host cluster node IP and port 30990.
 
-示例：
+Example:
 [source,yaml]
 ----
 whizard-agent-proxy:
@@ -39,9 +39,9 @@ whizard-agent-proxy:
 ----
 
 
-**WizTelemetry 平台服务**
+**WizTelemetry Platform Service**
 
-将扩展组件配置中的 `whizard-telemetry.config.observability.enabled` 参数设置为 `true`，然后点击**确定**。
+Set the `whizard-telemetry.config.observability.enabled` parameter in the extension configuration to `true`, then click **OK**.
 
 [,yaml]
 ----
@@ -52,9 +52,9 @@ whizard-telemetry:
       endpoint: "http://query-frontend-whizard-operated.kubesphere-monitoring-system.svc:10902"
 ----
 
-**WizTelemetry 监控**
+**WizTelemetry Monitoring**
 
-将扩展组件配置中的 `kube-prometheus-stack.prometheus.agentMode` 参数设置为 `true`，然后点击**确定**。
+Set the `kube-prometheus-stack.prometheus.agentMode` parameter in the extension configuration to `true`, then click **OK**.
 
 [,yaml]
 ----
@@ -64,9 +64,9 @@ kube-prometheus-stack:
     agentMode: true
 ----
 
-**WizTelemetry 告警**
+**WizTelemetry Alerting**
 
-将扩展组件配置中的 `global.rules.distributionMode` 参数设置为 `None`，然后点击**确定**。
+Set the `global.rules.distributionMode` parameter in the extension configuration to `None`, then click **OK**.
 
 [,yaml]
 ----
@@ -79,14 +79,14 @@ global:
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-* 当新增集群时，请确保 WizTelemetry 全局监控、WizTelemetry 监控及 WizTelemetry 告警的集群 Agent 被选中并正常安装。
+* When adding a new cluster, ensure that the cluster Agents for WizTelemetry Global Monitoring, WizTelemetry Monitoring, and WizTelemetry Alerting are selected and installed correctly.
 
-* 卸载 WizTelemetry 全局监控时，您仍需参照以上配置，将其他扩展组件的配置恢复原值。
+* When uninstalling WizTelemetry Global Monitoring, you still need to refer to the above configurations to restore the other extensions' configurations to their original values.
 
 |===
 --
 
-. 编辑完成后，从组件坞进入 WizTelemetry 可观测平台，可发现 WizTelemetry 全局监控提供的**全局监控**和**全局告警**页面均正常显示数据。
+. After editing, enter the WizTelemetry Observability Platform from the Component Dock. You will find that the **Global Monitoring** and **Global Alerting** pages provided by WizTelemetry Global Monitoring display data normally.

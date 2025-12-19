@@ -1,2 +1,2 @@
 // :ks_include_id: 2e37174ddea04c728860513b91a5da81
-* 您需要获取 RadonDB PostgreSQL 应用授权，并已安装 RadonDB PostgreSQL。有关更多信息，请参阅xref:19-radondb/09-radondb-postgresql/03-install-radondb-postgresql.adoc[安装 RadonDB PostgreSQL]。
+* You need to obtain the RadonDB PostgreSQL application authorization and have RadonDB PostgreSQL installed. For more information, please refer to xref:19-radondb/09-radondb-postgresql/03-install-radondb-postgresql.adoc[Install RadonDB PostgreSQL].

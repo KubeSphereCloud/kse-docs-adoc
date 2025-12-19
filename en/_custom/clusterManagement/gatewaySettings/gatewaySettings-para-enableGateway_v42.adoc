@@ -1,47 +1,47 @@
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 ifdef::enable-gateway[]
-|Nginx Ingress 版本
-|Nginx Ingress 的版本。KubeSphere 网关扩展组件基于 Nginx Ingress 提供网关管理功能。
+|Nginx Ingress Version
+|The version of Nginx Ingress. The KubeSphere gateway extension provides gateway management functionality based on Nginx Ingress.
 endif::[]
 
 |IngressClassName
-|IngressClass 的名称。
+|The name of the IngressClass.
 
-|容器组副本数量
-|期望的容器组副本数量。该数值必须在配置的实际运行容器组副本数的最大值与最小值区间范围内。
+|Pod Replicas
+|The desired number of pod replicas. This value must be within the configured range of the minimum and maximum number of actually running pod replicas.
 
-|实际运行容器组副本数限制
-|限制实际运行的容器组副本的最小数量和最大数量，以确保网关性能，同时防止资源耗尽。
+|Running Pod Replica Limits
+|Limits the minimum and maximum number of actually running pod replicas to ensure gateway performance and prevent resource exhaustion.
 
-|访问模式
-|网关服务的外部访问模式。
+|External Access Mode
+|The external access mode for the gateway service.
 
 include::../services/services-para-externalAccess.adoc[tag=bullets]
 
-|链路追踪
-|是否对网关启用链路追踪功能。如需使用链路追踪功能，KubeSphere 平台需要安装并启用 **KubeSphere 服务网格**扩展组件。
+|Tracing
+|Whether to enable tracing for the gateway. To use the tracing feature, the **KubeSphere Service Mesh** extension must be installed and enabled on the KubeSphere platform.
 
-|负载均衡器提供商
-|网关的负载均衡器提供商。网关的外部访问模式为 LoadBalancer 时，您需要根据负载均衡器插件和基础设施环境设置网关服务的注解以创建所需的负载均衡器。选择负载均衡器提供商后，设置网关服务注解时系统将提供注解提示。仅在网关服务的外部访问模式为 **LoadBalancer** 时可用。
+|Load Balancer Provider
+|The load balancer provider for the gateway. When the gateway's external access mode is LoadBalancer, you need to set annotations for the gateway service according to the load balancer plugin and infrastructure environment to create the required load balancer. After selecting a load balancer provider, the system will provide annotation hints when setting gateway service annotations. Available only when the gateway service's external access mode is **LoadBalancer**.
 
-|注解
-|网关服务的注解。如果已选择负载均衡器提供商，点击**键**文本框时系统将在下拉列表中显示注解提示。仅在网关服务的外部访问模式为 **LoadBalancer** 时可用。有关更多信息，请联系您的基础设施环境提供商。
+|Annotations
+|Annotations for the gateway service. If a load balancer provider has been selected, the system will display annotation hints in a dropdown list when you click the **Key** text box. Available only when the gateway service's external access mode is **LoadBalancer**. For more information, please contact your infrastructure environment provider.
 
-|配置选项
-|网关的配置选项。KubeSphere 的网关功能底层基于 Nginx Ingress Controller 实现，您可以设置网关的配置选项控制网关的行为。有关更多信息，请参阅 link:https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/[Nginx Ingress Controller 官方文档]。
+|Configuration Options
+|Configuration options for the gateway. KubeSphere's gateway functionality is implemented based on the Nginx Ingress Controller. You can set gateway configuration options to control gateway behavior. For more information, please refer to the link:https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/[Nginx Ingress Controller official documentation].
 
-|CPU 预留
-|为网关每个容器预留的 CPU 资源，单位为核。
+|CPU Reservation
+|The CPU resources reserved for each gateway container, in cores.
 
-|CPU 上限
-|允许网关每个容器使用的 CPU 资源上限，单位为核。
+|CPU Limit
+|The maximum CPU resources allowed for each gateway container, in cores.
 
-|内存预留
-|为网关每个容器预留的内存资源，单位为 MiB。
+|Memory Reservation
+|The memory resources reserved for each gateway container, in MiB.
 
-|内存上限
-|允许网关每个容器使用的内存资源上限，单位为 MiB。
+|Memory Limit
+|The maximum memory resources allowed for each gateway container, in MiB.
 |===

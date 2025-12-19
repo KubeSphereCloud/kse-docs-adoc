@@ -1,29 +1,29 @@
 // :ks_include_id: ebcff396ff624f5f9d3e0534615ffdcb
-* 卷快照列表提供以下信息：
+* The volume snapshot list provides the following information:
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|名称
-|卷快照的名称、别名。
+|Name
+|The name and alias of the volume snapshot.
 
-|状态
+|Status
 |
 include::volumeSnapshots-para-volumeSnapshotStatus_v4.adoc[]
 
-|项目
-|卷快照所属的项目。
+|Project
+|The project to which the volume snapshot belongs.
 
-|卷快照内容
-|卷快照内容的名称。
+|Volume Snapshot Content
+|The name of the volume snapshot content.
 
-|容量
+|Capacity
 |
 include::volumeSnapshots-para-capacity.adoc[]
 
-|创建时间
-|卷快照的创建时间。
+|Creation Time
+|The creation time of the volume snapshot.
 |===
 --

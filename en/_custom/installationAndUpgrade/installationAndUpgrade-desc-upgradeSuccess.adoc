@@ -1,2 +1,3 @@
 // :ks_include_id: 17414933bdfa444fb13e2686c433d8f5
-如果显示如下信息，则表明升级成功：
+If the following information is displayed, the upgrade is successful:
+    

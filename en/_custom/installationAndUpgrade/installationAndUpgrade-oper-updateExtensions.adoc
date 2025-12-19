@@ -1,13 +1,13 @@
-在扩展中心升级所需的扩展组件。对于已备份特殊配置的扩展组件，需先修改配置后再升级。
+Upgrade the required extensions in the Extensions Center. For extensions with special configurations that have been backed up, you need to modify the configuration before upgrading.
 
-. 在扩展中心点击组件名称，进入组件详情页。
+. In the Extensions Center, click the extension name to enter the extension details page.
 
-. 点击组件图标下的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**扩展组件配置**。
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] under the extension icon and select **Extension Configuration**.
 
-. 清空**自定义配置**，再输入定制化的配置，然后点击**确定**。
+. Clear the **Custom Configuration**, then enter the customized configuration, and click **OK**.
 
-. 再次点击组件图标下的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**更新**。
+. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] under the extension icon again and select **Update**.
 
-. 在**扩展组件更新**对话框中，点击**开始更新**等待升级完成。
+. In the **Extension Update** dialog box, click **Start Update** and wait for the upgrade to complete.
 
-至此，KubeSphere 完成全部升级。
+At this point, KubeSphere has completed the entire upgrade process.

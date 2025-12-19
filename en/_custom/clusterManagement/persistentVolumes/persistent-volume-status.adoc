@@ -1,11 +1,11 @@
 // :ks_include_id: f3350225a1bf47a3872722fd47af4d1d
-持久卷当前的状态。
+The current status of a Persistent Volume.
 
-* **可用**：持久卷未与持久卷声明绑定。
-// KubeSphere Web 控制台目前不支持直接创建持久卷，如果您通过后台命令行直接创建持久卷，将出现状态为**可用**的持久卷。有关更多信息，请参阅 link:https://kubernetes.io/zh/docs/concepts/storage/persistent-volumes/[Kubernetes 官方文档]。
+* **Available**: The Persistent Volume is not bound to a PersistentVolumeClaim.
+// The KubeSphere web console currently does not support creating Persistent Volumes directly. If you create a Persistent Volume directly via the backend command line, a Persistent Volume with the status **Available** will appear. For more information, please refer to link:https://kubernetes.io/zh/docs/concepts/storage/persistent-volumes/[Kubernetes official documentation].
 
-* **已绑定**：持久卷已经与持久卷声明绑定。
+* **Bound**: The Persistent Volume is already bound to a PersistentVolumeClaim.
 
-* **已释放**：与持久卷绑定的持久卷声明已被删除而持久卷尚未被删除。
+* **Released**: The PersistentVolumeClaim bound to the Persistent Volume has been deleted, but the Persistent Volume itself has not been deleted.
 
-* **失败**：持久卷存在未知错误。
+* **Failed**: The Persistent Volume has an unknown error.

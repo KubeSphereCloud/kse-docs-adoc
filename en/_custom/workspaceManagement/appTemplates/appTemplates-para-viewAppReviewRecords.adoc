@@ -1,24 +1,23 @@
 // :ks_include_id: 6bd43a37515948a98375ba0850fee61a
-. 在应用模板详情页面点击**应用审核**页签，查看应用版本的审核记录。
+. On the application template details page, click the **Application Review** tab to view the review records of the application versions.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|时间
-|应用审核记录的生成时间。
+|Time
+|The creation time of the application review record.
 
-|状态
-|应用审核记录对应的应用版本状态。
+|Status
+|The status of the application version corresponding to the application review record.
 
-|版本
-|生成审核记录对应的 Helm Chat 和应用程序的版本。
+|Version
+|The version of the Helm Chart and the application corresponding to the review record.
 
-|拒绝原因
-|应用版本提交审核后，应用商店管理员拒绝版本发布的原因。仅在应用版本被应用商店管理员拒绝时显示。
+|Rejection Reason
+|The reason provided by the App Store administrator for rejecting the application version after submission for review. This is only displayed when the application version is rejected by the App Store administrator.
 
-|操作者
-|操作应用版本的用户。
+|Operator
+|The user who performed the operation on the application version.
 |===
---

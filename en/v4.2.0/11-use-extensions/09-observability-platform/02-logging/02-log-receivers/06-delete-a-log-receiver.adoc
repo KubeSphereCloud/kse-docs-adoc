@@ -1,18 +1,16 @@
 ---
-title: "删除日志接收器"
-keywords: "Kubernetes, {ks_product}, 集群管理, 集群设置, 日志接收器, 启用, 禁用"
-description: "介绍如何删除日志接收器。"
+title: "Delete Log Receiver"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Cluster Settings, Log Receiver, Enable, Disable"
+description: "Describes how to delete a log receiver."
 weight: 06
 ---
 
 :ks_permission: ** cluster-admin **
-:ks_navigation: **日志 > 日志接收器**
+:ks_navigation: **Logging > Log Receiver**
 
+This section describes how to delete a log receiver.
 
-本节介绍如何删除日志接收器。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 
@@ -21,10 +19,9 @@ include::../../../../../_custom/clusterManagement/clusterManagement-prer-require
 
 :relfileprefix: ./
 
-* 已添加一个日志接收器。
+* A log receiver has been added.
 
-
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -34,10 +31,10 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**日志接收器**页面，点击**容器日志**、**资源事件**、**审计日志**或**通知历史**，然后在列表中点击一个日志接收器的名称打开其详情页面。
+. On the **Log Receiver** page, click **Container Logs**, **Resource Events**, **Audit Logs**, or **Notification History**, then click the name of a log receiver in the list to open its details page.
 
 +
 
-. 在日志接收器详情页面点击**操作 > 删除**。
+. On the log receiver details page, click **Operation > Delete**.
 
-. 在弹出的对话框中输入日志接收器的名称，然后点击**确定**。
+. In the dialog box that appears, enter the name of the log receiver, then click **OK**.

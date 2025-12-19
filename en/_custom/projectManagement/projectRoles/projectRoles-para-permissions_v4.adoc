@@ -1,132 +1,132 @@
 // :ks_include_id: f730ff7f032240069f81e1b59ff72366
-* 存储
+* Storage
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|持久卷声明管理
-|创建持久卷声明、克隆持久卷、扩展持久卷、编辑持久卷声明信息、删除持久卷声明。
+|Persistent Volume Claim Management
+|Create Persistent Volume Claims, clone persistent volumes, expand persistent volumes, edit Persistent Volume Claim information, delete Persistent Volume Claims.
 
-|持久卷声明查看
-|查看持久卷声明列表、查看持久卷声明详情。
+|Persistent Volume Claim View
+|View Persistent Volume Claim list, view Persistent Volume Claim details.
 
 |===
 --
 
-* 配置
+* Configuration
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|配置字典管理
-|创建配置字典、编辑配置字典信息、编辑配置字典设置、删除配置字典。
+|ConfigMap Management
+|Create ConfigMaps, edit ConfigMap information, edit ConfigMap settings, delete ConfigMaps.
 
-|配置字典查看
-|查看配置字典列表、查看配置字典详情。
+|ConfigMap View
+|View ConfigMap list, view ConfigMap details.
 
-|保密字典管理
-|创建保密字典、编辑保密字典信息、编辑保密字典设置、删除保密字典。
+|Secret Management
+|Create Secrets, edit Secret information, edit Secret settings, delete Secrets.
 
-|保密字典查看
-|查看保密字典列表、查看保密字典详情。
+|Secret View
+|View Secret list, view Secret details.
 
-|服务帐户管理
-|创建服务帐户、编辑服务帐户信息、修改服务帐户角色、删除服务帐户。
+|Service Account Management
+|Create Service Accounts, edit Service Account information, modify Service Account roles, delete Service Accounts.
 
-|服务帐户查看
-|查看服务帐户列表、查看服务帐户详情。
+|Service Account View
+|View Service Account list, view Service Account details.
 
 |===
 --
 
-* 应用负载
+* Application Workloads
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|应用负载管理
-|管理项目中的应用、服务、工作负载和任务等资源。
+|Application Workloads Management
+|Manage resources such as applications, services, workloads, and Jobs within the project.
 
-|应用负载查看
-|查看项目中的应用、服务、工作负载和任务等资源。
+|Application Workloads View
+|View resources such as applications, services, workloads, and Jobs within the project.
 |===
 --
 
-* 应用
+* Applications
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|应用实例管理
-|从应用模板安装应用、从应用商店安装应用、删除应用。
+|Application Instance Management
+|Install applications from application templates, install applications from the App Store, delete applications.
 
-|应用实例查看
-|查看应用列表、查看基于模板的应用详情。
+|Application Instance View
+|View application list, view application details based on templates.
 |===
 --
 
-* 访问控制
+* Access Control
 +
 --
 [%header,cols="1a,4a"]
 |===
-|权限 |允许操作
+|Permission |Allowed Operations
 
-|角色查看
-|查看项目角色列表、查看项目角色详情。
+|Role View
+|View project role list, view project role details.
 
-// |角色管理
-// |创建项目角色、编辑项目角色信息、编辑项目角色权限、删除项目角色。
+// |Role Management
+// |Create project roles, edit project role information, edit project role permissions, delete project roles.
 
-|成员查看
-|查看项目成员列表。
+|Member View
+|View project member list.
 
-// |成员管理
-// |邀请用户加入项目、修改项目成员角色、移除项目成员。
+// |Member Management
+// |Invite users to join the project, modify project member roles, remove project members.
 |===
 --
 
-// * 监控告警
+// * Monitoring & Alerting
 // +
 // --
 // [%header,cols="1a,4a"]
 // |===
-// |权限 |允许操作
+// |Permission |Allowed Operations
 
-// |自定义监控查看
-// |查看自定义监控面板。
+// |Custom Monitoring View
+// |View custom monitoring dashboards.
 
-// |自定义监控管理
-// |创建自定义监控面板、编辑自定义监控面板信息、编辑自定义监控面板、删除自定义监控面板。
+// |Custom Monitoring Management
+// |Create custom monitoring dashboards, edit custom monitoring dashboard information, edit custom monitoring dashboards, delete custom monitoring dashboards.
 
-// |规则组查看
-// |查看规则组列表、查看规则组详情。
+// |Rule Group View
+// |View rule group list, view rule group details.
 
-// |规则组管理
-// |创建规则组、编辑规则组、删除规则组。
+// |Rule Group Management
+// |Create rule groups, edit rule groups, delete rule groups.
 
-// |告警查看
-// |查看告警列表。
+// |Alert View
+// |View alert list.
 // |===
 // --
 
 
-// * 项目设置
+// * Project Settings
 // +
 // --
 // [%header,cols="1a,4a"]
 // |===
-// |权限 |允许操作
+// |Permission |Allowed Operations
 
-// |项目设置管理
-// |查看项目概览信息、编辑项目信息、编辑项目配额、编辑默认容器配额、删除项目。
+// |Project Settings Management
+// |View project overview information, edit project information, edit project quotas, edit default container quotas, delete project.
 // |===
 // --

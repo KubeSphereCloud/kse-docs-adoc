@@ -3,59 +3,59 @@
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|CPU 上限
-|项目中所有容器 CPU 上限总和的最大值，单位为核。
+|CPU Limit
+|The maximum total CPU limit for all containers in the project, in cores.
 
-|CPU 预留
-|项目中所有容器 CPU 预留总和的最大值，单位为核。
+|CPU Request
+|The maximum total CPU request for all containers in the project, in cores.
 
-|内存上限
-|项目中所有容器内存上限总和的最大值，单位为 MiB。
+|Memory Limit
+|The maximum total memory limit for all containers in the project, in MiB.
 
-|内存预留
-|项目中所有容器内存预留总和的最大值，单位为 MiB。
+|Memory Request
+|The maximum total memory request for all containers in the project, in MiB.
 
-|GPU 上限
-|项目中当前已使用的 GPU 数量，以及可以使用的 GPU 数量上限，单位为 GPU。
+|GPU Limit
+|The number of GPUs currently used in the project, and the maximum number of GPUs that can be used, in GPUs.
 
-|持久卷声明限制
-|项目中当前已创建的持久卷声明容量，以及可以创建的持久卷声明的容量上限。
+|Persistent Volume Claim Capacity Limit
+|The capacity of Persistent Volume Claims currently created in the project, and the maximum capacity of Persistent Volume Claims that can be created.
 
-|持久卷声明
-|项目中当前已创建的持久卷声明数量，以及可以创建的持久卷声明的数量上限。
+|Persistent Volume Claim
+|The number of Persistent Volume Claims currently created in the project, and the maximum number of Persistent Volume Claims that can be created.
 
-// |卷
-// |项目中当前已创建的卷数量，以及可以创建的卷数量上限。
+// |Volume
+// |The number of volumes currently created in the project, and the maximum number of volumes that can be created.
 
-|容器组
-|项目中当前已创建的容器组数量，以及可以创建的容器组数量上限。
+|Pod
+|The number of pods currently created in the project, and the maximum number of pods that can be created.
 
-|部署
-|项目中当前已创建的部署数量，以及可以创建的部署数量上限。
+|Deployment
+|The number of Deployments currently created in the project, and the maximum number of Deployments that can be created.
 
-|有状态副本集
-|项目中当前已创建的有状态副本集数量，以及可以创建的有状态副本集数量上限。
+|StatefulSet
+|The number of StatefulSets currently created in the project, and the maximum number of StatefulSets that can be created.
 
-// |守护进程集
-// |项目中当前已创建的守护进程集数量，以及可以创建的守护进程集数量上限。
+// |DaemonSet
+// |The number of DaemonSets currently created in the project, and the maximum number of DaemonSets that can be created.
 
-// |任务
-// |项目中当前已创建的任务数量，以及可以创建的任务数量上限。
+// |Job
+// |The number of Jobs currently created in the project, and the maximum number of Jobs that can be created.
 
-// |定时任务
-// |项目中当前已创建的定时任务数量，以及可以创建的定时任务数量上限。
+// |CronJob
+// |The number of CronJobs currently created in the project, and the maximum number of CronJobs that can be created.
 
-|服务
-|项目中当前已创建的服务数量，以及可以创建的服务数量上限。
+|Service
+|The number of Services currently created in the project, and the maximum number of Services that can be created.
 
-|应用路由
-|项目中当前已创建的应用路由数量，以及可以创建的应用路由数量上限。
+|Ingress
+|The number of Ingresses currently created in the project, and the maximum number of Ingresses that can be created.
 
-|保密字典
-|项目中当前已创建的保密字典数量，以及可以创建的保密字典数量上限。
+|Secret
+|The number of Secrets currently created in the project, and the maximum number of Secrets that can be created.
 
-|配置字典
-|项目中当前已创建的配置字典数量，以及可以创建的配置字典数量上限。
+|ConfigMap
+|The number of ConfigMaps currently created in the project, and the maximum number of ConfigMaps that can be created.
 |===

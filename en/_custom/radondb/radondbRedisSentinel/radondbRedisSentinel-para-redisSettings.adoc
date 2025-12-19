@@ -1,18 +1,18 @@
 // :ks_include_id: fe9e5aaafc80494881a70b45e74232e4
-|内核版本
-|Redis 数据库的内核版本。目前支持 Redis 6.2.5 和 Redis 7.0.4。
+|Kernel Version
+|The kernel version of the Redis database. Currently supports Redis 6.2.5 and Redis 7.0.4.
 
-|资源
-|系统为 Redis 数据库预留的 CPU 和内存资源，同时也是 Redis Sentinel 数据库可使用的 CPU 和内存资源上限。
+|Resources
+|The CPU and memory resources reserved by the system for the Redis database. This also represents the upper limit of CPU and memory resources that the Redis Sentinel database can use.
 
-|存储类
-|Redis 数据库使用的存储系统对应的存储类。如果下拉列表中没有符合需要的存储类，您需要联系平台管理员创建存储类。
+|Storage Class
+|The storage class corresponding to the storage system used by the Redis database. If there is no suitable storage class in the dropdown list, you need to contact the platform administrator to create one.
 
-|卷
-|Redis 数据库使用的卷大小，单位为 GiB。
+|Volume
+|The size of the volume used by the Redis database, in GiB.
 
-|Redis 节点数量
-|Redis 集群中的节点数量。可选值为 **3**，**5**，**7**。
+|Redis Node Count
+|The number of nodes in the Redis cluster. Valid values are **3**, **5**, **7**.
 
-|密码
-|Redis 数据库的访问密码。密码只能包含大写字母、小写字母、数字和特殊字符（!@#$%^&*()./;），长度为 6 到 31 个字符。
+|Password
+|The access password for the Redis database. The password can only contain uppercase letters, lowercase letters, numbers, and special characters (!@#$%^&*()./;), and must be between 6 and 31 characters in length.

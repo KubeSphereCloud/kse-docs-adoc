@@ -1,2 +1,1 @@
-// :ks_include_id: c5b6d2f08662480b8ae449c5d8c84ef6
-* 您需要联系 KubeSphere 交付服务专家获取 KubeSphere {ks_product_ver} 安装包。
+* You need to contact a KubeSphere delivery service expert to obtain the KubeSphere {ks_product_ver} installation package.

@@ -1,18 +1,18 @@
 // :ks_include_id: 767f7ca66b4048cd98a9ff15a50b4d62
-* 您需要获得平台、集群、企业空间或项目的资源查看权限，以查看特定范围的日志。
+* You need to have resource viewing permissions for the platform, cluster, workspace, or project to view logs within a specific scope.
 
 ifeval::["{file_output_type}" == "html"]
 
-* KubeSphere 平台需要启用日志、事件和审计扩展组件。
+* The KubeSphere platform needs to have the Logging, Events, and Auditing extensions enabled.
 
-* KubeSphere 集群需要添加 Elasticsearch 日志接收器。
+* The KubeSphere cluster needs to have an Elasticsearch log receiver added.
 
 endif::[]
 
 ifeval::["{file_output_type}" == "pdf"]
 
-* KubeSphere 平台需要启用日志、事件和审计扩展组件。有关更多信息，请参阅《KubeSphere 平台管理指南》的“扩展组件管理”章节。
+* The KubeSphere platform needs to have the Logging, Events, and Auditing extensions enabled. For more information, refer to the "Extension Management" chapter in the *KubeSphere Platform Management Guide*.
 
-* KubeSphere 集群需要添加 Elasticsearch 日志接收器。有关更多信息，请参阅《KubeSphere 集群管理指南》的“添加日志接收器”章节。
+* The KubeSphere cluster needs to have an Elasticsearch log receiver added. For more information, refer to the "Add Log Receiver" chapter in the *KubeSphere Cluster Management Guide*.
 
 endif::[]

@@ -1,41 +1,41 @@
 // tag::onlydeploy[]
-设置滚动更新策略的相关参数。
+Set the relevant parameters for the rolling update strategy.
 
-部署：
+Deployment:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|最大不可用容器组数量
-|更新过程中允许的不可用容器组副本的最大数量或百分比。
+|Max Unavailable Pods
+|The maximum number or percentage of unavailable pod replicas allowed during the update process.
 
-|最大多余容器组数量
-|更新过程中允许的多余容器组副本的最大数量或百分比。
+|Max Surge Pods
+|The maximum number or percentage of extra pod replicas allowed during the update process.
 |===
 // end::onlydeploy[]
 
-有状态副本集：
+StatefulSet:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|容器组副本分组序号
-|设置一个分组序号以将容器组副本分成两组。更新有状态副本集时，只有序号大于或等于分组序号的容器组副本会被更新。
+|Pod Management Policy
+|Set a partition number to divide the pod replicas into two groups. When updating the StatefulSet, only pod replicas with an ordinal number greater than or equal to the partition number will be updated.
 |===
 
 ifndef::multicluster[]
-守护进程集：
+DaemonSet:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|最大不可用容器组数量
-|更新过程中允许的不可用容器组副本的最大数量或百分比。
+|Max Unavailable Pods
+|The maximum number or percentage of unavailable pod replicas allowed during the update process.
 
-|容器组就绪最短运行时长
-|容器组副本被视为就绪所需要的最短稳定运行时长。
+|Min Ready Seconds
+|The minimum stable running duration required for a pod replica to be considered ready.
 |===
 endif::[]

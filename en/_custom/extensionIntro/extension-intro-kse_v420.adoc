@@ -1,69 +1,69 @@
 [discrete]
-=== WizTelemetry 可观测平台
+=== WizTelemetry Observability Platform
 
 include::WizTelemetry-intro-kse_v420.adoc[]
 
 [discrete]
-=== 开发者工具
+=== Developer Tools
 
-**KubeSphere 应用商店管理**：基于 OpenPitrix 的多云应用管理平台，用于上传、审核并管理多云环境中不同类型的应用。它可作为企业不同团队间数据、中间件和办公应用的共享与分发管理工具。
+**KubeSphere App Store Management**: A multi-cloud application management platform based on OpenPitrix, used for uploading, reviewing, and managing different types of applications in multi-cloud environments. It can serve as a tool for sharing and distributing data, middleware, and office applications among different teams within an enterprise.
 
-**KubeSphere 服务网格**：一款强大的微服务治理与微服务可视化管理工具。它提供包括蓝绿部署、金丝雀发布与流量镜像三种灰度发布策略，与流量监控、链路追踪两项可观测能力。
+**KubeSphere Service Mesh**: A powerful tool for microservice governance and microservice visual management. It provides three grayscale release strategies including blue-green deployment, canary release, and traffic mirroring, along with two observability capabilities: traffic monitoring and link tracing.
 
-**Spring Cloud**：提供微服务、微服务配置和微服务网关功能。
-
-[discrete]
-=== 计算
-
-**KubeSphere 多集群代理连接**：是一种通过代理在集群间建立网络连接的工具。如果主集群无法直接访问成员集群，您可以暴露主集群的代理服务地址，这样可以让成员集群通过代理连接到主集群。
-
-**联邦集群应用管理**：一个旨在简化跨多个联邦 Kubernetes 集群管理应用程序的扩展组件，用户可以轻松地在多个联邦集群中部署、更新和管理应用程序。
-
-**Metrics Server**：根据设定指标对 Pod 数量进行动态伸缩，使运行在上面的服务对指标的变化有一定的自适应能力。
+**Spring Cloud**: Provides microservices, microservice configuration, and microservice gateway functionalities.
 
 [discrete]
-=== 边缘计算
+=== Compute
 
-**EdgeWize**：是基于 Kubernetes 的云边协同基础设施平台，采用可拔插架构整合边缘计算关键能力，助力企业快速构建智能、开放的边缘应用管理平台，实现业务边缘化转型。
+**KubeSphere Multi-Cluster Proxy Connection**: A tool for establishing network connections between clusters via a proxy. If the host cluster cannot directly access member clusters, you can expose the proxy service address of the host cluster, allowing member clusters to connect to the host cluster through the proxy.
+
+**Federated Cluster Application Management**: An extension designed to simplify the management of applications across multiple federated Kubernetes clusters. Users can easily deploy, update, and manage applications in multiple federated clusters.
+
+**Metrics Server**: Dynamically scales the number of pods based on set metrics, enabling services running on them to have a certain degree of adaptability to metric changes.
 
 [discrete]
-=== 数据库与中间件
+=== Edge Computing
 
-**RadonDB DMP**：一款面向 Kubernetes 多云场景的企业级云原生数据库管理平台。能轻松实现多类型主流数据库的跨云部署、多云管理、智能观测与统一运维等，并完整构建围绕高性能、高可用、业务追踪、数据流转等场景下的生态闭环，助力客户真正实现数据库即服务。
+**EdgeWize**: A cloud-edge collaborative infrastructure platform based on Kubernetes. It adopts a pluggable architecture to integrate key edge computing capabilities, helping enterprises quickly build intelligent, open edge application management platforms to achieve business edge transformation.
+
+[discrete]
+=== Database & Middleware
+
+**RadonDB DMP**: An enterprise-grade cloud-native database management platform for Kubernetes multi-cloud scenarios. It easily enables cross-cloud deployment, multi-cloud management, intelligent observation, and unified operation and maintenance of various mainstream database types. It fully builds an ecosystem loop around scenarios such as high performance, high availability, business tracking, and data flow, helping customers truly achieve Database as a Service.
 
 [discrete]
 === CI/CD
 
-**DevOps**：基于 Jenkins 提供开箱即用的 CI/CD 功能，提供一站式 DevOps 方案、支持使用图形编辑面板或 Jenkinsfile 创建流水线。
+**DevOps**: Provides out-of-the-box CI/CD functionality based on Jenkins, offering a one-stop DevOps solution, supporting the creation of pipelines using a graphical editing panel or Jenkinsfile.
 
-**镜像构建器**：从源代码或二进制可执行文件构建容器镜像 (S2I & B2I)。
-
-[discrete]
-=== 网络
-
-**KubeSphere 网关**：KubeSphere 网关是聚合服务、管理 KubeSphere 平台外部访问的扩展组件，现已形成“集群、项目、企业空间”三类资源管理维度的网关体系，支持管理集群网关、企业空间网关与项目网关。
-
-**KubeSphere 网络**：管理集群的网络策略和容器组 IP 池。控制集群和项目中容器组的访问和被访问权限；创建容器组 IP 池并从 IP 池中分配 IP 地址到 Pod。
-
-**应用路由工具**：为应用路由提供多项实用扩展能力，如域名重用校验，添加后，租户侧在创建应用路由无法将同一个域名应用在不同的项目中。
+**Image Builder**: Builds container images from source code or binary executables (S2I & B2I).
 
 [discrete]
-=== 安全
+=== Network
 
-**Gatekeeper**：Gatekeeper 是一个用于 Kubernetes 可灵活配置策略的准入控制器，利用 link:https://www.openpolicyagent.org/[Open Policy Agent (OPA)] 验证在 Kubernetes 集群上创建和更新资源的请求。
+**KubeSphere Gateway**: The KubeSphere Gateway is an extension that aggregates services and manages external access to the KubeSphere platform. It has now formed a gateway system with three resource management dimensions: "cluster, project, workspace", supporting the management of cluster gateways, workspace gateways, and project gateways.
 
-**OAuth2-Proxy**：提供统一认证接口确保所有应用通过相同流程保护，简化多应用环境下的身份验证管理，提高安全性和用户体验，适用于需要对多个后端应用进行统一认证管理的企业环境，以及需要通过第三方认证服务进行用户身份验证的应用。
+**KubeSphere Network**: Manages cluster network policies and pod IP pools. Controls the access and accessibility permissions of pods in clusters and projects; creates pod IP pools and allocates IP addresses from the pools to pods.
 
-**证书管理**：为 Kubernetes 中的工作负载创建 TLS 证书，并在证书过期前续订。
-
-[discrete]
-=== 存储
-
-**KubeSphere 存储**：管理卷快照、卷快照类、为存储类设置授权规则、设置存储卷自动扩展。
+**Ingress Tool**: Provides multiple practical extension capabilities for Ingress, such as domain name reuse validation. After enabling, tenants cannot apply the same domain name to different projects when creating an Ingress.
 
 [discrete]
-=== 人工智能
+=== Security
 
-**NVIDIA GPU Operator**：基于 link:https://github.com/NVIDIA/gpu-operator[GPU Operator] 改造的扩展组件，支持在 Kubernetes 上创建、配置和管理 GPU。
+**Gatekeeper**: Gatekeeper is an admission controller for Kubernetes that allows flexible policy configuration. It uses link:https://www.openpolicyagent.org/[Open Policy Agent (OPA)] to validate requests for creating and updating resources on a Kubernetes cluster.
 
-// 比 KubeSphere 多了 12 个组件，分别是审计、事件告警、应用路由工具、dmp、Spring Cloud、OAuth2-Proxy、NVIDIA GPU Operator、证书管理、alloy，加新增的 4 个组件
+**OAuth2-Proxy**: Provides a unified authentication interface to ensure all applications are protected through the same process, simplifying identity authentication management in multi-application environments, improving security and user experience. Suitable for enterprise environments that require unified authentication management for multiple backend applications, and for applications that need to authenticate users through third-party authentication services.
+
+**Certificate Management**: Creates TLS certificates for workloads in Kubernetes and renews them before they expire.
+
+[discrete]
+=== Storage
+
+**KubeSphere Storage**: Manages volume snapshots, volume snapshot classes, sets authorization rules for storage classes, and configures automatic volume expansion.
+
+[discrete]
+=== Artificial Intelligence
+
+**NVIDIA GPU Operator**: An extension based on the link:https://github.com/NVIDIA/gpu-operator[GPU Operator], supporting the creation, configuration, and management of GPUs on Kubernetes.
+
+// Compared to KubeSphere, there are 12 additional extensions, namely Auditing, Events Alerting, Ingress Tool, DMP, Spring Cloud, OAuth2-Proxy, NVIDIA GPU Operator, Certificate Management, Alloy, plus the 4 newly added extensions.

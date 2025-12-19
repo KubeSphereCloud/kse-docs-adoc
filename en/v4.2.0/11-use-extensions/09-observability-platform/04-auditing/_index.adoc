@@ -1,27 +1,27 @@
 ---
-title: "WizTelemetry 审计"
-keywords: "Kubernetes, {ks_product}, 审计"
-description: "介绍如何使用“WizTelemetry 审计”扩展组件。"
+title: "WizTelemetry Auditing"
+keywords: "Kubernetes, {ks_product}, Auditing"
+description: "Introduces how to use the WizTelemetry Auditing extension."
 weight: 04
 layout: "second"
 ---
 
 
-本节介绍如何使用“WizTelemetry 审计”扩展组件。
+This section introduces how to use the WizTelemetry Auditing extension.
 
-该组件实时记录在 KubeSphere 平台上的用户相关操作行为，并提供多租户视角的审计历史的检索及查看功能，可快速回溯相关用户的操作行为。
+This extension records user-related operational behaviors on the KubeSphere platform in real-time, and provides retrieval and viewing functions for audit history from a multi-tenant perspective, enabling quick backtracking of related user operations.
 
-安装“WizTelemetry 审计”扩展组件后，
+After installing the WizTelemetry Auditing extension,
 
-* 组件坞中的 WizTelemetry 可观测平台将显示**日志**菜单，**日志**菜单下将显示**审计查询**选项。
-* 集群左侧导航栏将显示**日志**菜单，**日志**菜单下将显示**日志接收器**和**审计查询**选项。**日志接收器**页面将显示**审计日志**页签，支持添加多种类型的日志接收器。有关更多信息，请参阅link:../02-logging/02-log-receivers/[日志接收器]。**审计查询**页面支持用户查询自身权限范围内的审计日志。
+* The WizTelemetry Observability Platform in the Component Dock will display the **Logging** menu, and the **Audit Query** option will appear under the **Logging** menu.
+* The **Logging** menu will appear in the cluster's left navigation pane, and the **Log Receivers** and **Audit Query** options will appear under the **Logging** menu. The **Log Receivers** page will display the **Audit Logs** tab, supporting the addition of various types of log receivers. For more information, please refer to link:../02-logging/02-log-receivers/[Log Receivers]. The **Audit Query** page allows users to query audit logs within their permission scope.
 
 //attention
 [.admon.attention,cols="a"]
 |===
-| 注意
+| Note
 
 |
-WizTelemetry 审计依赖 WizTelemetry 平台服务和 WizTelemetry 数据流水线，因此在安装 WizTelemetry 审计之前必须先安装并配置好 WizTelemetry 平台服务和 WizTelemetry 数据流水线两个扩展组件，否则审计功能无法正常使用！
+WizTelemetry Auditing depends on the WizTelemetry Platform Service and WizTelemetry Data Pipeline. Therefore, before installing WizTelemetry Auditing, you must first install and configure these two extensions. Otherwise, the auditing functionality will not work properly!
 
 |===

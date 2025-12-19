@@ -1,6 +1,6 @@
 // :ks_include_id: e25e26f73c8441e69eef35173babd610
 
-. 如果您访问 GitHub/Googleapis 受限，请登录任意集群节点，执行以下命令设置下载区域：
+. If you have restricted access to GitHub/Googleapis, log in to any cluster node and execute the following command to set the download region:
 +
 --
 // Bash
@@ -12,7 +12,7 @@ include::../../../_ks_components/code/codeEnd.adoc[]
 --
 
 
-. 执行以下命令下载 KubeKey 最新版本：
+. Execute the following command to download the latest version of KubeKey:
 +
 --
 // Bash
@@ -22,10 +22,10 @@ curl -sfL https://get-kk.kubesphere.io | sh -
 
 include::../../../_ks_components/code/codeEnd.adoc[]
 
-下载完成后当前目录下将生成 KubeKey 二进制文件 **kk**。
+After downloading, the KubeKey binary file **kk** will be generated in the current directory.
 --
 
-. 执行以下命令为 KubeKey 二进制文件 **kk** 添加执行权限：
+. Execute the following command to add execute permission to the KubeKey binary file **kk**:
 +
 --
 // Bash

@@ -1,16 +1,16 @@
 // :ks_include_id: 532573492da34fcbb954ea832aa9fcd5
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|用户名
-|获得授权的用户的名称。
+|Username
+|The name of the authorized user.
 
-|状态
-|获得授权的用户当前的状态。
+|Status
+|The current status of the authorized user.
 
 include::../clusterMembers/clusterMembers-para-userStatus.adoc[]
 
-|最近登录
-|获得授权的用户最近一次登录 KubeSphere Web 控制台的时间。
+|Last Login
+|The time when the authorized user last logged into the KubeSphere web console.
 |===

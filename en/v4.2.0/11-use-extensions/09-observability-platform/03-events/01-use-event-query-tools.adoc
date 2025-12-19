@@ -1,53 +1,53 @@
 ---
-title: "查询资源事件"
-keywords: "Kubernetes, {ks_product}, 集群管理, 事件, 查询资源事件"
-description: "介绍如何使用资源事件查询工具。"
+title: "Query Resource Events"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Events, Query Resource Events"
+description: "Introduces how to use the resource event query tool."
 weight: 01
 ---
 
 :ks_permission: ** cluster-admin **
-:ks_navigation: **日志 > 事件查询**
+:ks_navigation: **Logging > Event Query**
 
-本节介绍如何查询资源事件。
+This section describes how to query resource events.
 
-资源事件：工作负载、任务、容器组、服务、应用路由等各类资源的事件。
+Resource events: Events for various resources such as application workloads, Jobs, pods, Services, Ingresses, etc.
 
-KubeSphere 支持以普通用户角色或集群管理员角色查询自身权限范围内的资源事件。
+KubeSphere supports querying resource events within a user's permission scope, whether as a regular user or a cluster administrator.
 
-== 以普通用户角色查询事件
+== Query Events as a Regular User
 
-=== 前提条件
+=== Prerequisites
 
-KubeSphere 平台需要安装并启用 **WizTelemetry 事件**扩展组件。
+The **WizTelemetry Events** extension must be installed and enabled on the KubeSphere platform.
 
-=== 查询资源事件
+=== Query Resource Events
 
-. 登录 KubeSphere Web 控制台。
+. Log in to the KubeSphere web console.
 
-. 点击**组件坞 > WizTelemetry 可观测平台**。
+. Click **Component Dock > WizTelemetry Observability Platform**.
 
 +
 
 include::../../../../../_ks_components/oper-navigate.adoc[]
 
 
-. 在事件查询页面，设置搜索条件查询事件。
+. On the Event Query page, set search criteria to query events.
 +
 --
-* 如果有多个集群，点击**集群**下拉列表可查询特定集群中的事件。
+* If there are multiple clusters, click the **Cluster** dropdown list to query events in a specific cluster.
 
-* 点击搜索框，设置搜索条件，然后按 **Enter** 可查看符合特定条件的事件。您可以同时设置多个搜索条件。
+* Click the search box, set search criteria, and then press **Enter** to view events that meet specific conditions. You can set multiple search criteria simultaneously.
 
-* 在查询结果页面可查看事件的时间分布图，点击柱状图，切换到该时间段的事件列表。点击image:/images/ks-qkcp/zh/icons/start-dark.svg[start-dark,18,18]/image:/images/ks-qkcp/zh/icons/stop-dark-white.svg[stop-dark-white,18,18]可开启/停止实时数据刷新，点击**刷新频率**的时间可选择数据的刷新频率。
+* On the query results page, you can view the time distribution chart of events. Click on a bar in the chart to switch to the event list for that time period. Click image:/images/ks-qkcp/zh/icons/start-dark.svg[start-dark,18,18]/image:/images/ks-qkcp/zh/icons/stop-dark-white.svg[stop-dark-white,18,18] to start/stop real-time data refresh. Click the time next to **Refresh Frequency** to select the data refresh rate.
 
-* 在查询结果列表右上角点击image:/images/ks-qkcp/zh/icons/cogwheel.svg[cogwheel,18,18]可定制列表中显示的信息。
+* In the upper right corner of the query results list, click image:/images/ks-qkcp/zh/icons/cogwheel.svg[cogwheel,18,18] to customize the information displayed in the list.
 
-* 点击查询结果中的事件条目，查看事件的详细信息。
+* Click an event entry in the query results to view its detailed information.
 --
 
-== 以集群管理员角色查询事件
+== Query Events as a Cluster Administrator
 
-=== 前提条件
+=== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -56,9 +56,9 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 事件**扩展组件。
+* The **WizTelemetry Events** extension must be installed and enabled on the KubeSphere platform.
 
-=== 查询资源事件
+=== Query Resource Events
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -66,4 +66,4 @@ include::../../../../_custom/clusterManagement/clusterManagement-oper-openCluste
 
 include::../../../../../_ks_components/oper-navigate.adoc[]
 
-. 在事件查询页面，设置搜索条件查询事件。
+. On the Event Query page, set search criteria to query events.

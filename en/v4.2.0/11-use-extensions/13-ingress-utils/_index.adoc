@@ -1,16 +1,16 @@
 ---
-title: "KubeSphere 应用路由工具"
-keywords: "Kubernetes, {ks_product}, 应用路由"
-description: "介绍如何使用 KubeSphere 应用路由工具。"
+title: "KubeSphere Application Routing Tool"
+keywords: "Kubernetes, {ks_product}, Application Routing"
+description: "Introduction on how to use the KubeSphere Application Routing Tool."
 weight: 13
 layout: "second"
 ---
 
 
-本节介绍如何使用“KubeSphere 应用路由工具”扩展组件。安装后，仅 KubeSphere 平台管理员和已安装该组件的集群的管理员可以使用该扩展组件。
+This section introduces how to use the "KubeSphere Application Routing Tool" extension. After installation, only the KubeSphere platform administrator and the administrators of the cluster where the extension is installed can use this extension.
 
-“KubeSphere 应用路由工具”为应用路由提供多项实用扩展能力，如域名重用校验，旨在增强对应用路由的全局管理能力。添加需要被限制重用的域名后，用户将无法在非同一网关下的应用路由中使用相同的域名，以避免应用路由间的相互影响，从而防止生产业务出现错误。
+The "KubeSphere Application Routing Tool" provides several practical extension capabilities for Ingress, such as domain name reuse validation, aiming to enhance the global management capabilities of Ingress. After adding domain names that need to be restricted from reuse, users will not be able to use the same domain name in Ingress under different gateways, to avoid mutual interference between Ingress and prevent errors in production business.
 
-安装“KubeSphere 应用路由工具”扩展组件前，必须先安装"KubeSphere 网关"扩展组件。
+Before installing the "KubeSphere Application Routing Tool" extension, you must first install the "KubeSphere Gateway" extension.
 
-安装“KubeSphere 应用路由工具”扩展组件后，集群左侧导航栏的**应用负载**菜单下将显⽰**应用路由工具**选项。
+After installing the "KubeSphere Application Routing Tool" extension, the **Application Routing Tool** option will be displayed under the **Application Workloads** menu in the left navigation pane of the cluster.

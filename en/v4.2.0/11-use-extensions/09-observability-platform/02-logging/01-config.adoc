@@ -1,25 +1,25 @@
 ---
-title: "配置日志管理"
-keywords: "Kubernetes, {ks_product}, 日志"
-description: "介绍如何配置“WizTelemetry 日志”扩展组件。"
+title: "Configure Logging"
+keywords: "Kubernetes, {ks_product}, Logging"
+description: "Introduces how to configure the 'WizTelemetry Logging' extension."
 weight: 01
 ---
 
-WizTelemetry 日志支持通过配置扩展组件实现收集指定日志、按项目创建日志索引等功能。
+WizTelemetry Logging supports configuring the extension to collect specified logs, create log indices by project, and other functions.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-更多配置信息，请参阅扩展中心 “WizTelemetry 日志”扩展组件的详情页说明。
+For more configuration information, please refer to the details page description of the 'WizTelemetry Logging' extension in the Extensions Center.
 |===
 
-== 收集指定日志
+== Collect Specified Logs
 
-WizTelemetry 日志支持设置过滤条件，以收集包含或排除指定 namespace 的日志，可减少日志数量。
+WizTelemetry Logging supports setting filter conditions to collect logs that include or exclude specified namespaces, which can reduce the volume of logs.
 
-在 WizTelemetry 日志的扩展组件配置中，编辑如下参数：
+In the extension configuration of WizTelemetry Logging, edit the following parameters:
 
 [,yaml]
 ----
@@ -32,22 +32,22 @@ vector-logging:
     excludeNamespaces: []
 ----
 
-* extraLabelSelector：只收集带此标签的 pod 的日志。
-* extraNamespaceLabelSelector：只收集带此标签的 namespace 下的 pod 日志。
-* includeNamespaces：只收集指定 namespace 下的 pod 日志。
-* excludeNamespaces：不收集指定 namespace 下的 pod 日志。
+* extraLabelSelector: Only collect logs from pods with this label.
+* extraNamespaceLabelSelector: Only collect logs from pods under namespaces with this label.
+* includeNamespaces: Only collect logs from pods under the specified namespaces.
+* excludeNamespaces: Do not collect logs from pods under the specified namespaces.
 
-== 按照 namespace 创建日志索引
+== Create Log Indices by Namespace
 
-WizTelemetry 日志支持为每个项目（namespace）创建一个索引，既可确定某个 namespace 的日志占用空间，方便整改业务，又便于进行日志分析。
+WizTelemetry Logging supports creating an index for each project (namespace). This allows you to determine the space occupied by logs for a specific namespace, facilitating business rectification, and also makes log analysis easier.
 
-=== 前提条件
+=== Prerequisites
 
-版本要求：WizTelemetry 日志 >= 1.2.0，WizTelemetry 平台服务 >= 1.1.0。
+Version requirements: WizTelemetry Logging >= 1.2.0, WizTelemetry Platform Service >= 1.1.0.
 
-=== 操作步骤
+=== Steps
 
-. 修改 WizTelemetry 日志扩展组件配置。无需修改 prefix 中的参数。
+. Modify the WizTelemetry Logging extension configuration. There is no need to modify the parameters within `prefix`.
 +
 [,yaml]
 ----
@@ -59,7 +59,7 @@ vector-logging:
         timestring: "%Y.%m.%d"
 ----
 
-. 修改 WizTelemetry 平台服务扩展组件配置。无需修改 indexPrefix 中的参数。
+. Modify the WizTelemetry Platform Service extension configuration. There is no need to modify the parameters within `indexPrefix`.
 +
 [,yaml]
 ----

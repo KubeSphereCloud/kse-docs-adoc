@@ -1,13 +1,13 @@
 // :ks_include_id: 524ea797e25b46cc9d437e2effa79c8d
-将以下参数替换为实际需要的值：
+Replace the following parameters with the actual required values:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 |<Kubernetes version>
-|目标 Kubernetes 版本，例如 **v1.21.5**。KubeSphere {ks_product_ver} 支持 Kubernetes v1.21.x、v1.22.x、v1.23.x, v1.24.x, v1.25.x 和 v1.26.x。
+|The target Kubernetes version, for example, **v1.21.5**. KubeSphere {ks_product_ver} supports Kubernetes v1.21.x, v1.22.x, v1.23.x, v1.24.x, v1.25.x, and v1.26.x.
 
 |<product version>
-|目标 KubeSphere 版本。请将此参数设置为 **{ks_product_ver}**。
+|The target KubeSphere version. Please set this parameter to **{ks_product_ver}**.
 |===

@@ -1,2 +1,2 @@
 // :ks_include_id: 541b15e404b44af589125a703978271e
-. 以具有pass:a,q[{ks_permission}]权限的用户登录 KubeSphere Web 控制台。
+. Log in to the KubeSphere web console as a user with pass:a,q[{ks_permission}] permissions.

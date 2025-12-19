@@ -1,13 +1,12 @@
 ---
-title: "事件/审计的告警规则示例"
-description: "介绍事件和审计的告警规则示例。"
+title: "Event/Auditing Alert Rule Examples"
+description: "Introduces examples of alert rules for events and auditing."
 weight: 02
 ---
 
-您可参照示例和参数描述，自定义事件和审计的告警规则，然后link:../01-create-rules-for-auditing[创建告警规则]。
+You can refer to the examples and parameter descriptions to customize alert rules for events and auditing, and then link:../01-create-rules-for-auditing[create alert rules].
 
-== 事件告警规则示例
-
+== Event Alert Rule Examples
 [,yaml]
 ----
 apiVersion: logging.whizard.io/v1alpha1
@@ -339,14 +338,15 @@ spec:
     - name: NodeRebooted
       expr:
         kind: rule
-        condition: type="Warning" and involvedObject.kind="Node" and reason="Rebooted"
+        condition: type="Warning" a
+nd involvedObject.kind="Node" and reason="Rebooted"
       desc: Node Rebooted
       enable: true
       alerts:
         severity: warning
         annotations:
           summary: Node Rebooted
-          summaryCn: 节点重启
+          summaryCn: Node Rebooted
     - name: ContainerGCFailed
       expr:
         kind: rule
@@ -357,7 +357,7 @@ spec:
         severity: warning
         annotations:
           summary: Container GC failed
-          summaryCn: 容器GC失败
+          summaryCn: Container GC failed
     - name: ImageGCFailed
       expr:
         kind: rule
@@ -368,7 +368,7 @@ spec:
         severity: warning
         annotations:
           summary: Image GC failed
-          summaryCn: 镜像GC失败
+          summaryCn: Image GC failed
     - name: NodeAllocatableEnforcementFailed
       expr:
         kind: rule
@@ -379,7 +379,7 @@ spec:
         severity: warning
         annotations:
           summary: Node allocatable enforcement failed
-          summaryCn: 节点可分配资源更新失败
+          summaryCn: Node allocatable enforcement failed
     - name: NodeAllocatableEnforcedSuccess
       expr:
         kind: rule
@@ -406,7 +406,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to create sandbox
-          summaryCn: Sandbox创建失败
+          summaryCn: Failed to create sandbox
     - name: SandboxStatusFailed
       expr:
         kind: rule
@@ -417,7 +417,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to get sandbox status
-          summaryCn: 获取Sandbox状态错误
+          summaryCn: Failed to get sandbox status
     - name: DiskCapacityInvalid
       expr:
         kind: rule
@@ -428,7 +428,7 @@ spec:
         severity: warning
         annotations:
           summary: Invalid disk capacity
-          summaryCn: 磁盘容量配置不合法
+          summaryCn: Invalid disk capacity
     - name: DiskSpaceFreeFailed
       expr:
         kind: rule
@@ -439,7 +439,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to free disk space
-          summaryCn: 磁盘空间释放失败
+          summaryCn: Failed to free disk space
     - name: PodStatusSyncFailed
       expr:
         kind: rule
@@ -450,7 +450,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed To Sync Pod Status
-          summaryCn: Pod状态同步失败
+          summaryCn: Failed To Sync Pod Status
     - name: ConfigurationValidationFaile
       expr:
         kind: rule
@@ -461,7 +461,7 @@ spec:
         severity: warning
         annotations:
           summary: Configuration Validation Failed
-          summaryCn: 配置验证失败
+          summaryCn: Configuration Validation Failed
     - name: LifecycleHookPostStartFailed
       expr:
         kind: rule
@@ -472,7 +472,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to postStart LifecycleHook
-          summaryCn: 容器启动后的生命周期钩子运行失败
+          summaryCn: Failed to postStart LifecycleHook
     - name: LifecycleHookPreStopFailed
       expr:
         kind: rule
@@ -483,7 +483,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to preStop LifecycleHook
-          summaryCn: 容器停止前的生命周期钩子运行失败
+          summaryCn: Failed to preStop LifecycleHook
     - name: HPASelectorError
       expr:
         kind: rule
@@ -494,7 +494,7 @@ spec:
         severity: warning
         annotations:
           summary: HPA selector error
-          summaryCn: HPA选择器错误
+          summaryCn: HPA selector error
     - name: HPAMetricError
       expr:
         kind: rule
@@ -505,7 +505,7 @@ spec:
         severity: warning
         annotations:
           summary: HPA metric error
-          summaryCn: HPA对象指标错误
+          summaryCn: HPA metric error
     - name: HPAConvertFailed
       expr:
         kind: rule
@@ -516,7 +516,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to convert HPA
-          summaryCn: HPA转换失败
+          summaryCn: Failed to convert HPA
     - name: HPAGetScaleFailed
       expr:
         kind: rule
@@ -527,7 +527,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to get HPA scale
-          summaryCn: HPA规模获取失败
+          summaryCn: Failed to get HPA scale
     - name: HPAComputeReplicasFailed
       expr:
         kind: rule
@@ -538,7 +538,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to compute HPA replicas
-          summaryCn: HPA副本计算失败
+          summaryCn: Failed to compute HPA replicas
     - name: HPARescaleFailed
       expr:
         kind: rule
@@ -549,7 +549,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to rescale HPA size
-          summaryCn: HPA规模调整失败
+          summaryCn: Failed to rescale HPA size
     - name: HPARescaleSuccess
       expr:
         kind: rule
@@ -568,7 +568,7 @@ spec:
         severity: warning
         annotations:
           summary: Node system OOM encountered
-          summaryCn: 节点内存溢出
+          summaryCn: Node system OOM encountered
     - name: VolumeBindingFailed
       expr:
         kind: rule
@@ -579,7 +579,7 @@ spec:
         severity: warning
         annotations:
           summary: Volume binding failed
-          summaryCn: 存储卷绑定失败
+          summaryCn: Volume binding failed
     - name: VolumeMismatch
       expr:
         kind: rule
@@ -590,7 +590,7 @@ spec:
         severity: warning
         annotations:
           summary: Volume Mismatch
-          summaryCn: 存储卷不匹配
+          summaryCn: Volume Mismatch
     - name: VolumeRecycleFailed
       expr:
         kind: rule
@@ -601,7 +601,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to recycle volume
-          summaryCn: 存储卷回收失败
+          summaryCn: Failed to recycle volume
     - name: VolumeRecycled
       expr:
         kind: rule
@@ -620,7 +620,7 @@ spec:
         severity: warning
         annotations:
           summary: Volume Recycler pod error
-          summaryCn: 存储卷回收器错误
+          summaryCn: Volume Recycler pod error
     - name: VolumeDeleted
       expr:
         kind: rule
@@ -639,7 +639,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to delete volume
-          summaryCn: 存储卷删除失败
+          summaryCn: Failed to delete volume
     - name: VolumeProvisionFailed
       expr:
         kind: rule
@@ -650,7 +650,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to provision volume
-          summaryCn: 存储申请失败
+          summaryCn: Failed to provision volume
     - name: VolumeProvisioned
       expr:
         kind: rule
@@ -666,10 +666,10 @@ spec:
       desc: Failed to clean up provision volume
       enable: true
       alerts:
-        severity: warning
+severity: warning
         annotations:
           summary: Failed to clean up provision volume
-          summaryCn: 清理存储失败
+          summaryCn: Failed to clean up provision volume
     - name: VolumeExternalExpandingError
       expr:
         kind: rule
@@ -680,7 +680,7 @@ spec:
         severity: warning
         annotations:
           summary: Error for volume external expanding
-          summaryCn: 存储外部扩展错误
+          summaryCn: Error for volume external expanding
     - name: PodScheduleFailed
       expr:
         kind: rule
@@ -691,7 +691,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to schedule pod
-          summaryCn: pod调度失败
+          summaryCn: Failed to schedule pod
     - name: PodSchedulePreempted
       expr:
         kind: rule
@@ -718,7 +718,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to create pod
-          summaryCn: pod创建失败
+          summaryCn: Failed to create pod
     - name: PodCreated
       expr:
         kind: rule
@@ -737,7 +737,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to delete pod
-          summaryCn: pod删除失败
+          summaryCn: Failed to delete pod
     - name: PodDeleted
       expr:
         kind: rule
@@ -756,7 +756,7 @@ spec:
         severity: warning
         annotations:
           summary: Error to create replica set for deployment
-          summaryCn: 副本集创建错误
+          summaryCn: Error to create replica set for deployment
     - name: DeploymentRollbackFailed
       expr:
         kind: rule
@@ -767,7 +767,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to rollback deployment
-          summaryCn: 部署回滚失败
+          summaryCn: Failed to rollback deployment
     - name: DeploySelectorAll
       expr:
         kind: rule
@@ -778,7 +778,7 @@ spec:
         severity: warning
         annotations:
           summary: The deploy is selecting all pods
-          summaryCn: deploy选择了所有pod
+          summaryCn: The deploy is selecting all pods
     - name: DaemonSelectorAll
       expr:
         kind: rule
@@ -789,7 +789,7 @@ spec:
         severity: warning
         annotations:
           summary: The daemon set is selecting all pods
-          summaryCn: daemonset选择了所有pod
+          summaryCn: The daemon set is selecting all pods
     - name: DaemonPodFailed
       expr:
         kind: rule
@@ -800,7 +800,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed daemon pod
-          summaryCn: daemonset的pod失败
+          summaryCn: Failed daemon pod
     - name: LoadBalancerSyncFailed
       expr:
         kind: rule
@@ -811,7 +811,7 @@ spec:
         severity: warning
         annotations:
           summary: Error syncing load balancer
-          summaryCn: 负载据衡器不可用
+          summaryCn: Error syncing load balancer
     - name: LoadBalancerDeleting
       expr:
         kind: rule
@@ -846,7 +846,7 @@ spec:
         severity: warning
         annotations:
           summary: Load balancer is not available
-          summaryCn: 负载据衡器不可用
+          summaryCn: Load balancer is not available
     - name: LoadBalancerUpdated
       expr:
         kind: rule
@@ -865,7 +865,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to update load balancer
-          summaryCn: 更新负载据衡器失败
+          summaryCn: Failed to update load balancer
     - name: LoadBalancerDeleting
       expr:
         kind: rule
@@ -900,7 +900,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to delete load balancer
-          summaryCn: 负载据衡器删除失败
+          summaryCn: Failed to delete load balancer
     - name: JobGetFailed
       expr:
         kind: rule
@@ -911,7 +911,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to get job
-          summaryCn: 任务获取失败
+          summaryCn: Failed to get job
     - name: JobCreated
       expr:
         kind: rule
@@ -930,7 +930,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to create job
-          summaryCn: 任务创建失败
+          summaryCn: Failed to create job
     - name: JobDeleted
       expr:
         kind: rule
@@ -949,7 +949,7 @@ spec:
         severity: warning
         annotations:
           summary: Failed to delete job
-          summaryCn: 任务删除失败
+          summaryCn: Failed to delete job
     - name: JobCompleted
       expr:
         kind: rule
@@ -968,7 +968,7 @@ spec:
         severity: warning
         annotations:
           summary: CronJob saw unexpected job
-          summaryCn: 任务非预期
+          summaryCn: CronJob saw unexpected job
     - name: JobMissing
       expr:
         kind: rule
@@ -987,10 +987,12 @@ spec:
         severity: warning
         annotations:
           summary: CronJob failed to schedule job
-          summaryCn: 任务调度失败
+          summaryCn: CronJob failed to schedule job
+CronJob failed to schedule job
+          summaryCn: Job scheduling failed
 ----
 
-== 审计告警规则示例
+== Auditing Alert Rule Examples
 
 
 [,yaml]
@@ -1066,7 +1068,7 @@ spec:
         severity: warning
         annotations:
           summary: creat hostNetwork pod
-          summaryCn: 创建 hostNetwork 容器
+          summaryCn: Create hostNetwork pod
         message: ${user} ${Verb} HostNetwork Pod ${name} in Namespace ${namespace}.
       enable: true
     - name: CreateHostportPod
@@ -1079,7 +1081,7 @@ spec:
         severity: warning
         annotations:
           summary: creat hostport pod
-          summaryCn: 创建 hostport 容器
+          summaryCn: Create hostport pod
         message: ${user} ${Verb} HostPort Pod ${name} in Namespace ${namespace}.
     - name: CreateNodePortService
       expr:
@@ -1091,7 +1093,7 @@ spec:
         severity: warning
         annotations:
           summary: creat NodePort service
-          summaryCn: 创建 NodePort 服务
+          summaryCn: Create NodePort service
         message: ${user} ${Verb} NodePort Service ${name} in Namespace ${namespace}.
     - name: AttachOrExecPod
       expr:
@@ -1102,62 +1104,62 @@ spec:
         severity: warning
         annotations:
           summary: attach or exec pod
-          summaryCn: 进入容器
+          summaryCn: Attach or exec pod
         message: ${user} ${ObjectRef.Subresource} Pod ${name} in Namespace ${namespace}.
 ----
 
-== 告警规则参数描述
+== Alert Rule Parameter Description
 
-告警规则目前支持三种类型：审计、事件和日志。在 `spec.type` 下配置不同类型的告警规则，如 `type: auditing`，`type: events` 或 `type: logs` 。
+Alert rules currently support three types: auditing, events, and logs. Configure different types of alert rules under `spec.type`, such as `type: auditing`, `type: events`, or `type: logs`.
 
-告警规则  `spec.rules` 的设置项如下：
+The configuration items for alert rules `spec.rules` are as follows:
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 |`name`
-| 规则名称。
+| Rule name.
 
 |`desc`
-| 规则描述。
+| Rule description.
 
 |`expr.kind`
-|规则类型，取值可以为 `rule`, `macro`, `list`, 或 `alias`。
+|Rule type, which can be `rule`, `macro`, `list`, or `alias`.
 
 |`expr.condition`
-|日志的过滤表达式，以检查日志是否与规则匹配。可使用比较运算符（=，!=，<，<=，>，>=，contains，in，like，regexp）、布尔运算符（and，or 和 not）以及括号进行组合。
+|The filter expression for logs to check if they match the rule. You can use comparison operators (=, !=, <, <=, >, >=, contains, in, like, regexp), boolean operators (and, or, and not), and parentheses for combination.
 
-|`expr.macro` 
-| macro 的条件。
+|`expr.macro`
+| The condition for a macro.
 
 |`expr.list`
-| list 的值。
+| The value for a list.
 
 |`expr.alias`
-| alias 的值。
+| The value for an alias.
 
 |`enable`
-| 如果为 false，规则将不生效。
+| If false, the rule will not take effect.
 
 |`alerts.output`
-| 指定在匹配事件发生时输出的消息。
+| Specifies the message output when a matching event occurs.
 
 |`alerts.annotations`
-| 规则的注解，包含在匹配事件发生时输出的告警消息。
+| Annotations for the rule, included in the alert message output when a matching event occurs.
 
 |`alerts.annotations.summary`
-| 指定在匹配事件发生时输出的摘要消息。
+| Specifies the summary message output when a matching event occurs.
 
 |`alerts.annotations.summaryCn`
-| 指定在匹配事件发生时输出的中文摘要消息。
+| Specifies the Chinese summary message output when a matching event occurs.
 
-|`alerts.severity` 
-| 规则的告警级别，取值可以为 INFO、WARNING、ERROR、或 CRITICAL。
+|`alerts.severity`
+| The alert severity level for the rule, which can be INFO, WARNING, ERROR, or CRITICAL.
 |===
 
 **Macro**
 
-宏（Macro）是规则条件片段，可以在规则内部甚至其他宏中重复使用。宏提供了一种命名常见模式和消除规则冗余的方法。以下是一个宏的示例：
+A macro is a fragment of a rule condition that can be reused within rules or even other macros. Macros provide a way to name common patterns and eliminate redundancy in rules. The following is an example of a macro:
 
 [,yaml]
 ----
@@ -1177,15 +1179,15 @@ spec:
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-宏可以在规则或其他宏中使用，例如 `${pod}` 或 `${alerting-rule.pod}` 。这两种方法的区别在于 `${pod}` 只能用于 `alerting-rule`，而 `${alerting-rule.pod}` 可以用于所有实例。宏也可用于 list 和 alias。
+Macros can be used in rules or other macros, for example, `${pod}` or `${alerting-rule.pod}`. The difference between these two methods is that `${pod}` can only be used within `alerting-rule`, while `${alerting-rule.pod}` can be used across all instances. Macros can also be used in lists and aliases.
 |===
 
 **List**
 
-列表（List）是可以包含在规则、宏或其他列表中的项目集合。与规则和宏不同，列表不能被解析为过滤表达式。以下是一个列表的示例：
+A list is a collection of items that can be included in rules, macros, or other lists. Unlike rules and macros, a list cannot be parsed as a filter expression. The following is an example of a list:
 
 [,yaml]
 ----
@@ -1208,7 +1210,7 @@ spec:
 
 **Alias**
 
-别名（Alias）是过滤字段的缩写名称，它可以包含在规则、宏、列表和输出字符串中。以下是一个别名的示例：
+An alias is an abbreviated name for a filter field, which can be included in rules, macros, lists, and output strings. The following is an example of an alias:
 
 [,yaml]
 ----

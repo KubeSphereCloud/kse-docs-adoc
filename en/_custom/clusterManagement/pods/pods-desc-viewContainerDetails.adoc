@@ -1,9 +1,9 @@
 // :ks_include_id: 25f413cc757b4a79b6dd8d953602f1e9
-本节介绍如何查看容器详情。
+This section describes how to view container details.
 
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-KubeSphere 仅支持查看运行中的容器的详情，不支持查看已停止运行的容器的详情。
+KubeSphere only supports viewing details of running containers and does not support viewing details of stopped containers.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]

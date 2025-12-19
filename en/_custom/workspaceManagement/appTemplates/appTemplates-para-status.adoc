@@ -1,9 +1,9 @@
 // :ks_include_id: b1063d2135a7413f839d796f93c2afa0
-|状态
-|应用模板当前的状态。
+|Status
+|The current status of the application template.
 
-* **未发布**：应用模板已创建成功，但是未发布到 KubeSphere 平台的应用商店。
+* **Unpublished**: The application template has been created successfully but has not been published to the KubeSphere platform's App Store.
 
-* **已发布**：应用模板已创建成功，并且已发布到 KubeSphere 平台的应用商店。
+* **Published**: The application template has been created successfully and has been published to the KubeSphere platform's App Store.
 
-* **已下架**：应用模板发布到 KubeSphere 平台的应用商店后被应用商店管理员下架。
+* **Suspended**: The application template has been suspended by the App Store administrator after being published to the KubeSphere platform's App Store.

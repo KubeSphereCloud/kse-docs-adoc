@@ -2,6 +2,6 @@
 // Note
 include::../../../_ks_components/admonitions/note.adoc[]
 
-安装完成后，请勿删除安装配置文件 **config-sample.yaml**，后续进行版本升级、节点添加等操作时仍需要使用该文件。如果该文件丢失，您需要重新创建安装配置文件。
+After the installation is complete, do not delete the installation configuration file **config-sample.yaml**, as it will still be needed for subsequent operations such as version upgrades and node additions. If this file is lost, you will need to recreate the installation configuration file.
 
 include::../../../_ks_components/admonitions/admonEnd.adoc[]

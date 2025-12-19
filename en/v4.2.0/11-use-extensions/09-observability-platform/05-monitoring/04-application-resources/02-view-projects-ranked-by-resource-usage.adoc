@@ -1,18 +1,16 @@
 ---
-title: "查看项目资源用量排行"
-keywords: "Kubernetes, {ks_product}, 集群管理, 应用资源, 用量排行"
-description: "介绍如何查看项目资源用量排行。"
+title: "View Project Resource Usage Rankings"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Application Resources, Usage Rankings"
+description: "Describes how to view project resource usage rankings."
 weight: 02
 ---
 
-:ks_permission: **监控查看**
-:ks_navigation: **监控告警 > 应用监控**
+:ks_permission: **Monitoring View**
+:ks_navigation: **Monitoring & Alerting > Application Monitoring**
 
+This section describes how to view the rankings of projects by resource usage.
 
-本节介绍如何查看资源用量的项目排行。
-
-
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../../
 * {empty}
@@ -20,11 +18,9 @@ include::../../../../../_custom/clusterManagement/clusterManagement-prer-require
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 监控**扩展组件。
+* The **WizTelemetry Monitoring** extension must be installed and enabled on the KubeSphere platform.
 
-
-
-== 查看用量排行
+== View Usage Rankings
 
 include::../../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -34,10 +30,10 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**应用监控**页面，点击**用量排行**页签查看各项目的资源使用情况。
+. On the **Application Monitoring** page, click the **Usage Rankings** tab to view the resource usage of various projects.
 +
 --
-* 在列表左上角点击下拉列表可选择按照 CPU 用量、内存用量、容器组数量、出站流量或入站流量对项目进行排序。
+* Click the dropdown list in the upper-left corner of the list to choose to sort projects by **CPU Usage**, **Memory Usage**, **Pod Count**, **Outbound Traffic**, or **Inbound Traffic**.
 
 include::../../../../../_custom/clusterManagement/clusterStatus/clusterStatus-oper-sortAscendingDescending.adoc[]
 

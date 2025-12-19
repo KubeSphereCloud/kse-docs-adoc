@@ -1,17 +1,17 @@
 // :ks_include_id: d52c19a289c447d1ad5ec4114ecd814a
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 |internalLoadbalancer
-|本地负载均衡器的类型。如果使用本地负载均衡配置，请将此参数设置为 **haproxy**。否则，请将此参数注释掉。
+|The type of the local load balancer. If using a local load balancer configuration, set this parameter to **haproxy**. Otherwise, comment out this parameter.
 
 |domain
-|负载均衡器的内部访问域名。请将此参数设置为 **lb.kubesphere.local**。
+|The internal access domain name of the load balancer. Set this parameter to **lb.kubesphere.local**.
 
 |address
-|负载均衡器的 IP 地址。如果使用本地负载均衡配置，请将此参数留空；如果使用专用负载均衡器，请将此参数设置为负载均衡器的 IP 地址；如果使用通用服务器作为负载均衡器，请将此参数设置为负载均衡器的浮动 IP 地址。
+|The IP address of the load balancer. If using a local load balancer configuration, leave this parameter empty; if using a dedicated load balancer, set this parameter to the IP address of the load balancer; if using a general server as a load balancer, set this parameter to the floating IP address of the load balancer.
 
 |port
-|负载均衡器监听的端口号，即 apiserver 服务的端口号。请将此参数设置为 **6443**。
+|The port number the load balancer listens on, which is the port number of the apiserver service. Set this parameter to **6443**.
 |===

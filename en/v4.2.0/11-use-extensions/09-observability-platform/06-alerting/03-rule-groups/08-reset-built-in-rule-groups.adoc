@@ -1,41 +1,40 @@
 ---
-title: "重置内置规则组"
-keywords: "Kubernetes, {ks_product}, 集群管理, 监控告警, 告警管理, 规则组, 删除规则组"
-description: "介绍如何重置内置规则组。"
+title: "Reset Built-in Rule Groups"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Monitoring and Alerting, Alert Management, Rule Groups, Delete Rule Groups"
+description: "Describes how to reset built-in rule groups."
 weight: 08
 ---
 
-:ks_permission: **规则组管理**
-:ks_navigation: **监控告警 > 规则组**
+:ks_permission: **Rule Group Management**
+:ks_navigation: **Monitoring and Alerting > Rule Groups**
 
+This section describes how to reset built-in rule groups.
 
-本节介绍如何重置内置规则组。
-
-对于内置规则组，编辑预设的告警规则后，您可以重置规则组以恢复默认告警规则。
+For built-in rule groups, after editing the preset alert rules, you can reset the rule group to restore the default alert rules.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-* KubeSphere 仅支持重置内置规则组，不支持重置自定义规则组。
-* 项目中没有内置规则组。
+* KubeSphere only supports resetting built-in rule groups and does not support resetting custom rule groups.
+* There are no built-in rule groups in projects.
 |===
 
 [.admon.warning,cols="a"]
 |===
-|警告
+|Warning
 
 |
-规则组重置后不能恢复，请谨慎执行此操作。
+Rule groups cannot be recovered after reset. Please perform this operation with caution.
 |===
 
 
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 告警**扩展组件。
+* The **WizTelemetry Alerting** extension must be installed and enabled on the KubeSphere platform.
 
 :relfileprefix: ../../../../../
 
@@ -45,9 +44,9 @@ include::../../../../../_custom/clusterManagement/clusterManagement-prer-require
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
-. 以具有pass:a,q[{ks_permission}]权限的用户登录 KubeSphere Web 控制台并进入您的集群。
+. Log in to the KubeSphere web console as a user with pass:a,q[{ks_permission}] permissions and enter your cluster.
 
 +
 
@@ -55,9 +54,8 @@ include::../../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在**规则组**页面，点击**内置规则组**打开规则组列表。
+. On the **Rule Groups** page, click **Built-in Rule Groups** to open the rule group list.
 
-. 在需要重置的规则组右侧点击image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**重置**。
+. On the right side of the rule group you want to reset, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18], and then select **Reset** from the dropdown list.
 
-. 在**重置规则组**对话框，点击**确定**。
-
+. In the **Reset Rule Group** dialog box, click **OK**.

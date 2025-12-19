@@ -1,22 +1,22 @@
 ---
-title: "WizTelemetry 全局监控"
-keywords: "Kubernetes, {ks_product}, 平台管理, Whizard 可观测中心"
-description: "介绍如何使用 WizTelemetry 全局监控扩展组件。"
+title: "WizTelemetry Global Monitoring"
+keywords: "Kubernetes, {ks_product}, Platform Management, Whizard Observability Center"
+description: "Introduces how to use the WizTelemetry Global Monitoring extension."
 weight: 07
 layout: "second"
 ---
 
 
-本节介绍如何使用“WizTelemetry 全局监控”扩展组件。
+This section describes how to use the "WizTelemetry Global Monitoring" extension.
 
-WizTelemetry 全局监控是 WizTelemetry 可观测平台中提供跨集群资源监控、多集群告警的扩展组件，包含原有 Whizard 可观测中心的功能。您可以在 WizTelemetry 可观测平台查看所有集群的汇总监控数据和每个集群的具体监控数据，同时可以在平台层级创建全局告警规则组并查看系统生成的全局告警。
+WizTelemetry Global Monitoring is an extension within the WizTelemetry Observability Platform that provides cross-cluster resource monitoring and multi-cluster alerting, incorporating the functionalities of the original Whizard Observability Center. You can view aggregated monitoring data from all clusters and detailed monitoring data for each individual cluster within the WizTelemetry Observability Platform. Additionally, you can create global alert rule groups at the platform level and view system-generated global alerts.
 
-安装“WizTelemetry 全局监控”扩展组件后，组件坞中的 WizTelemetry 可观测平台将显示**全局监控**和**全局告警**菜单。
+After installing the "WizTelemetry Global Monitoring" extension, the **Global Monitoring** and **Global Alerting** menus will appear in the WizTelemetry Observability Platform within the Component Dock.
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-您还需要修改 WizTelemetry 全局监控及其他相关扩展组件的配置，以便正常使用 WizTelemetry 全局监控的全部功能。有关更多信息，请参阅link:01-enable-whizard/[启用 WizTelemetry 全局监控]。
+You also need to modify the configuration of the WizTelemetry Global Monitoring and other related extensions to fully utilize all features of WizTelemetry Global Monitoring. For more information, refer to link:01-enable-whizard/[Enable WizTelemetry Global Monitoring].
 |===

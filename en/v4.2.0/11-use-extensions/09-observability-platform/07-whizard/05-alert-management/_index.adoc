@@ -1,10 +1,10 @@
 ---
-title: "全局告警"
-keywords: "Kubernetes, {ks_product}, 平台管理, WizTelemetry 全局监控, 全局告警"
-description: "介绍如何使用 WizTelemetry 全局监控管理全局告警和全局规则组。"
+title: "Global Alerting"
+keywords: "Kubernetes, {ks_product}, Platform Management, WizTelemetry Global Monitoring, Global Alerting"
+description: "Introduces how to use WizTelemetry Global Monitoring to manage global alerts and global rule groups."
 weight: 05
 layout: "second"
 ---
 
 
-本节介绍如何使用 WizTelemetry 全局监控管理全局告警和全局规则组。
+This section introduces how to use WizTelemetry Global Monitoring to manage global alerts and global rule groups.

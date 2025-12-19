@@ -1,28 +1,28 @@
 ---
-title: "WizTelemetry 日志"
-keywords: "Kubernetes, {ks_product}, 日志"
-description: "介绍如何使用“WizTelemetry 日志”扩展组件。"
+title: "WizTelemetry Logging"
+keywords: "Kubernetes, {ks_product}, Logging"
+description: "Introduces how to use the 'WizTelemetry Logging' extension."
 weight: 02
 layout: "second"
 ---
 
 
-本节介绍如何使用“WizTelemetry 日志”扩展组件。
+This section introduces how to use the 'WizTelemetry Logging' extension.
 
-该组件提供多租户视角的云原生应用实时及历史日志收集、查询、导出、存储等功能，可对接如 ElasticSearch、OpenSearch、Kafka 等日志接收器。它默认收集 Calico 的日志，包含 Calico pod IP 地址的分配和释放信息。
+This extension provides real-time and historical log collection, query, export, and storage for cloud-native applications from a multi-tenant perspective. It can connect to log receivers such as ElasticSearch, OpenSearch, and Kafka. By default, it collects Calico logs, including information about Calico pod IP address allocation and release.
 
-安装“WizTelemetry 日志”扩展组件后，
+After installing the 'WizTelemetry Logging' extension,
 
-* 组件坞中的 WizTelemetry 可观测平台将显示**日志**菜单，**日志**菜单下将显示**⽇志查询**选项。
-* 集群左侧导航栏将显示**日志**菜单，**日志**菜单下将显示**日志接收器**和**⽇志查询**选项。**日志接收器**页面将显示**容器日志**页签，支持添加多种类型的日志接收器。**⽇志查询**页面支持用户查询自身权限范围内的容器日志。
+* The WizTelemetry Observability Platform in the Component Dock will display the **Logging** menu, and the **Log Query** option will appear under the **Logging** menu.
+* The **Logging** menu will appear in the cluster's left navigation pane, with **Log Receivers** and **Log Query** options under it. The **Log Receivers** page will display the **Container Logs** tab, supporting the addition of various types of log receivers. The **Log Query** page allows users to query container logs within their permission scope.
 
 //attention
 [.admon.attention,cols="a"]
 |===
-| 注意
+| Note
 
 |
-- WizTelemetry 日志依赖 WizTelemetry 平台服务和 WizTelemetry 数据流水线，因此在安装 WizTelemetry 日志之前必须先安装并配置好 WizTelemetry 平台服务和 WizTelemetry 数据流水线两个扩展组件，否则日志相关功能无法正常使用！
+- WizTelemetry Logging depends on the WizTelemetry Platform Service and WizTelemetry Data Pipeline. Therefore, you must install and configure these two extensions before installing WizTelemetry Logging. Otherwise, logging-related features will not function properly!
 
-- 若未收集到日志，请确保 Docker 的根目录在 /var/lib 下，否则需要修改 WizTelemetry 数据流水线中 Agent 的挂载配置。有关更多信息，请参阅扩展中心 “WizTelemetry 数据流水线”扩展组件的详情页说明。
+- If logs are not being collected, ensure Docker's root directory is under /var/lib. If not, you need to modify the mount configuration for the Agent in the WizTelemetry Data Pipeline. For more information, please refer to the details page of the 'WizTelemetry Data Pipeline' extension in the Extensions Center.
 |===

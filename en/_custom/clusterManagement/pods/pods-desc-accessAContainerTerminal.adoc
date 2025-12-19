@@ -1,9 +1,9 @@
 // :ks_include_id: 3bb6ac8d7b114854992775f89ab8debb
-本节介绍如何访问容器终端。
+This section describes how to access a container terminal.
 
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-KubeSphere 仅支持访问正在运行中容器的终端。
+KubeSphere only supports accessing the terminal of a running container.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]

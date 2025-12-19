@@ -1,9 +1,9 @@
 // :ks_include_id: a4b173f44b764360bcfae8908577f515
-|环境变量
-|镜像运行时的环境变量，用于控制镜像运行时的行为。
+|Environment Variables
+|Environment variables for the image runtime, used to control the behavior of the image during runtime.
 
-* 有关 Java 构建环境变量的更多信息，请访问 link:https://github.com/kubesphere/s2i-java-container/tree/master/java/images[s2i-java-container] 仓库。
+* For more information about Java build environment variables, please visit the link:https://github.com/kubesphere/s2i-java-container/tree/master/java/images[s2i-java-container] repository.
 
-* 有关 Node.js 构建环境变量的更多信息，请参阅 link:https://github.com/kubesphere/s2i-nodejs-container[s2i-nodejs-container] 仓库。
+* For more information about Node.js build environment variables, please refer to the link:https://github.com/kubesphere/s2i-nodejs-container[s2i-nodejs-container] repository.
 
-* 有关 Python 构建环境变量的更多信息，请参阅 link:https://github.com/kubesphere/s2i-python-container[s2i-python-container] 仓库。
+* For more information about Python build environment variables, please refer to the link:https://github.com/kubesphere/s2i-python-container[s2i-python-container] repository.

@@ -1,26 +1,23 @@
 ---
-title: "查看联邦项目概览信息"
-keywords: "Kubernetes, {ks_product}, 联邦项目, 概览, 查看联邦项目概览信息"
-description: "介绍如何查看联邦项目概览信息。"
+title: "View Federated Project Overview Information"
+keywords: "Kubernetes, {ks_product}, Federated Project, Overview, View Federated Project Overview Information"
+description: "Describes how to view federated project overview information."
 weight: 01
 ---
 
-:ks_permission: **联邦项目查看**
-:ks_navigation: **概览**
+:ks_permission: **Federated Project View**
+:ks_navigation: **Overview**
 
+This section describes how to view federated project overview information.
 
-本节介绍如何查看联邦项目概览信息。
+== Prerequisites
 
-
-== 前提条件
-
-* KubeSphere 平台需要安装并启用**联邦集群应用管理**扩展组件。
+* The **Federated Cluster Application Management** extension must be installed and enabled on the KubeSphere platform.
 
 * {empty}
 include::../../../../_custom/multi-clusterProjectManagement/projectManagement-prer-requiredPermission_v4.adoc[]
 
-
-== 操作步骤
+== Steps
 
 include::../../../../_custom/multi-clusterProjectManagement/projectManagement-oper-openProjectPage_v4.adoc[]
 
@@ -29,26 +26,26 @@ include::../../../../_custom/multi-clusterProjectManagement/projectManagement-op
 include::../../../../../_ks_components/oper-navigate.adoc[]
 +
 --
-**概览**页面提供以下信息：
+The **Overview** page provides the following information:
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|企业空间
-|联邦项目所属的企业空间。
+|Workspace
+|The workspace to which the federated project belongs.
 
-|创建者
-|创建联邦项目的用户。
+|Creator
+|The user who created the federated project.
 
-|资源状态
-|联邦项目中已创建的应用资源和已使用的物理资源。在右上角点击下拉列表可选择联邦项目所在的某一集群和数据的时间范围。
+|Resource Status
+|The application resources created and the physical resources used in the federated project. Click the dropdown list in the upper right corner to select a specific cluster where the federated project resides and the time range for the data.
 
-* **应用资源**：联邦项目中已创建的部署、有状态副本集、持久卷声明、服务和应用路由的数量。
+* **Application Resources**: The number of Deployments, StatefulSets, Persistent Volume Claims, Services, and Ingresses created in the federated project.
 
-* **物理资源**：联邦项目的 CPU 和内存使用量。
+* **Physical Resources**: The CPU and memory usage of the federated project.
 
-|资源用量 Top 5
-|联邦项目中特定资源用量最高的 5 个工作负载。点击下拉列表可选择联邦项目所在的某一集群，并按 CPU、内存、出站流量或入站流量排序。
+|Top 5 Resource Consumers
+|The 5 workloads with the highest consumption of specific resources in the federated project. Click the dropdown list to select a specific cluster where the federated project resides and sort by CPU, memory, outbound traffic, or inbound traffic.
 |===
 --

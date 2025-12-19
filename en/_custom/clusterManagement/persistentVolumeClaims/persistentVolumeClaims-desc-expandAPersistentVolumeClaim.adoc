@@ -1,2 +1,2 @@
 // :ks_include_id: 733b66fafb0d4f2cbc99a4d8dbd20458
-本节介绍如何扩展持久卷声明的卷容量。与之绑定的持久卷的容量也会相应扩展。
+This section describes how to expand the volume capacity of a PersistentVolumeClaim. The capacity of the bound PersistentVolume will also be expanded accordingly.

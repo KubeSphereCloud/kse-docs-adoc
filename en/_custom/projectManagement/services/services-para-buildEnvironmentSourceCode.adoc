@@ -1,3 +1,3 @@
 // :ks_include_id: 9fd6858a23104720ad86b9b4d8e1c4b4
-|构建环境
-|容器镜像的构建环境。请根据源代码的语言和版本选择构建环境。
+|Build Environment
+|The build environment for the container image. Please select the build environment based on the language and version of the source code.

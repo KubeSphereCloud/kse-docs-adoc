@@ -1,11 +1,11 @@
 ---
 title: "Grafana Tempo for WizTelemetry"
-keywords: "Kubernetes, {ks_product}, Grafana, Tempo, 可观测"
-description: "介绍如何使用 Grafana Tempo for WizTelemetry 扩展组件。"
+keywords: "Kubernetes, {ks_product}, Grafana, Tempo, Observability"
+description: "Introduces how to use the Grafana Tempo for WizTelemetry extension."
 weight: 19
 layout: "second"
 ---
 
-Grafana Tempo for WizTelemetry 是一个开源、易于使用且高度可扩展的分布式跟踪后端。Tempo 具有成本效益，仅需对象存储即可运行，并且与 Grafana、Prometheus 和 Loki 深度集成。您可以将 Tempo 与开源跟踪协议（包括 Jaeger、Zipkin 或 OpenTelemetry）结合使用。
+Grafana Tempo for WizTelemetry is an open-source, easy-to-use, and highly scalable distributed tracing backend. Tempo is cost-effective, requiring only object storage to run, and is deeply integrated with Grafana, Prometheus, and Loki. You can use Tempo with open-source tracing protocols including Jaeger, Zipkin, or OpenTelemetry.
 
-您可以将 “WizTelemetry 链路追踪”的追踪数据发送到 Grafana Tempo for WizTelemetry，以便通过 Grafana 控制台将这些数据可视化。
+You can send trace data from "WizTelemetry Tracing" to Grafana Tempo for WizTelemetry to visualize this data through the Grafana console.

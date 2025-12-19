@@ -1,25 +1,25 @@
 ---
 title: "Metrics Server"
-keywords: "Kubernetes, {ks_product}, Metrics Server, 水平扩缩, 垂直扩缩"
-description: "介绍如何使用 Metrics Server 扩展组件。"
+keywords: "Kubernetes, {ks_product}, Metrics Server, Horizontal Scaling, Vertical Scaling"
+description: "Introduces how to use the Metrics Server extension."
 weight: 24
 layout: "second"
 ---
 
 
-Metrics Server 是一个可扩展、高效的容器资源度量源，为 Kubernetes 内置的自动扩展管道提供服务。
+Metrics Server is a scalable, efficient source of container resource metrics for Kubernetes' built-in autoscaling pipelines.
 
-Metrics Server 从 Kubelet 收集资源指标，并通过 link:https://github.com/kubernetes/metrics[Metrics API] 在 Kubernetes apiserver 中公开它们，供 link:https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/[Horizontal Pod Autoscaler] 和 link:https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler/[Vertical Pod Autoscaler] 使用。
+Metrics Server collects resource metrics from Kubelets and exposes them in the Kubernetes apiserver through the link:https://github.com/kubernetes/metrics[Metrics API], for use by the link:https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/[Horizontal Pod Autoscaler] and link:https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler/[Vertical Pod Autoscaler].
 
-Metrics Server 可实现如下功能：
+Metrics Server enables the following features:
 
-- 基于 CPU/内存的水平自动缩放（了解更多关于 link:https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/[Horizontal Autoscaling]）
-- 自动调整/建议容器所需的资源（了解更多关于  link:https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler/[Vertical Autoscaling]）
+- CPU/Memory-based horizontal autoscaling (Learn more about link:https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/[Horizontal Autoscaling])
+- Automatic adjustment/recommendation of resources required by containers (Learn more about link:https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler/[Vertical Autoscaling])
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-有关组件的更多信息，请参阅扩展中心 Metrics Server 扩展组件的详情页说明。
+For more information about this extension, please refer to the description on the Metrics Server extension details page in the Extensions Center.
 |===

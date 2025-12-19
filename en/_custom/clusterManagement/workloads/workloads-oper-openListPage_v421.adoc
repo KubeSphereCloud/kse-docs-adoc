@@ -1,2 +1,2 @@
 // :ks_include_id: 7dd8d24939c3454f805540ee4215b74a
-. 点击**部署**、**有状态副本集**或**守护进程集**打开工作负载列表。
+. Click **Deployments**, **StatefulSets**, or **DaemonSets** to open the workload list.

@@ -1,42 +1,42 @@
 ---
-title: "步骤 1：使用 Vector 将数据写入 Kafka"
-description: "使用 Vector 将数据写入 Kafka。"
+title: "Step 1: Write Data to Kafka Using Vector"
+description: "Write data to Kafka using Vector."
 weight: 01
 ---
 
 
-== 部署 KSE 并安装日志相关组件
+== Deploy KSE and Install Logging-Related Extensions
 
-KubeSphere 中需要安装的扩展组件：
+Extensions that need to be installed in KubeSphere:
 
 - RadonDB DMP
-- OpenSearch 分布式检索与分析引擎
-- WizTelemetry 平台服务
-- WizTelemetry 数据流水线
-- WizTelemetry 日志
-- WizTelemetry 审计
-- WizTelemetry 通知
-- WizTelemetry 事件
+- OpenSearch Distributed Search and Analytics Engine
+- WizTelemetry Platform Service
+- WizTelemetry Data Pipeline
+- WizTelemetry Logging
+- WizTelemetry Auditing
+- WizTelemetry Notification
+- WizTelemetry Events
 
-=== 禁用 OpenSearch Sink
+=== Disable OpenSearch Sink
 
-在安装部署 WizTelemetry 日志、WizTelemetry 审计、WizTelemetry 事件以及 WizTelemetry 通知前，需要禁用这些扩展组件配置中 opensearch 的 sink。
+Before installing and deploying the WizTelemetry Logging, WizTelemetry Auditing, WizTelemetry Events, and WizTelemetry Notification extensions, you need to disable the opensearch sink in the configuration of these extensions.
 
-以安装 WizTelemetry 审计扩展组件为例，将 sinks.opensearch.enabled 设置为 false。
+Taking the installation of the WizTelemetry Auditing extension as an example, set `sinks.opensearch.enabled` to false.
 
 image:/images/ks-qkcp/zh/v4.1/disable-opensearch.png[vector,100%]
 
-== 配置 Kafka
+== Configure Kafka
 
-在 KubeSphere 中，安装 **RadonDB DMP** 扩展组件后，点击顶部导航栏上的image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18]图标，然后点击 RadonDB DMP 进入数据库管理平台，创建 Kafka 集群以用于收集日志。
+In KubeSphere, after installing the **RadonDB DMP** extension, click the image:/images/ks-qkcp/zh/icons/grid.svg[grid,18,18] icon in the top navigation bar, then click RadonDB DMP to enter the database management platform. Create a Kafka cluster for log collection.
 
 image:/images/ks-qkcp/zh/v4.1/dmp.png[vector,100%]
 
 image:/images/ks-qkcp/zh/v4.1/kafka.png[vector,100%]
 
-=== 启用自动创建 topic
+=== Enable Automatic Topic Creation
 
-点击 Kafka 集群名称，进入**参数管理**页签，启用自动创建 topic 的功能。
+Click the Kafka cluster name, go to the **Parameter Management** tab, and enable the automatic topic creation feature.
 
 image:/images/ks-qkcp/zh/v4.1/parameter.png[vector,100%]
 
@@ -44,52 +44,52 @@ image:/images/ks-qkcp/zh/v4.1/enable-topic.png[vector,100%]
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-在 Kafka 集群的详情页左侧可获取 Kafka 的读写地址。
+The read/write addresses for the Kafka cluster can be obtained on the left side of the Kafka cluster details page.
 |===
 
 
-=== 创建 Kafka 用户
+=== Create a Kafka User
 
-. 在 Kafka 集群的详情页面，进入 **Kafka 用户**页签，点击**创建**开始创建 Kafka 用户。
+. On the Kafka cluster details page, go to the **Kafka Users** tab, and click **Create** to start creating a Kafka user.
 +
 image:/images/ks-qkcp/zh/v4.1/kafka-user.png[vector,100%]
 
-. 按下图所示设置用户权限。
+. Set the user permissions as shown in the figure below.
 +
 image:/images/ks-qkcp/zh/v4.1/user-permission.png[vector, 70%]
 
 
-=== 获取证书
+=== Obtain Certificates
 
-**查看证书相关信息**
+**View Certificate Information**
 
-为了与 Kafka 通信，需要配置相关的证书及文件，具体为 <cluster>-cluster-ca-cert，以及上一个步骤中创建的用户的 user.p12 字段及密码，详细信息可在 KubeSphere Web 控制台界面上查询，如下所示。
+To communicate with Kafka, you need to configure the relevant certificates and files, specifically the `<cluster>-cluster-ca-cert`, and the `user.p12` field and password for the user created in the previous step. The detailed information can be queried on the KubeSphere web console interface, as shown below.
 
 
-. 点击页面上方的**工作台 > 集群管理**，进入 host 集群。
-. 在左侧导航栏选择**配置 > 保密字典**。
-. 在**保密字典**页面，搜索 `cluster-ca-cert`，点击 Kafka 集群对应的保密字典进入详情页面，查看 **ca-crt** 字段的信息。
+. Click **Platform > Cluster Management** at the top of the page to enter the host cluster.
+. In the left navigation pane, select **Configuration > Secrets**.
+. On the **Secrets** page, search for `cluster-ca-cert`, click the corresponding secret for the Kafka cluster to enter its details page, and view the information in the **ca-crt** field.
 +
 image:/images/ks-qkcp/zh/v4.1/ca-crt.png[vector,100%]
 +
-. 在**保密字典**页面，搜索已创建的 Kafka 用户的名称，点击其对应的保密字典进入详情页面，查看 **user.p12** 及 **user.password** 字段的信息。
+. On the **Secrets** page, search for the name of the Kafka user you created, click its corresponding secret to enter its details page, and view the information in the **user.p12** and **user.password** fields.
 +
 image:/images/ks-qkcp/zh/v4.1/user-password.png[vector,100%]
 
-**生成证书**
+**Generate Certificates**
 
-. 在 Kafka 所在集群的节点上，执行以下命令。
+. On a node in the cluster where Kafka is located, execute the following command.
 +
 ====
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-**kafka cluster** 为 Kafka 集群的名称，**kafka namespace** 为 Kafka 所在的 namespace，**kafka user** 为之前创建的 Kafka 用户。
+**kafka cluster** is the name of the Kafka cluster, **kafka namespace** is the namespace where Kafka is located, and **kafka user** is the Kafka user created earlier.
 |===
 
 [,bash]
@@ -110,7 +110,7 @@ echo -e "kind: Secret\nmetadata:\n  name: kafka-agent-user-ca\n  labels:\n    lo
 namespace: kubesphere-logging-system\ntype: Opaque" >> kafka-ca.yaml
 ----
 
-此命令会生成 **kafka-ca.yaml** 文件，包含 **kafka-agent-cluster-ca** 以及 **kafka-agent-user-ca** 两个 secret 文件，分别含有上一个步骤中的 ca.crt 以及 user.p12 信息。示例如下：
+This command will generate a **kafka-ca.yaml** file containing two secret files: **kafka-agent-cluster-ca** and **kafka-agent-user-ca**, which contain the ca.crt and user.p12 information from the previous step, respectively. Example:
 
 [,yaml]
 ----
@@ -139,7 +139,7 @@ metadata:
 ----
 ====
 
-. 将 **kafka-ca.yaml** 文件复制到需要收集日志数据的集群节点上，执行以下命令。
+. Copy the **kafka-ca.yaml** file to the cluster node where you need to collect log data, and execute the following command.
 +
 --
 [,bash]
@@ -147,10 +147,10 @@ metadata:
 kubectl apply -f kafka-ca.yaml
 ----
 
-此命令会在 **kubesphere-logging-system** 项目下创建 **kafka-agent-cluster-ca** 以及 **kafka-agent-user-ca** 两个 secret 文件。vector-config 会自动加载这两个 secret，并且在 vector 中配置相关证书。
+This command will create two secret files, **kafka-agent-cluster-ca** and **kafka-agent-user-ca**, in the **kubesphere-logging-system** project. The vector-config will automatically load these two secrets and configure the relevant certificates in vector.
 --
 
-== 创建 Kafka 日志接收器
+== Create Kafka Log Sinks
 
 [,bash]
 ----
@@ -172,7 +172,7 @@ stringData:
       kafka_auditing:
         type: "kafka"
         topic: "vector-{{ .cluster }}-auditing"
-        # 逗号分隔的 Kafka bootstrap servers 如："10.14.22.123:9092,10.14.23.332:9092"
+        # Comma-separated Kafka bootstrap servers, e.g., "10.14.22.123:9092,10.14.23.332:9092"
         bootstrap_servers: "172.31.73.214:32239"
         librdkafka_options:
           security.protocol: "ssl"
@@ -291,4 +291,3 @@ stringData:
 type: Opaque
 EOF
 ----
-

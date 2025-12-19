@@ -1,18 +1,18 @@
 ---
-title: "查看容器组 IP 池详情"
-keywords: "Kubernetes, {ks_product}, 集群管理, 网络, 容器组 IP 池, 查看容器组 IP 池详情"
-description: "介绍如何查看容器组 IP 池详情。"
+title: "View Pod IP Pool Details"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Network, Pod IP Pool, View Pod IP Pool Details"
+description: "Describes how to view pod IP pool details."
 weight: 03
 ---
 
-:ks_permission: **集群网络资源查看**
-:ks_navigation: **网络 > 容器组 IP 池**
+:ks_permission: **Cluster Network Resource View**
+:ks_navigation: **Network > Pod IP Pools**
 
 
-本节介绍如何查看容器组 IP 池详情。
+This section describes how to view pod IP pool details.
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 
@@ -21,11 +21,11 @@ include::../../../../_custom/clusterManagement/clusterManagement-prer-requiredPe
 
 :relfileprefix: ./
 
-* KubeSphere 平台需要安装并启用 **KubeSphere 网络**扩展组件。
+* The **KubeSphere Network** extension must be installed and enabled on the KubeSphere platform.
 
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/clusterManagement/clusterManagement-oper-openClusterPage.adoc[]
 
@@ -35,54 +35,54 @@ include::../../../../../_ks_components/oper-navigate.adoc[]
 
 +
 
-. 在容器组 IP 池列表中点击一个容器组 IP 池的名称打开其详情页面。
+. In the pod IP pool list, click the name of a pod IP pool to open its details page.
 
-. 在容器组 IP 池详情页面的**属性**区域查看容器组 IP 池的基本信息。
+. On the pod IP pool details page, view the basic information of the pod IP pool in the **Properties** area.
 +
 --
 
 [%header,cols="2,5"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|状态
-|容器组 IP 池的状态。
+|Status
+|The status of the pod IP pool.
 
-|网段
-|容器组 IP 池包含的网段。
+|CIDR
+|The CIDR block contained in the pod IP pool.
 
-|已用 IP 地址
-|已使用的 IP 地址数量。
+|Used IP Addresses
+|The number of IP addresses in use.
 
-|IP 池块大小
-|IP 池用于分配 IP 的 block 的 CIDR 大小。
+|IP Pool Block Size
+|The CIDR size of the block used by the IP pool for IP allocation.
 
-|NAT outgoing
-|是否允许通过 NAT 方式跨 IP 池通信。
+|NAT Outgoing
+|Whether cross-pool communication via NAT is allowed.
 
-|Overlay 模式
-|容器之间的通信模式。支持 IPIP 模式和 VXLAN 模式。
+|Overlay Mode
+|The communication mode between pods. Supports IPIP mode and VXLAN mode.
 
-|掩码
-|容器组 IP 池对应网段的掩码位数。
+|Mask
+|The subnet mask bits for the CIDR block corresponding to the pod IP pool.
 
-|网络
-|容器组 IP 池对应网络的 IP 地址。
+|Network
+|The IP address of the network corresponding to the pod IP pool.
 
-|起始 IP 地址/结束 IP 地址
-|容器组 IP 池包含的 IP 地址范围。
+|Start IP Address/End IP Address
+|The IP address range contained in the pod IP pool.
 
-|创建时间
-|容器组 IP 池的创建时间。
+|Creation Time
+|The creation time of the pod IP pool.
 
-|创建者
-|创建容器组 IP 池的用户。
+|Creator
+|The user who created the pod IP pool.
 |===
 --
 
-. 在容器组 IP 池详情页面的**项目**页签，查看可以使用容器组 IP 池的项目名称、已使用 IP 地址数量和项目管理员。
+. On the **Projects** tab of the pod IP pool details page, view the project names that can use the pod IP pool, the number of IP addresses used, and the project administrators.
 
-. 在容器组 IP 池右侧的**容器组**页签，查看使用容器组 IP 池的全部容器组。
+. On the **Pods** tab on the right side of the pod IP pool details page, view all pods using the pod IP pool.
 +
 --
 include::../../../../_custom/clusterManagement/nodes/nodes-para-podList.adoc[]

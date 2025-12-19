@@ -1,21 +1,21 @@
 ---
-title: "步骤 2：使用 Vector 从 Kafka 读取数据"
-description: "使用 Vector 从 Kafka 读取数据。"
+title: "Step 2: Use Vector to Read Data from Kafka"
+description: "Use Vector to read data from Kafka."
 weight: 02
 ---
 
-== 部署 vector aggregator
+== Deploy vector aggregator
 
-在 Kafka 所在集群，执行以下命令创建 vector namespace，并在该 namespace 下部署 vector-aggregator。
+In the cluster where Kafka is located, execute the following commands to create the `vector` namespace and deploy the `vector-aggregator` within that namespace.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-* 请勿将 vector aggregator 部署到 kubesphere-logging-system namespace， 以免与 KubeSphere 内置的 vector aggregator 冲突。
+* Do not deploy the vector aggregator to the `kubesphere-logging-system` namespace to avoid conflicts with the built-in vector aggregator in KubeSphere.
 
-* 请联系 KubeSphere 交付服务专家获取 vector aggregator 的 helm 包。
+* Please contact KubeSphere delivery service experts to obtain the helm package for the vector aggregator.
 |===
 
 [,bash]
@@ -23,7 +23,7 @@ weight: 02
 helm install vector-aggregator aggregator-0.30.0.tgz -n vector --create-namespace --set vectorConfig.image.tag=v0.2.1 --set image.tag=0.36.0-debian
 ----
 
-所需镜像：
+Required images:
 
 [,bash]
 ----
@@ -32,17 +32,17 @@ docker.io/kubesphere/kubectl:v1.26.13
 docker.io/kubesphere/vector-config:v0.2.1
 ----
 
-== 获取证书
+== Obtain Certificates
 
-. 在 Kafka 所在集群的节点上，执行以下命令。
+. On a node in the cluster where Kafka is located, execute the following commands.
 +
 ====
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-**kafka cluster** 为 Kafka 集群的名称，**kafka namespace** 为 Kafka 所在的 namespace，**kafka user** 为之前创建的 Kafka 用户。
+**kafka cluster** is the name of the Kafka cluster, **kafka namespace** is the namespace where Kafka resides, and **kafka user** is the Kafka user created earlier.
 |===
 
 [,bash]
@@ -63,8 +63,8 @@ echo -e "kind: Secret\nmetadata:\n  name: kafka-aggregator-user-ca\n  labels:\n 
 namespace: vector\ntype: Opaque" >> kafka-aggregator-ca.yaml
 ----
 
-此命令会生成 **kafka-aggregator-ca.yaml** 文件，包含 **kafka-aggregator-cluster-ca** 以及 **kafka-aggregator-user-ca** 两个 secret 文件，分别含有上一个步骤中的 ca.crt 以及 user.p12 信息。
-示例如下：
+This command generates the **kafka-aggregator-ca.yaml** file, containing two secret files: **kafka-aggregator-cluster-ca** and **kafka-aggregator-user-ca**. They contain the `ca.crt` and `user.p12` information from the previous step, respectively.
+Example:
 
 [,yaml]
 ----
@@ -95,9 +95,9 @@ type: Opaque
 
 ====
 
-== 配置 vector-aggregator，将消息发送至 OpenSearch
+== Configure vector-aggregator to Send Messages to OpenSearch
 
-创建 vector 配置，在 bootstrap_servers 填入相应的 Kafka 集群地址，在 sink:kafka_to_opensearch:endpoints 填入相应的 OpenSearch 地址。
+Create the vector configuration. Fill in the corresponding Kafka cluster address in `bootstrap_servers` and the corresponding OpenSearch address in `sink:kafka_to_opensearch:endpoints`.
 
 [,bash]
 ----

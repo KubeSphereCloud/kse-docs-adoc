@@ -1,17 +1,16 @@
-* 策略设置 > 发布策略
+* Strategy Settings > Release Strategy
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|立即切换
-|立即将全部流量切换到对应版本。
+|Immediate Switch
+|Immediately switch all traffic to the corresponding version.
 
-|就绪后切换
-|等待对应版本的容器组就绪后自动切换流量。
+|Switch After Ready
+|Automatically switch traffic after the corresponding version's pods are ready.
 
-|暂停切换
-|主动暂停流量切换，保持当前流量分配状态。
+|Pause Switch
+|Actively pause traffic switching, maintaining the current traffic distribution state.
 |===
---

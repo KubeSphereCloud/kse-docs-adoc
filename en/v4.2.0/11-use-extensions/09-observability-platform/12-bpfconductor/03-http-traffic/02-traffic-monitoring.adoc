@@ -1,23 +1,23 @@
 ---
-title: "流量监控"
-keywords: "Kubernetes, {ks_product}, BPFConductor, HTTP 流量, 流量日志, 可观测"
-description: "介绍如何查看服务和容器组的 HTTP 流量监控。"
+title: "Traffic Monitoring"
+keywords: "Kubernetes, {ks_product}, BPFConductor, HTTP Traffic, Traffic Logs, Observability"
+description: "Describes how to view HTTP traffic monitoring for services and pods."
 weight: 02
 ---
 
 
-:ks_navigation: **网络 > HTTP 流量**
+:ks_navigation: **Network > HTTP Traffic**
 
-本节介绍如何查看单个服务或容器组的 HTTP 流量数据。
+This section describes how to view HTTP traffic data for a single service or pod.
 
 
-== 前提条件
+== Prerequisites
 
-* 您需要在 KubeSphere 平台具有 **platform-admin** 角色。有关更多信息，请参阅link:../../../../../05-users-and-roles/01-users/[用户]和link:../../../../../05-users-and-roles/02-platform-roles/[平台角色]。
+* You need to have the **platform-admin** role in the KubeSphere platform. For more information, see link:../../../../../05-users-and-roles/01-users/[Users] and link:../../../../../05-users-and-roles/02-platform-roles/[Platform Roles].
 
-* KubeSphere 平台需要安装并启用 **WizTelemetry 网络可观测** 扩展组件。
+* The **WizTelemetry Network Observability** extension needs to be installed and enabled on the KubeSphere platform.
 
-== 操作步骤
+== Steps
 
 include::../../../../../_custom/platformManagement/extensionManagement/extensionManagement-oper-logInAsPlatformAdmin.adoc[]
 
@@ -29,41 +29,41 @@ include::../../../../../_custom/WizTelemetry/enter-into-WizTelemetry.adoc[]
 
 include::../../../../../../_ks_components/oper-navigate.adoc[]
 
-. 点击**流量监控**页签，然后进入**服务流量监控**或**容器组流量监控**页面。
+. Click the **Traffic Monitoring** tab, then navigate to the **Service Traffic Monitoring** or **Pod Traffic Monitoring** page.
 
-. 在页面上方的下拉列表中选择集群、项目、服务或容器组，查看选定服务或容器组在指定时间范围内的 HTTP 流量详情。
+. In the dropdown lists at the top of the page, select the cluster, project, service, or pod to view the HTTP traffic details for the selected service or pod within the specified time range.
 +
 --
 // include::../../../../../../_ks_components/oper-refreshListData.adoc[]
-* 在右上角点击image:/images/ks-qkcp/zh/icons/refresh-light.svg[refresh,18,18]可刷新页面信息。
+* Click image:/images/ks-qkcp/zh/icons/refresh-light.svg[refresh,18,18] in the upper right corner to refresh the page information.
 
 // include::../../../../../../_ks_components/oper-selectTimeRange.adoc[]
-* 在右上角点击image:/images/ks-qkcp/zh/icons/clock-2.svg[clock-2,18,18]可设置数据的时间范围。默认为**最近 30 分钟**。
+* Click image:/images/ks-qkcp/zh/icons/clock-2.svg[clock-2,18,18] in the upper right corner to set the time range for the data. The default is **Last 30 minutes**.
 
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|HTTP 请求数
-|每秒 HTTP 请求的次数。
+|HTTP Request Rate
+|The number of HTTP requests per second.
 
-|HTTP 错误率
-|请求失败的比例（如 0% 表示全部成功）。
+|HTTP Error Rate
+|The proportion of failed requests (e.g., 0% means all succeeded).
 
-|HTTP 延迟
+|HTTP Latency
 |
-* P99 延迟：指定时间范围内所有请求的 99% 分位延迟，即 99% 的请求的延迟小于或等于该数值。
+* P99 Latency: The 99th percentile latency of all requests within the specified time range, meaning 99% of requests had a latency less than or equal to this value.
 
-* P95 延迟：指定时间范围内所有请求的 95% 分位延迟，即 95% 的请求的延迟小于或等于该数值。
+* P95 Latency: The 95th percentile latency of all requests within the specified time range, meaning 95% of requests had a latency less than or equal to this value.
 
-* 平均延迟：指定时间范围内所有请求的平均延迟。
+* Average Latency: The average latency of all requests within the specified time range.
 
-|HTTP 响应数据吞吐量
-|服务器端每秒成功传输给客户端的 HTTP 响应数据的总量​​。
+|HTTP Response Data Throughput
+|The total amount of HTTP response data successfully transmitted from the server to the client per second.
 
-|HTTP 路由 TOP 10
-|此处默认展示​​请求量最高的 10 个 HTTP 路由​端点​，以及关键性能指标（如延迟、错误率）。
+|HTTP Route TOP 10
+|This section defaults to showing the top 10 HTTP route endpoints with the highest request volume, along with key performance indicators (such as latency, error rate).
 
-您也可以在列表上方点击下拉列表，选择其他排序字段和排序方式。
+You can also click the dropdown list above the list to select other sorting fields and sorting methods.
 |===
 --

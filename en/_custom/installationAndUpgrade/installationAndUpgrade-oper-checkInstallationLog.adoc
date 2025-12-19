@@ -1,5 +1,5 @@
 // :ks_include_id: e0c9a69a3f7c4dfabc1d964f485628e4
-. 执行以下命令查看日志：
+. Execute the following command to view the logs:
 +
 --
 // Bash

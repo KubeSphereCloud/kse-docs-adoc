@@ -1,15 +1,15 @@
 ---
-title: "升级后，针对原 Redis Cluster 实例的建议"
-description: "介绍如何处理升级后 Redis Cluster 实例的管理问题。"
+title: "Post-Upgrade Recommendations for Existing Redis Cluster Instances"
+description: "Describes how to handle management issues for Redis Cluster instances after an upgrade."
 weight: 02
 ---
 
-从 KubeSphere v4.1.2 升级到 v4.1.3 后，`redis-operator` 的版本发生了变化，不再管理由旧版本 redis-operator 创建的 Redis Cluster 实例。
+After upgrading from KubeSphere v4.1.2 to v4.1.3, the version of `redis-operator` has changed. The new version no longer manages Redis Cluster instances created by the old version of redis-operator.
 
-在数据库管理平台，仍可以查看原有的 Redis Cluster 实例，但无法通过控制台执行扩容、增减节点等操作，新版本 redis-operator 也不会维护旧 Redis Cluster 实例的状态。
+In the database management platform, you can still view the existing Redis Cluster instances, but you cannot perform operations such as scaling or adding/removing nodes through the web console. The new version of redis-operator will also not maintain the state of the old Redis Cluster instances.
 
-== 建议
+== Recommendations
 
-. 备份旧 Redis Cluster 集群的数据。
+. Back up the data of the old Redis Cluster.
 
-. 重新创建 Redis Cluster 集群来替换旧集群。
+. Recreate a Redis Cluster to replace the old one.

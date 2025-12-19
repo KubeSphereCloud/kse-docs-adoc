@@ -1,32 +1,32 @@
 ---
-title: "镜像构建器"
-keywords: "Kubernetes, {ks_product}, 镜像构建器, s2i, b2i"
-description: "如何从源代码或二进制可执行文件构建容器镜像。"
+title: "Image Builder"
+keywords: "Kubernetes, {ks_product}, Image Builder, s2i, b2i"
+description: "How to build container images from source code or binary executables."
 weight: 03
 layout: "second"
 ---
 
 
 
-本节介绍如何管理镜像构建器。
+This section describes how to manage the Image Builder.
 
-安装“镜像构建器”扩展组件后，企业空间左侧导航栏将显⽰**镜像构建器**菜单。
+After installing the "Image Builder" extension, the **Image Builder** menu will appear in the left navigation pane of the workspace.
 
-您可以使用镜像构建器将源代码或二进制可执行文件构建成容器镜像 (S2I & B2I)，将镜像推送到指定的镜像服务，并最终部署至 Kubernetes。
+You can use the Image Builder to build container images from source code or binary executables (S2I & B2I), push the images to a specified image service, and finally deploy them to Kubernetes.
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|仅支持 docker 运行时构建镜像，即节点上必须安装 docker。
+|Only the docker runtime is supported for building images, meaning docker must be installed on the node.
 
 |===
 
-== 配置
+== Configuration
 
-link:01-create-an-image-builder/02-create-an-image-builder-using-an-artifact/[使用制品创建镜像构建器]之前, 您必须在镜像构建器的扩展组件配置中配置一个可读写的 S3 Bucket, 用于存储二进制文件。
+Before link:01-create-an-image-builder/02-create-an-image-builder-using-an-artifact/[Creating an Image Builder Using an Artifact], you must configure a read-write S3 Bucket in the Image Builder extension configuration to store binary files.
 
-示例如下（需替换为实际信息）：
+Example (replace with actual information):
 
 [source,yaml]
 ----
@@ -43,15 +43,9 @@ backend:
       sessionToken: ""
 ----
 
-配置完成，待扩展组件更新完毕后，需重启 `s2iapiserver` 才能生效。
+After the configuration is complete and the extension is updated, you need to restart `s2iapiserver` for the changes to take effect.
 
 [source,yaml]
 ----
 kubectl -n extension-s2ibuilder rollout restart deploy s2iapiserver
 ----
-
-
-
-
-
-

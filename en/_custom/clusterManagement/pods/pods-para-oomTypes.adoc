@@ -1,5 +1,5 @@
-**因 OOM 终止重启过的容器组个数**：因内存不足（Out Of Memory）被系统强制终止又自动重启的容器组数量。
+**Number of Pods Terminated and Restarted Due to OOM**: The number of pods that were forcibly terminated and automatically restarted by the system due to insufficient memory (Out Of Memory).
 
-**等待中的容器组个数**：已创建但因资源不足或调度问题而无法启动的容器组数量。
+**Number of Pending Pods**: The number of pods that have been created but cannot start due to insufficient resources or scheduling issues.
 
-**重启过的容器组个数**：因故障或配置变更而自动重启的容器组数量。
+**Number of Restarted Pods**: The number of pods that have been automatically restarted due to failures or configuration changes.

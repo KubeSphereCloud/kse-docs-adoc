@@ -1,11 +1,11 @@
 ---
-title: "应用监控"
-keywords: "Kubernetes, {ks_product}, 集群管理, 监控告警, 应用资源"
-description: "介绍如何查看应用资源的用量数据和排行情况。"
+title: "Application Monitoring"
+keywords: "Kubernetes, {ks_product}, Cluster Management, Monitoring and Alerting, Application Resources"
+description: "Describes how to view usage data and rankings of application resources."
 weight: 04
 layout: "second"
 ---
 
 
 
-本节介绍如何查看应用资源的用量数据和排行情况。
+This section describes how to view usage data and rankings of application resources.

@@ -1,15 +1,15 @@
 ---
-title: "使用源代码创建镜像构建器"
-keywords: "Kubernetes, {ks_product}, 创建镜像构建器, 使用源代码创建镜像构建器"
-description: "介绍如何创建镜像构建器将源代码构建成容器镜像。"
+title: "Create an Image Builder Using Source Code"
+keywords: "Kubernetes, {ks_product}, Create Image Builder, Create Image Builder Using Source Code"
+description: "Describes how to create an image builder to build source code into container images."
 weight: 01
 ---
 
-:ks_permission: **应用负载管理**
-:ks_navigation: **镜像构建器**
+:ks_permission: **Application Workload Management**
+:ks_navigation: **Image Builders**
 
 
-本节介绍如何将源代码构建成容器镜像 (S2I)。
+This section describes how to build source code into container images (S2I).
 
 include::../../../../_custom/projectManagement/imageBuilders/imageBuilders-desc-imageBuilderCreated.adoc[]
 
@@ -20,7 +20,7 @@ include::../../../../_custom/projectManagement/services/services-oper-pullSource
 include::../../../../_custom/projectManagement/services/services-oper-pushPullImage.adoc[]
 
 
-== 前提条件
+== Prerequisites
 
 :relfileprefix: ../../../../
 * {empty}
@@ -43,7 +43,7 @@ include::../../../../_custom/projectManagement/services/services-prer-imageRegis
 :relfileprefix: ./
 
 
-== 操作步骤
+== Steps
 
 include::../../../../_custom/workspaceManagement/workspaceManagement-oper-openWorkspacePage.adoc[]
 
@@ -61,14 +61,14 @@ include::../../../../../_ks_components/oper-clickCreate.adoc[]
 
 +
 
-. 在**构建模式**页签，根据源代码的语言选择 **Java**、**Node.js** 或 **Python**，然后点击**下一步**。
+. On the **Build Mode** tab, select **Java**, **Node.js**, or **Python** based on the source code language, then click **Next**.
 
-. 在**构建设置**页签，设置构建环境、代码仓库信息和镜像服务信息，然后点击**创建**。
+. On the **Build Settings** tab, configure the build environment, code repository information, and image service information, then click **Create**.
 +
 --
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
 include::../../../../_custom/projectManagement/services/services-para-buildEnvironmentSourceCode.adoc[]
 
@@ -83,7 +83,3 @@ include::../../../../_custom/projectManagement/services/services-para-environmen
 
 include::../../../../_custom/projectManagement/imageBuilders/imageBuilders-desc-creationComplete.adoc[]
 --
-
-
-
-

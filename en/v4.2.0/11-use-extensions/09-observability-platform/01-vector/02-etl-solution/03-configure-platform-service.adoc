@@ -1,26 +1,25 @@
 ---
-title: "步骤 3：配置 WizTelemetry 平台服务"
-description: "配置 WizTelemetry 平台服务。"
+title: "Step 3: Configure WizTelemetry Platform Service"
+description: "Configure WizTelemetry Platform Service."
 weight: 03
 ---
 
-== 修改 whizard-telemetry-config 
+== Modify whizard-telemetry-config
 
-如果使用外置 OpenSearch 数据库，需要修改配置文件 whizard-telemetry-config。
+If an external OpenSearch database is used, you need to modify the configuration file `whizard-telemetry-config`.
 
-. 在集群左侧导航栏选择**配置 > 配置字典**。
+. In the **left navigation pane** of the cluster, select **Configuration > ConfigMaps**.
 
-. 在**配置字典**页面，查找 **whizard-telemetry-config**，点击右侧的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，然后在下拉列表中选择**编辑 yaml**。
+. On the **ConfigMaps** page, find **whizard-telemetry-config**. Click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right, then select **Edit yaml** from the dropdown list.
 +
 image:/images/ks-qkcp/zh/v4.1/whizard-telemetry-config.png[vector,100%]
 
-. 修改 `notification:history:endpoints`、`logging:endpoints`、`auditing:endpoints` 和 `events:endpoints` 为 OpenSearch 地址，点击**确定**。
+. Modify the `notification:history:endpoints`, `logging:endpoints`, `auditing:endpoints`, and `events:endpoints` to the OpenSearch address, then click **OK**.
 +
 image:/images/ks-qkcp/zh/v4.1/edit-endpoint.png[vector,100%]
 
-== 在 KSE 界面查询日志
+== Query Logs in the KSE Interface
 
 image:/images/ks-qkcp/zh/v4.1/log.png[vector,100%]
 
-部署完成后，可以从 OpenSearch 查询到日志，如图所示。
-
+After deployment is complete, logs can be queried from OpenSearch, as shown in the figure.

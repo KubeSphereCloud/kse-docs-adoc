@@ -1,7 +1,7 @@
 ---
-title: "全局监控"
-keywords: "Kubernetes, {ks_product}, 多集群, WizTelemetry 全局监控, 资源监控"
-description: "介绍如何查看多集群的资源监控数据。"
+title: "Global Monitoring"
+keywords: "Kubernetes, {ks_product}, Multi-cluster, WizTelemetry Global Monitoring, Resource Monitoring"
+description: "Introduces how to view resource monitoring data across multiple clusters."
 weight: 03
 layout: "second"
 ---

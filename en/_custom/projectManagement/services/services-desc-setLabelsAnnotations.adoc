@@ -1,2 +1,2 @@
 // :ks_include_id: 0dc49673473f4b0faae45bafaaf6990c
-为服务后端工作负载管理的容器组指定节点，设置服务的外部访问模式、会话保持设置和元数据。
+Specify nodes for the pods managed by the service backend workload, and configure the service's external access mode, session persistence settings, and metadata.

@@ -1,10 +1,10 @@
-本节介绍如何管理工作负载模板。
+This section introduces how to manage workload templates.
 
-工作负载模板是云原生环境中用于简化应用部署和管理的核心工具。其主要作用包括：
+Workload templates are core tools in cloud-native environments used to simplify application deployment and management. Their main functions include:
 
-- **标准化配置**：通过预定义资源需求（如CPU、内存）、副本数量和健康检查等参数，确保每次部署的配置一致，减少人为错误。
-- **快速复制**：支持快速复制与扩展，可批量创建工作负载实例或动态扩缩容以应对流量变化。
-- **多环境适配**：通过参数化配置，同一模板能适配开发、测试、生产等不同环境，无需重复修改。
-// - **自动化运维**：结合 CI/CD 工具，实现从模板到实际工作负载的自动部署和更新，提升运维效率。
+- **Standardized Configuration**: By predefining parameters such as resource requirements (e.g., CPU, memory), replica count, and health checks, they ensure consistent configuration for each deployment, reducing human error.
+- **Rapid Replication**: Support quick replication and scaling, allowing for batch creation of workload instances or dynamic scaling to handle traffic changes.
+- **Multi-Environment Adaptation**: Through parameterized configuration, the same template can be adapted to different environments such as development, testing, and production without repeated modifications.
+// - **Automated Operations**: Combined with CI/CD tools, they enable automated deployment and updates from templates to actual workloads, improving operational efficiency.
 
-简言之，工作负载模板通过标准化、灵活性和自动化，显著提升应用的部署效率、可靠性和可扩展性。
+In short, workload templates significantly enhance application deployment efficiency, reliability, and scalability through standardization, flexibility, and automation.
