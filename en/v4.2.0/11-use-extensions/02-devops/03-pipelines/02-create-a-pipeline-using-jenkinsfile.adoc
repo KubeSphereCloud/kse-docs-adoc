@@ -1,74 +1,73 @@
 ---
-title: "使用 Jenkinsfile 创建流水线"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 使用 DevOps, 流水线, 使用 Jenkinsfile 创建流水线"
-description: "介绍如何使用 Jenkinsfile 创建流水线。"
+title: "Creating a Pipeline Using Jenkinsfile"
+keywords: "Kubernetes, {ks_product}, DevOps Project, Using DevOps, Pipeline, Creating a Pipeline Using Jenkinsfile"
+description: "Introduces how to create a pipeline using a Jenkinsfile."
 weight: 02
 ---
 
 
-Jenkinsfile 是一个文本文件，包含 Jenkins 流水线的定义，并被检入源代码控制仓库。Jenkinsfile 将整个工作流存储为代码，因此它是代码审查和流水线迭代过程的基础。有关更多信息，请参阅 link:https://www.jenkins.io/zh/doc/book/pipeline/jenkinsfile/[Jenkins 官方文档]。
+A Jenkinsfile is a text file that contains the definition of a Jenkins pipeline and is checked into a source code control repository. The Jenkinsfile stores the entire workflow as code, making it the foundation for code review and the pipeline iteration process. For more information, please refer to link:https://www.jenkins.io/zh/doc/book/pipeline/jenkinsfile/[Jenkins Official Documentation].
 
-本文档演示如何基于 GitHub 仓库中的 Jenkinsfile 创建流水线，并使用该流水线将示例应用程序分别部署到可从外部访问的开发环境和生产环境。
+This document demonstrates how to create a pipeline based on a Jenkinsfile in a GitHub repository and use that pipeline to deploy a sample application to a development environment and a production environment, both accessible externally.
 
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-DevOps 支持创建两种类型的流水线：一种是本文档中介绍的基于 SCM 中 Jenkinsfile 创建的流水线，另一种是link:../01-create-a-pipeline-using-graphical-editing-panel/[通过图形编辑面板创建的流水线]。
+DevOps supports creating two types of pipelines: one is the pipeline created based on a Jenkinsfile in SCM as introduced in this document, and the other is the link:../01-create-a-pipeline-using-graphical-editing-panel/[pipeline created using the graphical editing panel].
 
-Jenkinsfile in SCM 需要源代码管理 (SCM) 中有内置 Jenkinsfile，换句话说，Jenkinsfile 必须是 SCM 的一部分。DevOps 系统会根据代码仓库的现有 Jenkinsfile 自动构建 CI/CD 流水线。通过定义工作流，例如 **stage** 和 **step** 可以满足特定的构建、测试和部署要求。
+Jenkinsfile in SCM requires a built-in Jenkinsfile in the source code management (SCM), meaning the Jenkinsfile must be part of the SCM. The DevOps system automatically builds the CI/CD pipeline based on the existing Jenkinsfile in the code repository. By defining the workflow, such as **stage** and **step**, specific build, test, and deployment requirements can be met.
 
 |===
 
 
-== 前提条件
+== Prerequisites
 
-* KubeSphere 平台需要安装并启用 **DevOps** 扩展组件。
+* The **DevOps** extension must be installed and enabled on the KubeSphere platform.
 
-* 已有一个 link:https://hub.docker.com/[Docker Hub] 账户和一个 link:https://github.com/[GitHub] 账户。
+* You need a link:https://hub.docker.com/[Docker Hub] account and a link:https://github.com/[GitHub] account.
 
-* 已创建一个企业空间、一个 DevOps 项目和一个用户（例如 **project-regular**），并已邀请该用户至 DevOps 项目且授予 **operator** 角色。请参阅link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[邀请用户加入 DevOps 项目]。
+* You have created a workspace, a DevOps project, and a user (e.g., **project-regular**), and have invited this user to the DevOps project and granted the **operator** role. Please refer to link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[Inviting a User to a DevOps Project].
 
-* 已创建一个用户（例如 **project-admin**），其在企业空间中具有**项目创建**权限。
+* You have created a user (e.g., **project-admin**) who has the **project creation** permission in the workspace.
 
-* 已设置 CI 专用节点用于运行流水线。请参阅link:../15-set-ci-node/[为缓存依赖项设置 CI 节点]。
+* You have set up a dedicated CI node for running pipelines. Please refer to link:../15-set-ci-node/[Setting Up a CI Node for Caching Dependencies].
 
-* 已安装和配置 SonarQube（可选）。请参阅link:../../10-how-to-integrate/01-sonarqube/[将 SonarQube 集成到流水线]。如果跳过这一部分，则没有下面的 **SonarQube 分析**阶段。
+* You have installed and configured SonarQube (optional). Please refer to link:../../10-how-to-integrate/01-sonarqube/[Integrating SonarQube into a Pipeline]. If you skip this part, the following **SonarQube Analysis** stage will not be present.
 
-== 流水线概述
+== Pipeline Overview
 
-本示例流水线包括以下阶段。
+This sample pipeline includes the following stages.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-* **阶段 1：Checkout SCM**：从 GitHub 仓库检出源代码。
+* **Stage 1: Checkout SCM**: Checks out the source code from the GitHub repository.
 
-* **阶段 2：单元测试**：待该测试通过后才会进行下一阶段。
+* **Stage 2: Unit Test**: The next stage proceeds only after this test passes.
 
-* **阶段 3：SonarQube 分析**：SonarQube 代码质量分析。
+* **Stage 3: SonarQube Analysis**: SonarQube code quality analysis.
 
-* **阶段 4：构建并推送快照镜像**：根据**策略设置**中选定的分支来构建镜像，并将 **SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER** 标签推送至 Docker Hub，其中 **$BUILD_NUMBER** 是流水线运行记录列表中的记录的运行 ID。
+* **Stage 4: Build and Push Snapshot Image**: Builds the image based on the branch selected in the **Strategy Settings** and pushes the **SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER** tag to Docker Hub, where **$BUILD_NUMBER** is the run ID of the record in the pipeline run history list.
 
-* **阶段 5：推送最新镜像**：将 v4.1.0-sonarqube 分支标记为 **latest**，并推送至 Docker Hub。
+* **Stage 5: Push Latest Image**: Tags the v4.1.0-sonarqube branch as **latest** and pushes it to Docker Hub.
 
-* **阶段 6：部署至开发环境**：将 v4.1.0-sonarqube 分支部署到开发环境，此阶段需要审核。
+* **Stage 6: Deploy to Development Environment**: Deploys the v4.1.0-sonarqube branch to the development environment. This stage requires approval.
 
-* **阶段 7：带标签推送**：生成标签并发布到 GitHub，该标签会推送到 Docker Hub。
+* **Stage 7: Push with Tag**: Generates a tag and releases it to GitHub. This tag is also pushed to Docker Hub.
 
-* **阶段 8：部署至生产环境**：将已发布的标签部署到生产环境。
+* **Stage 8: Deploy to Production Environment**: Deploys the released tag to the production environment.
 |===
 
-== 步骤 1：创建凭证
-
+== Steps 1: Create Credentials
 include::../../../../_custom/devops/project-regular-oper-logIn.adoc[]
 +
 
-. 在左侧导航栏选择 **DevOps > 凭证**。
+. In the left navigation pane, select **DevOps > Credentials**.
 
 +
 
@@ -76,19 +75,19 @@ include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
 
 +
 
-. 创建以下凭证。有关如何创建凭证的更多信息，请参阅link:../../07-credentials/01-credential-management/[凭证]。
+. Create the following credentials. For more information on how to create credentials, refer to link:../../07-credentials/01-credential-management/[Credentials].
 +
 --
 [%header,cols="1a,2a,2a"]
 |===
-|凭证 ID |类型 |用途
+|Credential ID |Type |Purpose
 
 |dockerhub-id
-|用户名和密码
+|Username and Password
 |Docker Hub
 
 |github-id
-|用户名和密码
+|Username and Password
 |GitHub
 
 |demo-kubeconfig
@@ -98,94 +97,94 @@ include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|自 2021 年 8 月起，GitHub 要求使用基于令牌的身份验证，此处需要输入令牌，而非 GitHub 密码。有关如何生成令牌，请参阅link:https://docs.github.com/cn/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token[创建个人访问令牌]。
+|Since August 2021, GitHub requires token-based authentication. You need to enter a token here, not your GitHub password. For information on how to generate a token, refer to link:https://docs.github.com/cn/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token[Creating a personal access token].
 
 |===
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|如果您的账户或密码中包含特殊字符，例如 **@** 和 **$**，可能会因为无法识别而在流水线运行时导致错误。在这种情况下，您需要先在一些第三方网站（例如 link:https://www.urlencoder.org/[urlencoder]）上对账户或密码进行编码，然后将输出结果复制粘贴作为您的凭证信息。
+|If your account or password contains special characters, such as **@** and **$**, it may cause errors during pipeline execution due to unrecognized characters. In this case, you need to encode your account or password on a third-party website (e.g., link:https://www.urlencoder.org/[urlencoder]) first, then copy and paste the output as your credential information.
 |===
 --
 
-. （可选）再为 SonarQube 创建一个凭证 (**sonar-token**)，用于上述的阶段 3（代码分析）。凭证类型选择**访问令牌**，在**令牌**字段输入 SonarQube 令牌，请参阅link:../../10-how-to-integrate/01-sonarqube/#_为新项目创建_sonarqube_token[为新项目创建 SonarQube Token]。点击**确定**完成操作。
+. (Optional) Create another credential for SonarQube (**sonar-token**) for the aforementioned Stage 3 (Code Analysis). Select **Access Token** as the credential type, enter the SonarQube token in the **Token** field. Refer to link:../../10-how-to-integrate/01-sonarqube/#_create_a_sonarqube_token_for_a_new_project[Create a SonarQube Token for a New Project]. Click **OK** to complete the operation.
 
-. 您将在凭证页面看到已创建的凭证。
+. You will see the created credentials on the Credentials page.
 
 
-== 步骤 2：在 GitHub 仓库中修改 Jenkinsfile
+== Step 2: Modify the Jenkinsfile in the GitHub Repository
 
-. 登录 GitHub 并 Fork GitHub 仓库 link:https://github.com/kubesphere/devops-maven-sample[devops-maven-sample] 的所有分支至您的 GitHub 个人账户。
+. Log in to GitHub and Fork all branches of the GitHub repository link:https://github.com/kubesphere/devops-maven-sample[devops-maven-sample] to your personal GitHub account.
 
-. 在您自己的 GitHub 仓库 **devops-maven-sample** 中，切换到 v4.1.0-sonarqube 分支，点击根目录中的文件 **Jenkinsfile-online**。
+. In your own GitHub repository **devops-maven-sample**, switch to the v4.1.0-sonarqube branch, and click the file **Jenkinsfile-online** in the root directory.
 
-. 点击右侧的编辑图标，编辑环境变量。
+. Click the edit icon on the right to edit the environment variables.
 +
 --
 [%header,cols="1a,2a,2a"]
 |===
-|条目 |值 |描述信息
+|Entry |Value |Description
 
 |DOCKER_CREDENTIAL_ID
 |dockerhub-id
-|您在 KubeSphere 中为 Docker Hub 账户设置的**名称**。
+|The **name** you set for your Docker Hub account in KubeSphere.
 
 |GITHUB_CREDENTIAL_ID
 |github-id
-|您在 KubeSphere 中为 GitHub 账户设置的**名称**，用于将标签推送至您的 GitHub 仓库。
+|The **name** you set for your GitHub account in KubeSphere, used to push tags to your GitHub repository.
 
 |KUBECONFIG_CREDENTIAL_ID
 |demo-kubeconfig
-|您在 KubeSphere 中为 kubeconfig 设置的**名称**，用于访问运行中的 Kubernetes 集群。
+|The **name** you set for the kubeconfig in KubeSphere, used to access the running Kubernetes cluster.
 
 |REGISTRY
 |docker.io
-|默认为 **docker.io**，用作推送镜像的地址。
+|Default is **docker.io**, used as the address for pushing images.
 
 |DOCKERHUB_NAMESPACE
 |your-dockerhub-id
-|请替换为您的 Docker Hub 账户名，也可以替换为该账户下的 Organization 名称。
-
+|Replace with your Docker Hub account name, or the name of an Organization under that account.
+    
 |GITHUB_ACCOUNT
 |your-github-id
-|请替换为您的 GitHub 账户名。例如，如果您的 GitHub 地址是 link:https://github.com/kubesphere/[]，则您的 GitHub 账户名为 **kubesphere**，也可以替换为该账户下的 Organization 名称。
+|Please replace it with your GitHub account name. For example, if your GitHub address is link:https://github.com/kubesphere/[], then your GitHub account name is **kubesphere**. You can also replace it with an Organization name under that account.
 
 |APP_NAME
 |devops-maven-sample
-|应用名称。
+|Application name.
 
 |SONAR_CREDENTIAL_ID
 |sonar-token
-|您在 KubeSphere 中为 SonarQube 令牌设置的**名称**，用于代码质量检测。
+|The **name** you set for the SonarQube token in KubeSphere, used for code quality detection.
 |===
 --
 
-. 编辑环境变量后，点击 **Commit changes**，更新 v4.1.0-sonarqube 分支中的文件。
+. After editing the environment variables, click **Commit changes** to update the file in the v4.1.0-sonarqube branch.
 
 
-== 步骤 3：创建项目
+== Step 3: Create Projects
 
-创建两个项目，例如 **kubesphere-sample-dev** 和 **kubesphere-sample-prod**，分别代表开发环境和生产环境。待流水线成功运行，将在这两个项目中自动创建应用程序的相关部署 (Deployment) 和服务 (Service)。
+Create two projects, for example, **kubesphere-sample-dev** and **kubesphere-sample-prod**, representing the development environment and production environment respectively. After the pipeline runs successfully, the relevant Deployments and Services for the application will be automatically created in these two projects.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-您需要提前创建 **project-admin** 账户，用作 CI/CD 流水线的审核者。
+You need to create the **project-admin** account in advance to serve as the reviewer for the CI/CD pipeline.
 
 |===
 
-. 以 **project-admin** 用户登录 KubeSphere，在创建 DevOps 项目的企业空间中创建以下两个项目。
+. Log in to KubeSphere as the **project-admin** user and create the following two projects in the workspace where the DevOps project is created.
 +
 --
 [%header,cols="1a,1a"]
 |===
-|项目名称|别名
+|Project Name|Alias
 
 |kubesphere-sample-dev
 |development environment
@@ -195,194 +194,191 @@ include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
 |===
 --
 
-. 邀请 **project-regular** 账户至这两个项目，并赋予 **operator** 角色。
+. Invite the **project-regular** account to these two projects and assign the **operator** role.
 
-== 步骤 4：创建流水线
+== Step 4: Create a Pipeline
 
-. 在 **DevOps > 流水线**页面点击**创建**。
+. On the **DevOps > Pipelines** page, click **Create**.
 
-. 在弹出的对话框中，将其命名为 **jenkinsfile-in-scm**。
+. In the dialog box that pops up, name it **jenkinsfile-in-scm**.
 
-. 在**流水线类别**下，选择**多分支流水线**。
+. Under **Pipeline Type**, select **Multi-branch Pipeline**.
 
-. 在**代码仓库**下，选择一个代码仓库，点击**下一步**继续。
+. Under **Code Repository**, select a code repository and click **Next** to continue.
 +
 --
-若没有可用的代码仓库，点击下方的**创建代码仓库**。有关更多信息，请参阅link:../../06-code-repositories/01-import-code-repositories/[导入代码仓库]。
+If there is no available code repository, click **Create Code Repository** below. For more information, please refer to link:../../06-code-repositories/01-import-code-repositories/[Import Code Repository].
 --
 
-.. 在**导入代码仓库**对话框，输入代码仓库名称（自定义），点击选择代码仓库。
+.. In the **Import Code Repository** dialog box, enter a code repository name (custom), and click to select a code repository.
 
-.. 在 **GitHub** 页签，从**凭证**的下拉菜单中选择 **github-id**，然后点击**确定**。
+.. On the **GitHub** tab, select **github-id** from the drop-down menu of **Credential**, then click **OK**.
 
-.. 在 GitHub 列表中，选择您的 GitHub 账户，与该令牌相关的所有仓库将在右侧列出。选择 **devops-maven-sample** 并点击**选择**。
+.. In the GitHub list, select your GitHub account. All repositories associated with this token will be listed on the right. Select **devops-maven-sample** and click **Select**.
 
-.. 点击**确定**选择您的代码仓库。
+.. Click **OK** to select your code repository.
 
 
-. 在**高级设置**中，勾选**删除旧分支**。本教程中，建议**分支保留天数（天）**和**分支最大数量**使用默认值。
+. In **Advanced Settings**, check **Discard old branches**. For this tutorial, it is recommended to use the default values for **Days to keep branches** and **Max # of branches to keep**.
 +
 --
-删除旧分支意味着您将一并丢弃分支记录。分支记录包括控制台输出、已归档制品以及特定分支相关的其他元数据。更少的分支意味着您可以节省 Jenkins 正在使用的磁盘空间。DevOps 提供两个选项来确定何时丢弃旧分支：
+Discarding old branches means you will also discard the branch records. Branch records include console output, archived artifacts, and other metadata related to specific branches. Fewer branches mean you can save disk space used by Jenkins. DevOps provides two options to determine when to discard old branches:
 
-* 分支保留天数（天）：超过保留期限的分支将被删除。
+* Days to keep branches: Branches older than the retention period will be deleted.
 
-* 分支最大数量：分支数量超过最大数量时，删除最旧的分支。
+* Max # of branches to keep: When the number of branches exceeds the maximum number, the oldest branch will be deleted.
 
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-**分支保留天数（天）**和**分支最大数量**可以同时应用于分支。只要某个分支满足其中一个字段所设置的条件，则会删除该分支。例如，如果您将保留天数和最大分支数分别指定为 2 和 3，待某个分支的保留天数超过 2 或者分支保留数量超过 3，则会删除该分支。DevOps 默认用 7 和 5 预填充这两个字段。
+**Days to keep branches** and **Max # of branches to keep** can be applied to branches simultaneously. As long as a branch meets the condition set by either field, it will be deleted. For example, if you specify the retention days and the maximum number of branches as 2 and 3 respectively, when a branch's retention days exceed 2 or the number of retained branches exceeds 3, that branch will be deleted. DevOps pre-fills these two fields with 7 and 5 by default.
 
 |===
 --
 
-. 在**策略设置**中，DevOps 默认提供四种策略。本示例不会使用**从 Fork 仓库中发现 PR** 这条策略，因此您可以删除该策略。对于其他策略，无需修改设置，直接使用默认值即可。
+. In **Strategy Settings**, DevOps provides four strategies by default. This example will not use the **Discover PR from Forks** strategy, so you can delete it. For the other strategies, there is no need to modify the settings; use the default values directly.
 +
 --
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-选择 GitHub 作为代码仓库，才能启用此处的**策略设置**设置。
+You must select GitHub as the code repository to enable the **Strategy Settings** here.
 |===
+When Jenkins pipelines are running, pull requests (PRs) submitted by developers will also be treated as separate branches.
 
-Jenkins 流水线运行时，开发者提交的 Pull Request (PR) 也将被视为一个单独的分支。
+**Discover branches**
 
-**发现分支**
+* **Exclude branches that are also filed as PRs**: Does not scan source branches, such as the master branch of the source repository. These branches need to be merged.
+* **Only branches that are also filed as PRs**: Scans only PR branches.
+* **All branches**: Pulls all branches from the source repository.
 
-* **排除已提交 PR 的分支**：不扫描源分支，例如源仓库的 master 分支。需要合并这些分支。
-* **只包括已提交 PR 的分支**：仅扫描 PR 分支。
-* **包括所有分支**：拉取源仓库中的所有分支。
+**Discover PR from origin**
 
-**从原仓库发现 PR**
-
-* **拉取 PR 合并后的代码**：PR 合并到目标分支后，基于源代码创建并运行流水线。
-* **拉取 PR 提交时的代码**：根据 PR 本身的源代码创建并运行流水线。
-* **分别创建两个流水线**：创建两个流水线，一个流水线使用 PR 与目标分支合并后的源代码版本，另一个使用 PR 本身的源代码版本。
+* **Source Code after PR is merged**: After the PR is merged into the target branch, the pipeline is created and run based on the source code.
+* **Source Code of PR**: Creates and runs a pipeline according to the source code of the PR itself.
+* **Create both Pipelines**: Creates two pipelines, one using the source code version after the PR is merged with the target branch, and the other using the source code version of the PR itself.
 --
 
-. 向下滚动到**脚本路径**，将其更改为 **Jenkinsfile-online**，这是示例仓库中位于根目录下的 Jenkinsfile 的文件名。该字段指定代码仓库中的 Jenkinsfile 路径。它表示仓库的根目录。如果文件位置变更，则脚本路径也需要更改。
+. Scroll down to **Script Path** and change it to **Jenkinsfile-online**, which is the filename of the Jenkinsfile located in the root directory of the example repository. This field specifies the path to the Jenkinsfile in the code repository. It represents the root directory of the repository. If the file location changes, the script path also needs to be updated.
 
-. 在**扫描触发器**中，勾选**定时扫描**并设置时间间隔为 **5 分钟**。点击**创建**完成配置。
+. Under **Scan Repository Triggers**, check **Periodically if not otherwise run** and set the interval to **5 minutes**. Click **Create** to finish the configuration.
 
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-设置特定的时间间隔让流水线扫描远程仓库，以便根据您在**策略设置**中设置的策略来检测代码更新或新的 PR。
+Setting a specific time interval allows the pipeline to scan the remote repository to detect code updates or new PRs according to the policy you set in **Strategy Settings**.
 
 |===
 
 
-== 步骤 5：运行流水线
+== Step 5: Run the Pipeline
 
-. 流水线创建后，会展示在列表中。点击流水线名称查看其详情页。
-+
---
-
-[.admon.note,cols="a"]
-|===
-|说明
-
-|
-* 在**流水线**列表页面，点击该流水线右侧的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**复制**来创建该流水线的副本。
-* 如果要同时运行多个不包含多分支的流水线，在**流水线**列表页面，全部选中这些流水线，然后点击**运行**来批量运行它们。
-* 流水线详情页面的**同步状态**，显示了 KubeSphere 和 Jenkins 之间的同步结果。若同步成功，将显示**成功**以及绿色的对号图标。
-
-|===
---
-
-. 在**运行记录**页签下，正在扫描多个分支。点击右侧的**运行**，流水线将根据您设置的行为策略来运行。从下拉列表中选择 **v4.1.0-sonarqube** 分支，然后添加标签号，例如 **v0.0.2**。点击**确定**开始运行。
+. After the pipeline is created, it will be displayed in the list. Click the pipeline name to view its details page.
 +
 --
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-* 如果您在此页面上未看到任何运行记录，则需要手动刷新浏览器或点击**操作**按钮中的**扫描仓库**。
-* 标签名称用于在 GitHub 和 Docker Hub 中指代新生成的发布版本和镜像。现有标签名称不能再次用于字段 **TAG_NAME**。否则，流水线将无法成功运行。
+* On the **Pipelines** list page, click the image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] icon on the right side of the pipeline and select **Copy** to create a copy of the pipeline.
+* If you want to run multiple pipelines that do not contain multi-branches simultaneously, select all these pipelines on the **Pipelines** list page, and then click **Run** to run them in batches.
+* The **Sync Status** on the pipeline details page shows the synchronization result between KubeSphere and Jenkins. If successful, it will display **Success** along with a green checkmark icon.
 
 |===
 --
 
-. 稍等片刻，点击运行记录查看详情。
+. Under the **Run Records** tab, multiple branches are being scanned. Click **Run** on the right, and the pipeline will run according to the behavior policies you have set. Select the **v4.1.0-sonarqube** branch from the drop-down list, then add a tag number, such as **v0.0.2**. Click **OK** to start the run.
 +
 --
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-运行失败可能由不同因素所引起。本示例中，在上述步骤中编辑分支的环境变量时，仅更改了 v4.1.0-sonarqube 分支的 Jenkinsfile，而 v4.1.0 分支中的这些变量没有修改（使用了错误的 GitHub 和 Docker Hub 账户），若选择 v4.1.0 分支，则会运行失败。其他原因如网络问题、Jenkinsfile 中的编码不正确等也可能导致运行失败。
+* If you do not see any run records on this page, you need to manually refresh the browser or click **Scan Repository** in the **Actions** button.
+* The tag name is used to refer to the newly generated release and image in GitHub and Docker Hub. Existing tag names cannot be reused for the **TAG_NAME** field. Otherwise, the pipeline will fail to run.
 
-在运行记录详情页的**运行日志**页签下，查看其日志的详细信息，根据日志排除故障和问题。
+|===
+--
+
+. Wait a moment, then click on the run record to view the details.
++
+--
+
+[.admon.note,cols="a"]
+|===
+|Note
+
+|
+Pipeline failures can be caused by various factors. In this example, when editing the environment variables for the branch in the previous steps, only the Jenkinsfile for the v4.1.0-sonarqube branch was modified, while the variables in the v4.1.0 branch were not updated (using incorrect GitHub and Docker Hub accounts). Selecting the v4.1.0 branch will cause the run to fail. Other reasons such as network issues or incorrect coding in the Jenkinsfile may also lead to failures.
+
+Under the **Run Logs** tab of the run record details page, review the detailed information of the logs to troubleshoot and resolve issues based on them.
 |===
 --
 
 
-. 流水线如果运行成功，会在 **deploy to dev** 阶段暂停，需要具有审核权限的用户点击**继续**。
+. If the pipeline runs successfully, it will pause at the **deploy to dev** stage, requiring a user with review permissions to click **Proceed**.
 +
 --
-在 Jenkinsfile 中定义了三个阶段 **deploy to dev**、**push with tag** 和 **deploy to production**，每个阶段都需要审核。因此在运行到这些阶段时，流水线会暂停，等待审核。
+In the Jenkinsfile, three stages are defined: **deploy to dev**, **push with tag**, and **deploy to production**. Each stage requires review. Therefore, when the pipeline reaches these stages, it pauses and waits for review.
 
-在开发或生产环境中，可能需要具有更高权限的人员（例如版本管理员）来审核流水线、镜像以及代码分析结果。他们有权决定流水线是否能进入下一阶段。在 Jenkinsfile 中，支持使用 **input** 来指定审核流水线的用户。如果想指定一个用户（例如 **project-admin**）来审核，可以在 Jenkinsfile 中添加一个字段。如果有多个用户，则需要通过逗号进行分隔，如下所示：
-
+In development or production environments, personnel with higher permissions (e.g., release managers) may be needed to review the pipeline, images, and code analysis results. They have the authority to decide whether the pipeline can proceed to the next stage. In the Jenkinsfile, **input** can be used to specify the user who reviews the pipeline. If you want to specify a user (e.g., **project-admin**) for review, you can add a field in the Jenkinsfile. If there are multiple users, they need to be separated by commas, as shown below:
 [,bash]
 ----
 input(id: 'release-image-with-tag', message: 'release image with tag?', submitter: 'project-admin,project-admin1')
 ----
 --
 
-. 以具有流水线审核权限的用户登录 KubeSphere Web 控制台并进入您的企业空间，在 **DevOps > 流水线**页面，点击流水线名称进入详情页。在**运行记录**页签下，点击要审核的记录，点击**继续**以批准流水线。
-
+.  Log in to the KubeSphere web console with a user that has pipeline review permissions and enter your workspace. On the **DevOps > Pipelines** page, click the pipeline name to go to the details page. Under the **Run Records** tab, click the record you want to review, then click **Continue** to approve the pipeline.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-在 KubeSphere 中，如果不指定审核员，那么能够运行流水线的账户也能够继续或终止该流水线。此外，流水线创建者、拥有该项目管理员角色的用户或者您指定的账户也有权限继续或终止流水线。
+In KubeSphere, if no reviewer is specified, then the account that can run the pipeline can also continue or terminate that pipeline. In addition, the pipeline creator, users with the project-admin role of that project, or the accounts you specify also have permission to continue or terminate the pipeline.
 |===
 
-== 步骤 6：检查流水线状态
+== Steps 6: Check Pipeline Status
 
-. 在运行记录的**流水线**页签下，查看流水线的运行状态。流水线在刚创建时会初始化几分钟。
-// 示例流水线有?个阶段，它们已在 link:https://github.com/kubesphere/devops-maven-sample/blob/v4.1.0-sonarqube/Jenkinsfile-online[Jenkinsfile-online] 中单独定义。
+.  On the **Pipeline** tab of the run record, check the running status of the pipeline. The pipeline will initialize for a few minutes after it is created.
+// The sample pipeline has? stages, which are separately defined in the link:https://github.com/kubesphere/devops-maven-sample/blob/v4.1.0-sonarqube/Jenkinsfile-online[Jenkinsfile-online].
 
-. 点击**运行日志**页签查看流水线运行日志。点击每个阶段查看其详细日志。点击**查看完整日志**，根据日志排除故障和问题，也可以将日志下载到本地进行进一步分析。
+.  Click the **Run Logs** tab to view the pipeline run logs. Click each stage to view its detailed logs. Click **View Full Logs** to troubleshoot and resolve issues based on the logs, or download the logs locally for further analysis.
 
-== 步骤 7：验证结果
+== Steps 7: Verify Results
 
-. 流水线成功运行后，点击**代码检查**通过 SonarQube 查看结果。如果没有事先配置 SonarQube，则该部分不可用。
+.  After the pipeline runs successfully, click **Code Check** to view the results via SonarQube. If SonarQube is not configured beforehand, this part is not available.
 
-. 按照 Jenkinsfile 中的定义，通过流水线构建的 Docker 镜像也已成功推送到 Docker Hub。在 Docker Hub 中，您会看到带有标签 **v0.0.2** 的镜像，该标签在流水线运行之前已指定。
+.  As defined in the Jenkinsfile, the Docker image built by the pipeline has also been successfully pushed to Docker Hub. In Docker Hub, you will see an image tagged **v0.0.2**, which was specified before the pipeline run.
 
-. 同时，GitHub 中会生成一个新标签和一个新发布版本。
+.  Meanwhile, a new tag and a new release will be generated in GitHub.
 
-. 示例应用程序将部署到 **kubesphere-sample-dev** 和 **kubesphere-sample-prod**，并创建相应的部署和服务。转到这两个项目，预期结果如下所示：
+.  The sample application will be deployed to **kubesphere-sample-dev** and **kubesphere-sample-prod**, and the corresponding Deployments and Services will be created. Go to these two projects, and the expected results are as follows:
 +
 --
 [%header,cols="1a,2a,2a,2a,2a"]
 |===
-|环境 |URL |命名空间 |部署 |服务
+|Environment |URL |Namespace |Deployment |Service
 
-|开发环境
+|Development Environment
 |http://{$NodeIP}:{$30861}
 |kubesphere-sample-dev
 |ks-sample-dev
 |ks-sample-dev
 
-|生产环境
+|Production Environment
 |http://{$NodeIP}:{$30961}
 |kubesphere-sample-prod
 |ks-sample
@@ -392,21 +388,21 @@ input(id: 'release-image-with-tag', message: 'release image with tag?', submitte
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-您可能需要在您的安全组中放行该端口，以便通过 URL 访问应用程序。
+You may need to open this port in your security group to access the application via the URL.
 
 |===
 --
 
-== 步骤 8：访问示例服务
+== Steps 8: Access Sample Service
 
-. 以 **platform-admin** 用户登录 KubeSphere Web 控制台。
+.  Log in to the KubeSphere web console as user **platform-admin**.
 
-. 进入 **kubesphere-sample-dev** 项目，在**应用负载**下的**服务**中点击 **ks-sample-dev**。在详情页获取 Endpoint 用于访问该服务。
+.  Enter the **kubesphere-sample-dev** project, click **ks-sample-dev** under **Services** in **Application Workloads**. On the details page, obtain the Endpoint for accessing this service.
 
-. 在右下角的**工具箱**中使用 **kubectl** 执行如下命令：
+.  Use **kubectl** in the **Toolbox** at the bottom right to execute the following command:
 +
 [,bash]
 ----
@@ -414,7 +410,7 @@ curl 10.233.120.230:8080
 ----
 
 
-. 预期输出:
+.  Expected output:
 +
 --
 [,bash]
@@ -424,15 +420,15 @@ Really appreciate your star, that's the power of our life.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-使用 **curl** 访问 Endpoint，或者访问 {$Virtual IP}:{$Port} 或 {$Node IP}:{$NodePort}。
+Use **curl** to access the Endpoint, or access {$Virtual IP}:{$Port} or {$Node IP}:{$NodePort}.
 
 |===
 --
 
-. 也可以在项目 **kubesphere-sample-prod** 中测试服务，您将看到相同的输出结果。
+.  You can also test the service in the **kubesphere-sample-prod** project, and you will see the same output.
 +
 [,bash]
 ----

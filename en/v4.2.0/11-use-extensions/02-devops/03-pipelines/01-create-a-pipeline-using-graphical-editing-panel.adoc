@@ -1,64 +1,60 @@
 ---
-title: "使用图形编辑面板创建流水线"
-keywords: "Kubernetes, {ks_product}, DevOps 项目, 使用 DevOps, 流水线, 使用图形编辑面板创建流水线"
-description: "介绍如何使用图形编辑面板创建流水线。"
+title: "Create a Pipeline Using the Graphical Editing Panel"
+keywords: "Kubernetes, {ks_product}, DevOps Project, Use DevOps, Pipeline, Create a Pipeline Using the Graphical Editing Panel"
+description: "Introduces how to create a pipeline using the graphical editing panel."
 weight: 01
 ---
 
+The graphical editing panel in DevOps contains all necessary operations for Jenkins link:https://www.jenkins.io/zh/doc/book/pipeline/#阶段[Stages] and link:https://www.jenkins.io/zh/doc/book/pipeline/#步骤[Steps]. DevOps supports defining these stages and steps directly on the interactive panel without creating any Jenkinsfile.
 
-DevOps 中的图形编辑面板包含用于 Jenkins link:https://www.jenkins.io/zh/doc/book/pipeline/#阶段[阶段 (Stage)] 和link:https://www.jenkins.io/zh/doc/book/pipeline/#步骤[步骤 (Step)] 的所有必要操作。DevOps 支持直接在交互式面板上定义这些阶段和步骤，无需创建任何 Jenkinsfile。
+This document demonstrates how to create a pipeline using the graphical editing panel in KubeSphere. Throughout the process, DevOps will automatically generate a Jenkinsfile based on the settings on the editing panel, and you do not need to manually create a Jenkinsfile. After the pipeline runs successfully, it will create a Deployment and a Service in your development environment and push the image to Docker Hub.
 
-本文档演示如何在 KubeSphere 中使用图形编辑面板创建流水线。在整个过程中，DevOps 将根据编辑面板上的设置自动生成 Jenkinsfile，您无需手动创建 Jenkinsfile。待流水线成功运行，它会在您的开发环境中创建一个部署和一个服务，并将镜像推送至 Docker Hub。
+== Prerequisites
 
+* The **DevOps** extension must be installed and enabled on the KubeSphere platform.
 
-== 前提条件
+* Have a link:http://www.dockerhub.com/[Docker Hub] account.
 
-* KubeSphere 平台需要安装并启用 **DevOps** 扩展组件。
+* Have created a workspace, a DevOps project, and a user (e.g., **project-regular**), and have invited this user to the DevOps project and granted the **operator** role. Refer to link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[Invite a User to a DevOps Project].
 
-* 已有一个 link:http://www.dockerhub.com/[Docker Hub] 账户。
+* Have created a user (e.g., **project-admin**) who has the **Project Creation** permission in the workspace.
 
-* 已创建一个企业空间、一个 DevOps 项目和一个用户（例如 **project-regular**），并已邀请该用户至 DevOps 项目且授予 **operator** 角色。请参阅link:../../02-devops-project-mangement/03-project-members/01-invite-a-user-to-a-project/[邀请用户加入 DevOps 项目]。
+* Have set up a CI-dedicated node for running pipelines. Refer to link:../15-set-ci-node/[Set a CI Node for Dependency Caching].
 
-* 已创建一个用户（例如 **project-admin**），其在企业空间中具有**项目创建**权限。
+* Configure an email server to receive pipeline notifications (optional).
+Refer to link:../11-jenkins-email/[Set an Email Server for Pipelines].
 
-* 已设置 CI 专用节点用于运行流水线。请参阅link:../15-set-ci-node/[为缓存依赖项设置 CI 节点]。
+* Configure SonarQube to incorporate code analysis into the pipeline (optional).
+Refer to link:../../10-how-to-integrate/01-sonarqube/[Integrate SonarQube into Pipelines].
 
-* 配置电子邮件服务器用于接收流水线通知（可选）。
-请参阅link:../11-jenkins-email/[为流水线设置电子邮件服务器]。
+== Pipeline Overview
 
-* 配置 SonarQube 将代码分析纳入流水线中（可选）。
-请参阅link:../../10-how-to-integrate/01-sonarqube/[将 SonarQube 集成到流水线]。
-
-
-== 流水线概述
-
-本示例流水线包括以下阶段。
+This sample pipeline includes the following stages.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Description
 
 |
-* **阶段 1：Checkout SCM**：从 GitHub 仓库拉取源代码。
+* **Stage 1: Checkout SCM**: Pull source code from a GitHub repository.
 
-* **阶段 2：单元测试**：待该测试通过后才会进行下一阶段。
+* **Stage 2: Unit Test**: The next stage proceeds only after this test passes.
 
-* **阶段 3：代码分析**（可选）：配置 SonarQube 用于静态代码分析。
+* **Stage 3: Code Analysis** (optional): Configure SonarQube for static code analysis.
 
-* **阶段 4：构建并推送**：构建镜像并附上标签 **snapshot-$BUILD_NUMBER** 推送至 Docker Hub，其中 **$BUILD_NUMBER** 是流水线运行记录列表中的记录的运行 ID。
+* **Stage 4: Build and Push**: Build the image, tag it with **snapshot-$BUILD_NUMBER**, and push it to Docker Hub, where **$BUILD_NUMBER** is the run ID of the record in the pipeline run record list.
 
-* **阶段 5：生成制品**：生成一个制品（JAR 文件包）并保存。
+* **Stage 5: Generate Artifact**: Generate an artifact (JAR file package) and save it.
 
-* **阶段 6：部署至开发环境**：在开发环境中创建一个部署和一个服务。该阶段需要进行审核，部署成功运行后，会发送电子邮件通知。
+* **Stage 6: Deploy to Development Environment**: Create a Deployment and a Service in the development environment. This stage requires review, and an email notification will be sent after the deployment runs successfully.
 |===
 
-
-== 步骤 1：创建凭证
+== Steps 1: Create Credentials
 
 include::../../../../_custom/devops/project-regular-oper-logIn.adoc[]
 +
 
-. 在左侧导航栏选择 **DevOps > 凭证**。
+. In the left navigation pane, select **DevOps > Credentials**.
 
 +
 
@@ -66,24 +62,24 @@ include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
 
 +
 
-. 创建以下凭证。有关如何创建凭证的更多信息，请参阅link:../../07-credentials/01-credential-management/[凭证]。
+. Create the following credentials. For more information on how to create credentials, refer to link:../../07-credentials/01-credential-management/[Credentials].
 +
 --
 [.admon.note,cols="a"]
 |===
-|说明
+|Description
 
 |
-如果您的账户或密码中包含特殊字符，例如 **@** 和 **$**，可能会因为无法识别而在流水线运行时导致错误。在这种情况下，请先在一些第三方网站（例如 link:https://www.urlencoder.org/[urlencoder]）上对账户或密码进行编码，然后将输出结果复制粘贴作为您的凭证信息。
+If your account or password contains special characters, such as **@** and **$**, it may cause errors during pipeline execution due to unrecognized characters. In this case, first encode the account or password on a third-party website (e.g., link:https://www.urlencoder.org/[urlencoder]), then copy and paste the output as your credential information.
 
 |===
 
 [%header,cols="1a,2a,2a"]
 |===
-|凭证 ID |类型 |用途
+|Credential ID |Type |Purpose
 
 |dockerhub-id
-|用户名和密码
+|Username and Password
 |Docker Hub
 
 |demo-kubeconfig
@@ -92,136 +88,132 @@ include::../../../../_custom/devops/devops-oper-dropdownList.adoc[]
 |===
 --
 
-. 再为 SonarQube 创建一个凭证 (**sonar-token**)，用于上述的阶段 3（代码分析）。凭证类型选择**访问令牌**，在**令牌**字段输入 SonarQube 令牌，请参阅link:../../10-how-to-integrate/01-sonarqube/#_为新项目创建_sonarqube_token[为新项目创建 SonarQube Token]。点击**确定**完成操作。
+. Create another credential for SonarQube (**sonar-token**) for Stage 3 (Code Analysis) mentioned above. Select **Access Token** as the credential type, enter the SonarQube token in the **Token** field, refer to link:../../10-how-to-integrate/01-sonarqube/#_为新项目创建_sonarqube_token[Create a SonarQube Token for a New Project]. Click **OK** to complete.
 
-. 创建完成后，您将在凭证页面看到已创建的凭证。
+. After creation, you will see the created credentials on the Credentials page.
 
-== 步骤 2：创建项目
+== Steps 2: Create a Project
 
-本示例中，流水线会将 link:https://github.com/kubesphere/devops-maven-sample/tree/v4.1.0-sonarqube[sample] 应用部署至一个项目。因此，需要创建一个项目（例如 **kubesphere-sample-dev**）。待流水线成功运行，将在该项目中自动创建该应用的部署和服务。
+In this example, the pipeline will deploy the link:https://github.com/kubesphere/devops-maven-sample/tree/v4.1.0-sonarqube[sample] application to a project. Therefore, you need to create a project (e.g., **kubesphere-sample-dev**). After the pipeline runs successfully, the application's Deployment and Service will be automatically created in this project.
 
-. 使用 **project-admin** 账户创建项目，该用户也将是 CI/CD 流水线的审核员。
+. Use the **project-admin** account to create the project. This user will also be the reviewer for the CI/CD pipeline.
 
-. 邀请 **project-regular** 账户至该项目，并授予 **operator** 角色。
+. Invite the **project-regular** account to this project and grant the **operator** role.
 
+== Steps 3: Create a Pipeline
 
-== 步骤 3：创建流水线
+. On the **DevOps > Pipelines** page, click **Create**.
 
-. 在 **DevOps > 流水线**页面点击**创建**。
+. In the dialog that appears, name it **graphical-pipeline** and click **Next**.
 
-. 在弹出的对话框中，将其命名为 **graphical-pipeline**，点击**下一步**。
-
-. 在**高级设置**页面，点击**添加**，添加以下字符串参数。这些参数将用于流水线的 Docker 命令。添加完成后，点击**创建**。
+. On the **Advanced Settings** page, click **Add** to add the following string parameters. These parameters will be used in the pipeline's Docker commands. After adding, click **Create**.
 +
 --
 [%header,cols="1a,2a,2a,2a"]
 |===
-|参数类型 |名称 |值 |参数说明
+|Parameter Type |Name |Value |Description
 
-|字符串
+|String
 |REGISTRY
 |`docker.io`
-|镜像仓库地址。本示例使用 **docker.io**。
+|Image registry address. This example uses **docker.io**.
 
-|字符串
+|String
 |DOCKERHUB_NAMESPACE
-|您的 Docker ID
-|您的 Docker Hub 账户或该账户下的组织名称。
+|Your Docker ID
+|Your Docker Hub account or the organization name under that account.
 
-|字符串
+|String
 |APP_NAME
 |`devops-sample`
-|应用名称。本示例使用 **devops-sample**。
+|Application name. This example uses **devops-sample**.
 |===
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Description
 
 |
-有关其他字段，请直接使用默认值或者参阅link:../05-pipeline-settings/[流水线设置]以自定义配置。
+For other fields, use the default values directly or refer to link:../05-pipeline-settings/[Pipeline Settings] for custom configuration.
 |===
 --
 
-== 步骤 4：编辑流水线
+== Steps 4: Edit the Pipeline
 
-. 点击流水线名称进入其详情页面。
+. Click the pipeline name to enter its details page.
 
-. 要使用图形编辑面板，点击**流水线配置**页签下的**编辑流水线**。在弹出的对话框中：
+. To use the graphical editing panel, click **Edit Pipeline** under the **Pipeline Configuration** tab. In the dialog that appears:
 
-* 点击**自定义流水线**，按照以下步骤设置各个阶段。
+* Click **Custom Pipeline** and follow the steps below to set up each stage.
 
-* 或使用 DevOps 提供的link:../03-use-pipeline-templates/[内置流水线模板]。
+* Or use the link:../03-use-pipeline-templates/[built-in pipeline templates] provided by DevOps.
 
-. 点击**下一步**，然后点击**创建**。
-
-
-[.admon.note,cols="a"]
-|===
-|说明
-
-|
-流水线详情页面的**同步状态**，显示了 KubeSphere 和 Jenkins 之间的同步结果。也可点击**编辑 Jenkinsfile** 手动为流水线创建一个 Jenkinsfile。
-
-|===
-
-=== 阶段 1：拉取源代码 (Checkout SCM)
-
-图形编辑面板包括两个区域：左侧的**画布**和右侧的**内容**。它会根据您对不同阶段和步骤的配置自动生成一个 Jenkinsfile，为开发者提供更加用户友好的操作体验。
-
+. Click **Next**, then click **Create**.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Description
 
 |
-流水线包括link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/#声明式流水线[声明式流水线]和link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/#脚本化流水线[脚本化流水线]。目前，支持使用该面板创建声明式流水线。有关流水线语法的更多信息，请参阅 link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/[Jenkins 文档]。
+The **Sync Status** on the pipeline details page shows the synchronization result between KubeSphere and Jenkins. You can also click **Edit Jenkinsfile** to manually create a Jenkinsfile for the pipeline.
 
 |===
 
-. 在图形编辑面板上，从**类型**下拉列表中选择 **node**，从 **Label** 下拉列表中选择 **maven**。
+=== Stage 1: Pull Source Code (Checkout SCM)
+
+The graphical editing panel includes two areas: the **Canvas** on the left and the **Content** on the right. It automatically generates a Jenkinsfile based on your configuration of different stages and steps, providing a more user-friendly experience for developers.
+
+[.admon.note,cols="a"]
+|===
+|Description
+
+|
+Pipelines include link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/#声明式流水线[Declarative Pipelines] and link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/#脚本化流水线[Scripted Pipelines]. Currently, using this panel to create declarative pipelines is supported. For more information on pipeline syntax, refer to link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/[Jenkins Documentation].
+
+|===
+. On the graphical editing panel, select **node** from the **Type** dropdown list and **maven** from the **Label** dropdown list.
 +
 --
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-**Agent** 用于定义执行环境。**Agent** 指令指定 Jenkins 执行流水线的位置和方式。有关更多信息，请参阅link:../12-choose-jenkins-agent/[选择 Jenkins Agent]。
+**Agent** is used to define the execution environment. The **Agent** directive specifies where and how Jenkins executes the pipeline. For more information, please refer to link:../12-choose-jenkins-agent/[Choosing a Jenkins Agent].
 
 |===
 
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/graphical_panel.png[,100%]
 --
 
-. 点击左侧的加号图标来添加阶段。点击**添加步骤**上方的文本框，然后在右侧的**名称**字段中为该阶段设置名称（例如 **Checkout SCM**）。
+. Click the plus icon on the left to add a stage. Click the text box above **Add Step**, then set a name for this stage (e.g., **Checkout SCM**) in the **Name** field on the right.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/edit_panel.png[,100%]
 
-. 点击**添加步骤**。在列表中选择 **Git Clone**，以从 GitHub 拉取示例代码。在弹出的对话框中，填写必需的字段。点击**确定**完成操作。
+. Click **Add Step**. Select **Git Clone** from the list to pull the sample code from GitHub. In the pop-up dialog, fill in the required fields. Click **OK** to complete the operation.
 +
 --
-* **URL**：输入 GitHub 仓库地址 link:https://github.com/kubesphere/devops-maven-sample.git[]。注意，这里是示例地址，请使用自己的仓库地址。
+* **URL**: Enter the GitHub repository address link:https://github.com/kubesphere/devops-maven-sample.git[]. Note, this is a sample address; please use your own repository address.
 
-* **凭证 ID**：本示例中无需输入凭证 ID。
+* **Credential ID**: No credential ID is required for this example.
 
-* **分支**：输入 **v4.1.0-sonarqube**。如果不需要代码分析阶段，则使用默认的 **v4.1.0** 分支。
+* **Branch**: Enter **v4.1.0-sonarqube**. If the code analysis stage is not needed, use the default **v4.1.0** branch.
 
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/enter_repo_url.png[,100%]
 --
 
-=== 阶段 2：单元测试
+=== Stage 2: Unit Test
 
-. 点击阶段 1 右侧的加号图标添加新的阶段，以在容器中执行单元测试。将它命名为 **Unit Test**。
+. Click the plus icon to the right of Stage 1 to add a new stage for executing unit tests in a container. Name it **Unit Test**.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/unit_test.png[,100%]
 
-. 点击**添加步骤**，在列表中选择**指定容器**。将其命名为 **maven** 然后点击**确定**。
+. Click **Add Step**, select **Specify Container** from the list. Name it **maven** and then click **OK**.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/container_maven.png[,100%]
 
-. 点击 **maven** 容器步骤下的**添加嵌套步骤**，在列表中选择 **shell** 并输入以下命令。点击**确定**保存操作。
+. Click **Add Nested Step** under the **maven** container step, select **shell** from the list, and enter the following command. Click **OK** to save the operation.
 +
 --
 [,bash]
@@ -231,42 +223,42 @@ mvn clean test
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-在图形编辑面板上，可指定在给定阶段指令中执行的一系列link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/#steps[步骤]。
+On the graphical editing panel, you can specify a series of link:https://www.jenkins.io/zh/doc/book/pipeline/syntax/#steps[steps] to be executed within a given stage directive.
 |===
 --
 
-=== 阶段 3：代码分析（可选）
+=== Stage 3: Code Analysis (Optional)
 
-本阶段使用 SonarQube 用于测试代码。如果不需要代码分析，可以跳过该阶段。
+This stage uses SonarQube for code testing. You can skip this stage if code analysis is not needed.
 
-. 点击 **Unit Test** 阶段右侧的加号图标添加一个阶段，以在容器中进行 SonarQube 代码分析。将它命名为 **Code Analysis**。
+. Click the plus icon to the right of the **Unit Test** stage to add a stage for SonarQube code analysis in a container. Name it **Code Analysis**.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/code_analysis_stage.png[,100%]
 
-. 在 **Code Analysis** 中，点击**添加步骤**，选择**指定容器**。将其命名为 **maven** 然后点击**确定**。
+. In **Code Analysis**, click **Add Step**, select **Specify Container**. Name it **maven** and then click **OK**.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/maven_container.png[,100%]
 
-. 点击 **maven** 容器步骤下的**添加嵌套步骤**，以添加一个嵌套步骤。点击**添加凭证**并从**凭证 ID** 列表中选择 SonarQube 令牌 (**sonar-token**)。在**文本变量**中输入 **SONAR_TOKEN**，然后点击**确定**。
+. Click **Add Nested Step** under the **maven** container step to add a nested step. Click **Add Credential** and select the SonarQube token (**sonar-token**) from the **Credential ID** list. Enter **SONAR_TOKEN** in the **Text Variable** field, then click **OK**.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/sonarqube_credentials.png[,100%]
 
-. 在**添加凭证**步骤下，点击**添加嵌套步骤**为其添加一个嵌套步骤。
+. Under the **Add Credential** step, click **Add Nested Step** to add a nested step for it.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/nested_step.png[,100%]
 
-. 点击 **Sonarqube 配置**，在弹出的对话框中输入名称 **sonar**，点击**确定**保存操作。
+. Click **Sonarqube Configuration**, enter the name **sonar** in the pop-up dialog, and click **OK** to save the operation.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/sonar_env.png[,100%]
 
-. 在 **Sonarqube 配置**步骤下，点击**添加嵌套步骤**为其添加一个嵌套步骤。
+. Under the **Sonarqube Configuration** step, click **Add Nested Step** to add a nested step for it.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/add_nested_step.png[,100%]
 
-. 点击 **shell** 并在命令行中输入以下命令，用于 sonarqube 认证和分析，点击**确定**完成操作。
+. Click **shell** and enter the following command in the command line for SonarQube authentication and analysis, then click **OK** to complete the operation.
 +
 --
 [,bash]
@@ -275,26 +267,25 @@ mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN
 ----
 --
 
-. 点击**指定容器**步骤下的**添加嵌套步骤**（第三个），选择**超时**。在时间中输入 **1** 并将单位选择为**小时**，点击**确定**完成操作。
+. Click **Add Nested Step** (the third one) under the **Specify Container** step, select **Timeout**. Enter **1** in the time field and select **Hour** as the unit, then click **OK** to complete the operation.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/add_nested_step_2.png[,100%]
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/timeout_set.png[,100%]
 
-. 点击**超时**步骤下的**添加嵌套步骤**，选择**运行代码质量检查 (SonarQube)**。在弹出的对话框中勾选**如果质量阈值状态不是绿色，则中止流水线**。点击**确定**保存操作。
+. Click **Add Nested Step** under the **Timeout** step, select **Run Code Quality Check (SonarQube)**. In the pop-up dialog, check **Abort the pipeline if the quality gate status is not green**. Click **OK** to save the operation.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/waitforqualitygate_set.png[,70%]
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/sonar_ready.png[,100%]
 
 
-=== 阶段 4：构建并推送镜像
+=== Stage 4: Build and Push Image
 
-. 点击前一个阶段右侧的加号图标添加一个新的阶段，以构建并推送镜像至 Docker Hub。将其命名为 **Build and Push**。
+. Click the plus icon to the right of the previous stage to add a new stage for building and pushing the image to Docker Hub. Name it **Build and Push**.
 
-. 在 **Build and Push** 中，点击**添加步骤**，选择**指定容器**，将其命名为 **maven**，然后点击**确定**。
-
-. 点击 **maven** 容器步骤下的**添加嵌套步骤**，在列表中选择 **shell** 并在弹出窗口中输入以下命令，点击**确定**完成操作。
+. In **Build and Push**, click **Add Step**, select **Specify Container**, name it **maven**, and then click **OK**.
+. Click **Add Nested Step** under the **maven** container step, select **shell** from the list, and enter the following command in the pop-up window. Click **OK** to complete the operation.
 +
 --
 [,bash]
@@ -303,7 +294,7 @@ mvn -Dmaven.test.skip=true clean package
 ----
 --
 
-. 再次点击**添加嵌套步骤**，选择 **shell**。在命令行中输入以下命令，以根据 link:https://github.com/kubesphere/devops-maven-sample/blob/v4.1.0-sonarqube/Dockerfile-online[Dockerfile] 构建 Docker 镜像。点击**确定**确认操作。
+. Click **Add Nested Step** again and select **shell**. In the command line, enter the following command to build the Docker image according to the link:https://github.com/kubesphere/devops-maven-sample/blob/v4.1.0-sonarqube/Dockerfile-online[Dockerfile]. Click **OK** to confirm the operation.
 +
 --
 [,bash]
@@ -313,27 +304,27 @@ docker build -f Dockerfile-online -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SN
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/shell_command.png[,100%]
 --
 
-. 再次点击**添加嵌套步骤**，选择**添加凭证**。在弹出的对话框中填写以下字段，点击**确定**确认操作。
+. Click **Add Nested Step** again and select **Add Credential**. In the pop-up dialog, fill in the following fields and click **OK** to confirm the operation.
 +
 --
-* **凭证名称**：选择您创建的 Docker Hub 凭证，例如 **dockerhub-id**。
-* **用户名变量**：输入 **DOCKER_USERNAME**。
-* **密码变量**：输入 **DOCKER_PASSWORD**。
+* **Credential Name**: Select the Docker Hub credential you created, for example, **dockerhub-id**.
+* **Username Variable**: Enter **DOCKER_USERNAME**.
+* **Password Variable**: Enter **DOCKER_PASSWORD**.
 
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/docker_credential.png[,100%]
 
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-出于安全原因，账户信息在脚本中显示为变量。
+For security reasons, account information is displayed as variables in the script.
 
 |===
 --
 
-. 在**添加凭证**步骤中点击**添加嵌套步骤**（第一个）。选择 **shell** 并在弹出窗口中输入以下命令，用于登录 Docker Hub。点击**确定**确认操作。
+. Under the **Add Credential** step, click **Add Nested Step** (the first one). Select **shell** and enter the following command in the pop-up window to log in to Docker Hub. Click **OK** to confirm the operation.
 +
 --
 [,bash]
@@ -344,7 +335,7 @@ echo "$DOCKER_PASSWORD"|docker login $REGISTRY -u "$DOCKER_USERNAME" --password-
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/login_docker_command.png[,100%]
 --
 
-. 再次在**添加凭证**步骤中点击**添加嵌套步骤**。选择 **shell** 并输入以下命令，将 SNAPSHOT 镜像推送至 Docker Hub。点击**确定**完成操作。
+. Click **Add Nested Step** again under the **Add Credential** step. Select **shell** and enter the following command to push the SNAPSHOT image to Docker Hub. Click **OK** to complete the operation.
 +
 --
 [,bash]
@@ -354,50 +345,50 @@ docker push $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BUILD_NUMBER
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/push_to_docker.png[,100%]
 --
 
-=== 阶段 5：生成制品
+=== Stage 5: Generate Artifacts
 
-. 点击 **Build and Push** 阶段右侧的加号图标添加一个新的阶段，以保存制品，将其命名为 **Artifacts**。本示例使用 JAR 文件包。
+. Click the plus icon on the right side of the **Build and Push** stage to add a new stage for saving artifacts, and name it **Artifacts**. This example uses a JAR file package.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/add_artifact_stage.png[,100%]
 
-. 选中 **Artifacts** 阶段，点击**添加步骤**，选择**保存制品**。在弹出的对话框中输入 **target/*.jar**，将其设置为 Jenkins 中制品的保存路径。点击**确定**完成操作。
+. Select the **Artifacts** stage, click **Add Step**, and select **Archive Artifacts**. In the pop-up dialog, enter **target/*.jar** to set it as the save path for artifacts in Jenkins. Click **OK** to complete the operation.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/artifact_info.png[,100%]
 
-=== 阶段 6：部署至开发环境
+=== Stage 6: Deploy to Development Environment
 
-. 点击 **Artifacts** 阶段右侧的加号图标添加最后一个阶段，将其命名为 **Deploy to Dev**。该阶段用于将资源部署至您的开发环境（即 **kubesphere-sample-dev** 项目）。
+. Click the plus icon on the right side of the **Artifacts** stage to add the final stage and name it **Deploy to Dev**. This stage is used to deploy resources to your development environment (i.e., the **kubesphere-sample-dev** project).
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/deploy_to_dev.png[,100%]
 
-. 点击 **Deploy to Dev** 阶段下的**添加步骤**，在列表中选择**审核**，然后在**消息**字段中填入 **@project-admin**，即 **project-admin** 账户在流水线运行到该阶段时会进行审核。点击**确定**保存操作。
+. Click **Add Step** under the **Deploy to Dev** stage, select **Input** from the list, then enter **@project-admin** in the **Message** field. This means the **project-admin** account will review when the pipeline runs to this stage. Click **OK** to save the operation.
 +
 --
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/input_message.png[,100%]
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-在 KubeSphere 中，能够运行流水线的账户也能够继续或终止该流水线。
+In KubeSphere, the account that can run the pipeline can also continue or terminate the pipeline.
 
-此外，流水线创建者、拥有该项目管理员角色的用户或者您指定的账户也有权限继续或终止流水线。
+Additionally, the pipeline creator, users with the project admin role in that project, or the account you specify also have permission to continue or terminate the pipeline.
 
 |===
 --
 
-. 再次点击 **Deploy to Dev** 阶段下的**添加步骤**。在列表中选择**指定容器**，将其命名为 **maven**，然后点击**确定**。
+. Click **Add Step** again under the **Deploy to Dev** stage. Select **Specify Container** from the list, name it **maven**, and then click **OK**.
 
-. 点击 **maven** 容器步骤下的**添加嵌套步骤**。在列表中选择**添加凭证**，在弹出的对话框中填写以下字段，然后点击**确定**。
+. Click **Add Nested Step** under the **maven** container step. Select **Add Credential** from the list, fill in the following fields in the pop-up dialog, and then click **OK**.
 +
 --
-* 凭证名称：选择您创建的 kubeconfig 凭证，例如 **demo-kubeconfig**。
+* Credential Name: Select the kubeconfig credential you created, for example, **demo-kubeconfig**.
 
-* kubeconfig 变量：输入 **KUBECONFIG_CONTENT**。
+* kubeconfig Variable: Enter **KUBECONFIG_CONTENT**.
 --
 
-. 点击**添加凭证**步骤下的**添加嵌套步骤**。在列表中选择 **shell**，在弹出的对话框中输入以下命令，然后点击**确定**。
+. Click **Add Nested Step** under the **Add Credential** step. Select **shell** from the list, enter the following command in the pop-up dialog, and then click **OK**.
 +
 --
 [,bash]
@@ -409,96 +400,94 @@ envsubst < deploy/no-branch-dev/devops-sample.yaml | kubectl apply -f -
 ----
 --
 
-. 如果想在流水线运行成功时接收电子邮件通知，请点击**添加步骤**，选择**邮件**，以添加电子邮件信息。注意，配置电子邮件服务器是可选操作，如果跳过该步骤，依然可以运行流水线。
+. If you want to receive email notifications when the pipeline runs successfully, click **Add Step**, select **mail**, to add email information. Note that configuring an email server is an optional operation. If you skip this step, you can still run the pipeline.
 +
 --
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-有关配置电子邮件服务器的更多信息，请参阅link:../11-jenkins-email/[为流水线设置电子邮件服务器]。
+For more information on configuring an email server, please refer to link:../11-jenkins-email/[Set Up an Email Server for Pipelines].
 |===
 --
 
 
-. 待完成上述步骤，在右下角点击**确定**，结束编辑流水线。该流水线将展示完整的工作流，并且清晰列示每个阶段。
+. After completing the above steps, click **OK** in the lower right corner to finish editing the pipeline. The pipeline will display the complete workflow and clearly list each stage.
 +
 --
-在用图形编辑面板定义流水线时，DevOps 会自动创建相应的 Jenkinsfile。点击**编辑 Jenkinsfile** 查看该 Jenkinsfile。
+When defining a pipeline using the graphical editing panel, DevOps automatically creates the corresponding Jenkinsfile. Click **Edit Jenkinsfile** to view this Jenkinsfile.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-在**流水线**列表页面，点击该流水线右侧的image:/images/ks-qkcp/zh/icons/more.svg[more,18,18]，选择**复制**来创建该流水线的副本。
+On the **Pipelines** list page, click image:/images/ks-qkcp/zh/icons/more.svg[more,18,18] on the right side of the pipeline and select **Copy** to create a copy of this pipeline.
 |===
 --
 
-== 步骤 5：运行流水线
-
-. 使用图形编辑面板创建的流水线需要手动运行。点击**运行**，弹出的对话框会显示link:#_步骤_3创建流水线[步骤 3：创建流水线]中已定义的三个字符串参数。点击**确定**来运行流水线。
+== Step 5: Run the Pipeline
+. Pipelines created using the graphical editing panel need to be run manually. Click **Run**. The pop-up dialog will display the three string parameters defined in link:#_步骤_3创建流水线[Step 3: Create a Pipeline]. Click **OK** to run the pipeline.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/run_pipeline.png[,100%]
 
-. 在**运行记录**页签，查看流水线的运行状态，点击运行状态查看详情。
+. On the **Run Records** tab, check the pipeline's run status. Click the run status to view details.
 
-. 稍等片刻，流水线如果运行成功，会在 **Deploy to Dev** 阶段停止。**project-admin** 作为流水线的审核员，需要进行审批，然后资源才会部署至开发环境。
+. After a short wait, if the pipeline runs successfully, it will stop at the **Deploy to Dev** stage. **project-admin**, as the pipeline approver, needs to perform the approval before resources are deployed to the development environment.
 
-. 以 **project-admin** 用户登录 KubeSphere Web 控制台并进入您的企业空间，在 **DevOps > 流水线**页面，点击流水线名称进入详情页。在**运行记录**页签下，点击要审核的记录，点击**继续**以批准流水线。
-
+. Log in to the KubeSphere web console as the **project-admin** user and enter your workspace. On the **DevOps > Pipelines** page, click the pipeline name to enter its details page. Under the **Run Records** tab, click the record to be reviewed, then click **Continue** to approve the pipeline.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-如果要同时运行多个不包含多分支的流水线，在**流水线**列表页面，全部选中这些流水线，然后点击**运行**来批量运行它们。
+To run multiple pipelines that do not contain multi-branches simultaneously, on the **Pipelines** list page, select all these pipelines and then click **Run** to run them in batch.
 |===
 
-== 步骤 6：查看流水线详情
+== Step 6: View Pipeline Details
 
 include::../../../../_custom/devops/project-regular-oper-logIn.adoc[]
 
-. 在 **DevOps > 流水线**页面，选择项目后，点击 **graphical-pipeline** 流水线。
+. On the **DevOps > Pipelines** page, after selecting the project, click the **graphical-pipeline** pipeline.
 
-. 在**运行记录**页签下，点击**状态**下的记录，进入**运行记录**详情页。如果任务状态为**成功**，流水线所有阶段都会显示**成功**。
+. Under the **Run Records** tab, click the record under **Status** to enter the **Run Record** details page. If the job status is **Success**, all stages of the pipeline will show **Success**.
 
-. 在**运行日志**页签下，点击每个阶段查看其详细日志。点击**查看完整日志**，根据日志排除故障和问题，也可以将日志下载到本地进行进一步分析。
+. Under the **Run Logs** tab, click each stage to view its detailed logs. Click **View Full Logs** to troubleshoot and resolve issues based on the logs, or download the logs locally for further analysis.
 
-== 步骤 7：下载制品
+== Step 7: Download Artifacts
 
-在**运行记录**详情页，点击**制品**页签，然后点击制品右侧的图标下载该制品。
+On the **Run Record** details page, click the **Artifacts** tab, then click the icon on the right side of the artifact to download it.
 
-== 步骤 8：查看代码分析结果
+== Step 8: View Code Analysis Results
 
-在**代码检查**页面，查看由 SonarQube 提供的本示例流水线的代码分析结果。如果没有事先配置 SonarQube，则该部分不可用。有关更多信息，请参阅link:../../10-how-to-integrate/01-sonarqube/[将 SonarQube 集成到流水线]。
+On the **Code Check** page, view the code analysis results for this sample pipeline provided by SonarQube. This section is unavailable if SonarQube is not configured beforehand. For more information, refer to link:../../10-how-to-integrate/01-sonarqube/[Integrate SonarQube into a Pipeline].
 
-== 步骤 9：验证 Kubernetes 资源
+== Step 9: Verify Kubernetes Resources
 
-如果流水线的每个阶段都成功运行，则会自动构建一个 Docker 镜像并推送至您的 Docker Hub 仓库。最终，流水线会在您事先设置的项目中自动创建一个部署和一个服务。
+If each stage of the pipeline runs successfully, a Docker image will be automatically built and pushed to your Docker Hub repository. Finally, the pipeline will automatically create a Deployment and a Service in the project you set up earlier.
 
-. 进入项目（本示例中即 **kubesphere-sample-dev**），点击**应用负载**下的**工作负载**，查看流水线自动创建的部署。
+. Go to the project (in this example, **kubesphere-sample-dev**), click **Workloads** under **Application Workloads** to view the Deployment created automatically by the pipeline.
 
-. 点击**应用负载**下的**服务**，查看示例服务通过 NodePort 暴露的端口号。使用 **<Node IP>:<NodePort>** 访问该服务。
+. Click **Services** under **Application Workloads** to view the port number exposed by the sample service via NodePort. Use **<Node IP>:<NodePort>** to access the service.
 +
 --
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
 |
-访问服务前，您可能需要配置端口转发规则并在安全组中放行该端口。
+Before accessing the service, you may need to configure port forwarding rules and allow the port in the security group.
 
 |===
 --
 
-. 流水线成功运行后，会推送一个镜像至 Docker Hub。登录 Docker Hub 查看结果。
+. After the pipeline runs successfully, an image will be pushed to Docker Hub. Log in to Docker Hub to view the result.
 +
 image:/images/ks-qkcp/zh/devops-user-guide/use-devops/create-a-pipeline-using-graphical-editing-panel/dockerhub_image.png[,100%]
 
-. 该应用名称为 **APP_NAME** 的值，本示例中即 **devops-sample**。Tag 为 **SNAPSHOT-$BUILD_NUMBER** 的值，**$BUILD_NUMBER** 即**运行记录**页签下记录的**运行 ID**。
+. The application name is the value of **APP_NAME**, which is **devops-sample** in this example. The Tag is the value of **SNAPSHOT-$BUILD_NUMBER**, where **$BUILD_NUMBER** is the **Run ID** recorded under the **Run Records** tab.
 
-. 如果您在link:#_阶段_6部署至开发环境[阶段 6：部署至开发环境]配置了电子邮件服务器并添加了电子邮件信息，运行完成后还会收到邮件通知。
+. If you configured an email server and added email information in link:#_阶段_6部署至开发环境[Stage 6: Deploy to Development Environment], you will also receive an email notification upon completion.

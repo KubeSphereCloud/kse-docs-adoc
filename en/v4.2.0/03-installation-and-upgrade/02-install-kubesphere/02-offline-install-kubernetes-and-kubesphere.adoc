@@ -1,142 +1,141 @@
 ---
-title: "离线安装 Kubernetes 和 KubeSphere"
-keywords: "Kubernetes, KubeSphere, 安装, 离线包, 离线安装, 离线部署"
-description: "了解如何在离线环境下安装 KubeSphere 和 Kubernetes。"
+title: "Offline Installation of Kubernetes and KubeSphere"
+keywords: "Kubernetes, KubeSphere, Installation, Offline Package, Offline Installation, Offline Deployment"
+description: "Learn how to install KubeSphere and Kubernetes in an offline environment."
 weight: 02
 ---
 
-本节介绍如何在不能访问 Internet 的环境下使用离线安装包部署 Kubernetes 和 KubeSphere。
+This section describes how to deploy Kubernetes and KubeSphere using an offline installation package in an environment without Internet access.
 
-安装过程中将用到开源工具 KubeKey  的 v4.x 版本。有关 KubeKey 的更多信息，请访问 link:https://github.com/kubesphere/kubekey[GitHub KubeKey 仓库]。
+The v4.x version of the open-source tool KubeKey will be used during the installation. For more information about KubeKey, please visit the link:https://github.com/kubesphere/kubekey[GitHub KubeKey repository].
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|``KubeSphere 社区版``用户需要在联网状态下自行构建离线安装包，KubeSphere 其他版本的用户可联系 KubeSphere 交付服务专家获取最新的离线安装包，即，可跳过离线安装包的构建过程。
+|``KubeSphere Community Edition`` users need to build the offline installation package themselves in a connected state. Users of other KubeSphere editions can contact KubeSphere delivery service experts to obtain the latest offline installation package, i.e., they can skip the offline package building process.
 |===
 
 
-== 准备工作
+== Preparations
 
-参考如下最低配置要求，准备 Linux 主机。
+Prepare Linux hosts according to the following minimum configuration requirements.
 
 // [.admon.note,cols="a"]
 // |===
-// |说明
+// |Note
 
-// |若无需构建离线安装包，则无需准备打包节点。
+// |If you do not need to build the offline installation package, you do not need to prepare a packaging node.
 // |===
 
 [%header,cols="1,1,2,2"]
 |===
-|角色	|主机数量	|最低要求（每个节点）	|网络要求
+|Role	|Number of Hosts	|Minimum Requirements (per node)	|Network Requirements
 
-|打包节点	|1	|CPU：1 核，内存：1 GB，硬盘：150 GB	|需能访问：link:https://github.com/[github.com]、link:https://www.docker.com/[docker.io]、link:https://quay.io/[quay.io]
-|部署节点（运行 Web Installer 服务）	|1	|CPU：1 核，内存：1 GB，硬盘：150 GB	|与 Kubernetes 节点网络互通
-|私有镜像仓库节点	|1	|CPU：8 核，内存：16 GB，硬盘：100 GB	|与 Kubernetes 节点网络互通
-|Kubernetes 节点	|≥ 1 |CPU：2 核，内存：4 GB，硬盘：40 GB	|节点间网络互通
+|Packaging Node	|1	|CPU: 1 core, Memory: 1 GB, Disk: 150 GB	|Must be able to access: link:https://github.com/[github.com], link:https://www.docker.com/[docker.io], link:https://quay.io/[quay.io]
+|Deployment Node (running Web Installer service)	|1	|CPU: 1 core, Memory: 1 GB, Disk: 150 GB	|Network connectivity with Kubernetes nodes
+|Private Image Registry Node	|1	|CPU: 8 cores, Memory: 16 GB, Disk: 100 GB	|Network connectivity with Kubernetes nodes
+|Kubernetes Node	|≥ 1 |CPU: 2 cores, Memory: 4 GB, Disk: 40 GB	|Network connectivity between nodes
 |===
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-* 同一台主机可同时承担多个角色，如同时是部署节点和私有镜像仓库节点，或者同时是部署节点和 Kubernetes 节点。
-* 私有镜像仓库节点与 Kubernetes 节点不能是同一台主机。
+* A single host can serve multiple roles simultaneously, such as being both a deployment node and a private image registry node, or both a deployment node and a Kubernetes node.
+* The private image registry node and Kubernetes nodes cannot be the same host.
 |===
 
-* **打包节点**：您需要准备至少 1 台 Linux 服务器作为打包节点。该节点将从互联网下载所需软件包与镜像，需确保能够访问以下地址：`github.com`、`docker.io`、`quay.io`。
+* **Packaging Node**: You need to prepare at least 1 Linux server as the packaging node. This node will download the required software packages and images from the Internet. Ensure it can access the following addresses: `github.com`, `docker.io`, `quay.io`.
 
-* **部署节点**（运行 **Web Installer** 服务）：安装过程中需要在该节点上执行 `kk` 命令以运行安装服务。该节点需与私有镜像仓库节点、Kubernetes 节点保持网络互通。
+* **Deployment Node** (running the **Web Installer** service): During installation, you need to execute the `kk` command on this node to run the installation service. This node must have network connectivity with the private image registry node and Kubernetes nodes.
 
-* **私有镜像仓库节点**：如果您尚未部署任何私有镜像仓库，请准备至少 1 台 Linux 服务器作为私有镜像仓库节点。该节点需与 Kubernetes 各节点保持网络互通。
+* **Private Image Registry Node**: If you have not deployed any private image registry, please prepare at least 1 Linux server as the private image registry node. This node must have network connectivity with all Kubernetes nodes.
 
-* **Kubernetes 节点**：您需要准备至少 1 台 Linux 服务器作为集群节点（无需提前安装 Kubernetes）。
+* **Kubernetes Node**: You need to prepare at least 1 Linux server as a cluster node (Kubernetes does not need to be pre-installed).
 
-== 前提条件
+== Prerequisites
 
-// 除容器运行时的说明外，其他部分与在线安装的前提条件相同。
+// Except for the container runtime description, other parts are the same as the prerequisites for online installation.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|以下为 Kubernetes 节点需满足的前提条件。
+|The following are the prerequisites that Kubernetes nodes must meet.
 |===
 
-* 您需要准备至少 1 台 Linux 服务器作为集群节点。在生产环境中，为确保集群具备高可用性，建议准备至少 5 台 Linux 服务器，其中 3 台作为控制平面节点，另外 2 台作为工作节点。如果您在多台 Linux 服务器上安装 KubeSphere，请确保所有服务器属于同一子网。
+* You need to prepare at least 1 Linux server as a cluster node. In a production environment, to ensure high availability of the cluster, it is recommended to prepare at least 5 Linux servers, with 3 as control plane nodes and the other 2 as worker nodes. If you are installing KubeSphere on multiple Linux servers, ensure all servers belong to the same subnet.
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-desc-systemRequirements.adoc[]
 
-* 在生产环境中，为确保集群具有足够的计算和存储资源，建议每台集群节点配置至少 8 个 CPU 核心、16 GB 内存和 200 GB 磁盘空间。除此之外，建议在每台集群节点的 **/var/lib/docker**（对于 Docker）或 **/var/lib/containerd**（对于 containerd） 目录额外挂载至少 200 GB 磁盘空间用于存储容器运行时数据。
+* In a production environment, to ensure the cluster has sufficient computing and storage resources, it is recommended to configure each cluster node with at least 8 CPU cores, 16 GB of memory, and 200 GB of disk space. Additionally, it is recommended to mount at least 200 GB of extra disk space on each cluster node in the **/var/lib/docker** (for Docker) or **/var/lib/containerd** (for containerd) directory for storing container runtime data.
 
-* 在生产环境中，建议提前为 KubeSphere 集群配置高可用性以避免单个控制平面节点出现故障时集群服务中断。有关更多信息，请参阅link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[配置高可用性]。
+* In a production environment, it is recommended to configure high availability for the KubeSphere cluster in advance to avoid cluster service interruption when a single control plane node fails. For more information, please refer to link:../../../03-installation-and-upgrade/01-preparations/02-configure-high-availability/02-configure-k8s-high-availability/[Configure High Availability].
 +
 --
 // Note
 include::../../../../_ks_components/admonitions/note.adoc[]
 
-如果您规划了多个控制平面节点，请务必提前为集群配置高可用性。
+If you have planned multiple control plane nodes, be sure to configure high availability for the cluster in advance.
 
 include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 --
 
-* 默认情况下，KubeSphere 使用集群节点的本地磁盘空间作为持久化存储。在生产环境中，建议提前配置外部存储系统作为持久化存储。有关更多信息，请参阅link:../../../03-installation-and-upgrade/01-preparations/04-configure-external-persistent-storage/[配置外部持久化存储]。
+* By default, KubeSphere uses the local disk space of cluster nodes as persistent storage. In a production environment, it is recommended to configure an external storage system as persistent storage in advance. For more information, please refer to link:../../../03-installation-and-upgrade/01-preparations/04-configure-external-persistent-storage/[Configure External Persistent Storage].
 
-// * 如果集群节点未安装容器运行时，安装工具 KubeKey 将在安装过程中自动为每个集群节点安装 Docker 作为容器运行时。您也可以提前手动安装 containerd、CRI-O 或 iSula 作为容器运行时。
+// * If container runtime is not installed on cluster nodes, the installation tool KubeKey will automatically install Docker as the container runtime on each cluster node during installation. You can also manually install containerd, CRI-O, or iSula as the container runtime in advance.
 // +
 // --
 // // Note
 // include::../../../../_ks_components/admonitions/note.adoc[]
 
-// CRI-O 和 iSula 与 KubeSphere 的兼容性尚未经过充分测试，可能存在未知问题。
+// The compatibility of CRI-O and iSula with KubeSphere has not been fully tested, and there may be unknown issues.
 
 // include::../../../../_ks_components/admonitions/admonEnd.adoc[]
 // --
 
-* 请确保所有集群节点上 **/etc/resolv.conf** 文件中配置的 DNS 服务器地址可用。否则，KubeSphere 集群可能会出现域名解析问题。
+* Ensure that the DNS server addresses configured in the **/etc/resolv.conf** file on all cluster nodes are available. Otherwise, the KubeSphere cluster may experience domain name resolution issues.
 
-* 请确保在所有集群节点上都可以使用 **sudo**、**tar**、**curl** 和 **openssl** 命令。
+* Ensure that the **sudo**, **tar**, **curl**, and **openssl** commands are available on all cluster nodes.
 
-* 请确保所有集群节点时间同步。
+* Ensure time synchronization across all cluster nodes.
 
 
-== 配置防火墙规则
+== Configure Firewall Rules
 
-// 与在线安装的相同
+// Same as for online installation
 
-KubeSphere 需要特定端口和协议用于服务之间的通信。如果您的基础设施环境已启用防火墙，您需要在防火墙设置中放行所需的端口和协议。如果您的基础设施环境未启用防火墙，您可以跳过此步骤。
+KubeSphere requires specific ports and protocols for communication between services. If your infrastructure environment has a firewall enabled, you need to allow the required ports and protocols in the firewall settings. If your infrastructure environment does not have a firewall enabled, you can skip this step.
 
-下表列出需要在防火墙中放行的端口和协议。
+The table below lists the ports and protocols that need to be allowed in the firewall.
 
 include::../../../_custom/installationAndUpgrade/installationAndUpgrade-para-portRequirement.adoc[]
 
-== 步骤 1：构建离线安装包
+== Step 1: Build the Offline Installation Package
 
-登录``打包节点``，然后参照以下步骤构建离线安装包。
+Log in to the ``Packaging Node``, then follow the steps below to build the offline installation package.
 
-=== 1. 创建配置文件
+=== 1. Create Configuration File
 
-. 访问 https://get-images.kubesphere.io/
+. Visit https://get-images.kubesphere.io/
 
-. 点击选择需要部署的扩展组件。
+. Click to select the extensions you need to deploy.
 
-. 点击**提交**。
+. Click **Submit**.
 
-. 在打包节点上创建 `config.yaml` 文件。
+. Create a `config.yaml` file on the packaging node.
 +
 [source,bash]
 ----
 vi config.yaml
 ----
 
-. 将提交按钮下方的**配置文件结果**复制到 config.yaml 文件中。
+. Copy the **Configuration File Result** below the submit button into the config.yaml file.
 +
 ====
-以下内容仅为示例，请复制实际配置信息。
-
+The following content is for example only; please copy the actual configuration information.
 [source,yaml]
 ----
 apiVersion: kubekey.kubesphere.io/v1
@@ -197,7 +196,7 @@ spec:
     nfs_provisioner_version: 4.2.0
 ----
 
-在未经过身份验证的情况下从某些镜像仓库拉取镜像时，极易触发速率限制（ratelimit）等异常，从而导致操作失败。若要登录镜像仓库并拉取镜像，需更新上述配置信息，方法如下：
+When pulling images from certain image registries without authentication, it is easy to trigger exceptions such as rate limits, leading to operation failures. To log in to an image registry and pull images, you need to update the above configuration information as follows:
 
 [source,bash]
 ----
@@ -205,18 +204,18 @@ cat >> config.yaml << 'EOF'
   cri:
     registry:
       auths:
-        - repo: <镜像仓库地址> # 拉取镜像时需访问的镜像仓库，如 docker.io
-          username: <镜像仓库账号> # 如 docker.io 的登录账户
-          password: <镜像仓库密码> # 如 docker.io 的登录密码
+        - repo: <Image Registry Address> # The image registry to access when pulling images, e.g., docker.io
+          username: <Image Registry Account> # e.g., login account for docker.io
+          password: <Image Registry Password> # e.g., login password for docker.io
 EOF
 ----
 ====
 
-=== 2. 获取 kk 与 Web Installer
+=== 2. Obtain kk and Web Installer
 
-`kk` 是 ​​KubeKey​​ 的命令行可执行文件，用于快速部署和管理 Kubernetes 集群及相关组件，`Web Installer` 是 ​​KubeKey​​ 的图形化界面，用于部署 Kubernetes 和 KubeSphere。
+`kk` is the command-line executable file of KubeKey, used for quickly deploying and managing Kubernetes clusters and related extensions. `Web Installer` is the graphical interface of KubeKey, used for deploying Kubernetes and KubeSphere.
 
-执行以下命令安装 kk 和 Web Installer。请先确保打包节点上已经安装了 `tar` 工具。
+Execute the following command to install kk and Web Installer. First, ensure that the `tar` tool is already installed on the packaging node.
 
 [source,bash]
 ----
@@ -225,83 +224,83 @@ export VERSION=latest
 curl -sfL https://get-kk.kubesphere.io | sh -
 ----
 
-执行完成后，会在当前目录生成以下文件：
+After execution, the following files will be generated in the current directory:
 
 [%header,cols="1a,4a"]
 |===
-|原文件 |解压后的文件
+|Original File |Extracted Files
 
 |`kubekey-v4.x.x-linux-amd64.tar.gz`
-|`kk`：为 KubeKey 的二进制文件。
+|`kk`: The binary file for KubeKey.
 
 |`web-installer.tgz`
-|* `dist`：Web 页面资源。
-* `host-check.yaml`，`kubernetes`，`kubesphere`：任务模板文件。
-* `schema`：配置文件。
-* `README.md`：安装说明文档。
+|* `dist`: Web page resources.
+* `host-check.yaml`, `kubernetes`, `kubesphere`: Job template files.
+* `schema`: Configuration files.
+* `README.md`: Installation documentation.
 
 |`package.sh`
-|离线安装包的构建脚本。
+|Offline installation package build script.
 |===
 
-=== 3. 制作离线安装包
+=== 3. Build the Offline Installation Package
 
-使用之前创建的配置文件执行离线包构建脚本。该步骤耗时较长，请耐心等待执行完成。
+Use the previously created configuration file to execute the offline package build script. This step takes a long time, please wait patiently for it to complete.
 
 [source,bash]
 ----
 ./package.sh config.yaml
 ----
 
-如果显示如下信息，表明离线包构建成功：
+If the following information is displayed, it indicates that the offline package was built successfully:
 
 ----
 Offline package offline.tgz has been created successfully.
 ----
 
-执行完成后，会在当前目录生成 `offline.tgz` 文件，该文件即为完整的离线安装包。
+After execution, the `offline.tgz` file will be generated in the current directory. This file is the complete offline installation package.
 
-== 步骤 2：将离线安装包复制到部署节点
+== Steps 2: Copy the Offline Installation Package to the Deployment Node
 
-将离线安装包复制到``部署节点``并解压，后续操作均需在部署节点上解压后的目录中执行。
+Copy the offline installation package to the `deployment node` and extract it. All subsequent operations must be performed in the extracted directory on the deployment node.
 
-离线安装包可以是您自己构建的（如 `offline.tgz`），也可以是从 KubeSphere 交付服务专家处获取的。
-
-[source,bash]
-----
-tar -zxvf offline.tgz  #注意替换离线包名称
-----
+The offline installation package can be one you built yourself (e.g., `offline.tgz`) or one obtained from a KubeSphere delivery service expert.
 
 [source,bash]
 ----
-cd offline  #注意替换为实际目录名称
+tar -zxvf offline.tgz  #Note to replace the offline package name
+----
+
+[source,bash]
+----
+cd offline  #Note to replace with the actual directory name
 ----
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
 |
-后续步骤都将在部署节点上进行，且必须在解压后的目录（如 `offline`）中执行命令，否则会导致操作失败。
+All subsequent steps will be performed on the deployment node, and commands must be executed within the extracted directory (e.g., `offline`), otherwise the operation will fail.
 |===
 
 
-== 步骤 3：同步镜像到私有镜像仓库
+== Steps 3: Synchronize Images to the Private Image Registry
 
-登录``部署节点``并进入离线包解压后的目录，参照以下步骤将离线安装包里的镜像同步到私有镜像仓库中。
+Log in to the `deployment node` and enter the directory where the offline package was extracted. Follow the steps below to synchronize the images from the offline installation package to the private image registry.
 
-=== 场景一：没有私有镜像仓库
+=== Scenario 1: No Private Image Registry
 
-当没有私有镜像仓库时，可使用 kk 创建 harbor 镜像仓库。
+When there is no private image registry, you can use kk to create a harbor image registry.
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|私有镜像仓库节点需要预安装 tar 工具。
+|The private image registry node needs to have the tar tool pre-installed.
 |===
 
-. 进入离线包解压后的目录，创建节点配置文件 `inventory_init_registry.yaml`。
+. Enter the directory where the offline package was extracted and create the node configuration file `inventory_init_registry.yaml`.
 +
 ====
 [source,bash]
@@ -309,8 +308,7 @@ cd offline  #注意替换为实际目录名称
 vi inventory_init_registry.yaml
 ----
 
-根据指引，将镜像仓库的相关信息填写至相应位置。
-
+Follow the instructions and fill in the relevant information for the image registry in the appropriate locations.
 [source,yaml]
 ----
 kind: Inventory
@@ -319,14 +317,14 @@ metadata:
 spec:
   hosts:
     harbor:
-      # 此处输入的是安装 harbor 的节点的 ssh 登录信息
-      # kubekey 会远程连接到该主机并安装 harbor
-      internal_ipv4: <镜像仓库节点 IP 地址>
+      # Enter the SSH login information for the node where Harbor will be installed
+      # KubeKey will remotely connect to this host and install Harbor
+      internal_ipv4: <Image Registry Node IP Address>
       connector:
-        host: <镜像仓库节点 ssh 连接 IP >
-        port: <镜像仓库节点 ssh 连接端口> # 默认 22 
-        user: <镜像仓库节点 ssh 连接用户> # 默认 root
-        password: <镜像仓库节点 ssh 连接密码>
+        host: <Image Registry Node SSH Connection IP>
+        port: <Image Registry Node SSH Connection Port> # Default 22
+        user: <Image Registry Node SSH Connection User> # Default root
+        password: <Image Registry Node SSH Connection Password>
   groups:
       image_registry:
         hosts:
@@ -335,67 +333,67 @@ spec:
     image_registry:
       type: harbor
       auth:
-        # 此处输入您预期的镜像仓库域名和默认账号
-        # 自动创建的 harbor 会使用该域名地址，同时将设置的账号密码作为默认账号密码
-        registry: <预期的镜像仓库域名地址>
+        # Enter your expected image registry domain name and default account here
+        # The automatically created Harbor will use this domain address, and the set account password will be used as the default account password
+        registry: <Expected Image Registry Domain Address>
         username: admin
-        password: <预期的镜像仓库 admin 密码>
-        # kk 部署 harbor 镜像仓库默认使用的是自签名证书。如果您已经申请并持有可信的 SSL 证书，可通过可信证书运行 harbor
-        #cert_file: <可信服务证书路径>
-        #key_file: <服务证书 key 路径>
+        password: <Expected Harbor Admin Password>
+        # The Harbor image registry deployed by kk uses a self-signed certificate by default. If you have already applied for and hold a trusted SSL certificate, you can run Harbor with a trusted certificate.
+        #cert_file: <Trusted Service Certificate Path>
+        #key_file: <Service Certificate Key Path>
     localDNS:
      - /etc/hosts
 ----
 ====
 
-. 安装 harbor 并同步镜像。
+. Install Harbor and synchronize images.
 +
 ====
-使用上一步创建的 inventory_init_registry.yaml，执行以下命令。
+Using the `inventory_init_registry.yaml` created in the previous step, execute the following command.
 
 [source,bash]
 ----
 ./kk init registry -i inventory_init_registry.yaml --workdir $(pwd)/prepare --set binary_dir=$(pwd)/kubekey/kubekey
 ----
 
-如果显示如下信息，表明 harbor 镜像仓库创建成功，且离线包中的镜像已成功同步到镜像仓库。
+If the following information is displayed, it indicates that the Harbor image registry has been successfully created and the images in the offline package have been successfully synchronized to the image registry.
 
-回显示例：
+Example output:
 ----
 [Playbook default/init-registry-j2khj] finish. total: 88,success: 88,ignored: 0,failed: 0
 ----
 ====
 
-. 配置域名发现。harbor 镜像仓库的域名需要被 Kubernetes 节点发现。
+. Configure domain name discovery. The Harbor image registry domain name needs to be discoverable by Kubernetes nodes.
 +
-* 方案一：在域名服务器上配置域名发现。
-* 方案二：在每个 Kubernetes 节点上，通过配置 /etc/hosts 文件实现本地域名解析。​
+* Option 1: Configure domain name discovery on the DNS server.
+* Option 2: On each Kubernetes node, implement local domain name resolution by configuring the `/etc/hosts` file.
 +
 ====
-登录 ``Kubernetes 节点``，执行以下命令：
+Log in to the ``Kubernetes node`` and execute the following command:
 
 [source,bash]
 ----
-echo '<镜像仓库节点 IP 地址> <镜像仓库域名地址>' | sudo tee -a /etc/hosts
+echo '<Image Registry Node IP Address> <Image Registry Domain Address>' | sudo tee -a /etc/hosts
 ----
 ====
 
-. （可选）配置 Kubernetes 节点信任 harbor 自签名证书。
+. (Optional) Configure Kubernetes nodes to trust the Harbor self-signed certificate.
 +
-kk 部署 harbor 镜像仓库默认使用的是自签名证书。Kubernetes 节点上的容器运行时（docker，containerd）从该私有仓库拉取镜像时，需要进行证书认证。
+The Harbor image registry deployed by kk uses a self-signed certificate by default. The container runtime (docker, containerd) on Kubernetes nodes needs to perform certificate authentication when pulling images from this private registry.
 +
-.. 获取自签名的 harbor 的服务证书。
+.. Obtain the self-signed Harbor service certificate.
 +
 --
-登录``私有镜像仓库节点``，查询 harbor 版本，以便确定 harbor 服务证书的所在路径：`/opt/harbor/<harbor 版本>/ssl/server.crt`。
+Log in to the ``Private Image Registry Node`` and query the Harbor version to determine the path of the Harbor service certificate: `/opt/harbor/<harbor version>/ssl/server.crt`.
 
-查询 harbor 版本：
+Query the Harbor version:
 [source,bash]
 ----
 docker images | grep harbor-core
 ----
 
-harbor 服务证书所在路径的示例如下：
+Example path for the Harbor service certificate:
 [source,bash]
 ----
 /opt/harbor/v2.10.1/ssl/server.crt
@@ -403,33 +401,33 @@ harbor 服务证书所在路径的示例如下：
 
 --
 
-.. 复制 harbor 服务证书到每个 Kubernetes 节点的可信域中。
+.. Copy the Harbor service certificate to the trusted domain of each Kubernetes node.
 +
 ====
-登录 ``Kubernetes 节点``，执行以下命令：
+Log in to the ``Kubernetes node`` and execute the following commands:
 
-* Ubuntu 系统：
+* Ubuntu system:
 +
 [source,bash]
 ----
-cp /opt/harbor/<harbor 版本>/ssl/server.crt /usr/local/share/ca-certificates/
+cp /opt/harbor/<harbor version>/ssl/server.crt /usr/local/share/ca-certificates/
 update-ca-certificates
 ----
 
-* CentOS 系统：
+* CentOS system:
 +
 [source,bash]
 ----
-cp /opt/harbor/<harbor 版本>/ssl/server.crt /etc/pki/ca-trust/source/anchors/
+cp /opt/harbor/<harbor version>/ssl/server.crt /etc/pki/ca-trust/source/anchors/
 update-ca-trust
 ----
 ====
 
-=== 场景二：已有私有镜像仓库
+=== Scenario 2: Existing Private Image Registry
 
-如果已经有镜像仓库，则只需要将离线安装包里的镜像同步到已有的私有镜像仓库中。
+If you already have an image registry, you only need to synchronize the images from the offline installation package to the existing private image registry.
 
-. 进入离线包解压后的目录，创建节点配置文件 `inventory_sync_image.yaml`。
+. Go to the directory where the offline package is extracted and create the node configuration file `inventory_sync_image.yaml`.
 +
 ====
 [source,bash]
@@ -446,16 +444,16 @@ spec:
   vars:
     image_registry:
       auth:
-        # 确保您提供的镜像仓库账号密码拥有创建项目和推送镜像的权限
-        registry: <您的镜像仓库地址>
-        username: <您的镜像仓库账号>
-        password: <您的镜像仓库密码>
+        # Ensure the provided image registry account and password have permissions to create projects and push images
+        registry: <Your Image Registry Address>
+        username: <Your Image Registry Account>
+        password: <Your Image Registry Password>
     localDNS:
      - /etc/hosts
 ----
 ====
 
-. 同步镜像。使用上一步创建的 `inventory_sync_image.yaml` 来推送镜像。
+. Synchronize images. Use the `inventory_sync_image.yaml` created in the previous step to push images.
 +
 ====
 [source,bash]
@@ -463,23 +461,23 @@ spec:
 ./kk artifact images -i inventory_sync_image.yaml --workdir $(pwd)/prepare --set binary_dir=$(pwd)/kubekey/kubekey,download.download_image=false
 ----
 
-如果显示如下信息，表明离线包中的镜像已成功同步到镜像仓库。
+If the following information is displayed, it indicates that the images in the offline package have been successfully synchronized to the image registry.
 
-回显示例：
+Example output:
 ----
 [Playbook default/artifact-images-fkgmw] finish. total: 15,success: 15,ignored: 0,failed: 0
 ----
 ====
 
-== 步骤 4：启动 Web Installer
+== Step 4: Start the Web Installer
 
-Web Installer 是 Kubekey 的图形化页面，用于部署 Kubernetes 和 Kubesphere。
+The Web Installer is the graphical interface of KubeKey for deploying Kubernetes and KubeSphere.
 
-登录``部署节点``并进入离线包解压后的目录，执行以下命令启动 Web Installer：
+Log in to the ``Deployment Node`` and go to the directory where the offline package is extracted, then execute the following command to start the Web Installer:
 
 [source,bash]
 ----
-cd offline  #注意替换为实际目录名称
+cd offline  #Note: Replace with the actual directory name
 ----
 
 [source,bash]
@@ -487,173 +485,169 @@ cd offline  #注意替换为实际目录名称
 ./kk web --port 8080 --schema-path schema --ui-path dist
 ----
 
-执行后请勿关闭命令终端，在浏览器通过 `http://<部署节点 IP 地址>:8080`，打开 Kubekey 的 UI 页面。
+After execution, do not close the command terminal. Open the KubeKey UI page in a browser via `http://<Deployment Node IP Address>:8080`.
 
 
-== 步骤 5：部署 Kubernetes 和 Kubesphere
+== Step 5: Deploy Kubernetes and KubeSphere
 
-在  `http://<部署节点 IP 地址>:8080` 页面，点击**开始安装**，进入部署流程。
+On the `http://<Deployment Node IP Address>:8080` page, click **Start Installation** to enter the deployment process.
 
-===  1. 添加集群节点
+===  1. Add Cluster Nodes
 
-在**基本信息**页面，添加 Kubernetes 节点。支持通过手动添加、文件上传和节点扫描的方式添加节点。
+On the **Basic Information** page, add Kubernetes nodes. Supports adding nodes manually, via file upload, or by node scanning.
 
 [.admon.attention,cols="a"]
 |===
-|注意
+|Note
 
-|如果只添加一个节点，节点角色必须为 `Master & Worker`。
+|If only one node is added, the node role must be `Master & Worker`.
 
 |===
 
-* **手动添加**
+* **Manual Addition**
 +
 --
-适用于添加单个节点。填写主机名、IP 地址、SSH 地址、SSH 认证等信息。
+Suitable for adding a single node. Fill in the hostname, IP address, SSH address, SSH authentication, and other information.
 
 image::/images/ks-qkcp/zh/v4.2.0/web-installer/add-node-manual.png[,80%]
 --
 
-* **文件上传**
+* **File Upload**
 +
 --
-适用于批量添加节点。根据模板填写节点信息后上传。
+Suitable for batch adding nodes. Fill in node information according to the template and then upload.
 
 image::/images/ks-qkcp/zh/v4.2.0/web-installer/add-node-upload.png[,90%]
 --
 
-* **节点扫描**
+* **Node Scanning**
 +
 --
-适用于自动发现节点。通过 IP CIDR 来进行节点扫描。可根据扫描结果自由选择节点进行添加。
-
+Suitable for automatic node discovery. Scan nodes via IP CIDR. You can freely select nodes to add based on the scan results.
 image::/images/ks-qkcp/zh/v4.2.0/web-installer/add-node-ip-range.png[,80%]
 --
 
-=== 2. 修改配置参数
+=== 2. Modify Configuration Parameters
 
-配置部署 Kubernetes 和 KubeSphere 所需的参数。
+Configure the parameters required for deploying Kubernetes and KubeSphere.
 
-Kubernetes 和 KubeSphere Core 标签页均支持**表单模式**和 **YAML 模式**。您可以在表单中填写配置信息（所有参数均需配置），或直接编辑 yaml 文件。如需了解更多配置信息，请参阅link:https://github.com/kubesphere/kubekey/blob/master/docs/config-example.md[此文件]。
+Both the **Kubernetes** and **KubeSphere Core** tabs support **Form Mode** and **YAML Mode**. You can fill in the configuration information in the form (all parameters must be configured) or directly edit the YAML file. For more configuration information, please refer to link:https://github.com/kubesphere/kubekey/blob/master/docs/config-example.md[this file].
 
 image::/images/ks-qkcp/zh/v4.2.0/web-installer/install-config.png[,80%]
 
-* **Kubernetes 配置**
+* **Kubernetes Configuration**
 +
 --
 [%header,cols="1,1a,4a"]
 |===
-|分类 |参数 |描述
+|Category |Parameter |Description
 
-.5+|集群配置
-|集群名称
-|输入一个集群名称。
+.5+|Cluster Configuration
+|Cluster Name
+|Enter a cluster name.
 
-|Kubernetes 版本
-|此处的版本必须和离线安装包目录下 `config.yaml` 中的 `kube_version` 保持一致。
+|Kubernetes Version
+|The version here must match the `kube_version` in the `config.yaml` file located in the offline installation package directory.
 
-|集群访问地址
-|集群的统一访问入口地址，通常为负载均衡器的域名。
+|Cluster Access Address
+|The unified access endpoint address for the cluster, typically the domain name of the load balancer.
 
-|端口
-|集群的访问端口。
+|Port
+|The access port for the cluster.
 
-|路由方式
-|支持 local 和 haproxy 两种方式。
+|Routing Mode
+|Supports `local` and `haproxy` modes.
 
-.1+|容器运行时
-|类型
-|容器运行时的类型，支持 docker 和 containerd。
+.1+|Container Runtime
+|Type
+|The type of container runtime, supports `docker` and `containerd`.
 
-.5+|网络设置
-|网络插件
-|支持多种插件，如 calico, cilium, flannel, hybridnet 和 kubeovn。
+.5+|Network Settings
+|Network Plugin
+|Supports multiple plugins, such as `calico`, `cilium`, `flannel`, `hybridnet`, and `kubeovn`.
 
-|每节点最大 Pod 数
-|每个节点可运行 Pod 的最大数量。默认为 110。
+|Max Pods Per Node
+|The maximum number of pods that can run on each node. Default is 110.
 
 |Service CIDR
-|集群内部“服务”可用的 IP 地址范围​​。
+|The range of IP addresses available for "Services" within the cluster.
 
-Service CIDR 支持 IPv4 和 IPv6，不能与同一个集群的其他网络（如 Pod CIDR 和 Node IP）重复。
+Service CIDR supports both IPv4 and IPv6 and must not overlap with other networks in the same cluster (e.g., Pod CIDR and Node IP).
 
 |Pod CIDR
-|集群内部“Pod”可用的 IP 地址范围​​。
+|The range of IP addresses available for "Pods" within the cluster.
 
-Pod CIDR 支持 IPv4 和 IPv6，不能与同一个集群的其他网络（如 Node IP）重复。
+Pod CIDR supports both IPv4 and IPv6 and must not overlap with other networks in the same cluster (e.g., Node IP).
 
-|IPv4/IPv6 掩码大小
-|IP 地址中用于标识网络部分的位数。
-// 剩余位数则用于标识主机部分。掩码数值越大，对应的网络划分越精细，但每个子网内可用的主机地址数量越少。
+|IPv4/IPv6 Mask Size
+|The number of bits in the IP address used to identify the network portion.
+// The remaining bits are used to identify the host portion. A larger mask value corresponds to a finer network division but results in fewer available host addresses within each subnet.
 
-.2+|镜像仓库配置
-|仓库地址
-|填写私有镜像仓库的实际地址。
+.2+|Image Registry Configuration
+|Registry Address
+|Enter the actual address of the private image registry.
 
-|用户名 & 密码
-|填写私有镜像仓库的登录账户和密码。
+|Username & Password
+|Enter the login account and password for the private image registry.
 
-.3+|存储设置
-|启用
-|使用集群节点的本地存储系统。
+.3+|Storage Settings
+|Enable
+|Use the local storage system of the cluster nodes.
 
-|设置为默认存储
-|设置为默认存储类。
+|Set as Default Storage
+|Set as the default storage class.
 
-|存储路径
-|存储卷在宿主机上的存储路径。
+|Storage Path
+|The storage path for volumes on the host machine.
 
 |===
 --
 
-* **KubeSphere Core 配置**
+* **KubeSphere Core Configuration**
 +
 [%header,cols="1a,4a"]
 |===
-|参数 |描述
+|Parameter |Description
 
-|全局镜像仓库
-|填写私有镜像仓库的实际地址。
+|Global Image Registry
+|Enter the actual address of the private image registry.
 
-|扩展组件镜像仓库
-|填写私有镜像仓库的实际地址。
+|Extension Image Registry
+|Enter the actual address of the private image registry.
 |===
 
-配置完成后，点击**下一步**。
+After configuration is complete, click **Next**.
 
-=== 3. 安装预览
+=== 3. Installation Preview
 
-在**安装预览**页面，确认版本等信息无误后，点击**下一步：执行安装**开始安装。也可返回上一步修改配置参数。
+On the **Installation Preview** page, after confirming that the version and other information are correct, click **Next: Execute Installation** to begin installation. You can also go back to the previous step to modify configuration parameters.
 
-=== 4. 安装
+=== 4. Installation
 
-耐心等待安装完成。安装完成后自动进入安装校验步骤。
+Wait patiently for the installation to complete. After installation is complete, the system will automatically proceed to the installation verification step.
 
-若安装过程中出现异常，点击**查看日志**查看日志详情，退出或初始化后重新安装。
+If an exception occurs during installation, click **View Logs** to see the log details, then exit or reinstall after initialization.
 
 image::/images/ks-qkcp/zh/v4.2.0/web-installer/installing.png[]
 
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|若需要在 Web Installer 页面重新安装、修改配置参数或清除配置，点击左侧的**初始化**按钮，将重置 Kubernetes 节点上的所有任务并回到基本信息页面。初始化操作不可逆，请谨慎执行。
+|If you need to reinstall, modify configuration parameters, or clear configurations on the Web Installer page, click the **Initialize** button on the left. This will reset all tasks on the Kubernetes nodes and return to the Basic Information page. The initialization operation is irreversible, please execute with caution.
 |===
 
-=== 5. 安装校验
+=== 5. Installation Verification
 
-. 在**安装校验**页面，点击**开始检测**，系统将自动运行对应的检测脚本验证系统可用性。
+. On the **Installation Verification** page, click **Start Detection**. The system will automatically run the corresponding detection script to verify system availability.
 
-. 若通过系统检测，点击**完成**，可查看 KubeSphere 的访问地址、管理员用户名和默认密码。
+. If the system detection passes, click **Finish**. You can then view the KubeSphere access address, administrator username, and default password.
 
-. 在网页浏览器上输入访问地址，登录 KubeSphere Web 控制台，即可开始使用 KubeSphere。
+. Enter the access address in a web browser, log in to the KubeSphere web console, and you can start using KubeSphere.
 +
 [.admon.note,cols="a"]
 |===
-|说明
+|Note
 
-|取决于您的网络环境，您可能需要配置流量转发规则并在防火墙中放行 30880 端口。
+|Depending on your network environment, you may need to configure traffic forwarding rules and open port 30880 in the firewall.
 |===
-
-
-
